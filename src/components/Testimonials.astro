@@ -1,0 +1,80 @@
+---
+import { getCollection } from 'astro:content';
+
+// Get all testimonials from the content collection
+const testimonialsCollection = await getCollection('testimonials');
+
+// Get featured testimonials first, then fill with non-featured if needed
+let featuredTestimonials = testimonialsCollection.filter(testimonial => testimonial.data.featured);
+
+// If we have more than 4 featured testimonials, take only the first 4
+if (featuredTestimonials.length > 4) {
+  featuredTestimonials = featuredTestimonials.slice(0, 4);
+}
+// If we have less than 4 featured testimonials, add non-featured ones
+else if (featuredTestimonials.length < 4) {
+  const nonFeaturedTestimonials = testimonialsCollection
+    .filter(testimonial => !testimonial.data.featured)
+    .slice(0, 4 - featuredTestimonials.length);
+
+  featuredTestimonials = [...featuredTestimonials, ...nonFeaturedTestimonials];
+}
+
+// Map the testimonials to the format needed by the component
+const testimonials = featuredTestimonials.map(testimonial => ({
+  quote: testimonial.data.quote,
+  author: testimonial.data.author,
+  title: `${testimonial.data.title}, ${testimonial.data.company}`,
+  image: testimonial.data.image || "/images/testimonial-placeholder.jpg"
+}));
+---
+
+<section id="testimonials" class="py-20 bg-white dark:bg-gray-900">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        <span class="gradient-text">Trusted</span> by Industry Leaders
+      </h2>
+      <div class="w-20 h-1 bg-primary-600 dark:bg-primary-500 mx-auto mb-6"></div>
+      <p class="text-xl text-gray-600 dark:text-gray-400">
+        Our clients achieve exceptional business outcomes through our AI-powered solutions. Here's what they have to say.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {testimonials.map((testimonial) => (
+        <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-lg shadow-sm">
+          <div class="flex items-center mb-6">
+            <div class="text-primary-600 dark:text-primary-400">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+              </svg>
+            </div>
+            <div class="ml-4">
+              <div class="h-10 w-10 rounded-full bg-gray-300 dark:bg-gray-700 overflow-hidden">
+                <div class="flex items-center justify-center h-full text-gray-500 dark:text-gray-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <blockquote class="text-gray-600 dark:text-gray-300 text-lg italic mb-6">
+            "{testimonial.quote}"
+          </blockquote>
+
+          <div>
+            <div class="font-bold text-gray-900 dark:text-white">
+              {testimonial.author}
+            </div>
+            <div class="text-gray-500 dark:text-gray-400">
+              {testimonial.title}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

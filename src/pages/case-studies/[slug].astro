@@ -1,0 +1,266 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { formatDate } from '../../utils/date';
+
+export async function getStaticPaths() {
+  const caseStudiesEntries = await getCollection('case-studies');
+  
+  return caseStudiesEntries.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const { 
+  title, 
+  description, 
+  client, 
+  industry, 
+  services, 
+  challenge, 
+  solution, 
+  results, 
+  testimonial, 
+  image, 
+  gallery,
+  pubDate 
+} = entry.data;
+
+// Get related case studies (same industry or services)
+const allCaseStudies = await getCollection('case-studies');
+const relatedCaseStudies = allCaseStudies
+  .filter(study => 
+    study.slug !== entry.slug && 
+    (study.data.industry === industry || 
+     study.data.services.some(service => services.includes(service)))
+  )
+  .sort(() => Math.random() - 0.5) // Shuffle
+  .slice(0, 3); // Take up to 3
+---
+
+<Layout
+  title={`${title} | AI Native Digital Agency Case Study`}
+  description={description}
+  ogTitle={title}
+  ogDescription={description}
+  ogImage={image || '/images/case-study-default.jpg'}
+>
+  <Header />
+  
+  <main>
+    <!-- Page Header -->
+    <section class="pt-32 pb-12 md:pt-40 md:pb-20 bg-gray-50 dark:bg-gray-800">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+          <div class="mb-4 text-sm font-medium">
+            <span class="text-primary-600 dark:text-primary-400">{industry}</span>
+            <span class="mx-2">•</span>
+            <span class="text-gray-600 dark:text-gray-400">{client}</span>
+          </div>
+          
+          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+            {title}
+          </h1>
+          
+          <p class="text-xl text-gray-600 dark:text-gray-400">
+            {description}
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Case Study Content -->
+    <section class="py-16 md:py-24 bg-white dark:bg-gray-900">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row gap-12">
+          <!-- Main Content -->
+          <div class="lg:w-2/3">
+            {image && (
+              <div class="mb-8 rounded-lg overflow-hidden">
+                <img
+                  src={image}
+                  alt={title}
+                  class="w-full h-auto object-cover"
+                />
+              </div>
+            )}
+            
+            <!-- Overview -->
+            <div class="mb-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">The Challenge</h3>
+                <p class="text-gray-600 dark:text-gray-400">{challenge}</p>
+              </div>
+              
+              <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Our Solution</h3>
+                <p class="text-gray-600 dark:text-gray-400">{solution}</p>
+              </div>
+              
+              <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Services Used</h3>
+                <div class="flex flex-wrap gap-2 mt-2">
+                  {services.map((service) => (
+                    <span class="px-2 py-1 bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 rounded text-xs">
+                      {service}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+            
+            <!-- Results -->
+            {results && results.length > 0 && (
+              <div class="mb-12">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Key Results</h2>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {results.map((result) => (
+                    <li class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 dark:text-primary-400 mt-0.5 mr-3 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                      </svg>
+                      <span class="text-gray-700 dark:text-gray-300">{result}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            
+            <!-- Testimonial -->
+            {testimonial && (
+              <div class="mb-12 bg-gray-50 dark:bg-gray-800 p-8 rounded-lg">
+                <div class="flex items-center mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+                  </svg>
+                  <h3 class="ml-3 text-xl font-bold text-gray-900 dark:text-white">Client Testimonial</h3>
+                </div>
+                <blockquote class="text-lg italic text-gray-700 dark:text-gray-300 mb-4">
+                  "{testimonial.quote}"
+                </blockquote>
+                <div class="flex items-center">
+                  <div>
+                    <p class="font-medium text-gray-900 dark:text-white">{testimonial.author}</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">{testimonial.title}</p>
+                  </div>
+                </div>
+              </div>
+            )}
+            
+            <!-- Full Case Study -->
+            <div class="prose prose-lg dark:prose-invert max-w-none">
+              <Content />
+            </div>
+            
+            <!-- Gallery -->
+            {gallery && gallery.length > 0 && (
+              <div class="mt-12">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Project Gallery</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {gallery.map((image) => (
+                    <div class="rounded-lg overflow-hidden">
+                      <img
+                        src={image}
+                        alt={title}
+                        class="w-full h-64 object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+            
+            <!-- CTA -->
+            <div class="mt-12 bg-primary-50 dark:bg-primary-900 rounded-lg p-8">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                Ready to Achieve Similar Results?
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-6">
+                Contact us today to discuss how we can help transform your business with our AI-native approach.
+              </p>
+              <a href="/contact" class="btn btn-primary">
+                Get Started
+              </a>
+            </div>
+          </div>
+          
+          <!-- Sidebar -->
+          <div class="lg:w-1/3">
+            <!-- Case Study Info -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-8">
+              <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">
+                Case Study Details
+              </h3>
+              <ul class="space-y-4">
+                <li class="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 dark:text-gray-400 mt-0.5 mr-3" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                  </svg>
+                  <div>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Client</p>
+                    <p class="text-gray-900 dark:text-white">{client}</p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 dark:text-gray-400 mt-0.5 mr-3" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd" />
+                    <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
+                  </svg>
+                  <div>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Industry</p>
+                    <p class="text-gray-900 dark:text-white">{industry}</p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 dark:text-gray-400 mt-0.5 mr-3" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+                  </svg>
+                  <div>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Date</p>
+                    <p class="text-gray-900 dark:text-white">{formatDate(pubDate)}</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            
+            <!-- Related Case Studies -->
+            {relatedCaseStudies.length > 0 && (
+              <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">
+                  Related Case Studies
+                </h3>
+                <div class="space-y-4">
+                  {relatedCaseStudies.map((study) => (
+                    <a href={`/case-studies/${study.slug}`} class="block group">
+                      <div class="flex items-start">
+                        <div class="flex-1">
+                          <h4 class="text-gray-900 dark:text-white font-medium group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                            {study.data.title}
+                          </h4>
+                          <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                            {study.data.client}
+                          </p>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                        </svg>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>

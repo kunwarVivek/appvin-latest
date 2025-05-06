@@ -1,11 +1,29 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Services from '../components/Services.astro';
+import CaseStudies from '../components/CaseStudies.astro';
+import Testimonials from '../components/Testimonials.astro';
+import BlogPreview from '../components/BlogPreview.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+  title="AI Native Digital Agency | Product Engineering Experts"
+  description="We help companies in their product engineering journeys with AI-native solutions. Expert digital agency for modern businesses."
+>
+  <Header />
+  
+  <main>
+    <Hero />
+    <Services />
+    <CaseStudies />
+    <Testimonials />
+    <BlogPreview />
+    <Contact />
+  </main>
+  
+  <Footer />
 </Layout>
