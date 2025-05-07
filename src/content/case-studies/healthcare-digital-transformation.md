@@ -1,5 +1,6 @@
 ---
 title: "Healthcare Digital Transformation"
+subtitle: "Modernizing Patient Care with AI and Analytics"
 description: "Increased patient throughput by 47% and reduced operational costs by $2.8M annually through our intelligent workflow automation and predictive analytics platform."
 client: "Leading Medical Network"
 industry: "Healthcare"
@@ -17,10 +18,12 @@ testimonial:
   author: "Elena Rodriguez"
   title: "Chief Digital Officer"
 image: "/images/case-studies/healthcare-digital-transformation.jpg"
+logo: "/images/case-studies/healthcare-logo.jpg"
 gallery:
   - "/images/case-studies/healthcare-dt-dashboard.jpg"
   - "/images/case-studies/healthcare-dt-analytics.jpg"
   - "/images/case-studies/healthcare-dt-mobile.jpg"
+category: "Healthcare"
 featured: true
 pubDate: "2023-04-10"
 ---

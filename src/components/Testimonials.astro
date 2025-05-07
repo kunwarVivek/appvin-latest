@@ -4,27 +4,32 @@ import { getCollection } from 'astro:content';
 // Get all testimonials from the content collection
 const testimonialsCollection = await getCollection('testimonials');
 
-// Get featured testimonials first, then fill with non-featured if needed
-let featuredTestimonials = testimonialsCollection.filter(testimonial => testimonial.data.featured);
+// Sort testimonials by order if available
+const sortedTestimonials = testimonialsCollection.sort((a, b) => {
+  // If order is defined for both, sort by order
+  if (a.data.order !== undefined && b.data.order !== undefined) {
+    return a.data.order - b.data.order;
+  }
+  // If only a has order, it comes first
+  if (a.data.order !== undefined) {
+    return -1;
+  }
+  // If only b has order, it comes first
+  if (b.data.order !== undefined) {
+    return 1;
+  }
+  // If neither has order, sort by name
+  return a.data.name.localeCompare(b.data.name);
+});
 
-// If we have more than 4 featured testimonials, take only the first 4
-if (featuredTestimonials.length > 4) {
-  featuredTestimonials = featuredTestimonials.slice(0, 4);
-}
-// If we have less than 4 featured testimonials, add non-featured ones
-else if (featuredTestimonials.length < 4) {
-  const nonFeaturedTestimonials = testimonialsCollection
-    .filter(testimonial => !testimonial.data.featured)
-    .slice(0, 4 - featuredTestimonials.length);
-
-  featuredTestimonials = [...featuredTestimonials, ...nonFeaturedTestimonials];
-}
+// Take the first 4 testimonials
+const featuredTestimonials = sortedTestimonials.slice(0, 4);
 
 // Map the testimonials to the format needed by the component
 const testimonials = featuredTestimonials.map(testimonial => ({
-  quote: testimonial.data.quote,
-  author: testimonial.data.author,
-  title: `${testimonial.data.title}, ${testimonial.data.company}`,
+  quote: testimonial.body,
+  author: testimonial.data.name,
+  title: testimonial.data.company ? `${testimonial.data.position}, ${testimonial.data.company}` : testimonial.data.position,
   image: testimonial.data.image || "/images/testimonial-placeholder.jpg"
 }));
 ---

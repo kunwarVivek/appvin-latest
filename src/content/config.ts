@@ -1,8 +1,8 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection, z } from "astro:content";
 
 // Blog collection schema
 const blogCollection = defineCollection({
-  type: 'content',
+  type: "content",
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -17,7 +17,7 @@ const blogCollection = defineCollection({
 
 // Services collection schema
 const servicesCollection = defineCollection({
-  type: 'content',
+  type: "content",
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -30,26 +30,47 @@ const servicesCollection = defineCollection({
 
 // Case studies collection schema
 const caseStudiesCollection = defineCollection({
-  type: 'content',
+  type: "content",
   schema: z.object({
     title: z.string(),
     subtitle: z.string(),
     description: z.string(),
     image: z.string(),
     logo: z.string(),
-    stats: z.array(z.object({
-      value: z.string(),
-      label: z.string(),
-    })).optional(),
+    stats: z
+      .array(
+        z.object({
+          value: z.string(),
+          label: z.string(),
+        })
+      )
+      .optional(),
     technologies: z.array(z.string()).optional(),
     category: z.string(),
     order: z.number().optional(),
+    // Additional fields used in the application
+    featured: z.boolean().optional(),
+    industry: z.string().optional(),
+    services: z.array(z.string()).optional(),
+    client: z.string().optional(),
+    challenge: z.string().optional(),
+    solution: z.string().optional(),
+    results: z.array(z.string()).optional(),
+    testimonial: z
+      .object({
+        quote: z.string(),
+        author: z.string(),
+        title: z.string(),
+      })
+      .optional(),
+    gallery: z.array(z.string()).optional(),
+    pubDate: z.coerce.date().optional(),
   }),
 });
 
 // Testimonials collection schema
 const testimonialsCollection = defineCollection({
-  type: 'content',
+  type: "content",
   schema: z.object({
     name: z.string(),
     position: z.string(),
@@ -61,7 +82,7 @@ const testimonialsCollection = defineCollection({
 
 // Company information collection schema
 const companyCollection = defineCollection({
-  type: 'content',
+  type: "content",
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -71,9 +92,9 @@ const companyCollection = defineCollection({
 
 // Export collections
 export const collections = {
-  'blog': blogCollection,
-  'services': servicesCollection,
-  'case-studies': caseStudiesCollection,
-  'testimonials': testimonialsCollection,
-  'company': companyCollection,
+  blog: blogCollection,
+  services: servicesCollection,
+  "case-studies": caseStudiesCollection,
+  testimonials: testimonialsCollection,
+  company: companyCollection,
 };

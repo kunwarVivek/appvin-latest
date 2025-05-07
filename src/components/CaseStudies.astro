@@ -10,12 +10,22 @@ let featuredCaseStudies = caseStudiesCollection.filter(study => study.data.featu
 // If no featured case studies, get the 3 most recent ones
 if (featuredCaseStudies.length === 0) {
   featuredCaseStudies = caseStudiesCollection
-    .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
+    .sort((a, b) => {
+      // Handle cases where pubDate might be undefined
+      const dateA = a.data.pubDate ? new Date(a.data.pubDate).getTime() : 0;
+      const dateB = b.data.pubDate ? new Date(b.data.pubDate).getTime() : 0;
+      return dateB - dateA;
+    })
     .slice(0, 3);
 } else if (featuredCaseStudies.length > 3) {
   // If more than 3 featured case studies, take only the 3 most recent
   featuredCaseStudies = featuredCaseStudies
-    .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
+    .sort((a, b) => {
+      // Handle cases where pubDate might be undefined
+      const dateA = a.data.pubDate ? new Date(a.data.pubDate).getTime() : 0;
+      const dateB = b.data.pubDate ? new Date(b.data.pubDate).getTime() : 0;
+      return dateB - dateA;
+    })
     .slice(0, 3);
 }
 

@@ -1,5 +1,6 @@
 ---
 title: "AI-Powered Customer Service Revolution"
+subtitle: "Transforming Support Operations with Intelligent Automation"
 description: "Delivered $4.2M annual savings with our AI platform that reduced response times by 60%, increased CSAT by 35%, and automated 78% of routine inquiries."
 client: "Fortune 500 Technology Company"
 industry: "Technology"
@@ -17,10 +18,12 @@ testimonial:
   author: "Jennifer Marsh"
   title: "Chief Customer Officer"
 image: "/images/case-studies/ai-customer-service.jpg"
+logo: "/images/case-studies/ai-customer-service-logo.jpg"
 gallery:
   - "/images/case-studies/ai-cs-dashboard.jpg"
   - "/images/case-studies/ai-cs-analytics.jpg"
   - "/images/case-studies/ai-cs-interface.jpg"
+category: "Technology"
 featured: true
 pubDate: "2023-06-15"
 ---
