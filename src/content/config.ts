@@ -35,7 +35,10 @@ const caseStudiesCollection = defineCollection({
     title: z.string(),
     subtitle: z.string(),
     description: z.string(),
-    image: z.string(),
+    client: z.string(),
+    industry: z.string(),
+    services: z.array(z.string()),
+    image: z.string().optional(),
     logo: z.string(),
     stats: z.array(z.object({
       value: z.string(),
@@ -44,6 +47,17 @@ const caseStudiesCollection = defineCollection({
     technologies: z.array(z.string()).optional(),
     category: z.string(),
     order: z.number().optional(),
+    challenge: z.string().optional(),
+    solution: z.string().optional(),
+    results: z.array(z.string()).optional(),
+    testimonial: z.object({
+      quote: z.string(),
+      author: z.string(),
+      title: z.string()
+    }).optional(),
+    gallery: z.array(z.string()).optional(),
+    featured: z.boolean().optional(),
+    pubDate: z.string().optional(),
   }),
 });
 

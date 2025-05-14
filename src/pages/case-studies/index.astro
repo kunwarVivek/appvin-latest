@@ -8,7 +8,7 @@ import Footer from '../../components/Footer.astro';
 const caseStudiesCollection = await getCollection('case-studies');
 
 // Sort by publication date (newest first)
-const caseStudies = caseStudiesCollection.sort((a, b) => 
+const caseStudies = caseStudiesCollection.sort((a, b) =>
   new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
 );
 
@@ -24,7 +24,7 @@ const allServices = [...new Set(caseStudies.flatMap(study => study.data.services
   description="Explore our portfolio of successful AI-native digital transformation and product engineering projects."
 >
   <Header />
-  
+
   <main>
     <!-- Page Header -->
     <section class="pt-32 pb-12 md:pt-40 md:pb-20 bg-gray-50 dark:bg-gray-800">
@@ -39,7 +39,7 @@ const allServices = [...new Set(caseStudies.flatMap(study => study.data.services
         </div>
       </div>
     </section>
-    
+
     <!-- Filters -->
     <section class="py-8 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -49,8 +49,8 @@ const allServices = [...new Set(caseStudies.flatMap(study => study.data.services
             <label for="industry-filter" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mr-2">
               Industry:
             </label>
-            <select 
-              id="industry-filter" 
+            <select
+              id="industry-filter"
               class="rounded-md border-gray-300 dark:border-gray-700 py-2 pl-3 pr-10 text-base focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white"
             >
               <option value="all">All Industries</option>
@@ -59,14 +59,14 @@ const allServices = [...new Set(caseStudies.flatMap(study => study.data.services
               ))}
             </select>
           </div>
-          
+
           <!-- Service Filter -->
           <div class="flex items-center">
             <label for="service-filter" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mr-2">
               Service:
             </label>
-            <select 
-              id="service-filter" 
+            <select
+              id="service-filter"
               class="rounded-md border-gray-300 dark:border-gray-700 py-2 pl-3 pr-10 text-base focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white"
             >
               <option value="all">All Services</option>
@@ -75,14 +75,14 @@ const allServices = [...new Set(caseStudies.flatMap(study => study.data.services
               ))}
             </select>
           </div>
-          
+
           <!-- Search -->
           <div class="flex-1 md:max-w-xs">
             <div class="relative">
-              <input 
-                type="text" 
+              <input
+                type="text"
                 id="search-input"
-                placeholder="Search case studies..." 
+                placeholder="Search case studies..."
                 class="w-full rounded-md border-gray-300 dark:border-gray-700 py-2 pl-10 pr-4 text-base focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white"
               />
               <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -95,25 +95,25 @@ const allServices = [...new Set(caseStudies.flatMap(study => study.data.services
         </div>
       </div>
     </section>
-    
+
     <!-- Featured Case Studies -->
     <section class="py-16 bg-white dark:bg-gray-900">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-8">
           Featured Case Studies
         </h2>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {caseStudies.filter(study => study.data.featured).map((study) => (
-            <div class="case-study-card bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow" 
+            <div class="case-study-card bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
                  data-industry={study.data.industry.toLowerCase()}
                  data-services={study.data.services.map(s => s.toLowerCase()).join(' ')}
             >
               <div class="h-48 bg-gray-300 dark:bg-gray-700 relative">
                 {study.data.image ? (
-                  <img 
-                    src={study.data.image} 
-                    alt={study.data.title} 
+                  <img
+                    src={study.data.image}
+                    alt={study.data.title}
                     class="w-full h-full object-cover"
                   />
                 ) : (
@@ -124,7 +124,7 @@ const allServices = [...new Set(caseStudies.flatMap(study => study.data.services
                   </div>
                 )}
               </div>
-              
+
               <div class="p-6">
                 <div class="flex items-center justify-between mb-2">
                   <span class="text-sm text-gray-500 dark:text-gray-400">
@@ -134,15 +134,15 @@ const allServices = [...new Set(caseStudies.flatMap(study => study.data.services
                     {study.data.industry}
                   </span>
                 </div>
-                
+
                 <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
                   {study.data.title}
                 </h3>
-                
+
                 <p class="text-gray-600 dark:text-gray-400 mb-4">
                   {study.data.description}
                 </p>
-                
+
                 <div class="flex flex-wrap gap-2 mb-6">
                   {study.data.services.map((service) => (
                     <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded text-xs">
@@ -150,9 +150,9 @@ const allServices = [...new Set(caseStudies.flatMap(study => study.data.services
                     </span>
                   ))}
                 </div>
-                
-                <a 
-                  href={`/case-studies/${study.slug}`} 
+
+                <a
+                  href={`/case-studies/${study.slug}`}
                   class="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 font-medium"
                 >
                   View Case Study
@@ -166,14 +166,14 @@ const allServices = [...new Set(caseStudies.flatMap(study => study.data.services
         </div>
       </div>
     </section>
-    
+
     <!-- All Case Studies -->
     <section class="py-16 bg-gray-50 dark:bg-gray-800">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-8">
           All Case Studies
         </h2>
-        
+
         <div id="case-studies-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {caseStudies.map((study) => (
             <div class="case-study-card bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
@@ -182,9 +182,9 @@ const allServices = [...new Set(caseStudies.flatMap(study => study.data.services
             >
               <div class="h-48 bg-gray-300 dark:bg-gray-700 relative">
                 {study.data.image ? (
-                  <img 
-                    src={study.data.image} 
-                    alt={study.data.title} 
+                  <img
+                    src={study.data.image}
+                    alt={study.data.title}
                     class="w-full h-full object-cover"
                   />
                 ) : (
@@ -195,7 +195,7 @@ const allServices = [...new Set(caseStudies.flatMap(study => study.data.services
                   </div>
                 )}
               </div>
-              
+
               <div class="p-6">
                 <div class="flex items-center justify-between mb-2">
                   <span class="text-sm text-gray-500 dark:text-gray-400">
@@ -205,15 +205,15 @@ const allServices = [...new Set(caseStudies.flatMap(study => study.data.services
                     {study.data.industry}
                   </span>
                 </div>
-                
+
                 <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
                   {study.data.title}
                 </h3>
-                
+
                 <p class="text-gray-600 dark:text-gray-400 mb-4">
                   {study.data.description}
                 </p>
-                
+
                 <div class="flex flex-wrap gap-2 mb-6">
                   {study.data.services.map((service) => (
                     <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded text-xs">
@@ -221,9 +221,9 @@ const allServices = [...new Set(caseStudies.flatMap(study => study.data.services
                     </span>
                   ))}
                 </div>
-                
-                <a 
-                  href={`/case-studies/${study.slug}`} 
+
+                <a
+                  href={`/case-studies/${study.slug}`}
                   class="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 font-medium"
                 >
                   View Case Study
@@ -237,7 +237,7 @@ const allServices = [...new Set(caseStudies.flatMap(study => study.data.services
         </div>
       </div>
     </section>
-    
+
     <!-- CTA Section -->
     <section class="py-16 md:py-24 bg-primary-600 dark:bg-primary-800">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -255,7 +255,7 @@ const allServices = [...new Set(caseStudies.flatMap(study => study.data.services
       </div>
     </section>
   </main>
-  
+
   <Footer />
 </Layout>
 
@@ -266,25 +266,25 @@ const allServices = [...new Set(caseStudies.flatMap(study => study.data.services
     const serviceFilter = document.getElementById('service-filter');
     const searchInput = document.getElementById('search-input');
     const caseStudyCards = document.querySelectorAll('.case-study-card');
-    
+
     // Filter function
     const filterCaseStudies = () => {
       const industryValue = industryFilter.value.toLowerCase();
       const serviceValue = serviceFilter.value.toLowerCase();
       const searchValue = searchInput.value.toLowerCase();
-      
+
       caseStudyCards.forEach(card => {
         const industry = card.getAttribute('data-industry');
         const services = card.getAttribute('data-services');
         const title = card.querySelector('h3').textContent.toLowerCase();
         const description = card.querySelector('p').textContent.toLowerCase();
-        
+
         const matchesIndustry = industryValue === 'all' || industry === industryValue;
         const matchesService = serviceValue === 'all' || services.includes(serviceValue);
-        const matchesSearch = searchValue === '' || 
-                             title.includes(searchValue) || 
+        const matchesSearch = searchValue === '' ||
+                             title.includes(searchValue) ||
                              description.includes(searchValue);
-        
+
         if (matchesIndustry && matchesService && matchesSearch) {
           card.style.display = 'block';
         } else {
@@ -292,7 +292,7 @@ const allServices = [...new Set(caseStudies.flatMap(study => study.data.services
         }
       });
     };
-    
+
     // Add event listeners
     industryFilter.addEventListener('change', filterCaseStudies);
     serviceFilter.addEventListener('change', filterCaseStudies);

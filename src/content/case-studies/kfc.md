@@ -2,6 +2,9 @@
 title: "KFC"
 subtitle: "Mobile Delivery Apps Enhancing Customer Experience"
 description: "AppVin successfully transformed KFC's mobile app into a powerful tool for customer engagement and revenue generation."
+client: "KFC (Americana Group)"
+industry: "Food & Beverage"
+services: ["Mobile App Development", "UI/UX Design", "Backend Integration"]
 image: "/images/case-studies/kfc.webp"
 logo: "/images/case-studies/kfc-logo.webp"
 stats:
@@ -17,6 +20,8 @@ technologies:
   - "MongoDB"
 category: "Retail"
 order: 3
+featured: true
+pubDate: "2023-03-20"
 ---
 
 ## Project Overview

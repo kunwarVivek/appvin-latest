@@ -1,9 +1,12 @@
 ---
 title: "AI-Powered Customer Service Revolution"
+subtitle: "Transforming Support Operations with Intelligent Automation"
 description: "Delivered $4.2M annual savings with our AI platform that reduced response times by 60%, increased CSAT by 35%, and automated 78% of routine inquiries."
 client: "Fortune 500 Technology Company"
 industry: "Technology"
 services: ["AI Strategy", "Product Engineering", "Data Analytics"]
+logo: "/images/case-studies/tech-company-logo.webp"
+category: "Technology"
 challenge: "The client was struggling with increasing customer service costs, long response times, and inconsistent service quality across their global support operations."
 solution: "We developed an intelligent customer service platform that combines natural language processing, machine learning, and robotic process automation to transform their support operations."
 results:

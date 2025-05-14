@@ -2,6 +2,9 @@
 title: "Domino's Pizza"
 subtitle: "Elevating Online Presence and User Experience"
 description: "Domino's Pizza partnered with APPVIN TECHNOLOGIES to elevate its online presence, focusing on website performance, user experience, and innovative web technologies."
+client: "Domino's Pizza"
+industry: "Food & Beverage"
+services: ["Web Development", "UI/UX Design", "Performance Optimization"]
 image: "/images/case-studies/dominos.webp"
 logo: "/images/case-studies/dominos-logo.webp"
 stats:
@@ -19,6 +22,8 @@ technologies:
   - "UI/UX"
 category: "Retail"
 order: 2
+featured: true
+pubDate: "2023-05-10"
 ---
 
 ## Project Overview

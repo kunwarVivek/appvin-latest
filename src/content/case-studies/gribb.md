@@ -2,6 +2,9 @@
 title: "Gribb"
 subtitle: "Driving Data Made Actionable"
 description: "Gribb creates impact with data. We combine driving behaviour, modern (vehicle) technology, data and road safety marketing to establish and maintain a safe and sustainable driving culture."
+client: "Gribb Fleet Solutions"
+industry: "Transportation & Logistics"
+services: ["Mobile App Development", "Data Analytics", "IoT Integration"]
 image: "/images/case-studies/gribb.webp"
 logo: "/images/case-studies/gribb-logo.webp"
 stats:
@@ -19,6 +22,8 @@ technologies:
   - "MongoDB"
 category: "Transportation & Logistics"
 order: 1
+featured: true
+pubDate: "2023-04-15"
 ---
 
 ## Project Overview
