@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import PlaceholderImage from '../../components/PlaceholderImage.astro';
 
 // Get all services from the content collection
 const servicesCollection = await getCollection('services');
@@ -31,119 +32,157 @@ const services = servicesCollection.sort((a, b) => {
   description="Explore our comprehensive range of AI-native digital services for product engineering and business transformation."
 >
   <Header />
-  
+
   <main>
     <!-- Page Header -->
-    <section class="pt-32 pb-12 md:pt-40 md:pb-20 bg-gray-50 dark:bg-gray-800">
+    <section class="pt-32 pb-12 md:pt-40 md:pb-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-4xl mx-auto text-center">
-          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            <span class="gradient-text">Solutions</span> That Drive Business Growth
-          </h1>
-          <p class="text-xl text-gray-600 dark:text-gray-400">
-            Our AI-powered services deliver measurable ROI through increased efficiency, reduced costs, and accelerated innovation.
-          </p>
+        <div class="max-w-4xl mx-auto">
+          <div class="flex flex-col items-center text-center">
+            <div class="inline-flex items-center justify-center size-16 rounded-full bg-primary-100 dark:bg-primary-900/30 mb-6 animate-in fade-in slide-in-from-bottom-5 duration-500">
+              <svg xmlns="http://www.w3.org/2000/svg" class="size-8 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+              </svg>
+            </div>
+
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 animate-in fade-in slide-in-from-bottom-5 duration-500 delay-150">
+              <span class="gradient-text">Solutions</span> That Drive Business Growth
+            </h1>
+
+            <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl animate-in fade-in slide-in-from-bottom-5 duration-500 delay-300">
+              Our AI-powered services deliver measurable ROI through increased efficiency, reduced costs, and accelerated innovation.
+            </p>
+          </div>
         </div>
       </div>
     </section>
-    
+
     <!-- Services Overview -->
     <section class="py-16 md:py-24 bg-white dark:bg-gray-900">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service) => (
-            <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow">
-              <div class="mb-6 text-primary-600 dark:text-primary-400">
-                {service.data.icon === 'brain' && (
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
+          {services.map((service, index) => (
+            <div class="group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-100 dark:border-gray-700 hover:border-primary-200 dark:hover:border-primary-800 transition-all hover:shadow-xl animate-in fade-in slide-in-from-bottom-5 duration-500" style={`animation-delay: ${index * 100}ms`}>
+              <div class="absolute inset-0 bg-gradient-to-br from-primary-50 to-white dark:from-primary-900/10 dark:to-gray-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+              <div class="relative p-8">
+                <div class="mb-6 text-primary-600 dark:text-primary-400 transition-transform duration-300 group-hover:scale-110 group-hover:text-primary-500 dark:group-hover:text-primary-300">
+                  {service.data.icon === 'brain' && (
+                    <svg xmlns="http://www.w3.org/2000/svg" class="size-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  )}
+                  {service.data.icon === 'code' && (
+                    <svg xmlns="http://www.w3.org/2000/svg" class="size-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    </svg>
+                  )}
+                  {service.data.icon === 'refresh' && (
+                    <svg xmlns="http://www.w3.org/2000/svg" class="size-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    </svg>
+                  )}
+                  {service.data.icon === 'cloud' && (
+                    <svg xmlns="http://www.w3.org/2000/svg" class="size-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                    </svg>
+                  )}
+                  {service.data.icon === 'chart' && (
+                    <svg xmlns="http://www.w3.org/2000/svg" class="size-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                  )}
+                  {service.data.icon === 'design' && (
+                    <svg xmlns="http://www.w3.org/2000/svg" class="size-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                    </svg>
+                  )}
+                </div>
+
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                  {service.data.title}
+                </h3>
+
+                <p class="text-gray-600 dark:text-gray-400 mb-6">
+                  {service.data.description}
+                </p>
+
+                {service.data.features && (
+                  <ul class="mb-6 space-y-2">
+                    {service.data.features.slice(0, 3).map((feature) => (
+                      <li class="flex items-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="size-5 text-primary-600 dark:text-primary-400 mt-0.5 mr-2 shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
+                        <span class="text-gray-700 dark:text-gray-300">{feature}</span>
+                      </li>
+                    ))}
+                    {service.data.features.length > 3 && (
+                      <li class="text-sm text-primary-600 dark:text-primary-400 ml-7">
+                        +{service.data.features.length - 3} more features
+                      </li>
+                    )}
+                  </ul>
                 )}
-                {service.data.icon === 'code' && (
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                  </svg>
-                )}
-                {service.data.icon === 'refresh' && (
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                  </svg>
-                )}
-                {service.data.icon === 'cloud' && (
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-                  </svg>
-                )}
-                {service.data.icon === 'chart' && (
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                  </svg>
-                )}
-                {service.data.icon === 'design' && (
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-                  </svg>
-                )}
+
+                <div class="pt-2">
+                  <a
+                    href={`/services/${service.slug}`}
+                    class="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 font-medium group-hover:underline transition-all"
+                  >
+                    Learn more
+                    <svg xmlns="http://www.w3.org/2000/svg" class="size-5 ml-1 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  </a>
+                </div>
               </div>
-              
-              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
-                {service.data.title}
-              </h3>
-              
-              <p class="text-gray-600 dark:text-gray-400 mb-6">
-                {service.data.description}
-              </p>
-              
-              {service.data.features && (
-                <ul class="space-y-2 mb-6">
-                  {service.data.features.slice(0, 3).map((feature) => (
-                    <li class="flex items-start">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-600 dark:text-primary-400 mt-0.5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                      </svg>
-                      <span class="text-gray-600 dark:text-gray-400">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-              
-              <a 
-                href={`/services/${service.slug}`} 
-                class="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 font-medium"
-              >
-                Learn more
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
-              </a>
             </div>
           ))}
         </div>
       </div>
     </section>
-    
+
     <!-- CTA Section -->
-    <section class="py-16 md:py-24 bg-primary-600 dark:bg-primary-800">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-4xl mx-auto text-center">
-          <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
-            Ready to Transform Your Business?
-          </h2>
-          <p class="text-xl text-primary-100 mb-8">
-            Contact us today to discuss how our AI-native approach can help you achieve your product engineering goals.
-          </p>
-          <div class="flex flex-col sm:flex-row justify-center gap-4">
-            <a href="/contact" class="btn bg-white text-primary-600 hover:bg-primary-50 text-lg px-8 py-4">
-              Get Started
-            </a>
-            <a href="/case-studies" class="btn border-2 border-white text-white hover:bg-primary-700 dark:hover:bg-primary-900 text-lg px-8 py-4">
-              View Case Studies
-            </a>
+    <section class="py-20 md:py-28 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-primary-600 to-primary-800 dark:from-primary-800 dark:to-primary-900"></div>
+
+      <!-- Decorative elements -->
+      <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div class="absolute -top-24 -left-24 size-96 bg-primary-500/20 dark:bg-primary-400/10 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-24 -right-24 size-96 bg-primary-500/20 dark:bg-primary-400/10 rounded-full blur-3xl"></div>
+
+        <svg class="absolute top-0 right-0 text-primary-500/10 dark:text-primary-400/5 size-64 md:size-96" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <path fill="currentColor" d="M42.7,-73.4C55.3,-67.1,65.7,-56.1,73.5,-43.1C81.3,-30.1,86.6,-15.1,85.9,-0.4C85.2,14.2,78.6,28.4,70.1,41.1C61.6,53.8,51.1,65,38.1,71.6C25.1,78.2,9.6,80.2,-5.5,78.5C-20.6,76.8,-35.3,71.4,-47.5,62.6C-59.7,53.8,-69.5,41.6,-75.2,27.5C-80.9,13.4,-82.6,-2.7,-78.9,-17.1C-75.2,-31.5,-66.1,-44.2,-54.4,-50.6C-42.7,-57,-28.4,-57.1,-14.8,-62.8C-1.2,-68.5,12.8,-79.8,26.8,-79.7C40.8,-79.6,54.8,-68.1,42.7,-73.4Z" transform="translate(100 100)" />
+        </svg>
+      </div>
+
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="max-w-4xl mx-auto">
+          <div class="bg-white/10 dark:bg-white/5 backdrop-blur-sm rounded-2xl p-8 md:p-12 shadow-xl border border-white/20">
+            <div class="text-center">
+              <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 animate-in fade-in slide-in-from-bottom-5 duration-500">
+                Ready to Transform Your Business?
+              </h2>
+
+              <p class="text-xl text-white/80 mb-8 animate-in fade-in slide-in-from-bottom-5 duration-500 delay-150">
+                Contact us today to discuss how our AI-native approach can help you achieve your product engineering goals.
+              </p>
+
+              <div class="flex flex-col sm:flex-row justify-center gap-4 animate-in fade-in slide-in-from-bottom-5 duration-500 delay-300">
+                <a href="/contact" class="btn bg-white text-primary-600 hover:bg-primary-50 hover:scale-105 transform transition-all text-lg px-8 py-4 shadow-lg">
+                  Get Started
+                </a>
+                <a href="/case-studies" class="btn bg-transparent border-2 border-white text-white hover:bg-white/10 hover:scale-105 transform transition-all text-lg px-8 py-4">
+                  View Case Studies
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
   </main>
-  
+
   <Footer />
 </Layout>

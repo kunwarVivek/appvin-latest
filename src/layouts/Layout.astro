@@ -51,42 +51,97 @@ const {
       twitterImage={twitterImage}
     />
     <script is:inline>
-      // Check for dark mode preference
+      // Check for dark mode preference with system theme as default
       const theme = (() => {
         if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          // If user has explicitly set a theme preference, use that
           return localStorage.getItem('theme');
         }
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          return 'dark';
-        }
-        return 'light';
+        // Otherwise, use system preference (this is the default)
+        return 'system';
       })();
 
-      if (theme === 'dark') {
+      // Apply the theme
+      if (theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark');
       } else {
         document.documentElement.classList.remove('dark');
       }
+
+      // Store the current theme for reference
+      window.currentTheme = theme;
     </script>
   </head>
   <body>
     <slot />
     <script>
-      // Handle theme toggle
+      // Handle theme toggle with system preference support
       document.addEventListener('DOMContentLoaded', () => {
         const themeToggle = document.getElementById('theme-toggle');
+
+        // Function to update theme icons visibility
+        const updateThemeIcons = (theme) => {
+          const sunIcon = document.querySelectorAll('.theme-sun');
+          const moonIcon = document.querySelectorAll('.theme-moon');
+          const systemIcon = document.querySelectorAll('.theme-system');
+
+          sunIcon.forEach(icon => icon.classList.add('hidden'));
+          moonIcon.forEach(icon => icon.classList.add('hidden'));
+          systemIcon.forEach(icon => icon.classList.add('hidden'));
+
+          if (theme === 'light') {
+            sunIcon.forEach(icon => icon.classList.remove('hidden'));
+          } else if (theme === 'dark') {
+            moonIcon.forEach(icon => icon.classList.remove('hidden'));
+          } else {
+            systemIcon.forEach(icon => icon.classList.remove('hidden'));
+          }
+        };
+
+        // Initialize theme icons
+        updateThemeIcons(window.currentTheme || 'system');
+
+        // Handle theme toggle click
         if (themeToggle) {
           themeToggle.addEventListener('click', () => {
-            const isDark = document.documentElement.classList.contains('dark');
-            if (isDark) {
-              document.documentElement.classList.remove('dark');
-              localStorage.setItem('theme', 'light');
+            // Cycle through themes: system -> light -> dark -> system
+            const currentTheme = window.currentTheme || 'system';
+            let newTheme;
+
+            if (currentTheme === 'system') {
+              newTheme = 'light';
+            } else if (currentTheme === 'light') {
+              newTheme = 'dark';
             } else {
-              document.documentElement.classList.add('dark');
-              localStorage.setItem('theme', 'dark');
+              newTheme = 'system';
             }
+
+            // Update theme
+            window.currentTheme = newTheme;
+            localStorage.setItem('theme', newTheme);
+
+            // Apply theme
+            if (newTheme === 'dark' || (newTheme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+              document.documentElement.classList.add('dark');
+            } else {
+              document.documentElement.classList.remove('dark');
+            }
+
+            // Update icons
+            updateThemeIcons(newTheme);
           });
         }
+
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+          if (window.currentTheme === 'system') {
+            if (e.matches) {
+              document.documentElement.classList.add('dark');
+            } else {
+              document.documentElement.classList.remove('dark');
+            }
+          }
+        });
       });
     </script>
   </body>
