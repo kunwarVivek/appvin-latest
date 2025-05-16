@@ -1,8 +1,12 @@
 /* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
+/* Import our custom styles */
+@import './global.css';
 
 /* Tailwind CSS directives */
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @theme {
     /* Colors */
@@ -84,8 +88,5 @@
     --breakpoint-xl: 1280px;
     --breakpoint-2xl: 1536px;
 }
-
-/* Import our custom styles */
-@import './global.css';
 
 /* Additional utilities */

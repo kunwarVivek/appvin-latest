@@ -1,33 +1,83 @@
 ---
-import { getCollection } from 'astro:content';
+// Case studies data based on AppVin website - one for each service
+const caseStudies = [
+  {
+    title: "SAP HANA: Real-time Data Processing",
+    client: "Enterprise Client",
+    description: "SAP HANA is an in-memory platform enabling real-time data processing, advanced analytics, and faster decision-making. AI enhancements further improve its business intelligence, data integration, and overall operational efficiency for enterprises.",
+    image: "/images/sap-case-study.webp",
+    logo: "/images/sap-logo.svg",
+    service: "SAP",
+    technologies: ["React JS", "Node"],
+    results: {
+      efficiency: "40%",
+      roi: "3.2x"
+    },
+    link: "/case-studies/sap-hana"
+  },
+  {
+    title: "GoTrust: Privacy, Security & Governance Platform",
+    client: "GoTrust",
+    description: "GoTrust is a platform for privacy, security, and governance that helps organizations manage data privacy compliance, mitigate risks, and oversee third-party governance efficiently and effectively.",
+    image: "/images/gotrust-case-study.webp",
+    logo: "/images/gotrust-logo.svg",
+    service: "Business Process Automation & Mining",
+    technologies: ["React JS", "Python", "Node"],
+    results: {
+      efficiency: "45%",
+      roi: "3.5x"
+    },
+    link: "/case-studies/go-trust"
+  },
+  {
+    title: "DealSource: AI-powered Investment Platform",
+    client: "DealSource",
+    description: "DealSource by AppVin is an AI-powered web platform offering a rich company database. It helps analysts, investors, and dealmakers find acquisition and investment opportunities using advanced AI insights.",
+    image: "/images/dealsource-case-study.webp",
+    logo: "/images/dealsource-logo.png",
+    service: "Data Governance",
+    technologies: ["React JS", "Python"],
+    results: {
+      efficiency: "50%",
+      roi: "3.8x"
+    },
+    link: "/case-studies/deal-source"
+  },
+  {
+    title: "Go-Lab: No-code Logistics Platform",
+    client: "Go-Lab",
+    description: "Go Lab is a no-code logistics platform that centralizes analytics, removes data silos, and helps companies streamline fleet operations while reducing reliance on costly third-party tools.",
+    image: "/images/golab-case-study.webp",
+    logo: "/images/golab-logo.png",
+    service: "Custom AI",
+    technologies: ["React JS", "Python"],
+    results: {
+      efficiency: "55%",
+      roi: "4.0x"
+    },
+    link: "/case-studies/go-lab"
+  }
+];
 
-// Get all case studies from the content collection
-const caseStudiesCollection = await getCollection('case-studies');
-
-// Get featured case studies or the most recent ones if there are no featured ones
-let featuredCaseStudies = caseStudiesCollection.filter(study => study.data.featured);
-
-// If no featured case studies, get the 3 most recent ones
-if (featuredCaseStudies.length === 0) {
-  featuredCaseStudies = caseStudiesCollection
-    .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
-    .slice(0, 3);
-} else if (featuredCaseStudies.length > 3) {
-  // If more than 3 featured case studies, take only the 3 most recent
-  featuredCaseStudies = featuredCaseStudies
-    .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
-    .slice(0, 3);
-}
-
-// Map the case studies to the format needed by the component
-const caseStudies = featuredCaseStudies.map(study => ({
-  title: study.data.title,
-  client: study.data.client,
-  description: study.data.description,
-  image: study.data.image || '/images/case-study-placeholder.jpg',
-  tags: study.data.services || [],
-  link: `/case-studies/${study.slug}`,
-}));
+// Image URLs from AppVin website
+const imageUrls = {
+  sap: {
+    caseStudy: "https://staging.appvintech.com/wp-content/uploads/2025/05/go-lab-3.webp",
+    logo: "https://staging.appvintech.com/wp-content/uploads/2025/05/image-518.svg"
+  },
+  gotrust: {
+    caseStudy: "https://staging.appvintech.com/wp-content/uploads/2025/05/go-lab-4.webp",
+    logo: "https://staging.appvintech.com/wp-content/uploads/2025/05/Frame-314.svg"
+  },
+  dealsource: {
+    caseStudy: "https://staging.appvintech.com/wp-content/uploads/2025/05/go-lab-1.webp",
+    logo: "https://staging.appvintech.com/wp-content/uploads/2025/05/deal-source.png"
+  },
+  golab: {
+    caseStudy: "https://staging.appvintech.com/wp-content/uploads/2025/05/go-lab.webp",
+    logo: "https://staging.appvintech.com/wp-content/uploads/2024/06/go-lab-logo.png"
+  }
+};
 ---
 
 <section id="case-studies" class="py-20 bg-gray-50 dark:bg-gray-800 relative overflow-hidden">
@@ -41,97 +91,157 @@ const caseStudies = featuredCaseStudies.map(study => ({
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div class="text-center max-w-3xl mx-auto mb-20">
       <!-- Section label -->
-      <div class="inline-flex items-center px-3 py-1 mb-4 text-xs font-medium rounded-full bg-accent-100 text-accent-800 dark:bg-accent-900/30 dark:text-accent-300">
-        <span class="size-2 bg-accent-500 rounded-full mr-2"></span>
-        Case Studies
+      <div class="flex justify-center mb-4">
+        <div class="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300">
+          <span class="w-2 h-2 bg-primary-500 rounded-full mr-2"></span>
+          Our Proven Expertise
+        </div>
       </div>
 
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">
-        <span class="gradient-text">Proven</span> Results for Industry Leaders
+      <h2 class="section-title">
+        <span class="gradient-text">Success</span> Stories Across Our Services
       </h2>
 
-      <div class="w-20 h-1 bg-gradient-to-r from-accent-500 to-primary-500 mx-auto mb-6 rounded-full"></div>
+      <div class="w-20 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto mb-6 rounded-full"></div>
 
       <p class="text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
-        We've delivered measurable ROI for enterprises across industries through our AI-powered solutions.
+        We've delivered measurable ROI for enterprises through our specialized services in SAP, Business Process Automation, Data Governance, and Custom AI.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {caseStudies.map((study, index) => (
-        <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 group interactive" data-index={index}>
-          <!-- Image with overlay -->
-          <div class="h-56 bg-gray-300 dark:bg-gray-700 relative overflow-hidden">
-            <!-- Placeholder image -->
-            <div class="absolute inset-0 flex items-center justify-center text-gray-500 dark:text-gray-400 group-hover:scale-110 transition-transform duration-500">
-              <svg xmlns="http://www.w3.org/2000/svg" class="size-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-            </div>
+    <!-- Slider controls -->
+    <div class="flex justify-center gap-4 mb-8">
+      <button id="prev-slide" class="p-2 rounded-full bg-white dark:bg-gray-700 shadow-md hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      <button id="next-slide" class="p-2 rounded-full bg-white dark:bg-gray-700 shadow-md hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
 
-            <!-- Gradient overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+    <!-- Slider container -->
+    <div class="relative overflow-hidden">
+      <div id="slider-container" class="flex transition-transform duration-500 ease-in-out">
+        {caseStudies.map((study, index) => (
+          <div class="min-w-full md:min-w-[50%] lg:min-w-[33.333%] px-4 mb-8" data-index={index}>
+            <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 group h-full transform hover:-translate-y-1 hover:shadow-hover">
+              <!-- Image with overlay -->
+              <div class="h-56 bg-gray-300 dark:bg-gray-700 relative overflow-hidden">
+                <!-- Service badge -->
+                <div class="absolute top-4 right-4 z-10">
+                  <span class="px-3 py-1.5 bg-gradient-to-r from-secondary-500/90 to-primary-500/90 text-white dark:from-secondary-600 dark:to-primary-600 rounded-full text-xs font-medium shadow-sm backdrop-blur-sm">
+                    {study.service}
+                  </span>
+                </div>
 
-            <!-- Client logo (positioned at bottom) -->
-            <div class="absolute bottom-4 left-4 text-white font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0">
-              {study.client}
+                <!-- Case study image -->
+                <div class="absolute inset-0 overflow-hidden bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900/30 dark:to-secondary-900/30">
+                  {study.service === "SAP" && (
+                    <img src="https://staging.appvintech.com/wp-content/uploads/2025/05/go-lab-3.webp" alt="SAP Case Study" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  )}
+
+                  {study.service === "Business Process Automation & Mining" && (
+                    <img src="https://staging.appvintech.com/wp-content/uploads/2025/05/go-lab-4.webp" alt="Business Process Automation Case Study" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  )}
+
+                  {study.service === "Data Governance" && (
+                    <img src="https://staging.appvintech.com/wp-content/uploads/2025/05/go-lab-1.webp" alt="Data Governance Case Study" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  )}
+
+                  {study.service === "Custom AI" && (
+                    <img src="https://staging.appvintech.com/wp-content/uploads/2025/05/go-lab.webp" alt="Custom AI Case Study" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  )}
+                </div>
+
+                <!-- Gradient overlay -->
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-300"></div>
+              </div>
+
+              <div class="p-8 flex flex-col h-[calc(100%-14rem)]">
+                <!-- Client logo -->
+                <div class="h-6 mb-4 flex items-center">
+                  {study.service === "SAP" && (
+                    <img src="https://staging.appvintech.com/wp-content/uploads/2025/05/image-518.svg" alt="SAP Logo" class="h-full object-contain transform group-hover:scale-105 transition-all duration-300" />
+                  )}
+
+                  {study.service === "Business Process Automation & Mining" && (
+                    <img src="https://staging.appvintech.com/wp-content/uploads/2025/05/Frame-314.svg" alt="GoTrust Logo" class="h-full object-contain transform group-hover:scale-105 transition-all duration-300" />
+                  )}
+
+                  {study.service === "Data Governance" && (
+                    <img src="https://staging.appvintech.com/wp-content/uploads/2025/05/deal-source.png" alt="DealSource Logo" class="h-full object-contain transform group-hover:scale-105 transition-all duration-300" />
+                  )}
+
+                  {study.service === "Custom AI" && (
+                    <img src="https://staging.appvintech.com/wp-content/uploads/2024/06/go-lab-logo.png" alt="Go-Lab Logo" class="h-full object-contain transform group-hover:scale-105 transition-all duration-300" />
+                  )}
+                </div>
+
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                  {study.title}
+                </h3>
+
+                <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
+                  {study.description}
+                </p>
+
+                <div class="flex-grow">
+                  <!-- Results metrics -->
+                  <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div class="text-center p-2 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                      <div class="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-500">+{study.results.efficiency}</div>
+                      <div class="text-xs text-gray-500 dark:text-gray-400">Efficiency</div>
+                    </div>
+                    <div class="text-center p-2 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                      <div class="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-accent-500">{study.results.roi}</div>
+                      <div class="text-xs text-gray-500 dark:text-gray-400">ROI</div>
+                    </div>
+                  </div>
+
+                  <!-- Technologies -->
+                  <div class="flex flex-wrap gap-2 mb-6">
+                    {study.technologies.map((tech) => (
+                      <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-full text-xs font-medium">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div class="mt-auto pt-4">
+                  <a
+                    href={study.link}
+                    class="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 font-medium group-hover:translate-x-2 transition-all duration-300"
+                  >
+                    View Case Study
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:ml-2 transition-all duration-300" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
+        ))}
+      </div>
+    </div>
 
-          <div class="p-8">
-            <!-- Client name (visible when not hovering) -->
-            <div class="text-sm text-gray-500 dark:text-gray-400 mb-2 group-hover:text-primary-500 dark:group-hover:text-primary-400 transition-colors">
-              {study.client}
-            </div>
-
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-              {study.title}
-            </h3>
-
-            <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
-              {study.description}
-            </p>
-
-            <!-- Results metrics (new) -->
-            <div class="grid grid-cols-2 gap-4 mb-6">
-              <div class="text-center p-2 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                <div class="text-lg font-bold text-primary-600 dark:text-primary-400">+{30 + index * 10}%</div>
-                <div class="text-xs text-gray-500 dark:text-gray-400">Efficiency</div>
-              </div>
-              <div class="text-center p-2 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                <div class="text-lg font-bold text-accent-600 dark:text-accent-400">{2 + index}.5x</div>
-                <div class="text-xs text-gray-500 dark:text-gray-400">ROI</div>
-              </div>
-            </div>
-
-            <!-- Tags -->
-            <div class="flex flex-wrap gap-2 mb-6">
-              {study.tags.map((tag) => (
-                <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-full text-xs font-medium">
-                  {tag}
-                </span>
-              ))}
-            </div>
-
-            <a
-              href={study.link}
-              class="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 font-medium group-hover:translate-x-1 transition-transform"
-            >
-              View Case Study
-              <svg xmlns="http://www.w3.org/2000/svg" class="size-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-              </svg>
-            </a>
-          </div>
-        </div>
+    <!-- Slider indicators -->
+    <div class="flex justify-center gap-2 mt-6">
+      {caseStudies.map((_, index) => (
+        <button class="slider-indicator w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-600 hover:bg-primary-400 dark:hover:bg-primary-500 transition-colors" data-index={index}></button>
       ))}
     </div>
 
     <div class="text-center mt-16">
-      <a href="/case-studies" class="btn btn-outline interactive px-8 py-4">
+      <a href="/case-studies" class="btn btn-outline px-8 py-4 inline-flex items-center group transform transition-transform duration-300 hover:-translate-y-1 hover:shadow-hover">
         View All Case Studies
-        <svg xmlns="http://www.w3.org/2000/svg" class="size-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 group-hover:ml-3 transition-all duration-300" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
         </svg>
       </a>
     </div>
@@ -145,28 +255,147 @@ const caseStudies = featuredCaseStudies.map(study => ({
 </style>
 
 <script>
-  // Staggered animation for case study cards
   document.addEventListener('DOMContentLoaded', () => {
-    const caseStudyCards = document.querySelectorAll('#case-studies .grid > div');
+    // Slider functionality
+    const sliderContainer = document.getElementById('slider-container');
+    const prevButton = document.getElementById('prev-slide');
+    const nextButton = document.getElementById('next-slide');
+    const indicators = document.querySelectorAll('.slider-indicator');
+    const slides = document.querySelectorAll('#slider-container > div');
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          // Get the data-index attribute to determine the delay
-          const index = parseInt(entry.target.getAttribute('data-index') || '0');
-          const delay = index * 100; // 100ms delay between each card
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+    let slidesToShow = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+    let maxIndex = Math.max(0, totalSlides - slidesToShow);
+    let isAnimating = false;
 
-          setTimeout(() => {
-            entry.target.classList.add('animate-fade-in');
-          }, delay);
+    // Clone slides for infinite scrolling
+    const setupInfiniteScroll = () => {
+      // Remove any existing clones
+      document.querySelectorAll('.slide-clone').forEach(clone => clone.remove());
 
-          observer.unobserve(entry.target);
+      // Clone all slides and append to the end
+      for (let i = 0; i < totalSlides; i++) {
+        const clone = slides[i].cloneNode(true);
+        clone.classList.add('slide-clone');
+        sliderContainer.appendChild(clone);
+      }
+
+      // Clone all slides and prepend to the beginning
+      for (let i = totalSlides - 1; i >= 0; i--) {
+        const clone = slides[i].cloneNode(true);
+        clone.classList.add('slide-clone');
+        sliderContainer.prepend(clone);
+      }
+
+      // Adjust initial position to show the first real slide
+      const slideWidth = slides[0].offsetWidth;
+      sliderContainer.style.transition = 'none';
+      sliderContainer.style.transform = `translateX(${-slideWidth * totalSlides}px)`;
+
+      // Force reflow
+      sliderContainer.offsetHeight;
+      sliderContainer.style.transition = 'transform 500ms ease-in-out';
+
+      currentIndex = 0;
+    };
+
+    // Update the active indicator
+    const updateIndicators = (index) => {
+      indicators.forEach((indicator, i) => {
+        if (i === index) {
+          indicator.classList.add('bg-primary-500', 'dark:bg-primary-400');
+          indicator.classList.remove('bg-gray-300', 'dark:bg-gray-600');
+        } else {
+          indicator.classList.remove('bg-primary-500', 'dark:bg-primary-400');
+          indicator.classList.add('bg-gray-300', 'dark:bg-gray-600');
         }
       });
-    }, { threshold: 0.1 });
+    };
 
-    caseStudyCards.forEach(card => {
-      observer.observe(card);
+    // Move the slider to the specified index with true infinite scrolling
+    const moveToSlide = (index, animate = true) => {
+      if (isAnimating) return;
+
+      // Normalize index for infinite scrolling
+      let targetIndex = index;
+      if (targetIndex < 0) targetIndex = totalSlides - 1;
+      if (targetIndex >= totalSlides) targetIndex = 0;
+
+      // Calculate the position
+      const slideWidth = slides[0].offsetWidth;
+      const offset = -slideWidth * (targetIndex + totalSlides);
+
+      // Apply transition only if animating
+      if (animate) {
+        isAnimating = true;
+        sliderContainer.style.transition = 'transform 500ms ease-in-out';
+      } else {
+        sliderContainer.style.transition = 'none';
+      }
+
+      // Move the slider
+      sliderContainer.style.transform = `translateX(${offset}px)`;
+
+      // Update current index and indicators
+      currentIndex = targetIndex;
+      updateIndicators(currentIndex);
+    };
+
+    // Handle transition end for seamless infinite scrolling
+    sliderContainer.addEventListener('transitionend', () => {
+      isAnimating = false;
+
+      // If we've reached a clone, jump to the corresponding real slide without animation
+      if (currentIndex === totalSlides) {
+        moveToSlide(0, false);
+      } else if (currentIndex === -1) {
+        moveToSlide(totalSlides - 1, false);
+      }
+    });
+
+    // Initialize the slider
+    setupInfiniteScroll();
+    updateIndicators(currentIndex);
+
+    // Event listeners
+    prevButton.addEventListener('click', () => moveToSlide(currentIndex - 1));
+    nextButton.addEventListener('click', () => moveToSlide(currentIndex + 1));
+
+    // Indicator clicks
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => moveToSlide(index));
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      const newSlidesToShow = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+
+      if (newSlidesToShow !== slidesToShow) {
+        slidesToShow = newSlidesToShow;
+        maxIndex = Math.max(0, totalSlides - slidesToShow);
+
+        // Reset the slider with new clones
+        setupInfiniteScroll();
+        moveToSlide(0, false);
+      }
+    });
+
+    // Auto-advance the slider every 5 seconds
+    const autoAdvanceInterval = setInterval(() => {
+      moveToSlide(currentIndex + 1);
+    }, 5000);
+
+    // Pause auto-advance on hover
+    sliderContainer.addEventListener('mouseenter', () => {
+      clearInterval(autoAdvanceInterval);
+    });
+
+    // Resume auto-advance on mouse leave
+    sliderContainer.addEventListener('mouseleave', () => {
+      setInterval(() => {
+        moveToSlide(currentIndex + 1);
+      }, 5000);
     });
   });
 </script>
