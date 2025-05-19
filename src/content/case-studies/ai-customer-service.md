@@ -5,7 +5,7 @@ description: "Delivered $4.2M annual savings with our AI platform that reduced r
 client: "Fortune 500 Technology Company"
 industry: "Technology"
 services: ["AI Strategy", "Product Engineering", "Data Analytics"]
-logo: "/images/case-studies/tech-company-logo.webp"
+clientLogo: "/images/case-studies/tech-company-logo.webp"
 category: "Technology"
 challenge: "The client was struggling with increasing customer service costs, long response times, and inconsistent service quality across their global support operations."
 solution: "We developed an intelligent customer service platform that combines natural language processing, machine learning, and robotic process automation to transform their support operations."
@@ -20,6 +20,7 @@ testimonial:
   author: "Jennifer Marsh"
   title: "Chief Customer Officer"
 image: "/images/case-studies/ai-customer-service.jpg"
+logo: "/images/case-studies/ai-customer-service-logo.jpg"
 gallery:
   - "/images/case-studies/ai-cs-dashboard.jpg"
   - "/images/case-studies/ai-cs-analytics.jpg"

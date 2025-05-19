@@ -5,7 +5,7 @@ description: "Increased patient throughput by 47% and reduced operational costs 
 client: "Leading Medical Network"
 industry: "Healthcare"
 services: ["Digital Transformation", "Data Analytics", "Cloud Solutions"]
-logo: "/images/case-studies/healthcare-logo.webp"
+clientLogo: "/images/case-studies/healthcare-logo.webp"
 category: "Healthcare"
 challenge: "The client was facing increasing operational inefficiencies, rising costs, and difficulty scaling their services to meet growing patient demand across their network of 12 hospitals and 45 clinics."
 solution: "We implemented a comprehensive digital transformation program, including a cloud-based intelligent workflow platform, predictive analytics for resource optimization, and modernized patient engagement systems."
@@ -20,6 +20,7 @@ testimonial:
   author: "Elena Rodriguez"
   title: "Chief Digital Officer"
 image: "/images/case-studies/healthcare-digital-transformation.jpg"
+logo: "/images/case-studies/healthcare-logo.jpg"
 gallery:
   - "/images/case-studies/healthcare-dt-dashboard.jpg"
   - "/images/case-studies/healthcare-dt-analytics.jpg"

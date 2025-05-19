@@ -18,7 +18,7 @@ export interface Props {
   twitterImage?: string;
 }
 
-const { 
+const {
   title,
   description,
   canonical,
@@ -61,7 +61,7 @@ const {
         }
         return 'light';
       })();
-      
+
       if (theme === 'dark') {
         document.documentElement.classList.add('dark');
       } else {
@@ -71,7 +71,7 @@ const {
   </head>
   <body>
     <Header />
-    <main>
+    <main class="pt-20">
       <slot />
     </main>
     <Footer />

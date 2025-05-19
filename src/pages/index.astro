@@ -3,7 +3,9 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
 import Services from '../components/Services.astro';
+import Industries from '../components/Industries.astro';
 import CaseStudies from '../components/CaseStudies.astro';
+import Clients from '../components/Clients.astro';
 import Testimonials from '../components/Testimonials.astro';
 import BlogPreview from '../components/BlogPreview.astro';
 import Contact from '../components/Contact.astro';
@@ -15,15 +17,17 @@ import Footer from '../components/Footer.astro';
   description="We help companies in their product engineering journeys with AI-native solutions. Expert digital agency for modern businesses."
 >
   <Header />
-  
+
   <main>
     <Hero />
     <Services />
+    <Industries />
     <CaseStudies />
+    <Clients />
     <Testimonials />
     <BlogPreview />
     <Contact />
   </main>
-  
+
   <Footer />
 </Layout>
