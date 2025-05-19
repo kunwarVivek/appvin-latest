@@ -13,7 +13,7 @@ const currentPath = Astro.url.pathname;
 
 <header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
   <!-- Glassmorphism background -->
-  <div class="absolute inset-0 bg-gradient-to-r from-white/80 to-gray-50/80 dark:from-gray-900/80 dark:to-gray-800/80 backdrop-blur-lg shadow-lg border-b border-white/20 dark:border-gray-800/20"></div>
+  <div class="absolute inset-0 glass-effect shadow-lg"></div>
 
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div class="flex justify-between items-center h-20">
@@ -31,17 +31,17 @@ const currentPath = Astro.url.pathname;
               href={item.url}
               class={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 mx-1
                 ${isActive
-                  ? 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20 font-semibold'
-                  : 'text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-800/50'
+                  ? 'text-primary-600 dark:text-primary-400 bg-primary-50/80 dark:bg-primary-900/20 font-semibold'
+                  : 'text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 hover:bg-gray-50/80 dark:hover:bg-gray-800/50'
                 }`}
             >
               <span class="relative z-10">{item.name}</span>
 
               {isActive && (
-                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full transform animate-pulse"></span>
+                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-primary-soft rounded-full transform animate-pulse"></span>
               )}
 
-              <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+              <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-primary-soft rounded-full transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
             </a>
           );
         })}
@@ -52,15 +52,15 @@ const currentPath = Astro.url.pathname;
         <!-- Theme Toggle Button -->
         <button
           id="theme-toggle"
-          class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+          class="p-2 rounded-full bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 shadow-sm"
           aria-label="Toggle dark mode"
         >
           <!-- Sun icon (shown in dark mode) -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
           </svg>
           <!-- Moon icon (shown in light mode) -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 block dark:hidden text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
           </svg>
         </button>
@@ -68,7 +68,7 @@ const currentPath = Astro.url.pathname;
         <!-- CTA Button -->
         <a
           href="/contact"
-          class="btn px-6 py-2.5 bg-gradient-to-r from-primary-600 to-accent-600 hover:from-accent-600 hover:to-primary-600 text-white font-medium rounded-full shadow-md hover:shadow-lg hover:shadow-primary-500/20 dark:hover:shadow-primary-500/10 transition-all duration-300 transform hover:-translate-y-0.5"
+          class="btn-primary px-6 py-2.5 text-white font-medium rounded-full shadow-button flex items-center"
         >
           <span class="drop-shadow-sm">Get Started</span>
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
@@ -80,7 +80,7 @@ const currentPath = Astro.url.pathname;
       <!-- Mobile Menu Button -->
       <button
         id="mobile-menu-button"
-        class="md:hidden p-2 rounded-full bg-gray-50 dark:bg-gray-800 text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+        class="md:hidden p-2 rounded-full bg-white/80 dark:bg-gray-800/80 text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 transition-all duration-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 shadow-sm"
         aria-label="Toggle mobile menu"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -93,7 +93,7 @@ const currentPath = Astro.url.pathname;
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="hidden md:hidden relative z-10">
     <div class="container mx-auto px-4 py-4">
-      <div class="bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 p-4 space-y-3">
+      <div class="glass-effect rounded-2xl shadow-card p-4 space-y-3">
         {navItems.map((item) => {
           const isActive = currentPath === item.url || (item.url !== '/' && currentPath.startsWith(item.url));
           return (
@@ -101,13 +101,13 @@ const currentPath = Astro.url.pathname;
               href={item.url}
               class={`block px-4 py-3 text-base font-medium rounded-xl transition-all duration-300
                 ${isActive
-                  ? 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20 font-semibold'
-                  : 'text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-800/50'
+                  ? 'text-primary-600 dark:text-primary-400 bg-primary-50/80 dark:bg-primary-900/20 font-semibold'
+                  : 'text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 hover:bg-gray-50/80 dark:hover:bg-gray-800/50'
                 }`}
             >
               {item.name}
               {isActive && (
-                <span class="block mt-1 h-0.5 w-12 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full"></span>
+                <span class="block mt-1 h-0.5 w-12 bg-gradient-primary-soft rounded-full"></span>
               )}
             </a>
           );
@@ -118,15 +118,15 @@ const currentPath = Astro.url.pathname;
             <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Theme</span>
             <button
               id="theme-toggle-mobile"
-              class="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500"
+              class="p-2 rounded-full bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 shadow-sm"
               aria-label="Toggle dark mode"
             >
               <!-- Sun icon (shown in dark mode) -->
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
               </svg>
               <!-- Moon icon (shown in light mode) -->
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 block dark:hidden text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
               </svg>
             </button>
@@ -134,7 +134,7 @@ const currentPath = Astro.url.pathname;
 
           <a
             href="/contact"
-            class="block w-full py-3 px-4 bg-gradient-to-r from-primary-600 to-accent-600 hover:from-accent-600 hover:to-primary-600 text-white font-medium rounded-xl text-center shadow-md hover:shadow-lg transition-all duration-300"
+            class="btn-primary block w-full py-3 px-4 text-white font-medium rounded-xl text-center"
           >
             Get Started
           </a>
@@ -184,10 +184,10 @@ const currentPath = Astro.url.pathname;
     if (header) {
       window.addEventListener('scroll', () => {
         if (window.scrollY > 10) {
-          header.classList.add('shadow-lg');
+          header.classList.add('shadow-card');
           header.classList.add('bg-white/95', 'dark:bg-gray-900/95');
         } else {
-          header.classList.remove('shadow-lg');
+          header.classList.remove('shadow-card');
           header.classList.remove('bg-white/95', 'dark:bg-gray-900/95');
         }
       });

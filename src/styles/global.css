@@ -59,7 +59,7 @@ html {
 }
 
 body {
-  @apply bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-200;
+  @apply bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-300;
   font-family: 'Inter', system-ui, sans-serif;
 }
 
@@ -99,44 +99,44 @@ p {
 }
 
 a {
-  @apply text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 transition-colors;
+  @apply text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 transition-colors duration-300;
 }
 
 /* Buttons - AppVin Style */
 .btn {
-  @apply inline-flex items-center justify-center px-6 py-3 rounded-xl font-medium transition-all duration-200;
+  @apply inline-flex items-center justify-center px-6 py-3 rounded-full font-medium transition-all duration-300 shadow-button;
 }
 
 .btn-primary {
-  @apply bg-primary-600 text-white hover:bg-primary-700 shadow-soft;
+  @apply bg-gradient-primary-soft text-white hover:shadow-button-hover transform hover:-translate-y-0.5;
 }
 
 .btn-primary:hover {
-  @apply shadow-hover;
+  @apply shadow-button-hover;
 }
 
 .btn-secondary {
-  @apply bg-secondary-600 text-white hover:bg-secondary-700 shadow-soft;
+  @apply bg-gradient-secondary text-white hover:shadow-button-hover transform hover:-translate-y-0.5;
 }
 
 .btn-secondary:hover {
-  @apply shadow-hover;
+  @apply shadow-button-hover;
 }
 
 .btn-accent {
-  @apply bg-accent-600 text-white hover:bg-accent-700 shadow-soft;
+  @apply bg-gradient-accent text-white hover:shadow-button-hover transform hover:-translate-y-0.5;
 }
 
 .btn-accent:hover {
-  @apply shadow-hover;
+  @apply shadow-button-hover;
 }
 
 .btn-outline {
-  @apply border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white;
+  @apply border-2 border-primary-500 text-primary-600 dark:text-primary-400 hover:bg-primary-500 hover:text-white dark:hover:border-primary-400 dark:hover:bg-primary-500/20 dark:hover:text-white transform hover:-translate-y-0.5;
 }
 
 .btn-outline:hover {
-  @apply shadow-hover;
+  @apply shadow-button-hover;
 }
 
 /* Layout - AppVin Style */
@@ -145,22 +145,58 @@ a {
 }
 
 .section {
-  @apply py-16 md:py-24;
+  @apply py-16 md:py-24 relative overflow-hidden;
 }
 
 .section-title {
-  @apply text-3xl md:text-4xl font-bold mb-12 text-center;
+  @apply text-3xl md:text-4xl font-bold mb-12 text-center relative z-10;
   font-size: 2.75rem;
   font-weight: 900;
   letter-spacing: -0.02em;
   text-align: center;
   margin-bottom: 2.5rem;
-  background: linear-gradient(90deg, #2563eb 0%, #9333ea 100%);
+  background: linear-gradient(90deg, #6366f1 0%, #a855f7 100%);
+  background-size: 200% 200%;
+  animation: gradient 8s linear infinite;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
-  filter: drop-shadow(0 4px 24px rgba(59,130,246,0.10));
+  filter: drop-shadow(0 4px 24px rgba(99, 102, 241, 0.15));
+}
+
+.section-subtitle {
+  @apply text-lg md:text-xl text-gray-600 dark:text-gray-400 text-center max-w-3xl mx-auto mb-12 leading-relaxed;
+}
+
+/* Section background decorations */
+.bg-decoration {
+  @apply absolute pointer-events-none opacity-50 dark:opacity-30;
+  z-index: 0;
+}
+
+.bg-decoration-1 {
+  @apply bg-primary-200/30 dark:bg-primary-900/20 rounded-full blur-3xl;
+  width: 30rem;
+  height: 30rem;
+  top: -10rem;
+  left: -15rem;
+}
+
+.bg-decoration-2 {
+  @apply bg-secondary-200/30 dark:bg-secondary-900/20 rounded-full blur-3xl;
+  width: 25rem;
+  height: 25rem;
+  bottom: -8rem;
+  right: -10rem;
+}
+
+.bg-decoration-3 {
+  @apply bg-accent-200/30 dark:bg-accent-900/20 rounded-full blur-3xl;
+  width: 20rem;
+  height: 20rem;
+  top: 30%;
+  right: 10%;
 }
 
 .section-subtitle {
@@ -434,63 +470,83 @@ a {
   transition: box-shadow 0.2s, transform 0.2s;
 }
 
-.card:hover, .service-card:hover, .testimonial-card:hover {
-  box-shadow: 0 12px 40px rgba(0,0,0,0.14);
-  transform: translateY(-4px) scale(1.02);
+/* Card Styles */
+.card {
+  @apply bg-white dark:bg-gray-800 rounded-2xl shadow-card border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1 overflow-hidden relative;
 }
 
-/* Enhanced Section Styles */
-.section, .hero {
-  background: linear-gradient(120deg, #f8fafc 0%, #e0e7ef 100%);
-  border-radius: 2rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 2px 24px rgba(0,0,0,0.04);
+.service-card {
+  @apply bg-white dark:bg-gray-800 rounded-2xl shadow-card border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1 overflow-hidden relative p-6;
 }
 
-.dark .section, .dark .hero {
-  background: linear-gradient(120deg, #18181b 0%, #23272f 100%);
+.testimonial-card {
+  @apply bg-white dark:bg-gray-800 rounded-2xl shadow-card border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1 overflow-hidden relative p-6;
 }
 
-/* Enhanced Button Styles */
-.btn, .btn-primary, .btn-outline {
-  border-radius: 9999px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+.blog-card {
+  @apply bg-white dark:bg-gray-800 rounded-2xl shadow-card border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1 overflow-hidden relative;
 }
 
-.btn-primary {
-  background: linear-gradient(90deg, #2563eb 0%, #9333ea 100%);
-  color: #fff;
-  border: none;
+/* Card hover effects */
+.card:hover, .service-card:hover, .testimonial-card:hover, .blog-card:hover {
+  @apply border-primary-200 dark:border-primary-800;
 }
 
-.btn-primary:hover {
-  background: linear-gradient(90deg, #9333ea 0%, #2563eb 100%);
-  color: #fff;
-  box-shadow: 0 4px 24px rgba(59,130,246,0.18);
+/* Card inner elements */
+.card-title {
+  @apply text-xl font-bold text-gray-900 dark:text-white mb-2;
 }
 
-.btn-outline {
-  border: 2px solid #2563eb;
-  color: #2563eb;
-  background: #fff;
+.card-subtitle {
+  @apply text-sm text-gray-600 dark:text-gray-400 mb-4;
 }
 
-.btn-outline:hover {
-  background: #2563eb;
-  color: #fff;
-  box-shadow: 0 4px 24px rgba(59,130,246,0.12);
+.card-content {
+  @apply text-gray-700 dark:text-gray-300;
 }
 
 /* Enhanced Gradient Text */
 .gradient-text {
-  background: linear-gradient(90deg, #2563eb 0%, #9333ea 100%);
+  background: linear-gradient(90deg, #6366f1 0%, #a855f7 100%);
+  background-size: 200% 200%;
+  animation: gradient 8s linear infinite;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
+}
+
+/* Glass effect */
+.glass-effect {
+  @apply bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg border border-white/20 dark:border-gray-700/20;
+}
+
+/* Hover effects */
+.hover-lift {
+  @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+}
+
+/* Dark mode specific styles */
+.dark .shadow-card {
+  @apply shadow-dark-card;
+}
+
+.dark .shadow-card-hover {
+  @apply shadow-dark-card-hover;
+}
+
+/* Image styles */
+.img-fluid {
+  @apply w-full h-auto object-cover transition-transform duration-500 hover:scale-105;
+}
+
+.img-rounded {
+  @apply rounded-2xl overflow-hidden;
+}
+
+/* Icon styles */
+.icon-container {
+  @apply flex items-center justify-center w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 mb-4;
 }
 
 /* Enhanced Stats */

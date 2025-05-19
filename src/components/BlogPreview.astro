@@ -6,7 +6,8 @@ const blogImages = {
   "AI": "https://images.unsplash.com/photo-1677442135968-6b7d726b3a48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
   "Cloud": "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
   "UX": "https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-  "Data": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+  "Data": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+  "AI_Product_Engineering": "/images/blog/ai-product-engineering-1.jpg"
 };
 
 const featuredPosts = [
@@ -16,7 +17,7 @@ const featuredPosts = [
     excerpt: 'Explore how artificial intelligence is revolutionizing the product engineering landscape and what it means for businesses.',
     publishDate: '2023-04-15',
     author: 'Alex Johnson',
-    image: blogImages.AI,
+    image: blogImages.AI_Product_Engineering,
     tags: ['AI', 'Product Engineering', 'Innovation'],
     category: 'AI'
   },
@@ -53,29 +54,30 @@ const featuredPosts = [
 ];
 ---
 
-<section id="blog" class="py-20 bg-gray-50 dark:bg-gray-800 relative overflow-hidden">
+<section id="blog" class="section py-20 bg-gray-50 dark:bg-gray-900 relative overflow-hidden">
+  <!-- Background decorations -->
+  <div class="bg-decoration bg-decoration-1"></div>
+  <div class="bg-decoration bg-decoration-2"></div>
+  <div class="bg-decoration bg-decoration-3"></div>
+
   <!-- Background pattern -->
   <div class="absolute inset-0 bg-grid-pattern opacity-5 dark:opacity-3"></div>
-
-  <!-- Decorative elements -->
-  <div class="absolute top-1/3 -left-20 size-96 bg-primary-100 dark:bg-primary-900/20 rounded-full opacity-30 blur-3xl"></div>
-  <div class="absolute bottom-1/3 -right-20 size-96 bg-secondary-100 dark:bg-secondary-900/20 rounded-full opacity-30 blur-3xl"></div>
 
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div class="text-center max-w-3xl mx-auto mb-16">
       <!-- Section label -->
-      <div class="inline-flex items-center px-3 py-1 mb-4 text-xs font-medium rounded-full bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300">
+      <div class="inline-flex items-center px-3 py-1 mb-4 text-xs font-medium rounded-full bg-primary-50/80 text-primary-600 dark:bg-primary-900/30 dark:text-primary-400 shadow-sm">
         <span class="size-2 bg-primary-500 rounded-full mr-2"></span>
         Blog & Resources
       </div>
 
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">
+      <h2 class="section-title mb-6">
         <span class="gradient-text">Latest</span> Insights
       </h2>
 
-      <div class="w-24 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto mb-6 rounded-full shadow-lg"></div>
+      <div class="w-24 h-1 bg-gradient-primary-soft mx-auto mb-6 rounded-full shadow-sm"></div>
 
-      <p class="section-subtitle text-xl md:text-2xl text-accent-700 dark:text-accent-300 font-medium max-w-2xl mx-auto text-center mb-12 leading-relaxed drop-shadow">
+      <p class="section-subtitle">
         Stay updated with our latest thoughts on AI, product engineering, and digital transformation.
       </p>
     </div>
@@ -83,10 +85,10 @@ const featuredPosts = [
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       {featuredPosts.map((post, index) => (
         <div
-          class="bg-gradient-to-br from-primary-50 to-accent-50 dark:from-gray-900 dark:to-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow border border-primary-100 dark:border-primary-800 flex flex-col items-center text-center group transform hover:-translate-y-1 duration-300 animate-in fade-in slide-in-from-bottom-5 h-full"
+          class="bg-gradient-to-br from-primary-50 to-accent-50 dark:from-gray-900 dark:to-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow border border-primary-100 dark:border-primary-800 flex flex-col items-center text-center group transform hover:-translate-y-1 duration-300 h-full animate-in fade-in slide-in-from-bottom-5"
           style={`animation-delay: ${index * 100}ms`}
         >
-          <div class="mb-6 w-full h-40 rounded-2xl group-hover:scale-105 transition-transform shadow-lg overflow-hidden relative">
+          <div class="relative mb-6 w-full h-40 rounded-2xl overflow-hidden group-hover:scale-105 transition-transform shadow-lg">
             {post.image ? (
               <img
                 src={post.image}
@@ -94,21 +96,21 @@ const featuredPosts = [
                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
             ) : (
-              <div class="w-full h-full flex items-center justify-center bg-primary-100 dark:bg-primary-900/30">
+              <div class="w-full h-full flex items-center justify-center bg-primary-50 dark:bg-primary-900/30">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-primary-500 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1M19 20a2 2 0 002-2V8a2 2 0 00-2-2h-5M8 12h8M8 16h4" />
                 </svg>
               </div>
             )}
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-primary-900/80 via-primary-900/40 to-transparent opacity-70 group-hover:opacity-60 transition-opacity"></div>
           </div>
 
           <div class="flex flex-col flex-grow w-full">
-            <h3 class="text-xl font-extrabold text-gray-900 dark:text-white mb-4 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+            <h3 class="card-title group-hover:text-primary-600 dark:group-hover:text-primary-400">
               {post.title}
             </h3>
 
-            <p class="text-gray-600 dark:text-gray-400 mb-4 text-base">
+            <p class="card-content mb-4">
               {post.excerpt}
             </p>
 
@@ -116,7 +118,7 @@ const featuredPosts = [
               {post.tags.slice(0, 2).map((tag) => (
                 <a
                   href={`/blog/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`}
-                  class="px-3 py-1 bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-xs font-medium hover:bg-primary-100 dark:hover:bg-primary-800 transition-colors"
+                  class="px-3 py-1 bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 rounded-full text-xs font-medium hover:bg-primary-100 dark:hover:bg-primary-800/50 transition-colors"
                 >
                   #{tag}
                 </a>
@@ -142,15 +144,17 @@ const featuredPosts = [
             <div class="mt-auto pt-4"></div>
           </div>
 
-          <a
-            href={`/blog/${post.slug}`}
-            class="inline-flex items-center px-5 py-2 rounded-full bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-semibold shadow-md hover:from-secondary-600 hover:to-primary-600 dark:from-primary-500 dark:to-secondary-500 dark:hover:from-secondary-500 dark:hover:to-primary-500 transition-all duration-300 group-hover:scale-105 hover:shadow-lg hover:shadow-primary-500/20 dark:hover:shadow-primary-500/10"
-          >
-            <span class="drop-shadow-sm">Read Article</span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1 group-hover:ml-2 transition-all duration-300" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-            </svg>
-          </a>
+          <div class="flex justify-center mt-6 mb-2">
+            <a
+              href={`/blog/${post.slug}`}
+              class="inline-flex items-center px-5 py-2 rounded-full bg-gradient-to-r from-accent-600 to-primary-600 text-white font-semibold shadow-md hover:from-secondary-500 hover:to-secondary-600 dark:from-accent-500 dark:to-primary-500 dark:hover:from-secondary-500 dark:hover:to-secondary-600 transition-all duration-300 group-hover:scale-105 hover:shadow-lg hover:shadow-secondary-500/30 dark:hover:shadow-secondary-500/20"
+            >
+              <span class="drop-shadow-md">Read Article</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1 group-hover:ml-2 transition-all duration-300" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </a>
+          </div>
         </div>
       ))}
     </div>
@@ -158,9 +162,9 @@ const featuredPosts = [
     <div class="text-center mt-16">
       <a
         href="/blog"
-        class="btn px-8 py-4 inline-flex items-center group transform transition-all duration-300 hover:-translate-y-1 rounded-full border-2 border-primary-600 text-primary-600 hover:text-white hover:bg-gradient-to-r hover:from-primary-600 hover:to-secondary-600 hover:border-transparent hover:shadow-xl hover:shadow-primary-500/20 dark:border-primary-500 dark:text-primary-400 dark:hover:text-white dark:hover:from-primary-500 dark:hover:to-secondary-500 dark:hover:shadow-primary-500/10"
+        class="btn px-8 py-4 inline-flex items-center group transform transition-all duration-300 hover:-translate-y-1 rounded-full border-2 border-accent-600 text-accent-600 hover:text-white hover:bg-gradient-to-r hover:from-secondary-500 hover:to-secondary-600 hover:border-transparent hover:shadow-xl hover:shadow-secondary-500/30 dark:border-accent-500 dark:text-accent-400 dark:hover:text-white dark:hover:from-secondary-500 dark:hover:to-secondary-600 dark:hover:shadow-secondary-500/20"
       >
-        <span class="font-semibold">View All Articles</span>
+        <span class="font-semibold drop-shadow-md">View All Articles</span>
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 group-hover:ml-3 transition-all duration-300" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H3a1 1 0 110-2h9.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
         </svg>
