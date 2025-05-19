@@ -1,21 +1,12 @@
 ---
-<<<<<<< HEAD
 title: "Gribb - Driving Data Made Actionable"
 subtitle: "Harnessing Vehicle Technology for Road Safety"
 description: "Delivered a sleek, powerful mobile app that reduced risky driving behaviors by 90%, combining driving behavior data, modern vehicle technology, and road safety marketing."
-client: "Gribb"
-industry: "Transportation & Logistics"
-services: ["Mobile App Development", "Data Analytics", "UX/UI Design"]
-challenge: "Gribb needed to transform their road safety and sustainability mission into a mobile app that seamlessly combines driving behavior data, vehicle technology, and safety marketing."
-solution: "We developed a cross-platform mobile app with user-centric interface, data integration excellence, emissions tracking, and interactive safety features."
-=======
-title: "Gribb"
-subtitle: "Driving Data Made Actionable"
-description: "Gribb creates impact with data. We combine driving behaviour, modern (vehicle) technology, data and road safety marketing to establish and maintain a safe and sustainable driving culture."
 client: "Gribb Fleet Solutions"
 industry: "Transportation & Logistics"
-services: ["Mobile App Development", "Data Analytics", "IoT Integration"]
->>>>>>> 8ed9c48a0bdfd9eff07a8c3687c9a7e3523b0e3a
+services: ["Mobile App Development", "Data Analytics", "UX/UI Design", "IoT Integration"]
+challenge: "Gribb needed to transform their road safety and sustainability mission into a mobile app that seamlessly combines driving behavior data, vehicle technology, and safety marketing."
+solution: "We developed a cross-platform mobile app with user-centric interface, data integration excellence, emissions tracking, and interactive safety features."
 image: "/images/case-studies/gribb.webp"
 logo: "/images/case-studies/gribb-logo.webp"
 stats:
@@ -33,10 +24,8 @@ technologies:
   - "MongoDB"
 category: "Transportation & Logistics"
 featured: true
-pubDate: "2022-05-15"
-order: 1
-featured: true
 pubDate: "2023-04-15"
+order: 1
 ---
 
 ## Project Overview

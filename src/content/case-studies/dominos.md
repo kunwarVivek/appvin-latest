@@ -1,21 +1,12 @@
 ---
-<<<<<<< HEAD
 title: "Domino's Pizza - Mobile Delivery App"
 subtitle: "Redefining Customer Journey in the Middle East"
 description: "Developed a cross-platform mobile delivery app that increased digital sales by 23% and improved customer satisfaction through intuitive design and real-time order tracking."
 client: "Domino's Pizza"
 industry: "Food & Beverage"
-services: ["Mobile App Development", "UX/UI Design", "Backend Development"]
+services: ["Mobile App Development", "UX/UI Design", "Backend Development", "Web Development", "Performance Optimization"]
 challenge: "Domino's needed a mobile delivery app with intuitive design, real-time tracking, secure payment integration, localization for Middle Eastern markets, and high scalability during peak hours."
 solution: "We created a cross-platform app with user-friendly interface, real-time order tracking, secure payment gateways, localized features, and cloud-based infrastructure for scalability."
-=======
-title: "Domino's Pizza"
-subtitle: "Elevating Online Presence and User Experience"
-description: "Domino's Pizza partnered with APPVIN TECHNOLOGIES to elevate its online presence, focusing on website performance, user experience, and innovative web technologies."
-client: "Domino's Pizza"
-industry: "Food & Beverage"
-services: ["Web Development", "UI/UX Design", "Performance Optimization"]
->>>>>>> 8ed9c48a0bdfd9eff07a8c3687c9a7e3523b0e3a
 image: "/images/case-studies/dominos.webp"
 logo: "/images/case-studies/dominos-logo.webp"
 stats:
@@ -33,10 +24,8 @@ technologies:
   - "AWS"
 category: "Food & Beverage"
 featured: true
-pubDate: "2024-01-15"
-order: 2
-featured: true
 pubDate: "2023-05-10"
+order: 2
 ---
 
 ## Project Overview
