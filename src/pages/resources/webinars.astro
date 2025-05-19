@@ -1,0 +1,257 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout
+  title="Webinars | AppVin Technologies"
+  description="Join our expert-led webinars on AI, product engineering, and digital transformation."
+>
+  <Header />
+
+  <main>
+    <!-- Page Header -->
+    <section class="pt-32 pb-12 md:pt-40 md:pb-20 bg-gray-50 dark:bg-gray-800">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+            Webinars
+          </h1>
+          <p class="text-xl text-gray-600 dark:text-gray-400">
+            Join our expert-led sessions to gain insights on the latest trends in technology and digital transformation.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Webinars Section -->
+    <section class="py-16 md:py-24 bg-white dark:bg-gray-900">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+          <!-- Filters -->
+          <div class="mb-12">
+            <div class="flex flex-wrap gap-3 justify-center">
+              <button class="px-4 py-2 rounded-full bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 font-medium text-sm hover:bg-primary-100 dark:hover:bg-primary-800/30 transition-colors">
+                All Webinars
+              </button>
+              <button class="px-4 py-2 rounded-full bg-gray-50 dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                Upcoming
+              </button>
+              <button class="px-4 py-2 rounded-full bg-gray-50 dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                On-Demand
+              </button>
+            </div>
+          </div>
+
+          <!-- Upcoming Webinars -->
+          <div class="mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-8">
+              Upcoming Webinars
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+              <!-- Upcoming Webinar 1 -->
+              <div class="card hover:shadow-lg transition-all duration-300 overflow-hidden">
+                <div class="p-6">
+                  <div class="flex items-center mb-4">
+                    <span class="inline-flex items-center px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-medium rounded-full">
+                      <span class="w-2 h-2 bg-green-500 rounded-full mr-1.5 animate-pulse"></span>
+                      Upcoming
+                    </span>
+                    <span class="ml-3 text-sm text-gray-500 dark:text-gray-400">
+                      June 15, 2023 • 11:00 AM EST
+                    </span>
+                  </div>
+                  
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                    The Future of AI in Healthcare: Transforming Patient Care
+                  </h3>
+                  
+                  <p class="text-gray-600 dark:text-gray-400 mb-4">
+                    Join our panel of healthcare and AI experts as they discuss how artificial intelligence is revolutionizing patient care, diagnostics, and treatment planning.
+                  </p>
+                  
+                  <div class="flex items-center mb-6">
+                    <img src="/images/speaker-1.jpg" alt="Dr. Sarah Johnson" class="w-10 h-10 rounded-full object-cover mr-3" />
+                    <div>
+                      <p class="font-medium text-gray-900 dark:text-white text-sm">Dr. Sarah Johnson</p>
+                      <p class="text-gray-500 dark:text-gray-400 text-xs">AI Healthcare Specialist</p>
+                    </div>
+                  </div>
+                  
+                  <a href="#" class="btn-primary w-full py-3 text-center rounded-xl">
+                    Register Now
+                  </a>
+                </div>
+              </div>
+              
+              <!-- Upcoming Webinar 2 -->
+              <div class="card hover:shadow-lg transition-all duration-300 overflow-hidden">
+                <div class="p-6">
+                  <div class="flex items-center mb-4">
+                    <span class="inline-flex items-center px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-medium rounded-full">
+                      <span class="w-2 h-2 bg-green-500 rounded-full mr-1.5 animate-pulse"></span>
+                      Upcoming
+                    </span>
+                    <span class="ml-3 text-sm text-gray-500 dark:text-gray-400">
+                      June 22, 2023 • 2:00 PM EST
+                    </span>
+                  </div>
+                  
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                    Cloud Migration Strategies for Enterprise Applications
+                  </h3>
+                  
+                  <p class="text-gray-600 dark:text-gray-400 mb-4">
+                    Learn practical strategies for migrating complex enterprise applications to the cloud while minimizing risk, downtime, and cost.
+                  </p>
+                  
+                  <div class="flex items-center mb-6">
+                    <img src="/images/speaker-2.jpg" alt="Michael Chen" class="w-10 h-10 rounded-full object-cover mr-3" />
+                    <div>
+                      <p class="font-medium text-gray-900 dark:text-white text-sm">Michael Chen</p>
+                      <p class="text-gray-500 dark:text-gray-400 text-xs">Cloud Solutions Architect</p>
+                    </div>
+                  </div>
+                  
+                  <a href="#" class="btn-primary w-full py-3 text-center rounded-xl">
+                    Register Now
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- On-Demand Webinars -->
+          <div>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-8">
+              On-Demand Webinars
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <!-- On-Demand Webinar 1 -->
+              <div class="card hover:shadow-lg transition-all duration-300 overflow-hidden group">
+                <div class="relative overflow-hidden h-48">
+                  <img src="/images/webinar-1.jpg" alt="AI Strategy Webinar" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                    <div class="p-4 w-full">
+                      <span class="inline-block px-3 py-1 bg-primary-600/90 text-white text-xs font-medium rounded-full mb-2">
+                        AI Strategy
+                      </span>
+                    </div>
+                  </div>
+                  <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/50">
+                    <button class="bg-white/90 dark:bg-gray-800/90 p-3 rounded-full">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="p-6">
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                    Building an AI-First Product Strategy
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
+                    Learn how to develop products with AI at their core, creating unique value propositions and competitive advantages.
+                  </p>
+                  <div class="flex justify-between items-center">
+                    <span class="text-sm text-gray-500 dark:text-gray-500">45 min</span>
+                    <a href="#" class="text-primary-600 dark:text-primary-400 font-medium text-sm flex items-center hover:underline">
+                      Watch Now
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- On-Demand Webinar 2 -->
+              <div class="card hover:shadow-lg transition-all duration-300 overflow-hidden group">
+                <div class="relative overflow-hidden h-48">
+                  <img src="/images/webinar-2.jpg" alt="Digital Transformation Webinar" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                    <div class="p-4 w-full">
+                      <span class="inline-block px-3 py-1 bg-primary-600/90 text-white text-xs font-medium rounded-full mb-2">
+                        Digital Transformation
+                      </span>
+                    </div>
+                  </div>
+                  <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/50">
+                    <button class="bg-white/90 dark:bg-gray-800/90 p-3 rounded-full">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="p-6">
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                    Digital Transformation in Financial Services
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
+                    Discover how financial institutions are leveraging technology to transform customer experiences and operations.
+                  </p>
+                  <div class="flex justify-between items-center">
+                    <span class="text-sm text-gray-500 dark:text-gray-500">60 min</span>
+                    <a href="#" class="text-primary-600 dark:text-primary-400 font-medium text-sm flex items-center hover:underline">
+                      Watch Now
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- On-Demand Webinar 3 -->
+              <div class="card hover:shadow-lg transition-all duration-300 overflow-hidden group">
+                <div class="relative overflow-hidden h-48">
+                  <img src="/images/webinar-3.jpg" alt="Data Analytics Webinar" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                    <div class="p-4 w-full">
+                      <span class="inline-block px-3 py-1 bg-primary-600/90 text-white text-xs font-medium rounded-full mb-2">
+                        Data Analytics
+                      </span>
+                    </div>
+                  </div>
+                  <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/50">
+                    <button class="bg-white/90 dark:bg-gray-800/90 p-3 rounded-full">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="p-6">
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                    Advanced Data Analytics for Business Intelligence
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
+                    Learn how to leverage data analytics to gain actionable insights and drive better business decisions.
+                  </p>
+                  <div class="flex justify-between items-center">
+                    <span class="text-sm text-gray-500 dark:text-gray-500">55 min</span>
+                    <a href="#" class="text-primary-600 dark:text-primary-400 font-medium text-sm flex items-center hover:underline">
+                      Watch Now
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

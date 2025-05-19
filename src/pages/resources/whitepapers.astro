@@ -1,0 +1,186 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout
+  title="Whitepapers | AppVin Technologies"
+  description="Explore our collection of whitepapers on AI, product engineering, and digital transformation."
+>
+  <Header />
+
+  <main>
+    <!-- Page Header -->
+    <section class="pt-32 pb-12 md:pt-40 md:pb-20 bg-gray-50 dark:bg-gray-800">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+            Whitepapers
+          </h1>
+          <p class="text-xl text-gray-600 dark:text-gray-400">
+            In-depth research and insights on the latest trends in technology and digital transformation.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Whitepapers Section -->
+    <section class="py-16 md:py-24 bg-white dark:bg-gray-900">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+          <!-- Filters -->
+          <div class="mb-12">
+            <div class="flex flex-wrap gap-3 justify-center">
+              <button class="px-4 py-2 rounded-full bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 font-medium text-sm hover:bg-primary-100 dark:hover:bg-primary-800/30 transition-colors">
+                All Topics
+              </button>
+              <button class="px-4 py-2 rounded-full bg-gray-50 dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                AI & Machine Learning
+              </button>
+              <button class="px-4 py-2 rounded-full bg-gray-50 dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                Digital Transformation
+              </button>
+              <button class="px-4 py-2 rounded-full bg-gray-50 dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                Cloud Computing
+              </button>
+              <button class="px-4 py-2 rounded-full bg-gray-50 dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                Data Analytics
+              </button>
+            </div>
+          </div>
+
+          <!-- Whitepapers Grid -->
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Whitepaper 1 -->
+            <div class="card hover:shadow-lg transition-all duration-300 overflow-hidden group">
+              <div class="relative overflow-hidden h-48">
+                <img src="/images/whitepaper-1.jpg" alt="AI Strategy Whitepaper" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                  <div class="p-4 w-full">
+                    <span class="inline-block px-3 py-1 bg-primary-600/90 text-white text-xs font-medium rounded-full mb-2">
+                      AI Strategy
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                  Building an Effective AI Strategy for Enterprise
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
+                  This comprehensive whitepaper explores how enterprises can develop and implement effective AI strategies that drive business value and competitive advantage.
+                </p>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-500 dark:text-gray-500">15 pages • PDF</span>
+                  <a href="#" class="text-primary-600 dark:text-primary-400 font-medium text-sm flex items-center hover:underline">
+                    Download
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Whitepaper 2 -->
+            <div class="card hover:shadow-lg transition-all duration-300 overflow-hidden group">
+              <div class="relative overflow-hidden h-48">
+                <img src="/images/whitepaper-2.jpg" alt="Digital Transformation Whitepaper" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                  <div class="p-4 w-full">
+                    <span class="inline-block px-3 py-1 bg-primary-600/90 text-white text-xs font-medium rounded-full mb-2">
+                      Digital Transformation
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                  Digital Transformation Roadmap for Financial Services
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
+                  A detailed guide for financial institutions navigating the complex journey of digital transformation, with practical steps and case studies.
+                </p>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-500 dark:text-gray-500">22 pages • PDF</span>
+                  <a href="#" class="text-primary-600 dark:text-primary-400 font-medium text-sm flex items-center hover:underline">
+                    Download
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Whitepaper 3 -->
+            <div class="card hover:shadow-lg transition-all duration-300 overflow-hidden group">
+              <div class="relative overflow-hidden h-48">
+                <img src="/images/whitepaper-3.jpg" alt="Cloud Migration Whitepaper" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                  <div class="p-4 w-full">
+                    <span class="inline-block px-3 py-1 bg-primary-600/90 text-white text-xs font-medium rounded-full mb-2">
+                      Cloud Solutions
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                  Cloud Migration: Strategies for Minimizing Risk and Downtime
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
+                  This whitepaper outlines proven strategies for successful cloud migration with minimal disruption to business operations.
+                </p>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-gray-500 dark:text-gray-500">18 pages • PDF</span>
+                  <a href="#" class="text-primary-600 dark:text-primary-400 font-medium text-sm flex items-center hover:underline">
+                    Download
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- More whitepapers can be added here -->
+          </div>
+
+          <!-- Newsletter Signup -->
+          <div class="mt-16 card bg-gradient-to-r from-primary-50/80 to-secondary-50/80 dark:from-primary-900/20 dark:to-secondary-900/20 p-8 relative overflow-hidden">
+            <div class="relative z-10 md:flex items-center justify-between">
+              <div class="md:w-1/2 mb-6 md:mb-0 md:pr-8">
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                  Get notified about new whitepapers
+                </h3>
+                <p class="text-gray-700 dark:text-gray-300">
+                  Subscribe to our newsletter to receive notifications when we publish new research and whitepapers.
+                </p>
+              </div>
+              <div class="md:w-1/2">
+                <form class="flex flex-col sm:flex-row gap-3">
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    class="flex-grow px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                    required
+                  />
+                  <button
+                    type="submit"
+                    class="btn-primary px-6 py-3 rounded-xl whitespace-nowrap"
+                  >
+                    Subscribe
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
