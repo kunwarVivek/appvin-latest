@@ -35,22 +35,8 @@ const currentPath = Astro.url.pathname;
         ))}
       </nav>
 
-      <!-- CTA Button & Theme Toggle -->
-      <div class="hidden md:flex items-center space-x-4">
-        <button
-          id="theme-toggle"
-          class="p-2 rounded-full text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
-          aria-label="Toggle dark mode"
-        >
-          <!-- Sun icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-          </svg>
-          <!-- Moon icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-          </svg>
-        </button>
+      <!-- CTA Button -->
+      <div class="hidden md:flex items-center">
         <a href="/contact" class="btn btn-primary">Get Started</a>
       </div>
 
@@ -82,22 +68,8 @@ const currentPath = Astro.url.pathname;
           {item.name}
         </a>
       ))}
-      <div class="pt-4 flex items-center justify-between border-t border-gray-200 dark:border-gray-700">
-        <button
-          id="mobile-theme-toggle"
-          class="p-2 rounded-full text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
-          aria-label="Toggle dark mode"
-        >
-          <!-- Sun icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-          </svg>
-          <!-- Moon icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-          </svg>
-        </button>
-        <a href="/contact" class="btn btn-primary">Get Started</a>
+      <div class="pt-4 flex items-center justify-center border-t border-gray-200 dark:border-gray-700">
+        <a href="/contact" class="btn btn-primary w-full">Get Started</a>
       </div>
     </div>
   </div>
@@ -108,24 +80,11 @@ const currentPath = Astro.url.pathname;
   document.addEventListener('DOMContentLoaded', () => {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
-    const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
 
+    // Mobile menu toggle
     if (mobileMenuButton && mobileMenu) {
       mobileMenuButton.addEventListener('click', () => {
         mobileMenu.classList.toggle('hidden');
-      });
-    }
-
-    if (mobileThemeToggle) {
-      mobileThemeToggle.addEventListener('click', () => {
-        const isDark = document.documentElement.classList.contains('dark');
-        if (isDark) {
-          document.documentElement.classList.remove('dark');
-          localStorage.setItem('theme', 'light');
-        } else {
-          document.documentElement.classList.add('dark');
-          localStorage.setItem('theme', 'dark');
-        }
       });
     }
   });

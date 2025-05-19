@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD
 title: "KFC - Mobile Delivery Apps"
 subtitle: "Enhancing Customer Experience Across the Middle East"
 description: "Developed 7 localized KFC delivery apps across the Middle East, achieving 70% reduction in aggregator app dependency and significantly improving customer engagement."
@@ -7,6 +8,14 @@ industry: "Food & Beverage"
 services: ["Mobile App Development", "UX/UI Design", "Backend Development"]
 challenge: "KFC needed localized delivery apps for 7 Middle Eastern countries with intuitive design, real-time tracking, secure payment integration, and high scalability during peak hours."
 solution: "We created Flutter-based mobile apps with user-friendly interfaces, real-time order tracking, secure payment gateways, localized features, and cloud-based infrastructure for scalability."
+=======
+title: "KFC"
+subtitle: "Mobile Delivery Apps Enhancing Customer Experience"
+description: "AppVin successfully transformed KFC's mobile app into a powerful tool for customer engagement and revenue generation."
+client: "KFC (Americana Group)"
+industry: "Food & Beverage"
+services: ["Mobile App Development", "UI/UX Design", "Backend Integration"]
+>>>>>>> 8ed9c48a0bdfd9eff07a8c3687c9a7e3523b0e3a
 image: "/images/case-studies/kfc.webp"
 logo: "/images/case-studies/kfc-logo.webp"
 stats:
@@ -26,6 +35,8 @@ category: "Food & Beverage"
 featured: true
 pubDate: "2024-02-15"
 order: 3
+featured: true
+pubDate: "2023-03-20"
 ---
 
 ## Project Overview
