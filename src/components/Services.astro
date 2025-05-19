@@ -1,53 +1,121 @@
 ---
-// Services data
+// Services data - ordered by proven expertise
 const services = [
   {
-    title: 'SAP',
+    title: 'SAP Integration',
     description: 'Maximize SAP\'s value with seamless, secure integration.',
     features: [
-      'Connect SAP with CRM, ERP, and third-party tools.',
-      'Enable real-time data flow across systems.',
-      'Improve productivity with synchronized processes.',
-      'Ensure scalability, reliability, and performance.',
+      'Connect SAP with CRM, ERP, and third-party tools',
+      'Enable real-time data flow across systems',
+      'Improve productivity with synchronized processes',
+      'Ensure scalability, reliability, and performance',
     ],
-    icon: 'sap',
-    link: '/services/sap',
+    image: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" /></svg>',
+    link: '/services/sap-integration',
+    expertise: 'high',
+    order: 1,
   },
   {
-    title: 'Business Process Automation & Mining',
+    title: 'Business Process Automation',
     description: 'Streamline operations and uncover opportunities.',
     features: [
-      'Automate repetitive tasks for speed and accuracy.',
-      'Leverage Celonis for real-time process mining.',
-      'Optimize workflows to reduce delays and inefficiencies.',
-      'Continuously monitor and enhance performance.',
+      'Automate repetitive tasks for speed and accuracy',
+      'Leverage process mining for workflow optimization',
+      'Reduce delays and inefficiencies with smart automation',
+      'Continuously monitor and enhance performance',
     ],
-    icon: 'automation',
+    image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>',
     link: '/services/business-process-automation',
+    expertise: 'high',
+    order: 2,
   },
   {
-    title: 'Data Governance',
+    title: 'Data Analytics',
     description: 'Turn data into a competitive edge.',
     features: [
-      'Discover insights through advanced data mining.',
-      'Unify data sources with seamless integration.',
-      'Protect critical data with secure retention policies.',
-      'Maintain high accuracy through quality management.',
+      'Advanced analytics and business intelligence solutions',
+      'Big data processing and real-time analytics pipelines',
+      'Predictive modeling and machine learning integration',
+      'Interactive dashboards and data visualization',
     ],
-    icon: 'data',
-    link: '/services/data-governance',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>',
+    link: '/services/data-analytics',
+    expertise: 'high',
+    order: 3,
   },
   {
-    title: 'Custom AI',
+    title: 'Custom AI Solutions',
     description: 'AI tailored to your goals. Built to scale.',
     features: [
-      'Develop custom models with CLAMP A, Minicraft & Optimize.',
-      'Automate decisions across web and mobile platforms.',
-      'Continuously refine with adaptive learning.',
-      'Accelerate innovation and customer personalization.',
+      'Custom machine learning model development',
+      'Natural language processing and computer vision',
+      'AI-powered automation and decision support',
+      'Intelligent chatbots and virtual assistants',
     ],
-    icon: 'ai',
-    link: '/services/custom-ai',
+    image: 'https://images.unsplash.com/photo-1591453089816-0fbb971b454c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>',
+    link: '/services/custom-ai-solutions',
+    expertise: 'high',
+    order: 4,
+  },
+  {
+    title: 'Product Engineering',
+    description: 'Build innovative digital products that drive growth.',
+    features: [
+      'End-to-end product development lifecycle management',
+      'Agile development with continuous integration/deployment',
+      'Cross-platform solutions for web, mobile, and IoT',
+      'Quality assurance and performance optimization',
+    ],
+    image: 'https://images.unsplash.com/photo-1581093458791-9d2b88e61d8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>',
+    link: '/services/product-engineering',
+    order: 5,
+  },
+  {
+    title: 'Digital Transformation',
+    description: 'Reimagine your business for the digital age.',
+    features: [
+      'Enterprise-wide digital strategy and roadmap development',
+      'Legacy system modernization and cloud migration',
+      'Process digitization and workflow automation',
+      'Digital culture cultivation and change management',
+    ],
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>',
+    link: '/services/digital-transformation',
+    order: 6,
+  },
+  {
+    title: 'Cloud Solutions',
+    description: 'Harness the power of cloud for scalability and innovation.',
+    features: [
+      'Multi-cloud architecture design and implementation',
+      'Cloud-native application development',
+      'Serverless computing and microservices',
+      'DevOps automation and infrastructure as code',
+    ],
+    image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /></svg>',
+    link: '/services/cloud-solutions',
+    order: 7,
+  },
+  {
+    title: 'UX/UI Design',
+    description: 'Create exceptional digital experiences that users love.',
+    features: [
+      'User research and persona development',
+      'Information architecture and wireframing',
+      'Interactive prototyping and usability testing',
+      'Responsive design and accessibility compliance',
+    ],
+    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>',
+    link: '/services/ux-ui-design',
+    order: 8,
   },
 ];
 ---
@@ -68,45 +136,63 @@ const services = [
       </div>
     </div>
 
-    <h2 class="section-title">
-      What We Are <span class="gradient-text">Awesome</span> At
+    <h2 class="section-title text-4xl md:text-5xl font-extrabold mb-8 text-center tracking-tight gradient-text drop-shadow-lg">
+      Our <span class="gradient-text">Core Services</span>
     </h2>
-
-    <div class="w-20 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto mb-6 rounded-full"></div>
-
-    <p class="section-subtitle">
-      We deliver AI-powered software solutions that boost efficiency, reduce costs, and spark innovation. As a top software development company, we build intelligent, scalable systems that help you stay ahead of the competition.
+    <div class="w-24 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto mb-8 rounded-full shadow-lg"></div>
+    <p class="section-subtitle text-xl md:text-2xl text-primary-700 dark:text-primary-300 font-medium max-w-2xl mx-auto text-center mb-12 leading-relaxed drop-shadow">
+      Specializing in SAP integration, business process automation, data analytics, and custom AI solutions to drive innovation and efficiency.
     </p>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-      {services.map(service => (
-        <div class="service-card group flex flex-col h-full">
-          <div class="mb-6 h-48 overflow-hidden rounded-lg">
-            {service.icon === 'sap' && <img src="/images/sap.webp" alt="SAP" class="w-full h-full object-cover" />}
-            {service.icon === 'automation' && <img src="/images/business_process_automation.webp" alt="Business Process Automation" class="w-full h-full object-cover" />}
-            {service.icon === 'data' && <img src="/images/data_governance.webp" alt="Data Governance" class="w-full h-full object-cover" />}
-            {service.icon === 'ai' && <img src="/images/custom_ai.webp" alt="Custom AI" class="w-full h-full object-cover" />}
-          </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {services.slice(0, 4).map((service) => (
+        <div class="bg-gradient-to-br from-primary-50 to-accent-50 dark:from-gray-900 dark:to-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow border border-primary-100 dark:border-primary-800 flex flex-col items-center text-center group transform hover:-translate-y-1 duration-300 h-full">
+          <!-- Service image with overlay -->
+          <div class="relative mb-6 w-full h-40 rounded-2xl overflow-hidden group-hover:scale-105 transition-transform shadow-lg">
+            <img
+              src={service.image}
+              alt={service.title}
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-primary-900/80 via-primary-900/40 to-transparent opacity-70 group-hover:opacity-60 transition-opacity"></div>
 
-          <div class="flex-grow">
-            <h3 class="text-xl font-bold mb-2 group-hover:text-primary-600 transition-colors duration-300">{service.title}</h3>
-            <p class="text-gray-600 dark:text-gray-400 mb-4">{service.description}</p>
-            <ul class="space-y-2 mb-4">
-              {service.features.map(feature => (
-                <li class="flex items-start">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary-500 mt-0.5 mr-2 shrink-0" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                  </svg>
-                  <span class="text-sm text-gray-600 dark:text-gray-400">{feature}</span>
-                </li>
-              ))}
-            </ul>
+            <!-- Icon overlay -->
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="bg-white/20 backdrop-blur-sm p-3 rounded-full">
+                <Fragment set:html={service.icon} />
+              </div>
+            </div>
           </div>
-
-          <div class="mt-auto pt-4">
-            <a href={service.link} class="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 font-medium group-hover:translate-x-2 transition-all duration-300">
-              Learn more
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:ml-2 transition-all duration-300" viewBox="0 0 20 20" fill="currentColor">
+          <div class="flex flex-col flex-grow w-full">
+            <h3 class="text-xl font-extrabold text-gray-900 dark:text-white mb-4 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+              {service.title}
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-6 text-base">
+              {service.description}
+            </p>
+            {service.features && service.features.length > 0 ? (
+              <ul class="mb-6 flex flex-col gap-2 text-left w-full mx-auto max-w-xs">
+                {service.features.slice(0, 3).map((feature) => (
+                  <li class="flex items-center text-sm text-gray-700 dark:text-gray-300">
+                    <svg class="h-4 w-4 text-primary-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <div class="mb-6"></div>
+            )}
+            <div class="mt-auto pt-4"></div>
+          </div>
+          <!-- Button with proper spacing -->
+          <div class="flex justify-center mt-6 mb-2">
+            <a
+              href={service.link}
+              class="inline-flex items-center px-5 py-2 rounded-full bg-gradient-to-r from-accent-600 to-primary-600 text-white font-semibold shadow-md hover:from-secondary-500 hover:to-secondary-600 dark:from-accent-500 dark:to-primary-500 dark:hover:from-secondary-500 dark:hover:to-secondary-600 transition-all duration-300 group-hover:scale-105 hover:shadow-lg hover:shadow-secondary-500/30 dark:hover:shadow-secondary-500/20"
+            >
+              <span class="drop-shadow-md">Learn More</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1 group-hover:ml-2 transition-all duration-300" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
               </svg>
             </a>
@@ -116,8 +202,11 @@ const services = [
     </div>
 
     <div class="text-center mt-16">
-      <a href="/services" class="btn btn-outline px-8 py-4 inline-flex items-center group transform transition-transform duration-300 hover:-translate-y-1 hover:shadow-hover">
-        View All Services
+      <a
+        href="/services"
+        class="btn px-8 py-4 inline-flex items-center group transform transition-all duration-300 hover:-translate-y-1 rounded-full border-2 border-accent-600 text-accent-600 hover:text-white hover:bg-gradient-to-r hover:from-secondary-500 hover:to-secondary-600 hover:border-transparent hover:shadow-xl hover:shadow-secondary-500/30 dark:border-accent-500 dark:text-accent-400 dark:hover:text-white dark:hover:from-secondary-500 dark:hover:to-secondary-600 dark:hover:shadow-secondary-500/20"
+      >
+        <span class="font-semibold drop-shadow-md">View All Services</span>
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 group-hover:ml-3 transition-all duration-300" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H3a1 1 0 110-2h9.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
         </svg>

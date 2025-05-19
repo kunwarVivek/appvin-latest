@@ -51,25 +51,6 @@ const caseStudiesCollection = defineCollection({
     technologies: z.array(z.string()).optional(),
     category: z.string(),
     order: z.number().optional(),
-<<<<<<< HEAD
-    // Additional fields used in the application
-    featured: z.boolean().optional(),
-    industry: z.string().optional(),
-    services: z.array(z.string()).optional(),
-    client: z.string().optional(),
-    challenge: z.string().optional(),
-    solution: z.string().optional(),
-    results: z.array(z.string()).optional(),
-    testimonial: z
-      .object({
-        quote: z.string(),
-        author: z.string(),
-        title: z.string(),
-      })
-      .optional(),
-    gallery: z.array(z.string()).optional(),
-    pubDate: z.coerce.date().optional(),
-=======
     challenge: z.string().optional(),
     solution: z.string().optional(),
     results: z.array(z.string()).optional(),
@@ -81,7 +62,6 @@ const caseStudiesCollection = defineCollection({
     gallery: z.array(z.string()).optional(),
     featured: z.boolean().optional(),
     pubDate: z.string().optional(),
->>>>>>> 8ed9c48a0bdfd9eff07a8c3687c9a7e3523b0e3a
   }),
 });
 
