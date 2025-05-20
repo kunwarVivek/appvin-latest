@@ -53,15 +53,20 @@ const currentPath = Astro.url.pathname;
         <!-- Theme Toggle Button -->
         <button
           id="theme-toggle"
-          class="p-2 rounded-full bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 shadow-sm"
+          data-theme-toggle
+          class="relative p-2 rounded-full bg-slate-100 dark:bg-gray-800 text-blue-500 dark:text-blue-400 hover:bg-slate-200 dark:hover:bg-gray-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 shadow-sm overflow-hidden group"
           aria-label="Toggle dark mode"
         >
+          <!-- Background glow effect -->
+          <span class="absolute inset-0 bg-blue-100 dark:bg-blue-900/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></span>
+
           <!-- Sun icon (shown in dark mode) -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block relative z-10 transition-transform duration-500 rotate-0 dark:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
           </svg>
+
           <!-- Moon icon (shown in light mode) -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 block dark:hidden text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 block dark:hidden relative z-10 transition-transform duration-500 rotate-0 dark:-rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
           </svg>
         </button>
@@ -119,15 +124,20 @@ const currentPath = Astro.url.pathname;
             <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Theme</span>
             <button
               id="theme-toggle-mobile"
-              class="p-2 rounded-full bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 shadow-sm"
+              data-theme-toggle
+              class="relative p-2 rounded-full bg-slate-100 dark:bg-gray-800 text-blue-500 dark:text-blue-400 hover:bg-slate-200 dark:hover:bg-gray-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 shadow-sm overflow-hidden group"
               aria-label="Toggle dark mode"
             >
+              <!-- Background glow effect -->
+              <span class="absolute inset-0 bg-blue-100 dark:bg-blue-900/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></span>
+
               <!-- Sun icon (shown in dark mode) -->
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block relative z-10 transition-transform duration-500 rotate-0 dark:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
               </svg>
+
               <!-- Moon icon (shown in light mode) -->
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 block dark:hidden text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 block dark:hidden relative z-10 transition-transform duration-500 rotate-0 dark:-rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
               </svg>
             </button>
@@ -151,8 +161,6 @@ const currentPath = Astro.url.pathname;
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     const header = document.getElementById('main-header');
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeToggleMobile = document.getElementById('theme-toggle-mobile');
 
     // Mobile menu toggle
     if (mobileMenuButton && mobileMenu) {
@@ -161,25 +169,7 @@ const currentPath = Astro.url.pathname;
       });
     }
 
-    // Theme toggle function
-    const toggleTheme = () => {
-      if (document.documentElement.classList.contains('dark')) {
-        document.documentElement.classList.remove('dark');
-        localStorage.setItem('theme', 'light');
-      } else {
-        document.documentElement.classList.add('dark');
-        localStorage.setItem('theme', 'dark');
-      }
-    };
-
-    // Add event listeners to theme toggle buttons
-    if (themeToggle) {
-      themeToggle.addEventListener('click', toggleTheme);
-    }
-
-    if (themeToggleMobile) {
-      themeToggleMobile.addEventListener('click', toggleTheme);
-    }
+    // Theme toggle is now handled by ThemeProvider component
 
     // Sticky header with shadow on scroll
     if (header) {

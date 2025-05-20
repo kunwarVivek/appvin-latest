@@ -8,7 +8,26 @@
 @tailwind components;
 @tailwind utilities;
 
-@theme {
+:root {
+    /* Theme Colors - Light Mode */
+    --color-bg-light: #ffffff;
+    --color-bg-dark: #0f172a;
+    --color-text-light: #1e293b;
+    --color-text-dark: #f8fafc;
+    --color-accent-light: #3b82f6;
+    --color-accent-light-hover: #2563eb;
+    --color-accent-dark: #60a5fa;
+    --color-accent-dark-hover: #93c5fd;
+    --color-card-light: #f1f5f9;
+    --color-card-dark: #1e293b;
+    --color-card-hover-light: #e2e8f0;
+    --color-card-hover-dark: #334155;
+    --color-border-light: #e2e8f0;
+    --color-border-dark: #334155;
+
+    /* Theme Transition */
+    --theme-transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
     /* Colors */
     --color-gray-50: #f9fafb;
     --color-gray-100: #f3f4f6;
@@ -22,37 +41,37 @@
     --color-gray-900: #111827;
     --color-gray-950: #030712;
 
-    /* Primary colors - AppVin red/pink palette */
-    --color-primary-50: #fff0f3;
-    --color-primary-100: #ffe0e6;
-    --color-primary-200: #ffc2cf;
-    --color-primary-300: #ff94a9;
-    --color-primary-400: #ff5778;
-    --color-primary-500: #ff2952;
-    /* Red/pink from logo */
-    --color-primary-500-rgb: 255, 41, 82;
+    /* Primary colors - Blue palette (updated from red/pink) */
+    --color-primary-50: #eff6ff;
+    --color-primary-100: #dbeafe;
+    --color-primary-200: #bfdbfe;
+    --color-primary-300: #93c5fd;
+    --color-primary-400: #60a5fa;
+    --color-primary-500: #3b82f6;
+    /* Blue from requirements */
+    --color-primary-500-rgb: 59, 130, 246;
     /* RGB values for animations */
-    --color-primary-600: #ff0a3c;
-    --color-primary-700: #d70032;
-    --color-primary-800: #b5002a;
-    --color-primary-900: #8c0021;
-    --color-primary-950: #4c0011;
+    --color-primary-600: #2563eb;
+    --color-primary-700: #1d4ed8;
+    --color-primary-800: #1e40af;
+    --color-primary-900: #1e3a8a;
+    --color-primary-950: #172554;
 
-    /* Secondary colors - AppVin teal/green palette */
-    --color-secondary-50: #effcfa;
-    --color-secondary-100: #d0f7f2;
-    --color-secondary-200: #a1ede4;
-    --color-secondary-300: #6cdcd0;
-    --color-secondary-400: #38c4b7;
-    --color-secondary-500: #14b8a6;
-    /* Teal/green */
-    --color-secondary-500-rgb: 20, 184, 166;
+    /* Secondary colors - Light blue palette */
+    --color-secondary-50: #f0f9ff;
+    --color-secondary-100: #e0f2fe;
+    --color-secondary-200: #bae6fd;
+    --color-secondary-300: #7dd3fc;
+    --color-secondary-400: #38bdf8;
+    --color-secondary-500: #0ea5e9;
+    /* Light blue */
+    --color-secondary-500-rgb: 14, 165, 233;
     /* RGB values for animations */
-    --color-secondary-600: #0d9488;
-    --color-secondary-700: #0f766e;
-    --color-secondary-800: #115e59;
-    --color-secondary-900: #134e4a;
-    --color-secondary-950: #042f2e;
+    --color-secondary-600: #0284c7;
+    --color-secondary-700: #0369a1;
+    --color-secondary-800: #075985;
+    --color-secondary-900: #0c4a6e;
+    --color-secondary-950: #082f49;
 
     /* Accent colors - Blue for gradients */
     --color-accent-50: #eef6ff;
@@ -90,3 +109,65 @@
 }
 
 /* Additional utilities */
+
+/* Hide scrollbar utility class */
+.no-scrollbar {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+/* Theme-specific utility classes */
+.bg-theme-light {
+    @apply bg-white dark:bg-gray-900 transition-colors duration-300;
+}
+
+.bg-theme-card {
+    @apply bg-slate-100 dark:bg-gray-800 transition-colors duration-300;
+}
+
+.text-theme-primary {
+    @apply text-gray-900 dark:text-white transition-colors duration-300;
+}
+
+.text-theme-secondary {
+    @apply text-gray-700 dark:text-gray-300 transition-colors duration-300;
+}
+
+.text-theme-muted {
+    @apply text-gray-500 dark:text-gray-400 transition-colors duration-300;
+}
+
+.border-theme {
+    @apply border-gray-200 dark:border-gray-700 transition-colors duration-300;
+}
+
+.btn-theme-primary {
+    @apply bg-blue-500 hover:bg-blue-600 text-white dark:bg-blue-600 dark:hover:bg-blue-700 transition-all duration-300;
+}
+
+.btn-theme-secondary {
+    @apply bg-slate-100 hover:bg-slate-200 text-gray-800 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 transition-all duration-300;
+}
+
+.btn-theme-outline {
+    @apply border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-500/20 dark:hover:text-white transition-all duration-300;
+}
+
+/* Card hover effects */
+.card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-blue-200 dark:hover:border-blue-800;
+}
+
+/* Focus styles for accessibility */
+.focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-blue-400 dark:focus:ring-offset-gray-900;
+}
+
+/* Glass effect for cards and UI elements */
+.glass-effect {
+    @apply bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg border border-white/20 dark:border-gray-700/20 shadow-lg;
+}

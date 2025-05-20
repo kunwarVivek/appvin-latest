@@ -77,11 +77,11 @@ if (type === 'collection' && entry) {
 }} slug={slug}>
   {type === 'collection' ? (
     ContentComponent && (
-      <div class="article-content">
+      <div class="article-content prose prose-lg dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-a:text-blue-600 dark:prose-a:text-blue-400 hover:prose-a:text-blue-800 dark:hover:prose-a:text-blue-300 prose-a:transition-colors prose-a:duration-300 max-w-none overflow-hidden no-scrollbar">
         <ContentComponent />
       </div>
     )
   ) : (
-    <div class="article-content" set:html={content} />
+    <div class="article-content prose prose-lg dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-a:text-blue-600 dark:prose-a:text-blue-400 hover:prose-a:text-blue-800 dark:hover:prose-a:text-blue-300 prose-a:transition-colors prose-a:duration-300 max-w-none overflow-hidden no-scrollbar" set:html={content} />
   )}
 </ArticleLayout>
