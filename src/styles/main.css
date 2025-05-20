@@ -120,6 +120,12 @@
     display: none; /* Chrome, Safari, Opera */
 }
 
+/* Smooth scrolling utility class */
+.smooth-scroll {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
 /* Theme-specific utility classes */
 .bg-theme-light {
     @apply bg-white dark:bg-gray-900 transition-colors duration-300;

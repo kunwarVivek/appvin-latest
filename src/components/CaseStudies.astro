@@ -131,7 +131,7 @@ const featuredCaseStudies = [
         </button>
       ))}
       <button
-        class="px-4 py-2 rounded-full text-sm font-semibold transition-all bg-primary-600 text-white hover:bg-primary-700 ml-2 shadow-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 cursor-pointer"
+        class="px-4 py-2 rounded-lg text-sm font-semibold transition-all bg-blue-500 text-white hover:bg-blue-600 ml-2 shadow-md hover:shadow-blue-glow focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer"
         onclick="window.location.href='/case-studies'"
       >
         View All
@@ -142,7 +142,7 @@ const featuredCaseStudies = [
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       {featuredCaseStudies.map((study, index) => (
         <div
-          class="case-study-card bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all border border-gray-100 dark:border-gray-700 hover:border-primary-200 dark:hover:border-primary-800 group transform hover:-translate-y-1 duration-300 animate-in fade-in slide-in-from-bottom-5 flex flex-col"
+          class="case-study-card bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-card hover:shadow-blue-glow transition-all border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-800 group transform hover:-translate-y-1 duration-300 animate-in fade-in slide-in-from-bottom-5 flex flex-col"
           data-services={study.data.services ? study.data.services.map(s => s.toLowerCase().replace(/\s+/g, '-')).join(' ') : ''}
           style={`animation-delay: ${index * 100}ms; min-height: 600px;`}
         >
@@ -176,7 +176,7 @@ const featuredCaseStudies = [
 
           <div class="p-6 flex flex-col flex-grow">
             <!-- Company logo -->
-            <div class="flex items-center justify-center h-16 mb-4">
+            <div class="flex items-center justify-center h-16 mb-4 dark:bg-gray-800 dark:rounded-lg dark:p-2">
               {study.slug === 'dominos' ? (
                 <img
                   src="https://staging.appvintech.com/wp-content/uploads/2023/12/logo-2.webp"
@@ -193,13 +193,13 @@ const featuredCaseStudies = [
                 <img
                   src="https://staging.appvintech.com/wp-content/uploads/2024/06/moove-logo.png"
                   alt={`${study.data.client} logo`}
-                  class="h-full object-contain max-w-[180px]"
+                  class="h-full object-contain max-w-[180px] dark:bg-white dark:p-2 dark:rounded-lg"
                 />
               ) : study.slug === 'clear-bio' ? (
                 <img
                   src="https://staging.appvintech.com/wp-content/uploads/2024/05/Clip-path-group.svg"
                   alt={`${study.data.client} logo`}
-                  class="h-full object-contain max-w-[180px]"
+                  class="h-full object-contain max-w-[180px] dark:invert dark:brightness-200"
                 />
               ) : study.data.logo ? (
                 <img
@@ -257,7 +257,7 @@ const featuredCaseStudies = [
     <div class="text-center mt-16">
       <a
         href="/case-studies"
-        class="btn px-8 py-4 inline-flex items-center group transform transition-all duration-300 hover:-translate-y-1 rounded-full border-2 border-accent-600 text-accent-600 hover:text-white hover:bg-gradient-to-r hover:from-secondary-500 hover:to-secondary-600 hover:border-transparent hover:shadow-xl hover:shadow-secondary-500/30 dark:border-accent-500 dark:text-accent-400 dark:hover:text-white dark:hover:from-secondary-500 dark:hover:to-secondary-600 dark:hover:shadow-secondary-500/20"
+        class="btn px-8 py-4 inline-flex items-center group transform transition-all duration-300 hover:-translate-y-1 rounded-lg border-2 border-blue-500 text-blue-600 hover:text-white hover:bg-blue-500 hover:border-transparent hover:shadow-blue-glow dark:border-blue-400 dark:text-blue-400 dark:hover:text-white dark:hover:bg-blue-500/20 focus-ring"
       >
         <span class="font-semibold drop-shadow-md">View All Case Studies</span>
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 group-hover:ml-3 transition-all duration-300" viewBox="0 0 20 20" fill="currentColor">
@@ -327,6 +327,17 @@ const featuredCaseStudies = [
 <style>
   .bg-grid-pattern {
     background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* Improve logo visibility in dark mode */
+  .dark .case-study-card img {
+    filter: brightness(1.2) contrast(1.1);
+  }
+
+  /* Add a subtle glow effect to logos in dark mode */
+  .dark .case-study-card:hover img {
+    filter: brightness(1.4) contrast(1.2);
+    transition: filter 0.3s ease;
   }
 </style>
 

@@ -165,7 +165,7 @@ const allServices = [...new Set(caseStudies.flatMap(study => study.data.services
             ['go-carshare', 'moove-installer', 'moove-driver', 'gribb', 'go-lab', 'dominos', 'kfc', 'clear-bio', 'carbon-quench', 'go-trust', 'go-emp'].includes(study.slug)
           ).map((study, index) => (
             <div
-              class="case-study-card group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-100 dark:border-gray-700 hover:border-primary-200 dark:hover:border-primary-800 transition-all hover:shadow-xl animate-in fade-in slide-in-from-bottom-5 duration-500"
+              class="case-study-card group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-800 transition-all shadow-card hover:shadow-blue-glow animate-in fade-in slide-in-from-bottom-5 duration-500"
               data-industry={study.data.industry.toLowerCase()}
               data-services={study.data.services.map(s => s.toLowerCase()).join(' ')}
               style={`animation-delay: ${index * 100}ms`}
