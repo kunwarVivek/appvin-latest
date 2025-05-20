@@ -1,6 +1,8 @@
 ---
 import Layout from './Layout.astro';
 import { formatDate } from '../utils/date';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 
 const { frontmatter, slug } = Astro.props;
 const {
@@ -14,7 +16,6 @@ const {
 
 const formattedPublishDate = formatDate(publishDate);
 ---
-
 <Layout
   title={`${title} | AppVin Technologies Blog`}
   description={description}
@@ -22,14 +23,15 @@ const formattedPublishDate = formatDate(publishDate);
   ogDescription={description}
   ogImage={image || '/images/blog-default.jpg'}
 >
-  <article class="pt-32 pb-20 md:pt-40 md:pb-32">
+  <Header />
+  <article class="pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Breadcrumbs -->
       <div class="mb-8 text-sm text-gray-600 dark:text-gray-400">
         <div class="flex items-center space-x-2">
-          <a href="/" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Home</a>
+          <a href="/" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">Home</a>
           <span>/</span>
-          <a href="/blog" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Blog</a>
+          <a href="/blog" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">Blog</a>
           <span>/</span>
           <span class="text-gray-900 dark:text-white font-medium truncate">{title}</span>
         </div>
@@ -37,65 +39,127 @@ const formattedPublishDate = formatDate(publishDate);
 
       <div class="max-w-4xl mx-auto">
         {image && (
-          <div class="mb-8 rounded-xl overflow-hidden shadow-lg">
+          <div class="mb-8 rounded-xl overflow-hidden shadow-lg flex justify-center">
             <img
               src={image}
               alt={title}
-              class="w-full h-auto object-cover"
+              class="max-w-xl w-full h-auto max-h-96 object-cover mx-auto"
             />
           </div>
         )}
-        
+
         <div class="mb-8">
           <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">{title}</h1>
-          
+
           <div class="flex flex-wrap items-center text-gray-600 dark:text-gray-400 mb-6">
             <div class="flex items-center mr-6 mb-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
               <span>{formattedPublishDate}</span>
             </div>
-            
+
             <div class="flex items-center mb-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </svg>
               <span>{author}</span>
             </div>
           </div>
-          
+
           {tags.length > 0 && (
             <div class="flex flex-wrap gap-2 mb-6">
               {tags.map((tag: string) => (
-                <a
-                  href={`/blog/tag/${tag}`}
-                  class="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full text-sm hover:bg-primary-100 dark:hover:bg-primary-900 transition-colors"
+                <p
+                  class="px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-sm hover:bg-blue-100 dark:hover:bg-blue-800/50 transition-colors duration-300"
                 >
                   #{tag}
-                </a>
+                </p>
               ))}
             </div>
           )}
         </div>
-        
-        <div class="prose prose-lg dark:prose-invert max-w-none">
+
+        <div class="prose prose-lg dark:prose-invert max-w-none overflow-hidden no-scrollbar">
           <slot />
         </div>
-        
+
+        <style>
+          .article-content h2 {
+            @apply text-2xl font-bold mt-8 mb-4 text-gray-800 dark:text-gray-100 transition-colors duration-300;
+          }
+
+          .article-content h3 {
+            @apply text-xl font-semibold mt-6 mb-3 text-gray-700 dark:text-gray-200 transition-colors duration-300;
+          }
+
+          .article-content p {
+            @apply my-4 text-gray-600 dark:text-gray-300 leading-relaxed transition-colors duration-300;
+          }
+
+          .article-content ul {
+            @apply my-4 list-disc pl-6 transition-colors duration-300;
+          }
+
+          .article-content li {
+            @apply mb-2 text-gray-600 dark:text-gray-300 transition-colors duration-300;
+          }
+
+          .article-content strong {
+            @apply font-semibold text-gray-800 dark:text-gray-100 transition-colors duration-300;
+          }
+
+          .article-content a {
+            @apply text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors duration-300;
+          }
+
+          .article-content blockquote {
+            @apply border-l-4 border-blue-500 dark:border-blue-400 pl-4 italic my-6 text-gray-700 dark:text-gray-300 transition-colors duration-300;
+          }
+
+          .article-content code {
+            @apply bg-slate-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-gray-800 dark:text-gray-200 font-mono text-sm transition-colors duration-300;
+            max-width: 100%;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+          }
+
+          .article-content pre {
+            @apply bg-slate-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto my-6 transition-colors duration-300;
+            max-width: 100%;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+          }
+
+          .article-content pre::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+          }
+
+          .article-content table {
+            @apply block w-full overflow-x-auto my-6;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+          }
+
+          .article-content table::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+          }
+        </style>
+
         <!-- Article Navigation -->
         <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
           <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <a 
-              href="/blog" 
-              class="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 font-medium group transition-all"
+            <a
+              href="/blog"
+              class="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium group transition-all duration-300"
             >
               <svg xmlns="http://www.w3.org/2000/svg" class="size-5 mr-1 transition-transform group-hover:-translate-x-1" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
               </svg>
               Back to Blog
             </a>
-            
+
             <div class="flex space-x-4">
               <a
                 href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(`https://appvintech.com/blog/${slug}`)}`}
@@ -134,4 +198,5 @@ const formattedPublishDate = formatDate(publishDate);
       </div>
     </div>
   </article>
+  <Footer />
 </Layout>

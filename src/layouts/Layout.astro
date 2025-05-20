@@ -1,6 +1,7 @@
 ---
 import '../styles/main.css';
 import SEO from '../components/SEO.astro';
+import ThemeProvider from '../components/ThemeProvider.astro';
 
 export interface Props {
   title?: string;
@@ -32,10 +33,10 @@ const {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="overflow-x-hidden">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/images/appvin-logo.png" />
     <SEO
       title={title}
@@ -50,28 +51,12 @@ const {
       twitterDescription={twitterDescription}
       twitterImage={twitterImage}
     />
-    <script is:inline>
-      // Check for dark mode preference
-      const savedTheme = localStorage.getItem('theme');
-
-      // If user has explicitly set a theme preference, use that
-      if (savedTheme === 'dark') {
-        document.documentElement.classList.add('dark');
-      } else if (savedTheme === 'light') {
-        document.documentElement.classList.remove('dark');
-      }
-      // Otherwise, use system preference
-      else {
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-        }
-      }
-    </script>
   </head>
-  <body>
-    <slot />
-
+  <body class="overflow-x-hidden w-full no-scrollbar">
+    <ThemeProvider>
+      <div class="overflow-x-hidden w-full no-scrollbar">
+        <slot />
+      </div>
+    </ThemeProvider>
   </body>
 </html>

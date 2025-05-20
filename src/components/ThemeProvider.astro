@@ -1,0 +1,68 @@
+---
+// ThemeProvider.astro - Handles theme transitions and provides theme context
+---
+
+<script is:inline>
+  // Check for dark mode preference and apply it immediately to prevent flash
+  const savedTheme = localStorage.getItem('theme');
+  
+  // If user has explicitly set a theme preference, use that
+  if (savedTheme === 'dark') {
+    document.documentElement.classList.add('dark');
+  } else if (savedTheme === 'light') {
+    document.documentElement.classList.remove('dark');
+  }
+  // Otherwise, use system preference
+  else {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }
+</script>
+
+<script>
+  // Handle theme toggle with smooth transitions
+  document.addEventListener('DOMContentLoaded', () => {
+    const themeToggles = document.querySelectorAll('[data-theme-toggle]');
+    
+    // Theme toggle function with animation
+    const toggleTheme = () => {
+      // Add transition class for smooth animation
+      document.documentElement.classList.add('theme-transition');
+      
+      // Toggle dark mode
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+      
+      // Remove transition class after animation completes
+      setTimeout(() => {
+        document.documentElement.classList.remove('theme-transition');
+      }, 300);
+    };
+    
+    // Add event listeners to all theme toggle buttons
+    themeToggles.forEach(toggle => {
+      toggle.addEventListener('click', toggleTheme);
+    });
+    
+    // Listen for system preference changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      if (!localStorage.getItem('theme')) {
+        if (e.matches) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      }
+    });
+  });
+</script>
+
+<slot />

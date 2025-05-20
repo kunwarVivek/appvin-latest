@@ -1,59 +1,11 @@
 ---
-import { formatDate } from '../utils/date';
+import { formatDate } from '../utils/date.js';
 
-// Professional blog post images for different topics
-const blogImages = {
-  "AI": "/images/blog/ai-product-engineering-2.jpg",
-  "Cloud": "/images/blog/cloud/cloud-solutions-1.jpg",
-  "UX": "/images/blog/ux/ux-design-1.jpg",
-  "Data": "/images/blog/data/data-analytics-1.jpg",
-  "IoT": "/images/blog/iot/iot-5g-1.jpg",
-  "ML": "/images/blog/ml/machine-learning-1.jpg",
-  "AI_Product_Engineering": "/images/blog/ai-product-engineering-1.jpg"
-};
+// Import the blog posts from the shared data file to ensure consistency
+import { blogPosts } from '../data/blogPosts.js';
 
-const featuredPosts = [
-  {
-    title: 'The Future of AI in Product Engineering',
-    slug: 'future-of-ai-in-product-engineering',
-    excerpt: 'Explore how artificial intelligence is revolutionizing the product engineering landscape and what it means for businesses.',
-    publishDate: '2023-04-15',
-    author: 'Alex Johnson',
-    image: blogImages.AI_Product_Engineering,
-    tags: ['AI', 'Product Engineering', 'Innovation'],
-    category: 'AI'
-  },
-  {
-    title: 'Building Scalable Cloud Solutions for Modern Businesses',
-    slug: 'building-scalable-cloud-solutions',
-    excerpt: 'Learn the best practices for designing and implementing cloud solutions that can grow with your business needs.',
-    publishDate: '2023-03-28',
-    author: 'Maria Garcia',
-    image: blogImages.Cloud,
-    tags: ['Cloud', 'Scalability', 'Architecture'],
-    category: 'Cloud'
-  },
-  {
-    title: 'The Role of UX Design in Digital Transformation',
-    slug: 'role-of-ux-design-in-digital-transformation',
-    excerpt: 'Discover how user experience design plays a crucial role in successful digital transformation initiatives.',
-    publishDate: '2023-03-10',
-    author: 'James Wilson',
-    image: blogImages.UX,
-    tags: ['UX Design', 'Digital Transformation', 'User Experience'],
-    category: 'UX'
-  },
-  {
-    title: 'Implementing Effective Data Governance Strategies',
-    slug: 'implementing-effective-data-governance-strategies',
-    excerpt: 'Learn how to establish robust data governance frameworks that ensure data quality, security, and compliance.',
-    publishDate: '2023-02-22',
-    author: 'Sarah Chen',
-    image: blogImages.Data,
-    tags: ['Data Governance', 'Compliance', 'Security'],
-    category: 'Data'
-  },
-];
+// Use the first 4 blog posts from the shared data file
+const featuredPosts = blogPosts.slice(0, 4);
 ---
 
 <section id="blog" class="section py-20 bg-gray-50 dark:bg-gray-900 relative overflow-hidden">
@@ -87,7 +39,7 @@ const featuredPosts = [
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       {featuredPosts.map((post, index) => (
         <div
-          class="bg-gradient-to-br from-primary-50 to-accent-50 dark:from-gray-900 dark:to-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow border border-primary-100 dark:border-primary-800 flex flex-col items-center text-center group transform hover:-translate-y-1 duration-300 h-full animate-in fade-in slide-in-from-bottom-5"
+          class="bg-slate-100 dark:bg-gray-800 rounded-xl p-6 shadow-card hover:shadow-blue-glow transition-all border border-slate-200 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-800 flex flex-col items-center text-center group transform hover:-translate-y-1 duration-300 h-full animate-in fade-in slide-in-from-bottom-5"
           style={`animation-delay: ${index * 100}ms`}
         >
           <div class="relative mb-6 w-full h-40 rounded-2xl overflow-hidden group-hover:scale-105 transition-transform shadow-lg">
@@ -104,11 +56,11 @@ const featuredPosts = [
                 </svg>
               </div>
             )}
-            <div class="absolute inset-0 bg-gradient-to-t from-primary-900/80 via-primary-900/40 to-transparent opacity-70 group-hover:opacity-60 transition-opacity"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 via-blue-900/40 to-transparent opacity-70 group-hover:opacity-60 transition-opacity"></div>
           </div>
 
           <div class="flex flex-col flex-grow w-full">
-            <h3 class="card-title group-hover:text-primary-600 dark:group-hover:text-primary-400">
+            <h3 class="card-title group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
               {post.title}
             </h3>
 
@@ -118,25 +70,24 @@ const featuredPosts = [
 
             <div class="flex flex-wrap justify-center gap-2 mb-4">
               {post.tags.slice(0, 2).map((tag) => (
-                <a
-                  href={`/blog/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`}
-                  class="px-3 py-1 bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 rounded-full text-xs font-medium hover:bg-primary-100 dark:hover:bg-primary-800/50 transition-colors"
+                <p
+                  class="px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-xs font-medium hover:bg-blue-100 dark:hover:bg-blue-800/50 transition-colors duration-300"
                 >
                   #{tag}
-                </a>
+                </p>
               ))}
             </div>
 
             <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 mb-5 justify-center">
               <span class="inline-flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1 text-blue-500 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
                 {formatDate(post.publishDate)}
               </span>
               <span class="mx-2">•</span>
               <span class="inline-flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1 text-blue-500 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
                 {post.author}
@@ -149,7 +100,7 @@ const featuredPosts = [
           <div class="flex justify-center mt-6 mb-2">
             <a
               href={`/blog/${post.slug}`}
-              class="inline-flex items-center px-5 py-2 rounded-full bg-gradient-to-r from-accent-600 to-primary-600 text-white font-semibold shadow-md hover:from-secondary-500 hover:to-secondary-600 dark:from-accent-500 dark:to-primary-500 dark:hover:from-secondary-500 dark:hover:to-secondary-600 transition-all duration-300 group-hover:scale-105 hover:shadow-lg hover:shadow-secondary-500/30 dark:hover:shadow-secondary-500/20"
+              class="inline-flex items-center px-5 py-2 rounded-lg bg-gradient-blue text-white font-semibold shadow-md hover:shadow-blue-glow dark:bg-gradient-blue-dark transition-all duration-300 group-hover:scale-105 focus-ring"
             >
               <span class="drop-shadow-md">Read Article</span>
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1 group-hover:ml-2 transition-all duration-300" viewBox="0 0 20 20" fill="currentColor">
@@ -164,7 +115,7 @@ const featuredPosts = [
     <div class="text-center mt-16">
       <a
         href="/blog"
-        class="btn px-8 py-4 inline-flex items-center group transform transition-all duration-300 hover:-translate-y-1 rounded-full border-2 border-accent-600 text-accent-600 hover:text-white hover:bg-gradient-to-r hover:from-secondary-500 hover:to-secondary-600 hover:border-transparent hover:shadow-xl hover:shadow-secondary-500/30 dark:border-accent-500 dark:text-accent-400 dark:hover:text-white dark:hover:from-secondary-500 dark:hover:to-secondary-600 dark:hover:shadow-secondary-500/20"
+        class="btn px-8 py-4 inline-flex items-center group transform transition-all duration-300 hover:-translate-y-1 rounded-lg border-2 border-blue-500 text-blue-600 hover:text-white hover:bg-blue-500 hover:border-transparent hover:shadow-blue-glow dark:border-blue-400 dark:text-blue-400 dark:hover:text-white dark:hover:bg-blue-500/20 focus-ring"
       >
         <span class="font-semibold drop-shadow-md">View All Articles</span>
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 group-hover:ml-3 transition-all duration-300" viewBox="0 0 20 20" fill="currentColor">
