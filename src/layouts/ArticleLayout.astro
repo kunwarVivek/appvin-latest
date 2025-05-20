@@ -1,6 +1,8 @@
 ---
 import Layout from './Layout.astro';
 import { formatDate } from '../utils/date';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 
 const { frontmatter, slug } = Astro.props;
 const {
@@ -14,7 +16,7 @@ const {
 
 const formattedPublishDate = formatDate(publishDate);
 ---
-
+<Header />
 <Layout
   title={`${title} | AppVin Technologies Blog`}
   description={description}
@@ -37,18 +39,18 @@ const formattedPublishDate = formatDate(publishDate);
 
       <div class="max-w-4xl mx-auto">
         {image && (
-          <div class="mb-8 rounded-xl overflow-hidden shadow-lg">
+          <div class="mb-8 rounded-xl overflow-hidden shadow-lg flex justify-center">
             <img
               src={image}
               alt={title}
-              class="w-full h-auto object-cover"
+              class="max-w-xl w-full h-auto max-h-96 object-cover mx-auto"
             />
           </div>
         )}
-        
+
         <div class="mb-8">
           <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">{title}</h1>
-          
+
           <div class="flex flex-wrap items-center text-gray-600 dark:text-gray-400 mb-6">
             <div class="flex items-center mr-6 mb-2">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -56,7 +58,7 @@ const formattedPublishDate = formatDate(publishDate);
               </svg>
               <span>{formattedPublishDate}</span>
             </div>
-            
+
             <div class="flex items-center mb-2">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -64,30 +66,55 @@ const formattedPublishDate = formatDate(publishDate);
               <span>{author}</span>
             </div>
           </div>
-          
+
           {tags.length > 0 && (
             <div class="flex flex-wrap gap-2 mb-6">
               {tags.map((tag: string) => (
-                <a
-                  href={`/blog/tag/${tag}`}
+                <p
                   class="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full text-sm hover:bg-primary-100 dark:hover:bg-primary-900 transition-colors"
                 >
                   #{tag}
-                </a>
+                </p>
               ))}
             </div>
           )}
         </div>
-        
+
         <div class="prose prose-lg dark:prose-invert max-w-none">
           <slot />
         </div>
-        
+
+        <style>
+          .article-content h2 {
+            @apply text-2xl font-bold mt-8 mb-4 text-gray-800 dark:text-gray-100;
+          }
+
+          .article-content h3 {
+            @apply text-xl font-semibold mt-6 mb-3 text-gray-700 dark:text-gray-200;
+          }
+
+          .article-content p {
+            @apply my-4 text-gray-600 dark:text-gray-300 leading-relaxed;
+          }
+
+          .article-content ul {
+            @apply my-4 list-disc pl-6;
+          }
+
+          .article-content li {
+            @apply mb-2 text-gray-600 dark:text-gray-300;
+          }
+
+          .article-content strong {
+            @apply font-semibold text-gray-800 dark:text-gray-100;
+          }
+        </style>
+
         <!-- Article Navigation -->
         <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
           <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <a 
-              href="/blog" 
+            <a
+              href="/blog"
               class="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 font-medium group transition-all"
             >
               <svg xmlns="http://www.w3.org/2000/svg" class="size-5 mr-1 transition-transform group-hover:-translate-x-1" viewBox="0 0 20 20" fill="currentColor">
@@ -95,7 +122,7 @@ const formattedPublishDate = formatDate(publishDate);
               </svg>
               Back to Blog
             </a>
-            
+
             <div class="flex space-x-4">
               <a
                 href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(`https://appvintech.com/blog/${slug}`)}`}
@@ -135,3 +162,4 @@ const formattedPublishDate = formatDate(publishDate);
     </div>
   </article>
 </Layout>
+<Footer />

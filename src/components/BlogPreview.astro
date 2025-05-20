@@ -1,59 +1,11 @@
 ---
-import { formatDate } from '../utils/date';
+import { formatDate } from '../utils/date.js';
 
-// Professional blog post images for different topics
-const blogImages = {
-  "AI": "/images/blog/ai-product-engineering-2.jpg",
-  "Cloud": "/images/blog/cloud/cloud-solutions-1.jpg",
-  "UX": "/images/blog/ux/ux-design-1.jpg",
-  "Data": "/images/blog/data/data-analytics-1.jpg",
-  "IoT": "/images/blog/iot/iot-5g-1.jpg",
-  "ML": "/images/blog/ml/machine-learning-1.jpg",
-  "AI_Product_Engineering": "/images/blog/ai-product-engineering-1.jpg"
-};
+// Import the blog posts from the shared data file to ensure consistency
+import { blogPosts } from '../data/blogPosts.js';
 
-const featuredPosts = [
-  {
-    title: 'The Future of AI in Product Engineering',
-    slug: 'future-of-ai-in-product-engineering',
-    excerpt: 'Explore how artificial intelligence is revolutionizing the product engineering landscape and what it means for businesses.',
-    publishDate: '2023-04-15',
-    author: 'Alex Johnson',
-    image: blogImages.AI_Product_Engineering,
-    tags: ['AI', 'Product Engineering', 'Innovation'],
-    category: 'AI'
-  },
-  {
-    title: 'Building Scalable Cloud Solutions for Modern Businesses',
-    slug: 'building-scalable-cloud-solutions',
-    excerpt: 'Learn the best practices for designing and implementing cloud solutions that can grow with your business needs.',
-    publishDate: '2023-03-28',
-    author: 'Maria Garcia',
-    image: blogImages.Cloud,
-    tags: ['Cloud', 'Scalability', 'Architecture'],
-    category: 'Cloud'
-  },
-  {
-    title: 'The Role of UX Design in Digital Transformation',
-    slug: 'role-of-ux-design-in-digital-transformation',
-    excerpt: 'Discover how user experience design plays a crucial role in successful digital transformation initiatives.',
-    publishDate: '2023-03-10',
-    author: 'James Wilson',
-    image: blogImages.UX,
-    tags: ['UX Design', 'Digital Transformation', 'User Experience'],
-    category: 'UX'
-  },
-  {
-    title: 'Implementing Effective Data Governance Strategies',
-    slug: 'implementing-effective-data-governance-strategies',
-    excerpt: 'Learn how to establish robust data governance frameworks that ensure data quality, security, and compliance.',
-    publishDate: '2023-02-22',
-    author: 'Sarah Chen',
-    image: blogImages.Data,
-    tags: ['Data Governance', 'Compliance', 'Security'],
-    category: 'Data'
-  },
-];
+// Use the first 4 blog posts from the shared data file
+const featuredPosts = blogPosts.slice(0, 4);
 ---
 
 <section id="blog" class="section py-20 bg-gray-50 dark:bg-gray-900 relative overflow-hidden">
@@ -118,12 +70,11 @@ const featuredPosts = [
 
             <div class="flex flex-wrap justify-center gap-2 mb-4">
               {post.tags.slice(0, 2).map((tag) => (
-                <a
-                  href={`/blog/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`}
+                <p
                   class="px-3 py-1 bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 rounded-full text-xs font-medium hover:bg-primary-100 dark:hover:bg-primary-800/50 transition-colors"
                 >
                   #{tag}
-                </a>
+                </p>
               ))}
             </div>
 
