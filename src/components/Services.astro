@@ -17,12 +17,12 @@ const services = [
     order: 1,
   },
   {
-    title: 'Business Process Automation',
+    title: 'Celonis System Integrator',
     description: 'Streamline operations and uncover opportunities.',
     features: [
       'Automate repetitive tasks for speed and accuracy',
-      'Leverage process mining for workflow optimization',
-      'Reduce delays and inefficiencies with smart automation',
+      'Leverage Celonis for real-time process mining',
+      'Optimize workflows to reduce delays and inefficiencies',
       'Continuously monitor and enhance performance',
     ],
     image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
@@ -32,28 +32,28 @@ const services = [
     order: 2,
   },
   {
-    title: 'Data Analytics',
+    title: 'Data Governance',
     description: 'Turn data into a competitive edge.',
     features: [
-      'Advanced analytics and business intelligence solutions',
-      'Big data processing and real-time analytics pipelines',
-      'Predictive modeling and machine learning integration',
-      'Interactive dashboards and data visualization',
+      'Discover insights through advanced data mining',
+      'Unify data sources with seamless integration',
+      'Protect critical data with secure retention policies',
+      'Maintain high accuracy through quality management',
     ],
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
     icon: '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>',
-    link: '/services/data-analytics',
+    link: '/services/data-governance',
     expertise: 'high',
     order: 3,
   },
   {
-    title: 'Custom AI Solutions',
+    title: 'Custom AI',
     description: 'AI tailored to your goals. Built to scale.',
     features: [
-      'Custom machine learning model development',
-      'Natural language processing and computer vision',
-      'AI-powered automation and decision support',
-      'Intelligent chatbots and virtual assistants',
+      'Develop custom models with CLAMP A, Minicraft & Optimize',
+      'Automate decisions across web and mobile platforms',
+      'Continuously refine with adaptive learning',
+      'Accelerate innovation and customer personalization',
     ],
     image: 'https://images.unsplash.com/photo-1591453089816-0fbb971b454c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
     icon: '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>',
@@ -141,7 +141,7 @@ const services = [
     </h2>
     <div class="w-24 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto mb-8 rounded-full shadow-lg"></div>
     <p class="section-subtitle text-xl md:text-2xl text-primary-700 dark:text-primary-300 font-medium max-w-2xl mx-auto text-center mb-12 leading-relaxed drop-shadow">
-      Specializing in SAP integration, business process automation, data analytics, and custom AI solutions to drive innovation and efficiency.
+      Specializing in SAP integration, business process automation & mining, data governance, and custom AI to drive innovation and efficiency.
     </p>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -173,7 +173,7 @@ const services = [
             </p>
             {service.features && service.features.length > 0 ? (
               <ul class="mb-6 flex flex-col gap-2 text-left w-full mx-auto max-w-xs">
-                {service.features.slice(0, 3).map((feature) => (
+                {service.features.map((feature) => (
                   <li class="flex items-center text-sm text-gray-700 dark:text-gray-300">
                     <svg class="h-4 w-4 text-primary-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
                     {feature}

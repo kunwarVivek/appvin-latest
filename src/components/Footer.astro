@@ -1,50 +1,40 @@
 ---
 const currentYear = new Date().getFullYear();
 
-const footerLinks = [
-  {
-    title: 'Company',
-    links: [
-      { name: 'About', url: '/about' },
-      { name: 'Services', url: '/services' },
-      { name: 'Case Studies', url: '/case-studies' },
-      { name: 'Blog', url: '/blog' },
-      { name: 'Careers', url: '/careers' },
-      { name: 'Contact', url: '/contact' },
-    ],
-  },
-  {
-    title: 'Services',
-    links: [
-      { name: 'AI Strategy', url: '/services/ai-strategy' },
-      { name: 'Product Engineering', url: '/services/product-engineering' },
-      { name: 'Digital Transformation', url: '/services/digital-transformation' },
-      { name: 'Cloud Solutions', url: '/services/cloud-solutions' },
-      { name: 'Data Analytics', url: '/services/data-analytics' },
-      { name: 'UX/UI Design', url: '/services/ux-ui-design' },
-    ],
-  },
-  {
-    title: 'Resources',
-    links: [
-      { name: 'Blog', url: '/blog' },
-      { name: 'Case Studies', url: '/case-studies' },
-      { name: 'Whitepapers', url: '/resources/whitepapers' },
-      { name: 'Webinars', url: '/resources/webinars' },
-      { name: 'Documentation', url: '/docs' },
-      { name: 'FAQ', url: '/faq' },
-    ],
-  },
-  {
-    title: 'Legal',
-    links: [
-      { name: 'Privacy Policy', url: '/privacy-policy' },
-      { name: 'Terms of Service', url: '/terms-of-service' },
-      { name: 'Cookie Policy', url: '/cookie-policy' },
-      { name: 'GDPR', url: '/gdpr' },
-    ],
-  },
-];
+// Footer links are now directly hardcoded in the component
+// const footerLinks = [
+//   {
+//     title: 'Company',
+//     links: [
+//       { name: 'About', url: '/about' },
+//       { name: 'Services', url: '/services' },
+//       { name: 'Case Studies', url: '/case-studies' },
+//       { name: 'Careers', url: '/careers' },
+//       { name: 'Contact', url: '/contact' },
+//     ],
+//   },
+//   {
+//     title: 'Services',
+//     links: [
+//       { name: 'AI Strategy', url: '/services/ai-strategy' },
+//       { name: 'Product Engineering', url: '/services/product-engineering' },
+//       { name: 'Digital Transformation', url: '/services/digital-transformation' },
+//       { name: 'Cloud Solutions', url: '/services/cloud-solutions' },
+//       { name: 'Data Analytics', url: '/services/data-analytics' },
+//     ],
+//   },
+//   {
+//     title: 'Resources',
+//     links: [
+//       { name: 'Blog', url: '/blog' },
+//       { name: 'Case Studies', url: '/case-studies' },
+//       { name: 'Whitepapers', url: '/resources/whitepapers' },
+//       { name: 'Webinars', url: '/resources/webinars' },
+//       { name: 'Documentation', url: '/docs' },
+//       { name: 'FAQ', url: '/resources/faq' },
+//     ],
+//   },
+// ];
 
 const socialLinks = [
   { name: 'Facebook', url: 'https://www.facebook.com/appvintech', icon: 'facebook' },
@@ -54,25 +44,37 @@ const socialLinks = [
 ];
 ---
 
-<footer class="bg-gray-50 dark:bg-gray-900 pt-16 pb-8 border-t border-gray-200 dark:border-gray-800">
-  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+<footer class="bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 pt-20 pb-8 border-t border-gray-200 dark:border-gray-800 relative">
+  <!-- Background decorations -->
+  <div class="bg-decoration bg-decoration-1"></div>
+  <div class="bg-decoration bg-decoration-2"></div>
+  <div class="bg-decoration bg-decoration-3"></div>
+
+  <!-- Background pattern -->
+  <div class="absolute inset-0 opacity-5 dark:opacity-10 pointer-events-none overflow-hidden">
+    <div class="absolute top-0 left-0 w-full h-full bg-grid-pattern"></div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Main Footer Content -->
+    <div class="flex flex-col lg:flex-row gap-8 mb-16">
       <!-- Company Info -->
-      <div class="lg:col-span-2">
-        <a href="/" class="flex items-center mb-4">
-          <img src="/images/appvin-logo.png" alt="AppVin Technologies" class="h-10" />
+      <div class="lg:w-1/3">
+        <a href="/" class="flex items-center mb-6 group">
+          <img src="/images/appvin-logo.png" alt="AppVin Technologies" class="h-12 transition-transform duration-300 group-hover:scale-105" />
         </a>
-        <p class="text-gray-600 dark:text-gray-400 mb-4 max-w-md">
+        <p class="text-gray-600 dark:text-gray-400 mb-6 max-w-md text-base leading-relaxed">
           AppVin Technologies is a top-notch software development company that designs, develops,
           and implements IT technology solutions for startups, small businesses and established enterprises.
         </p>
+        <!-- Social Links -->
         <div class="flex space-x-4">
           {socialLinks.map((link) => (
             <a
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              class="text-gray-500 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors"
+              class="text-gray-500 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors transform hover:scale-110 duration-300"
               aria-label={link.name}
             >
               {link.icon === 'facebook' && (
@@ -102,58 +104,506 @@ const socialLinks = [
       </div>
 
       <!-- Footer Links -->
-      {footerLinks.map((section) => (
-        <div>
-          <h3 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4">
-            {section.title}
+      <div class="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Company Links -->
+        <div class="footer-section" data-section="company">
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-5 pb-2 border-b border-gray-200 dark:border-gray-700 inline-block">
+            Company
           </h3>
-          <ul class="space-y-2">
-            {section.links.map((link) => (
-              <li>
-                <a
-                  href={link.url}
-                  class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors"
-                >
-                  {link.name}
-                </a>
-              </li>
-            ))}
+          <ul class="space-y-3">
+            <li>
+              <a href="/about" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors flex items-center group">
+                <span class="w-1 h-1 bg-gray-400 rounded-full mr-2 group-hover:bg-primary-500 group-hover:w-2 transition-all duration-300"></span>
+                <span class="group-hover:translate-x-1 transition-transform duration-300">About</span>
+              </a>
+            </li>
+            <li>
+              <a href="/services" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors flex items-center group">
+                <span class="w-1 h-1 bg-gray-400 rounded-full mr-2 group-hover:bg-primary-500 group-hover:w-2 transition-all duration-300"></span>
+                <span class="group-hover:translate-x-1 transition-transform duration-300">Services</span>
+              </a>
+            </li>
+            <li>
+              <a href="/case-studies" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors flex items-center group">
+                <span class="w-1 h-1 bg-gray-400 rounded-full mr-2 group-hover:bg-primary-500 group-hover:w-2 transition-all duration-300"></span>
+                <span class="group-hover:translate-x-1 transition-transform duration-300">Case Studies</span>
+              </a>
+            </li>
+            <li>
+              <a href="/careers" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors flex items-center group">
+                <span class="w-1 h-1 bg-gray-400 rounded-full mr-2 group-hover:bg-primary-500 group-hover:w-2 transition-all duration-300"></span>
+                <span class="group-hover:translate-x-1 transition-transform duration-300">Careers</span>
+              </a>
+            </li>
+            <li>
+              <a href="/contact" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors flex items-center group">
+                <span class="w-1 h-1 bg-gray-400 rounded-full mr-2 group-hover:bg-primary-500 group-hover:w-2 transition-all duration-300"></span>
+                <span class="group-hover:translate-x-1 transition-transform duration-300">Contact</span>
+              </a>
+            </li>
           </ul>
         </div>
-      ))}
-    </div>
 
-    <!-- Newsletter -->
-    <div class="border-t border-gray-200 dark:border-gray-800 pt-8 pb-12">
-      <div class="max-w-md mx-auto lg:mx-0">
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-          Subscribe to our newsletter
-        </h3>
-        <p class="text-gray-600 dark:text-gray-400 mb-4">
-          Get the latest news and updates from our team.
-        </p>
-        <form class="flex">
-          <input
-            type="email"
-            placeholder="Enter your email"
-            class="flex-1 min-w-0 px-4 py-2 text-gray-900 dark:text-white bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-l-md focus:outline-none focus:ring-2 focus:ring-primary-500"
-            required
-          />
-          <button
-            type="submit"
-            class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-r-md text-white bg-primary-600 hover:bg-primary-700 dark:bg-primary-700 dark:hover:bg-primary-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
-          >
-            Subscribe
-          </button>
-        </form>
+        <!-- Services Links -->
+        <div class="footer-section" data-section="services">
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-5 pb-2 border-b border-gray-200 dark:border-gray-700 inline-block">
+            Services
+          </h3>
+          <ul class="space-y-3">
+            <li>
+              <a href="/services/ai-strategy" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors flex items-center group">
+                <span class="w-1 h-1 bg-gray-400 rounded-full mr-2 group-hover:bg-primary-500 group-hover:w-2 transition-all duration-300"></span>
+                <span class="group-hover:translate-x-1 transition-transform duration-300">AI Strategy</span>
+              </a>
+            </li>
+            <li>
+              <a href="/services/product-engineering" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors flex items-center group">
+                <span class="w-1 h-1 bg-gray-400 rounded-full mr-2 group-hover:bg-primary-500 group-hover:w-2 transition-all duration-300"></span>
+                <span class="group-hover:translate-x-1 transition-transform duration-300">Product Engineering</span>
+              </a>
+            </li>
+            <li>
+              <a href="/services/digital-transformation" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors flex items-center group">
+                <span class="w-1 h-1 bg-gray-400 rounded-full mr-2 group-hover:bg-primary-500 group-hover:w-2 transition-all duration-300"></span>
+                <span class="group-hover:translate-x-1 transition-transform duration-300">Digital Transformation</span>
+              </a>
+            </li>
+            <li>
+              <a href="/services/cloud-solutions" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors flex items-center group">
+                <span class="w-1 h-1 bg-gray-400 rounded-full mr-2 group-hover:bg-primary-500 group-hover:w-2 transition-all duration-300"></span>
+                <span class="group-hover:translate-x-1 transition-transform duration-300">Cloud Solutions</span>
+              </a>
+            </li>
+            <li>
+              <a href="/services/data-analytics" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors flex items-center group">
+                <span class="w-1 h-1 bg-gray-400 rounded-full mr-2 group-hover:bg-primary-500 group-hover:w-2 transition-all duration-300"></span>
+                <span class="group-hover:translate-x-1 transition-transform duration-300">Data Analytics</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Resources Links -->
+        <div class="footer-section" data-section="resources">
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-5 pb-2 border-b border-gray-200 dark:border-gray-700 inline-block">
+            Resources
+          </h3>
+          <ul class="space-y-3">
+            <li>
+              <a href="/blog" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors flex items-center group">
+                <span class="w-1 h-1 bg-gray-400 rounded-full mr-2 group-hover:bg-primary-500 group-hover:w-2 transition-all duration-300"></span>
+                <span class="group-hover:translate-x-1 transition-transform duration-300">Blog</span>
+              </a>
+            </li>
+            <li>
+              <a href="/case-studies" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors flex items-center group">
+                <span class="w-1 h-1 bg-gray-400 rounded-full mr-2 group-hover:bg-primary-500 group-hover:w-2 transition-all duration-300"></span>
+                <span class="group-hover:translate-x-1 transition-transform duration-300">Case Studies</span>
+              </a>
+            </li>
+            <li>
+              <a href="/resources/whitepapers" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors flex items-center group">
+                <span class="w-1 h-1 bg-gray-400 rounded-full mr-2 group-hover:bg-primary-500 group-hover:w-2 transition-all duration-300"></span>
+                <span class="group-hover:translate-x-1 transition-transform duration-300">Whitepapers</span>
+              </a>
+            </li>
+            <li>
+              <a href="/resources/webinars" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors flex items-center group">
+                <span class="w-1 h-1 bg-gray-400 rounded-full mr-2 group-hover:bg-primary-500 group-hover:w-2 transition-all duration-300"></span>
+                <span class="group-hover:translate-x-1 transition-transform duration-300">Webinars</span>
+              </a>
+            </li>
+            <li>
+              <a href="/docs" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors flex items-center group">
+                <span class="w-1 h-1 bg-gray-400 rounded-full mr-2 group-hover:bg-primary-500 group-hover:w-2 transition-all duration-300"></span>
+                <span class="group-hover:translate-x-1 transition-transform duration-300">Documentation</span>
+              </a>
+            </li>
+            <li>
+              <a href="/resources/faq" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors flex items-center group">
+                <span class="w-1 h-1 bg-gray-400 rounded-full mr-2 group-hover:bg-primary-500 group-hover:w-2 transition-all duration-300"></span>
+                <span class="group-hover:translate-x-1 transition-transform duration-300">FAQ</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Legal Links -->
+        <div class="footer-section" data-section="legal">
+          <h3 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-5 pb-2 border-b border-gray-200 dark:border-gray-700 inline-block">
+            Legal
+          </h3>
+          <ul class="space-y-3">
+            <li>
+              <a href="/privacy-policy" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors flex items-center group">
+                <span class="w-1 h-1 bg-gray-400 rounded-full mr-2 group-hover:bg-primary-500 group-hover:w-2 transition-all duration-300"></span>
+                <span class="group-hover:translate-x-1 transition-transform duration-300">Privacy Policy</span>
+              </a>
+            </li>
+            <li>
+              <a href="/terms-of-service" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors flex items-center group">
+                <span class="w-1 h-1 bg-gray-400 rounded-full mr-2 group-hover:bg-primary-500 group-hover:w-2 transition-all duration-300"></span>
+                <span class="group-hover:translate-x-1 transition-transform duration-300">Terms of Service</span>
+              </a>
+            </li>
+            <li>
+              <a href="/cookie-policy" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors flex items-center group">
+                <span class="w-1 h-1 bg-gray-400 rounded-full mr-2 group-hover:bg-primary-500 group-hover:w-2 transition-all duration-300"></span>
+                <span class="group-hover:translate-x-1 transition-transform duration-300">Cookie Policy</span>
+              </a>
+            </li>
+            <li>
+              <a href="/gdpr" class="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors flex items-center group">
+                <span class="w-1 h-1 bg-gray-400 rounded-full mr-2 group-hover:bg-primary-500 group-hover:w-2 transition-all duration-300"></span>
+                <span class="group-hover:translate-x-1 transition-transform duration-300">GDPR</span>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
 
-    <!-- Copyright -->
+   <!-- Office Locations -->
+   <div class="mb-8">
+    <h4 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4 flex items-center pb-2 border-b border-gray-200 dark:border-gray-700">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+      Our Global Offices
+    </h4>
+
+    <div class="flex flex-wrap justify-between items-center gap-2 mt-4 overflow-x-auto pb-2">
+      <!-- Netherlands Office -->
+      <div class="office-card card flex-shrink-0 p-0 hover:border-primary-200 dark:hover:border-primary-800">
+        <div class="flex items-center p-3">
+          <div class="flex-shrink-0 bg-primary-50 dark:bg-primary-900/30 p-2 rounded-full mr-3 overflow-hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 640 480">
+              <!-- Netherlands Flag -->
+              <g fill-rule="evenodd" stroke-width="1pt">
+                <rect width="640" height="480" fill="#fff" rx="0" ry="0"/>
+                <rect width="640" height="160" y="320" fill="#21468b" rx="0" ry="0"/>
+                <rect width="640" height="160" fill="#ae1c28" rx="0" ry="0"/>
+              </g>
+            </svg>
+          </div>
+          <div>
+            <h5 class="font-medium text-gray-900 dark:text-white text-sm">Netherlands HQ</h5>
+            <p class="text-xs text-gray-600 dark:text-gray-400">Amsterdam, Netherlands</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- US Office -->
+      <div class="office-card card flex-shrink-0 p-0 hover:border-primary-200 dark:hover:border-primary-800">
+        <div class="flex items-center p-3">
+          <div class="flex-shrink-0 bg-primary-50 dark:bg-primary-900/30 p-2 rounded-full mr-3 overflow-hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 640 480">
+              <!-- USA Flag -->
+              <g fill-rule="evenodd">
+                <g stroke-width="1pt">
+                  <path fill="#bd3d44" d="M0 0h972.8v39.4H0zm0 78.8h972.8v39.4H0zm0 78.7h972.8v39.4H0zm0 78.8h972.8v39.4H0zm0 78.8h972.8v39.4H0zm0 78.7h972.8v39.4H0zm0 78.8h972.8v39.4H0z" transform="scale(.9375)"/>
+                  <path fill="#fff" d="M0 39.4h972.8v39.4H0zm0 78.8h972.8v39.3H0zm0 78.7h972.8v39.4H0zm0 78.8h972.8v39.4H0zm0 78.8h972.8v39.4H0zm0 78.7h972.8v39.4H0z" transform="scale(.9375)"/>
+                </g>
+                <path fill="#192f5d" d="M0 0h389.1v275.7H0z" transform="scale(.9375)"/>
+                <path fill="#fff" d="M32.4 11.8L36 22.7h11.4l-9.2 6.7 3.5 11-9.3-6.8-9.2 6.7 3.5-10.9-9.3-6.7H29zm64.9 0l3.5 10.9h11.5l-9.3 6.7 3.5 11-9.2-6.8-9.3 6.7 3.5-10.9-9.2-6.7h11.4zm64.8 0l3.6 10.9H177l-9.2 6.7 3.5 11-9.3-6.8-9.2 6.7 3.5-10.9-9.3-6.7h11.5zm64.9 0l3.5 10.9H242l-9.3 6.7 3.6 11-9.3-6.8-9.3 6.7 3.6-10.9-9.3-6.7h11.4zm64.8 0l3.6 10.9h11.4l-9.2 6.7 3.5 11-9.3-6.8-9.2 6.7 3.5-10.9-9.2-6.7h11.4zm64.9 0l3.5 10.9h11.5l-9.3 6.7 3.6 11-9.3-6.8-9.3 6.7 3.6-10.9-9.3-6.7h11.5zM64.9 39.4l3.5 10.9h11.5L70.6 57 74 67.9l-9-6.7-9.3 6.7L59 57l-9-6.7h11.4zm64.8 0l3.6 10.9h11.4l-9.3 6.7 3.6 10.9-9.3-6.7-9.3 6.7L124 57l-9.3-6.7h11.5zm64.9 0l3.5 10.9h11.5l-9.3 6.7 3.5 10.9-9.2-6.7-9.3 6.7 3.5-10.9-9.2-6.7H191zm64.8 0l3.6 10.9h11.4l-9.3 6.7 3.6 10.9-9.3-6.7-9.2 6.7 3.5-10.9-9.3-6.7H256zm64.9 0l3.5 10.9h11.5L330 57l3.5 10.9-9.2-6.7-9.3 6.7 3.5-10.9-9.2-6.7h11.4z" transform="scale(.9375)"/>
+              </g>
+            </svg>
+          </div>
+          <div>
+            <h5 class="font-medium text-gray-900 dark:text-white text-sm">US Office</h5>
+            <p class="text-xs text-gray-600 dark:text-gray-400">350 5th Ave, New York, NY 10118</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- India Office -->
+      <div class="office-card card flex-shrink-0 p-0 hover:border-primary-200 dark:hover:border-primary-800">
+        <div class="flex items-center p-3">
+          <div class="flex-shrink-0 bg-primary-50 dark:bg-primary-900/30 p-2 rounded-full mr-3 overflow-hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 640 480">
+              <!-- India Flag -->
+              <g fill-rule="evenodd">
+                <path fill="#f93" d="M0 0h640v160H0z"/>
+                <path fill="#fff" d="M0 160h640v160H0z"/>
+                <path fill="#128807" d="M0 320h640v160H0z"/>
+                <g transform="matrix(3.2 0 0 3.2 320 240)">
+                  <circle r="20" fill="#008"/>
+                  <circle r="17.5" fill="#fff"/>
+                  <circle r="3.5" fill="#008"/>
+                  <g id="d">
+                    <g id="c">
+                      <g id="b">
+                        <g id="a" fill="#008">
+                          <circle r=".9" transform="rotate(7.5 -8.8 133.5)"/>
+                          <path d="M0 17.5L.6 7 0 2l-.6 5L0 17.5z"/>
+                        </g>
+                        <use width="100%" height="100%" transform="rotate(15)" xlink:href="#a"/>
+                      </g>
+                      <use width="100%" height="100%" transform="rotate(30)" xlink:href="#b"/>
+                    </g>
+                    <use width="100%" height="100%" transform="rotate(60)" xlink:href="#c"/>
+                  </g>
+                  <use width="100%" height="100%" transform="rotate(120)" xlink:href="#d"/>
+                  <use width="100%" height="100%" transform="rotate(-120)" xlink:href="#d"/>
+                </g>
+              </g>
+            </svg>
+          </div>
+          <div>
+            <h5 class="font-medium text-gray-900 dark:text-white text-sm">India Office</h5>
+            <p class="text-xs text-gray-600 dark:text-gray-400">WeWork Berger Delhi One, Noida, UP 201301</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dubai Office -->
+      <div class="office-card card flex-shrink-0 p-0 hover:border-primary-200 dark:hover:border-primary-800">
+        <div class="flex items-center p-3">
+          <div class="flex-shrink-0 bg-primary-50 dark:bg-primary-900/30 p-2 rounded-full mr-3 overflow-hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 640 480">
+              <!-- UAE Flag -->
+              <path fill="#00732f" d="M0 0h640v160H0z"/>
+              <path fill="#fff" d="M0 160h640v160H0z"/>
+              <path d="M0 320h640v160H0z"/>
+              <path fill="red" d="M0 0h220v480H0z"/>
+            </svg>
+          </div>
+          <div>
+            <h5 class="font-medium text-gray-900 dark:text-white text-sm">Dubai Office</h5>
+            <p class="text-xs text-gray-600 dark:text-gray-400">1 Al Barsha Rd, Dubai, UAE</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- UK Office -->
+      <div class="office-card card flex-shrink-0 p-0 hover:border-primary-200 dark:hover:border-primary-800">
+        <div class="flex items-center p-3">
+          <div class="flex-shrink-0 bg-primary-50 dark:bg-primary-900/30 p-2 rounded-full mr-3 overflow-hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 640 480">
+              <!-- UK Flag -->
+              <path fill="#012169" d="M0 0h640v480H0z"/>
+              <path fill="#FFF" d="M75 0l244 181L562 0h78v62L400 241l240 178v61h-80L320 301 81 480H0v-60l239-178L0 64V0h75z"/>
+              <path fill="#C8102E" d="M424 281l216 159v40L369 281h55zm-184 20l6 35L54 480H0l240-179zM640 0v3L391 191l2-44L590 0h50zM0 0l239 176h-60L0 42V0z"/>
+              <path fill="#FFF" d="M241 0v480h160V0H241zM0 160v160h640V160H0z"/>
+              <path fill="#C8102E" d="M0 193v96h640v-96H0zM273 0v480h96V0h-96z"/>
+            </svg>
+          </div>
+          <div>
+            <h5 class="font-medium text-gray-900 dark:text-white text-sm">UK Office</h5>
+            <p class="text-xs text-gray-600 dark:text-gray-400">120 High Rd, London N2 9ED, UK</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Newsletter -->
+    <div class="border-t border-gray-200 dark:border-gray-800 pt-12 pb-12">
+      <div class="max-w-4xl mx-auto">
+        <div class="card bg-gradient-to-r from-primary-50/80 to-secondary-50/80 dark:from-primary-900/20 dark:to-secondary-900/20 p-8 relative overflow-hidden">
+          <!-- Background pattern -->
+          <div class="absolute inset-0 opacity-10 pointer-events-none">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="newsletter-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                  <circle cx="10" cy="10" r="1" fill="currentColor" class="text-primary-500" />
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#newsletter-pattern)" />
+            </svg>
+          </div>
+
+          <div class="relative z-10 md:flex items-center justify-between">
+            <div class="md:w-1/2 mb-6 md:mb-0 md:pr-8">
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <span class="gradient-text">Subscribe to our newsletter</span>
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4 text-base leading-relaxed">
+                Stay updated with the latest trends in AI, software development, and digital transformation. We'll send you valuable insights, case studies, and industry news.
+              </p>
+              <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                We respect your privacy. No spam, ever.
+              </div>
+            </div>
+
+            <div class="md:w-1/2">
+              <form id="newsletter-form" class="space-y-3">
+                <div>
+                  <label for="newsletter-email" class="sr-only">Email address</label>
+                  <input
+                    id="newsletter-email"
+                    type="email"
+                    placeholder="Enter your email address"
+                    class="w-full px-4 py-3 text-gray-900 dark:text-white bg-white/90 dark:bg-gray-800/90 border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all shadow-sm"
+                    required
+                  />
+                </div>
+                <div class="flex items-center">
+                  <input
+                    id="newsletter-consent"
+                    type="checkbox"
+                    class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
+                    required
+                  />
+                  <label for="newsletter-consent" class="ml-2 block text-sm text-gray-600 dark:text-gray-400">
+                    I agree to receive marketing emails
+                  </label>
+                </div>
+                <button
+                  type="submit"
+                  class="btn-primary w-full inline-flex justify-center items-center px-5 py-3 text-base font-medium rounded-xl"
+                >
+                  Subscribe
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                  </svg>
+                </button>
+                <div id="newsletter-success" class="hidden text-sm text-green-600 dark:text-green-400 mt-2">
+                  Thank you for subscribing! Please check your email to confirm your subscription.
+                </div>
+                <div id="newsletter-error" class="hidden text-sm text-red-600 dark:text-red-400 mt-2">
+                  There was an error processing your subscription. Please try again.
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright and Back to Top -->
     <div class="border-t border-gray-200 dark:border-gray-800 pt-8">
-      <p class="text-sm text-gray-500 dark:text-gray-400 text-center">
-        &copy; {currentYear} AppVin Technologies. All rights reserved.
-      </p>
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 md:mb-0">
+          &copy; {currentYear} <span class="font-medium text-primary-600 dark:text-primary-400">AppVin Technologies</span>. All rights reserved.
+        </p>
+
+        <div class="flex items-center space-x-4">
+          <button id="back-to-top" class="flex items-center text-sm text-gray-500 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors hover-lift">
+            <span>Back to top</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1 group-hover:translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+            </svg>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </footer>
+
+<script is:inline>
+  // Newsletter form submission
+  document.addEventListener('DOMContentLoaded', () => {
+    // Newsletter form handling
+    const newsletterForm = document.getElementById('newsletter-form');
+    const newsletterSuccess = document.getElementById('newsletter-success');
+    const newsletterError = document.getElementById('newsletter-error');
+
+    if (newsletterForm && newsletterForm instanceof HTMLFormElement) {
+      newsletterForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Simulate form submission
+        const emailInput = document.getElementById('newsletter-email');
+        const consentInput = document.getElementById('newsletter-consent');
+
+        if (emailInput instanceof HTMLInputElement &&
+            consentInput instanceof HTMLInputElement &&
+            emailInput.value &&
+            consentInput.checked) {
+          // Hide the form and show success message
+          newsletterForm.classList.add('opacity-50', 'pointer-events-none');
+
+          if (newsletterSuccess) {
+            newsletterSuccess.classList.remove('hidden');
+          }
+
+          // In a real implementation, you would send the data to your server here
+          console.log('Newsletter subscription:', { email: emailInput.value, consent: consentInput.checked });
+
+          // Reset form after 5 seconds for demo purposes
+          setTimeout(() => {
+            newsletterForm.reset();
+            newsletterForm.classList.remove('opacity-50', 'pointer-events-none');
+
+            if (newsletterSuccess) {
+              newsletterSuccess.classList.add('hidden');
+            }
+          }, 5000);
+        } else {
+          // Show error message
+          if (newsletterError) {
+            newsletterError.classList.remove('hidden');
+
+            // Hide error after 3 seconds
+            setTimeout(() => {
+              newsletterError.classList.add('hidden');
+            }, 3000);
+          }
+        }
+      });
+    }
+
+    // Back to top functionality
+    const backToTopButton = document.getElementById('back-to-top');
+
+    if (backToTopButton) {
+      backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+
+      // Show/hide back to top button based on scroll position
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+          backToTopButton.classList.add('opacity-100');
+          backToTopButton.classList.remove('opacity-0');
+        } else {
+          backToTopButton.classList.add('opacity-0');
+          backToTopButton.classList.remove('opacity-100');
+        }
+      });
+    }
+
+    // Office location cards hover effect
+    const officeCards = document.querySelectorAll('.office-card');
+    officeCards.forEach(card => {
+      if (card instanceof HTMLElement) {
+        card.addEventListener('mouseenter', () => {
+          card.classList.add('scale-105');
+          card.classList.add('shadow-md');
+        });
+
+        card.addEventListener('mouseleave', () => {
+          card.classList.remove('scale-105');
+          card.classList.remove('shadow-md');
+        });
+      }
+    });
+  });
+</script>
+
+<style>
+  /* Grid pattern background */
+  .bg-grid-pattern {
+    background-image:
+      linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0,0,0,0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  /* Footer link hover animation */
+  .footer-section a:hover .dot {
+    width: 8px;
+    background-color: var(--color-primary-500);
+  }
+</style>

@@ -3,7 +3,6 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import PlaceholderImage from '../../components/PlaceholderImage.astro';
 
 // Get all case studies from the content collection
 const caseStudiesCollection = await getCollection('case-studies');
@@ -161,8 +160,10 @@ const allServices = [...new Set(caseStudies.flatMap(study => study.data.services
           </a>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {caseStudies.filter(study => study.data.featured).map((study, index) => (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {caseStudies.filter(study =>
+            ['go-carshare', 'moove-installer', 'moove-driver', 'gribb', 'go-lab', 'dominos', 'kfc', 'clear-bio', 'carbon-quench', 'go-trust', 'go-emp'].includes(study.slug)
+          ).map((study, index) => (
             <div
               class="case-study-card group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-100 dark:border-gray-700 hover:border-primary-200 dark:hover:border-primary-800 transition-all hover:shadow-xl animate-in fade-in slide-in-from-bottom-5 duration-500"
               data-industry={study.data.industry.toLowerCase()}
@@ -172,35 +173,12 @@ const allServices = [...new Set(caseStudies.flatMap(study => study.data.services
               <div class="absolute inset-0 bg-gradient-to-br from-primary-50 to-white dark:from-primary-900/10 dark:to-gray-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
               <div class="h-48 relative overflow-hidden">
-                {study.data.image ? (
-                  <img
-                    src={study.data.image}
-                    alt={study.data.title}
-                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-                  />
-                  <div class="hidden w-full h-full">
-                    <PlaceholderImage
-                      width={800}
-                      height={400}
-                      category={study.data.industry === "Healthcare" ? "nature" :
-                               study.data.industry === "Finance" ? "business" :
-                               study.data.industry === "Retail" ? "business" : "tech"}
-                      alt={study.data.title}
-                      className="w-full h-full transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                ) : (
-                  <PlaceholderImage
-                    width={800}
-                    height={400}
-                    category={study.data.industry === "Healthcare" ? "nature" :
-                             study.data.industry === "Finance" ? "business" :
-                             study.data.industry === "Retail" ? "business" : "tech"}
-                    alt={study.data.title}
-                    className="w-full h-full transition-transform duration-500 group-hover:scale-105"
-                  />
-                )}
+                {/* Use a default image for all case studies to ensure consistency */}
+                <img
+                  src={study.data.image}
+                  alt={study.data.title}
+                  class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+                />
 
                 <!-- Overlay gradient -->
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -260,41 +238,50 @@ const allServices = [...new Set(caseStudies.flatMap(study => study.data.services
 <script>
   // Enhanced filter functionality
   document.addEventListener('DOMContentLoaded', () => {
-    const industryFilter = document.getElementById('industry-filter');
-    const serviceFilter = document.getElementById('service-filter');
-    const searchInput = document.getElementById('search-input');
+    const industryFilter = document.getElementById('industry-filter') as HTMLSelectElement;
+    const serviceFilter = document.getElementById('service-filter') as HTMLSelectElement;
+    const searchInput = document.getElementById('search-input') as HTMLInputElement;
     const resetFiltersBtn = document.getElementById('reset-filters');
     const caseStudyCards = document.querySelectorAll('.case-study-card');
-    
+
+    // Check if all elements exist
+    if (!industryFilter || !serviceFilter || !searchInput) {
+      console.error('One or more filter elements not found');
+      return;
+    }
+
     // Filter function
     const filterCaseStudies = () => {
       const industryValue = industryFilter.value.toLowerCase();
       const serviceValue = serviceFilter.value.toLowerCase();
       const searchValue = searchInput.value.toLowerCase();
-      
+
       let visibleCount = 0;
-      
+
       caseStudyCards.forEach(card => {
-        const industry = card.getAttribute('data-industry');
-        const services = card.getAttribute('data-services');
-        const title = card.querySelector('h3').textContent.toLowerCase();
-        const description = card.querySelector('p').textContent.toLowerCase();
-        
+        const industry = card.getAttribute('data-industry') || '';
+        const services = card.getAttribute('data-services') || '';
+        const titleElement = card.querySelector('h3');
+        const descriptionElement = card.querySelector('p');
+
+        const title = titleElement?.textContent?.toLowerCase() || '';
+        const description = descriptionElement?.textContent?.toLowerCase() || '';
+
         const matchesIndustry = industryValue === 'all' || industry === industryValue;
         const matchesService = serviceValue === 'all' || services.includes(serviceValue);
         const matchesSearch = searchValue === '' ||
                              title.includes(searchValue) ||
                              description.includes(searchValue);
-        
+
         if (matchesIndustry && matchesService && matchesSearch) {
-          card.style.display = 'block';
+          (card as HTMLElement).style.display = 'block';
           visibleCount++;
         } else {
-          card.style.display = 'none';
+          (card as HTMLElement).style.display = 'none';
         }
       });
     };
-    
+
     // Reset filters function
     const resetFilters = () => {
       industryFilter.value = 'all';
@@ -302,12 +289,12 @@ const allServices = [...new Set(caseStudies.flatMap(study => study.data.services
       searchInput.value = '';
       filterCaseStudies();
     };
-    
+
     // Add event listeners
     industryFilter.addEventListener('change', filterCaseStudies);
     serviceFilter.addEventListener('change', filterCaseStudies);
     searchInput.addEventListener('input', filterCaseStudies);
-    
+
     // Reset filters button
     if (resetFiltersBtn) {
       resetFiltersBtn.addEventListener('click', resetFilters);
