@@ -37,9 +37,9 @@ const clientsRow1 = [
 // Second row of clients
 const clientsRow2 = [
   {
-    name: 'Jumbo',
-    logo: 'https://staging.appvintech.com/wp-content/uploads/2024/04/jumbo-logo-1024x286.webp',
-    alt: 'Jumbo logo'
+    name: 'New Client',
+    logo: '/images/clients/new-client-logo-perfect.svg',
+    alt: 'New Client logo'
   },
   {
     name: 'Client 8',
@@ -87,7 +87,7 @@ const clientsRow3 = [
   },
   {
     name: 'Client 16',
-    logo: 'https://staging.appvintech.com/wp-content/uploads/2025/05/Frame-1171279665.svg',
+    logo: '/images/clients/Frame 1686552147.svg',
     alt: 'Client 16 logo'
   },
   {
@@ -146,12 +146,13 @@ const clientsRow3 = [
         {clientsRow2.map((client, index) => (
           <div
             class="flex items-center justify-center p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:-translate-y-1 group animate-in fade-in slide-in-from-bottom-5"
-            style={`animation-delay: ${(index + 6) * 50}ms`}
+            style={`animation-delay: ${(index + 6) * 50}ms; ${client.name === 'New Client' ? 'padding: 0;' : ''}`}
           >
             <img
               src={client.logo}
               alt={client.alt}
               class="max-h-12 w-auto object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+              style={client.name === 'New Client' ? 'height: 40px; width: auto; max-width: 100%; object-fit: contain;' : ''}
             />
           </div>
         ))}
@@ -168,6 +169,7 @@ const clientsRow3 = [
               src={client.logo}
               alt={client.alt}
               class="max-h-12 w-auto object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+              style={client.name === 'Client 16' ? 'height: 40px; width: auto; max-width: 100%; object-fit: contain;' : ''}
             />
           </div>
         ))}

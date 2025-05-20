@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="80" viewBox="0 0 200 80">
+  <!-- White background with rounded corners -->
+  <rect width="200" height="80" fill="white" rx="10" />
+  
+  <!-- Logo elements with better proportions and spacing -->
+  <g transform="translate(60, 20)">
+    <!-- Bottom left square -->
+    <rect x="0" y="20" width="16" height="16" rx="3" fill="#000000" />
+    
+    <!-- Middle rounded rectangle -->
+    <rect x="20" y="0" width="16" height="36" rx="8" fill="#000000" />
+    
+    <!-- Top right square -->
+    <rect x="40" y="0" width="16" height="16" rx="3" fill="#000000" />
+    
+    <!-- Bottom right rounded rectangle -->
+    <rect x="40" y="20" width="16" height="16" rx="8" fill="#000000" />
+    
+    <!-- Red circle -->
+    <circle cx="8" cy="8" r="8" fill="#E30613" />
+  </g>
+</svg>

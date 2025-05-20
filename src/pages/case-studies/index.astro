@@ -162,7 +162,7 @@ const allServices = [...new Set(caseStudies.flatMap(study => study.data.services
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {caseStudies.filter(study =>
-            ['go-carshare', 'moove-installer', 'moove-driver', 'gribb', 'go-lab', 'dominos', 'kfc', 'clear-bio', 'carbon-quench', 'go-trust', 'go-ems'].includes(study.slug)
+            ['go-carshare', 'moove-installer', 'moove-driver', 'gribb', 'go-lab', 'dominos', 'kfc', 'clear-bio', 'carbon-quench', 'go-trust', 'go-emp'].includes(study.slug)
           ).map((study, index) => (
             <div
               class="case-study-card group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-100 dark:border-gray-700 hover:border-primary-200 dark:hover:border-primary-800 transition-all hover:shadow-xl animate-in fade-in slide-in-from-bottom-5 duration-500"

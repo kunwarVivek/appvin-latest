@@ -5,7 +5,7 @@ import { getCollection } from 'astro:content';
 const caseStudiesCollection = await getCollection('case-studies');
 
 // Featured case studies to display in specific order (matching remote site)
-const featuredCaseStudySlugs = ['dominos', 'kfc', 'moove', 'clear-bio'];
+const featuredCaseStudySlugs = ['dominos', 'kfc', 'moove', 'go-emp'];
 
 // Service categories for filter buttons
 const serviceCategories = [
@@ -63,16 +63,16 @@ const featuredCaseStudies = [
     }
   },
   {
-    slug: 'clear-bio',
+    slug: 'go-emp',
     data: {
-      title: "Clear.bio - Healthcare Analytics",
-      subtitle: "Transforming Medical Data into Actionable Insights",
-      description: "Developed a HIPAA-compliant analytics platform that helped healthcare providers reduce administrative costs by 32% and improve patient outcomes through data-driven decision making. The platform securely integrates with electronic health records (EHR) systems, medical devices, and billing systems to create a comprehensive view of patient care and operational efficiency. Advanced analytics and visualization tools help clinicians identify trends, predict patient risks, and optimize treatment protocols while maintaining strict data privacy and security standards.",
-      client: "Clear.bio",
-      industry: "Healthcare",
-      services: ["Data Analytics", "Cloud Infrastructure", "Security & Compliance"],
-      image: "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552038.png", // Clear.bio image from staging site
-      logo: "https://staging.appvintech.com/wp-content/uploads/2024/05/Clip-path-group.svg", // Clear.bio logo from staging site
+      title: "GO-EMP: Your Ultimate Employee Management Software",
+      subtitle: "Comprehensive B2B Employee Data Management Solution",
+      description: "GO-Employee is a B2B app enabling businesses to manage employee data. Employees use the app for leave requests, attendance, task tracking, and expense declarations, along with support and feedback features.",
+      client: "GO-EMP Solutions",
+      industry: "Finance",
+      services: ["Mobile App Development", "Web Development", "Backend Development"],
+      image: "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552041.png",
+      logo: "/images/case-studies/go-emp-final.svg",
       featured: true,
       order: 4
     }
@@ -132,7 +132,7 @@ const industryImages: Record<string, string> = {
       ))}
       <button
         class="px-4 py-2 rounded-full text-sm font-semibold transition-all bg-primary-600 text-white hover:bg-primary-700 ml-2 shadow-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 cursor-pointer"
-        onclick="window.location.href='/services'"
+        onclick="window.location.href='/case-studies'"
       >
         View All
       </button>
@@ -156,7 +156,7 @@ const industryImages: Record<string, string> = {
                   study.slug === 'dominos' ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552045.png" :
                   study.slug === 'kfc' ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552041-1.png" :
                   study.slug === 'moove' ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552033-2.png" :
-                  study.slug === 'clear-bio' ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552038.png" :
+                  study.slug === 'go-emp' ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552041.png" :
                   study.data.industry === "Food & Beverage" ? "/images/case-studies/new/ab-inbev.webp" :
                   study.data.industry === "Healthcare" ? "/images/case-studies/new/healthcare-digital-transformation.webp" :
                   study.data.industry === "Technology" ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552038.png" :
@@ -195,9 +195,9 @@ const industryImages: Record<string, string> = {
                   alt={`${study.data.client} logo`}
                   class="h-full object-contain max-w-[180px]"
                 />
-              ) : study.slug === 'clear-bio' ? (
+              ) : study.slug === 'go-emp' ? (
                 <img
-                  src="https://staging.appvintech.com/wp-content/uploads/2024/05/Clip-path-group.svg"
+                  src="/images/case-studies/go-emp-final.svg"
                   alt={`${study.data.client} logo`}
                   class="h-full object-contain max-w-[180px]"
                 />
