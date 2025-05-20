@@ -1,11 +1,10 @@
 ---
-import { getCollection } from 'astro:content';
-
-// Get all case studies from the content collection
-const caseStudiesCollection = await getCollection('case-studies');
+// We're using hardcoded data instead of the collection for now
+// import { getCollection } from 'astro:content';
+// const caseStudiesCollection = await getCollection('case-studies');
 
 // Featured case studies to display in specific order (matching remote site)
-const featuredCaseStudySlugs = ['dominos', 'kfc', 'moove', 'go-emp'];
+// These slugs are used to match the order in the featuredCaseStudies array
 
 // Service categories for filter buttons
 const serviceCategories = [
@@ -63,16 +62,16 @@ const featuredCaseStudies = [
     }
   },
   {
-    slug: 'go-emp',
+    slug: 'clear-bio',
     data: {
-      title: "GO-EMP: Your Ultimate Employee Management Software",
-      subtitle: "Comprehensive B2B Employee Data Management Solution",
-      description: "GO-Employee is a B2B app enabling businesses to manage employee data. Employees use the app for leave requests, attendance, task tracking, and expense declarations, along with support and feedback features.",
-      client: "GO-EMP Solutions",
-      industry: "Finance",
-      services: ["Mobile App Development", "Web Development", "Backend Development"],
-      image: "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552041.png",
-      logo: "/images/case-studies/go-emp-final.svg",
+      title: "Clear.bio: Stay On Track With A Healthy Lifestyle",
+      subtitle: "Comprehensive Health & Wellness App",
+      description: "A Netherlands-based health & wellness app, developed by AppVin to help users consolidate health data using a nutrition tracker. The app features a user-friendly interface for storing health information conveniently.",
+      client: "Clear.bio",
+      industry: "Healthcare",
+      services: ["Mobile App Development", "UX/UI Design", "Backend Development", "Data Analytics"],
+      image: "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552038.png",
+      logo: "https://staging.appvintech.com/wp-content/uploads/2024/05/Clip-path-group.svg",
       featured: true,
       order: 4
     }
@@ -80,16 +79,17 @@ const featuredCaseStudies = [
 ];
 
 // Professional industry-specific images for case studies
-const industryImages: Record<string, string> = {
-  "Technology": "/images/case-studies/ai-customer-service.jpg",
-  "Healthcare": "/images/case-studies/healthcare-digital-transformation.jpg",
-  "Food & Beverage": "/images/case-studies/kfc.webp",
-  "Transportation & Logistics": "/images/case-studies/gribb.webp",
-  "Finance": "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-  "Retail": "https://images.unsplash.com/photo-1586880244406-556ebe35f282?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-  "Manufacturing": "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-  "Energy": "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-};
+// These images are now directly referenced in the component
+// const industryImages: Record<string, string> = {
+//   "Technology": "/images/case-studies/ai-customer-service.jpg",
+//   "Healthcare": "/images/case-studies/healthcare-digital-transformation.jpg",
+//   "Food & Beverage": "/images/case-studies/kfc.webp",
+//   "Transportation & Logistics": "/images/case-studies/gribb.webp",
+//   "Finance": "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+//   "Retail": "https://images.unsplash.com/photo-1586880244406-556ebe35f282?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+//   "Manufacturing": "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+//   "Energy": "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+// };
 ---
 
 <section id="case-studies" class="py-20 bg-gray-50 dark:bg-gray-800 relative overflow-hidden">
@@ -121,7 +121,7 @@ const industryImages: Record<string, string> = {
 
     <!-- Service filter buttons -->
     <div class="flex flex-wrap justify-center gap-3 mb-12">
-      {serviceCategories.map((category, idx) => (
+      {serviceCategories.map((category) => (
         <button
           class={`px-4 py-2 rounded-full text-sm font-medium transition-all cursor-default opacity-70 pointer-events-none bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300`}
           data-filter={category.id}
@@ -132,7 +132,7 @@ const industryImages: Record<string, string> = {
       ))}
       <button
         class="px-4 py-2 rounded-full text-sm font-semibold transition-all bg-primary-600 text-white hover:bg-primary-700 ml-2 shadow-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 cursor-pointer"
-        onclick="window.location.href='/case-studies'"
+        onclick="window.location.href='/services'"
       >
         View All
       </button>
@@ -156,7 +156,7 @@ const industryImages: Record<string, string> = {
                   study.slug === 'dominos' ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552045.png" :
                   study.slug === 'kfc' ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552041-1.png" :
                   study.slug === 'moove' ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552033-2.png" :
-                  study.slug === 'go-emp' ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552041.png" :
+                  study.slug === 'clear-bio' ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552038.png" :
                   study.data.industry === "Food & Beverage" ? "/images/case-studies/new/ab-inbev.webp" :
                   study.data.industry === "Healthcare" ? "/images/case-studies/new/healthcare-digital-transformation.webp" :
                   study.data.industry === "Technology" ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552038.png" :
@@ -195,9 +195,9 @@ const industryImages: Record<string, string> = {
                   alt={`${study.data.client} logo`}
                   class="h-full object-contain max-w-[180px]"
                 />
-              ) : study.slug === 'go-emp' ? (
+              ) : study.slug === 'clear-bio' ? (
                 <img
-                  src="/images/case-studies/go-emp-final.svg"
+                  src="https://staging.appvintech.com/wp-content/uploads/2024/05/Clip-path-group.svg"
                   alt={`${study.data.client} logo`}
                   class="h-full object-contain max-w-[180px]"
                 />
