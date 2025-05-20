@@ -92,6 +92,16 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+/* No scrollbar utility class */
+.no-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
 /* Typography - Updated Style */
 h1,
 h2,
@@ -571,6 +581,42 @@ a {
 
 .dark .shadow-card-hover {
   @apply shadow-dark-card-hover;
+}
+
+/* Prevent shadow on blog card images in dark mode */
+.dark .blog-card:hover img,
+.dark .card:hover img,
+.dark article.group:hover img,
+.dark div.group:hover img {
+  filter: none;
+  box-shadow: none;
+}
+
+/* Custom scrollbar styles */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 3px;
+}
+
+.dark .scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: #475569;
+}
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+.dark .scrollbar-thin {
+  scrollbar-color: #475569 transparent;
 }
 
 /* Focus styles for accessibility */

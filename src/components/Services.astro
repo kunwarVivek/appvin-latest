@@ -146,7 +146,7 @@ const services = [
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       {services.slice(0, 4).map((service) => (
-        <div class="bg-gradient-to-br from-primary-50 to-accent-50 dark:from-gray-900 dark:to-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow border border-primary-100 dark:border-primary-800 flex flex-col items-center text-center group transform hover:-translate-y-1 duration-300 h-full">
+        <div class="bg-gradient-to-br from-primary-50 to-accent-50 dark:from-gray-900 dark:to-gray-800 rounded-2xl p-8 shadow-card hover:shadow-blue-glow transition-all border border-primary-100 dark:border-primary-800 flex flex-col items-center text-center group transform hover:-translate-y-1 duration-300 h-full">
           <!-- Service image with overlay -->
           <div class="relative mb-6 w-full h-40 rounded-2xl overflow-hidden group-hover:scale-105 transition-transform shadow-lg">
             <img
@@ -189,7 +189,7 @@ const services = [
           <div class="flex justify-center mt-6 mb-2">
             <a
               href={service.link}
-              class="inline-flex items-center px-5 py-2 rounded-full bg-gradient-to-r from-accent-600 to-primary-600 text-white font-semibold shadow-md hover:from-secondary-500 hover:to-secondary-600 dark:from-accent-500 dark:to-primary-500 dark:hover:from-secondary-500 dark:hover:to-secondary-600 transition-all duration-300 group-hover:scale-105 hover:shadow-lg hover:shadow-secondary-500/30 dark:hover:shadow-secondary-500/20"
+              class="inline-flex items-center px-5 py-2 rounded-lg bg-gradient-blue text-white font-semibold shadow-md hover:shadow-blue-glow dark:bg-gradient-blue-dark transition-all duration-300 group-hover:scale-105 focus-ring"
             >
               <span class="drop-shadow-md">Learn More</span>
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1 group-hover:ml-2 transition-all duration-300" viewBox="0 0 20 20" fill="currentColor">
@@ -204,7 +204,7 @@ const services = [
     <div class="text-center mt-16">
       <a
         href="/services"
-        class="btn px-8 py-4 inline-flex items-center group transform transition-all duration-300 hover:-translate-y-1 rounded-full border-2 border-accent-600 text-accent-600 hover:text-white hover:bg-gradient-to-r hover:from-secondary-500 hover:to-secondary-600 hover:border-transparent hover:shadow-xl hover:shadow-secondary-500/30 dark:border-accent-500 dark:text-accent-400 dark:hover:text-white dark:hover:from-secondary-500 dark:hover:to-secondary-600 dark:hover:shadow-secondary-500/20"
+        class="btn px-8 py-4 inline-flex items-center group transform transition-all duration-300 hover:-translate-y-1 rounded-lg border-2 border-blue-500 text-blue-600 hover:text-white hover:bg-blue-500 hover:border-transparent hover:shadow-blue-glow dark:border-blue-400 dark:text-blue-400 dark:hover:text-white dark:hover:bg-blue-500/20 focus-ring"
       >
         <span class="font-semibold drop-shadow-md">View All Services</span>
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 group-hover:ml-3 transition-all duration-300" viewBox="0 0 20 20" fill="currentColor">

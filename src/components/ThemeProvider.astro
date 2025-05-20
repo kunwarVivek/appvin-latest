@@ -64,18 +64,12 @@
     });
 
     // Smooth scrolling implementation
-    let lastScrollTop = 0;
     let ticking = false;
 
     // Function to handle smooth scrolling
     const smoothScroll = () => {
-      const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
       // Reset ticking flag to allow next animation frame
       ticking = false;
-
-      // Store the last scroll position
-      lastScrollTop = currentScrollTop;
     };
 
     // Listen for scroll events
