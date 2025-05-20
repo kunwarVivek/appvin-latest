@@ -1,14 +1,14 @@
 ---
-title: "Domino's Pizza - Mobile Delivery App"
+title: "Domino's: Pizza Delivery Service"
 subtitle: "Redefining Customer Journey in the Middle East"
-description: "Developed a cross-platform mobile delivery app that increased digital sales by 23% and improved customer satisfaction through intuitive design and real-time order tracking."
+description: "Domino's Pizza partnered with AppVin to elevate its online presence, focusing on website performance, user experience, and innovative web technologies."
 client: "Domino's Pizza"
-industry: "Food & Beverage"
-services: ["Mobile App Development", "UX/UI Design", "Backend Development", "Web Development", "Performance Optimization"]
-challenge: "Domino's needed a mobile delivery app with intuitive design, real-time tracking, secure payment integration, localization for Middle Eastern markets, and high scalability during peak hours."
+industry: "Retail"
+services: ["Web Development", "UX/UI Design", "Performance Optimization"]
+challenge: "Domino's needed to elevate its online presence with improved website performance, enhanced user experience, and innovative web technologies to meet customer expectations in the Middle Eastern market."
 solution: "We created a cross-platform app with user-friendly interface, real-time order tracking, secure payment gateways, localized features, and cloud-based infrastructure for scalability."
-image: "/images/case-studies/dominos.webp"
-logo: "/images/case-studies/dominos-logo.webp"
+image: "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552045.png"
+logo: "https://staging.appvintech.com/wp-content/uploads/2023/12/logo-2.webp"
 stats:
   - value: "23%"
     label: "Increase in conversion rates"
@@ -17,11 +17,11 @@ stats:
   - value: "20%"
     label: "Improved order accuracy"
 technologies:
-  - "React Native"
+  - "React.js"
   - "Node.js"
-  - "MongoDB"
-  - "RESTful APIs"
+  - "CDN"
   - "AWS"
+  - "UI/UX"
 category: "Food & Beverage"
 featured: true
 pubDate: "2023-05-10"

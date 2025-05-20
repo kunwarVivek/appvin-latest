@@ -9,11 +9,10 @@ const featuredCaseStudySlugs = ['dominos', 'kfc', 'moove', 'clear-bio'];
 
 // Service categories for filter buttons
 const serviceCategories = [
-  { id: 'all', label: 'All' },
-  { id: 'mobile-app-development', label: 'Mobile App Development' },
-  { id: 'ux/ui-design', label: 'UX/UI Design' },
-  { id: 'backend-development', label: 'Backend Development' },
-  { id: 'data-analytics', label: 'Data Analytics' }
+  { id: 'SAP', label: 'SAP' },
+  { id: 'celonis-system-integrator', label: 'Celonis System Integrator' },
+  { id: 'data-governance', label: 'Data Governance' },
+  { id: 'custom-ai', label: 'Custom AI' }
 ];
 
 // Case studies data with images and logos matching staging.appvintech.com
@@ -122,18 +121,21 @@ const industryImages: Record<string, string> = {
 
     <!-- Service filter buttons -->
     <div class="flex flex-wrap justify-center gap-3 mb-12">
-      {serviceCategories.map((category) => (
+      {serviceCategories.map((category, idx) => (
         <button
-          class={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-            category.id === 'all'
-              ? 'bg-primary-600 text-white hover:bg-primary-700'
-              : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700'
-          }`}
+          class={`px-4 py-2 rounded-full text-sm font-medium transition-all cursor-default opacity-70 pointer-events-none bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300`}
           data-filter={category.id}
+          tabindex="-1"
         >
           {category.label}
         </button>
       ))}
+      <button
+        class="px-4 py-2 rounded-full text-sm font-semibold transition-all bg-primary-600 text-white hover:bg-primary-700 ml-2 shadow-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 cursor-pointer"
+        onclick="window.location.href='/services'"
+      >
+        View All
+      </button>
     </div>
 
     <!-- Case studies grid -->
@@ -149,15 +151,23 @@ const industryImages: Record<string, string> = {
 
             <!-- Case study image -->
             <div class="absolute inset-0 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900">
-              {study.data.image ? (
-                <img
-                  src={study.data.image}
-                  alt={study.data.title}
-                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              ) : (
-                <div class="w-full h-full bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900/30 dark:to-secondary-900/30"></div>
-              )}
+              <img
+                src={
+                  study.slug === 'dominos' ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552045.png" :
+                  study.slug === 'kfc' ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552041-1.png" :
+                  study.slug === 'moove' ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552033-2.png" :
+                  study.slug === 'clear-bio' ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552038.png" :
+                  study.data.industry === "Food & Beverage" ? "/images/case-studies/new/ab-inbev.webp" :
+                  study.data.industry === "Healthcare" ? "/images/case-studies/new/healthcare-digital-transformation.webp" :
+                  study.data.industry === "Technology" ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552038.png" :
+                  study.data.industry === "Transportation & Logistics" ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552033-2.png" :
+                  study.data.industry === "Finance" ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552036.png" :
+                  study.data.industry === "Retail" ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552041-1.png" :
+                  study.data.image || "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552045.png"
+                }
+                alt={study.data.title}
+                class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+              />
             </div>
 
             <!-- Gradient overlay -->
@@ -167,12 +177,40 @@ const industryImages: Record<string, string> = {
           <div class="p-6 flex flex-col flex-grow">
             <!-- Company logo -->
             <div class="flex items-center justify-center h-16 mb-4">
-              {study.data.logo && (
+              {study.slug === 'dominos' ? (
+                <img
+                  src="https://staging.appvintech.com/wp-content/uploads/2023/12/logo-2.webp"
+                  alt={`${study.data.client} logo`}
+                  class="h-full object-contain max-w-[180px]"
+                />
+              ) : study.slug === 'kfc' ? (
+                <img
+                  src="https://staging.appvintech.com/wp-content/uploads/2023/12/logo.webp"
+                  alt={`${study.data.client} logo`}
+                  class="h-full object-contain max-w-[180px]"
+                />
+              ) : study.slug === 'moove' ? (
+                <img
+                  src="https://staging.appvintech.com/wp-content/uploads/2024/06/moove-logo.png"
+                  alt={`${study.data.client} logo`}
+                  class="h-full object-contain max-w-[180px]"
+                />
+              ) : study.slug === 'clear-bio' ? (
+                <img
+                  src="https://staging.appvintech.com/wp-content/uploads/2024/05/Clip-path-group.svg"
+                  alt={`${study.data.client} logo`}
+                  class="h-full object-contain max-w-[180px]"
+                />
+              ) : study.data.logo ? (
                 <img
                   src={study.data.logo}
                   alt={`${study.data.client} logo`}
                   class="h-full object-contain max-w-[180px]"
                 />
+              ) : (
+                <div class="h-full flex items-center justify-center">
+                  <span class="text-lg font-bold text-primary-600 dark:text-primary-400">{study.data.client}</span>
+                </div>
               )}
             </div>
 

@@ -514,6 +514,7 @@ a {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
+  filter: drop-shadow(0 4px 12px rgba(99, 102, 241, 0.15));
 }
 
 /* Glass effect */

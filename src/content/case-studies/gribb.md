@@ -1,14 +1,14 @@
 ---
-title: "Gribb - Driving Data Made Actionable"
-subtitle: "Harnessing Vehicle Technology for Road Safety"
-description: "Delivered a sleek, powerful mobile app that reduced risky driving behaviors by 90%, combining driving behavior data, modern vehicle technology, and road safety marketing."
-client: "Gribb Fleet Solutions"
+title: "Gribb: Driving Data Made Actionable"
+subtitle: "Sustainable Driving Culture Through Mobile Innovation"
+description: "Gribb partnered with AppVin to develop a user-friendly mobile app, integrating driving behavior data, vehicle tech, and safety marketing for a sustainable driving culture."
+client: "Gribb"
 industry: "Transportation & Logistics"
-services: ["Mobile App Development", "Data Analytics", "UX/UI Design", "IoT Integration"]
-challenge: "Gribb needed to transform their road safety and sustainability mission into a mobile app that seamlessly combines driving behavior data, vehicle technology, and safety marketing."
+services: ["Mobile App Development", "Data Analytics", "UX/UI Design"]
+challenge: "Gribb needed a comprehensive mobile solution to integrate driving behavior data, vehicle technology, and safety marketing to promote a sustainable driving culture."
 solution: "We developed a cross-platform mobile app with user-centric interface, data integration excellence, emissions tracking, and interactive safety features."
-image: "/images/case-studies/gribb.webp"
-logo: "/images/case-studies/gribb-logo.webp"
+image: "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552030-1.png"
+logo: "https://staging.appvintech.com/wp-content/uploads/2023/12/gribb-logo-1-1.webp"
 stats:
   - value: "90%"
     label: "Reduction in Risky Driving"
