@@ -4,67 +4,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import PlaceholderImage from '../../components/PlaceholderImage.astro';
 import { formatDate } from '../../utils/date';
-
-// In a real implementation, this would come from a content collection
-const blogPosts = [
-  {
-    title: 'The Future of AI in Product Engineering',
-    slug: 'future-of-ai-in-product-engineering',
-    excerpt: 'Explore how artificial intelligence is revolutionizing the product engineering landscape and what it means for businesses.',
-    publishDate: '2023-04-15',
-    author: 'Alex Johnson',
-    image: '/images/blog/ai-product-engineering-1.jpg',
-    tags: ['AI', 'Product Engineering', 'Innovation'],
-  },
-  {
-    title: 'Building Scalable Cloud Solutions for Modern Businesses',
-    slug: 'building-scalable-cloud-solutions',
-    excerpt: 'Learn the best practices for designing and implementing cloud solutions that can grow with your business needs.',
-    publishDate: '2023-03-28',
-    author: 'Maria Garcia',
-    image: '/images/blog/cloud/cloud-solutions-1.jpg',
-    tags: ['Cloud', 'Scalability', 'Architecture'],
-  },
-  {
-    title: 'The Role of UX Design in Digital Transformation',
-    slug: 'role-of-ux-design-in-digital-transformation',
-    excerpt: 'Discover how user experience design plays a crucial role in successful digital transformation initiatives.',
-    publishDate: '2023-03-10',
-    author: 'James Wilson',
-    image: '/images/blog/ux/ux-design-1.jpg',
-    tags: ['UX Design', 'Digital Transformation', 'User Experience'],
-  },
-  {
-    title: 'Implementing Machine Learning Models in Production',
-    slug: 'implementing-machine-learning-models-in-production',
-    excerpt: 'A comprehensive guide to deploying and maintaining machine learning models in production environments.',
-    publishDate: '2023-02-22',
-    author: 'Sophia Lee',
-    image: '/images/blog/ml/machine-learning-1.jpg',
-    tags: ['Machine Learning', 'DevOps', 'MLOps'],
-  },
-  {
-    title: 'Data-Driven Decision Making for Business Leaders',
-    slug: 'data-driven-decision-making-for-business-leaders',
-    excerpt: 'How business leaders can leverage data analytics to make more informed strategic decisions.',
-    publishDate: '2023-02-05',
-    author: 'Robert Chen',
-    image: '/images/blog/data/data-analytics-1.jpg',
-    tags: ['Data Analytics', 'Business Strategy', 'Leadership'],
-  },
-  {
-    title: 'The Impact of 5G on IoT Development',
-    slug: 'impact-of-5g-on-iot-development',
-    excerpt: 'Exploring how 5G technology is transforming the Internet of Things landscape and creating new opportunities.',
-    publishDate: '2023-01-18',
-    author: 'David Kim',
-    image: '/images/blog/iot/iot-5g-1.jpg',
-    tags: ['IoT', '5G', 'Connectivity'],
-  },
-];
-
-// Get all unique tags
-const allTags = [...new Set(blogPosts.flatMap(post => post.tags))].sort();
+import { blogPosts, allTags } from '../../data/blogPosts.js';
 ---
 
 <Layout
@@ -171,12 +111,9 @@ const allTags = [...new Set(blogPosts.flatMap(post => post.tags))].sort();
 
                     <div class="flex flex-wrap gap-2 mb-4">
                       {post.tags.slice(0, 3).map((tag) => (
-                        <a
-                          href={`/blog/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`}
-                          class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded-full text-xs hover:bg-primary-100 dark:hover:bg-primary-900/50 hover:text-primary-700 dark:hover:text-primary-300 transition-colors"
-                        >
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded-full text-xs">
                           #{tag}
-                        </a>
+                        </span>
                       ))}
                       {post.tags.length > 3 && (
                         <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded-full text-xs">
