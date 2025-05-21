@@ -1,154 +1,321 @@
 ---
-// Industries data with 4 categories: Financial Services, Healthcare, Mobility and Logistics, Retail
+// Industry data with use cases and accelerators
 const industries = [
   {
-    title: 'Financial Services',
-    description: 'We empower financial institutions with automation, AI, and secure platforms, streamlining operations, enhancing compliance, and improving customer onboarding, fraud detection, and reporting.',
+    name: 'Financial Services',
     image: 'https://images.unsplash.com/photo-1601597111158-2fceff292cdc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
-    icon: '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" /></svg>',
-    link: '/industries/financial-services',
+    useCases: [
+      'AI-driven productivity: automated financial advisory, loan assistance, fraud alerts',
+      'Market analysis for PE & VCs: startup discovery using AI',
+      'Regulatory compliance LMS for future-ready workforce',
+    ],
+    accelerators: [
+      { name: 'Chatify', description: 'Employee productivity & fraud detection', color: 'bg-blue-500' },
+      { name: 'DealSource', description: 'Market analysis for investors', color: 'bg-green-500' },
+      { name: 'Awareness', description: 'Compliance LMS for AML and fraud prevention', color: 'bg-yellow-500' },
+    ],
   },
   {
-    title: 'Healthcare',
-    description: 'We create AI-powered healthcare software for seamless EHR/EMR management, remote monitoring, and patient engagement, ensuring HIPAA compliance and improving outcomes across healthcare systems.',
+    name: 'Healthcare',
     image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
-    icon: '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>',
-    link: '/industries/healthcare',
+    useCases: [
+      'AI-powered patient experience: scheduling, symptom checker',
+      'Staff training and HIPAA compliance using AI',
+      'Predictive maintenance of medical vehicles',
+    ],
+    accelerators: [
+      { name: 'Chatify', description: 'Patient assist and experience', color: 'bg-blue-500' },
+      { name: 'Awareness', description: 'AI training for HIPAA and compliance', color: 'bg-yellow-500' },
+      { name: 'GoLab', description: 'Predictive maintenance of transport vehicles', color: 'bg-purple-500' },
+    ],
   },
   {
-    title: 'Mobility and Logistics',
-    description: 'We develop smart mobility solutions for fleet tracking, EV charging, and ride-hailing, optimizing routes, reducing costs, and enhancing sustainability in the transportation sector. We build logistics software that optimizes inventory, shipping, and delivery processes, using AI and IoT for real-time analytics and improved supply chain efficiency.',
+    name: 'Mobility and Logistics',
     image: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
-    icon: '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" /></svg>',
-    link: '/industries/mobility-logistics',
+    useCases: [
+      'Fleet dispatch and route optimization',
+      'Predictive maintenance using sensor analytics',
+      'AI-enhanced ERP process automation',
+      'Emission tracking and energy efficiency with real-time insights',
+    ],
+    accelerators: [
+      { name: 'GoLab', description: 'Route optimization, predictive maintenance', color: 'bg-purple-500' },
+      { name: 'NLMK S/4HANA Migration', description: 'AI ERP automation', color: 'bg-indigo-500' },
+      { name: 'CarbonQuench', description: 'Sustainability and emissions tracking', color: 'bg-green-500' },
+    ],
   },
   {
-    title: 'Retail',
-    description: 'Enhancing retail experiences with omnichannel solutions, inventory management, and personalized marketing. Our AI-powered platforms help retailers increase sales and customer loyalty.',
+    name: 'Retail',
     image: 'https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
-    icon: '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>',
-    link: '/industries/retail',
+    useCases: [
+      'AI chatbots for real-time support and returns',
+      'Personalized product recommendations via behavior analysis',
+      'Dynamic AI-based delivery routing',
+    ],
+    accelerators: [
+      { name: 'Chatify', description: 'Customer support automation', color: 'bg-blue-500' },
+      { name: 'Animus', description: 'Personalized product journeys', color: 'bg-pink-500' },
+      { name: 'GoLab', description: 'Real-time delivery routing optimization', color: 'bg-purple-500' },
+    ],
   },
 ];
 ---
 
+<script is:inline src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
 <section class="section bg-gray-50 dark:bg-gray-800 relative overflow-hidden">
-  <!-- Background pattern -->
-  <div class="absolute inset-0 bg-grid-pattern opacity-5 dark:opacity-3"></div>
-
-  <!-- Decorative elements -->
-  <div class="absolute -top-20 -left-20 w-96 h-96 bg-accent-100 dark:bg-accent-900/20 rounded-full opacity-30 blur-3xl"></div>
-  <div class="absolute -bottom-20 -right-20 w-96 h-96 bg-primary-100 dark:bg-primary-900/20 rounded-full opacity-30 blur-3xl"></div>
-
   <div class="container mx-auto px-4 relative z-10">
-    <!-- Section label -->
-    <div class="flex justify-center mb-4">
-      <div class="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-accent-100 text-accent-800 dark:bg-accent-900/30 dark:text-accent-300">
-        <span class="w-2 h-2 bg-accent-500 rounded-full mr-2"></span>
-        Our Expertise
-      </div>
-    </div>
-
-    <h2 class="section-title text-4xl md:text-5xl font-extrabold mb-8 text-center tracking-tight gradient-text drop-shadow-lg">
+    <h2 class="section-title text-4xl md:text-5xl font-extrabold mb-8 text-center tracking-tight drop-shadow-lg">
       Our <span class="gradient-text">Industry Expertise</span>
     </h2>
-    <div class="w-24 h-1 bg-gradient-to-r from-accent-500 to-primary-500 mx-auto mb-8 rounded-full shadow-lg"></div>
-    <p class="section-subtitle text-xl md:text-2xl text-accent-700 dark:text-accent-300 font-medium max-w-2xl mx-auto text-center mb-12 leading-relaxed drop-shadow">
-      We deliver measurable ROI and innovation across leading industries with tailored, AI-powered digital solutions.
-    </p>
-
+    <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mb-8 rounded-full shadow-lg"></div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       {industries.map((industry) => (
-        <div class="bg-gradient-to-br from-primary-50 to-accent-50 dark:from-gray-900 dark:to-gray-800 rounded-xl overflow-hidden shadow-card hover:shadow-blue-glow transition-all border border-slate-200 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-800 flex flex-col group transform hover:-translate-y-1 duration-300 h-full">
-          <!-- Image with overlay -->
-          <div class="relative w-full h-48 overflow-hidden">
-            <img
-              src={industry.image}
-              alt={`${industry.title} industry`}
-              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/40 to-transparent opacity-70 group-hover:opacity-60 transition-opacity"></div>
+        <div class="flip-card h-full" x-data="{ flipped: false }">
+          <div class="flip-card-inner h-full" :class="flipped ? 'flipped' : ''">
+            <!-- Front Side -->
+            <div class="flip-card-front rounded-xl overflow-hidden shadow-card border border-slate-200 dark:border-gray-700 flex flex-col h-full">
+              <!-- Image with overlay -->
+              <div class="relative w-full overflow-hidden industry-image-container">
+                <img
+                  src={industry.image}
+                  alt={`${industry.name} industry`}
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/40 to-transparent opacity-70 group-hover:opacity-60 transition-opacity"></div>
 
-            <!-- Industry badge -->
-            <div class="absolute top-4 left-4 z-10">
-              <span class="px-3 py-1.5 bg-gradient-to-r from-blue-500/90 to-blue-600/90 text-white dark:from-blue-500/90 dark:to-blue-600/90 rounded-full text-xs font-medium shadow-sm backdrop-blur-sm">
-                {industry.title}
-              </span>
-            </div>
+                <!-- Industry badge -->
+                <div class="absolute top-4 left-4 z-10">
+                  <span class="px-3 py-1.5 bg-gradient-to-r from-blue-500/90 to-blue-600/90 text-white rounded-full text-xs font-medium shadow-sm backdrop-blur-sm">
+                    {industry.name}
+                  </span>
+                </div>
+              </div>
 
-            <!-- Icon overlay -->
-            <div class="absolute inset-0 flex items-center justify-start pl-6">
-              <div class="bg-white/20 backdrop-blur-sm p-4 rounded-full">
-                <Fragment set:html={industry.icon} />
+              <div class="card-content">
+                <h3 class="text-xl font-extrabold text-gray-900 dark:text-white mb-4">{industry.name}</h3>
+                <div class="content-list-container flex-grow overflow-y-auto">
+                  <ul class="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300 text-base">
+                    {industry.useCases.map(use => (
+                      <li class="mb-2">{use}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div class="button-container">
+                  <button @click="flipped = true" class="industry-btn">
+                    <span>Inspiration & Accelerators</span>
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="p-6 flex flex-col flex-grow w-full">
-            <h3 class="text-xl font-extrabold text-gray-900 dark:text-white mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors text-left">
-              {industry.title}
-            </h3>
-            <p class="text-gray-600 dark:text-gray-400 mb-6 text-base text-left">
-              {industry.description}
-            </p>
-            <div class="mt-auto"></div>
+            <!-- Back Side -->
+            <div class="flip-card-back rounded-xl overflow-hidden shadow-card border border-blue-200 dark:border-blue-800 flex flex-col h-full">
+              <!-- Image with overlay -->
+              <div class="relative w-full overflow-hidden industry-image-container">
+                <img
+                  src={industry.image}
+                  alt={`${industry.name} industry`}
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/40 to-transparent opacity-70 group-hover:opacity-60 transition-opacity"></div>
 
-            <!-- Inspiration and Accelerators button -->
-            <div class="flex justify-start mt-4">
-              <a
-                href="/case-studies"
-                class="inline-flex items-center px-4 py-2 rounded-lg bg-white dark:bg-gray-700 text-blue-600 dark:text-blue-400 border border-blue-300 dark:border-blue-700 hover:bg-blue-50 dark:hover:bg-blue-900/30 font-medium text-sm transition-all duration-300 group-hover:scale-105 focus-ring"
-              >
-                <span>Click here for Inspiration and Accelerators</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:ml-2 transition-all duration-300" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H3a1 1 0 110-2h9.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
-              </a>
+                <!-- Industry badge -->
+                <div class="absolute top-4 left-4 z-10">
+                  <span class="px-3 py-1.5 bg-gradient-to-r from-blue-600/90 to-blue-700/90 text-white rounded-full text-xs font-medium shadow-sm backdrop-blur-sm">
+                    {industry.name} Accelerators
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-content">
+                <h3 class="text-xl font-extrabold text-blue-700 dark:text-blue-300 mb-4">{industry.name} Accelerators</h3>
+                <div class="content-list-container flex-grow overflow-y-auto">
+                  <ul class="space-y-4">
+                    {industry.accelerators.map(acc => (
+                      <li class="flex items-start gap-3 mb-3">
+                        <span class={`w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-md ${acc.color} dark:opacity-90`}>{acc.name[0]}</span>
+                        <div>
+                          <span class="font-semibold text-gray-900 dark:text-white">{acc.name}</span>
+                          <div class="text-gray-600 dark:text-gray-300 text-sm">{acc.description}</div>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div class="button-container">
+                  <button @click="flipped = false" class="industry-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H17a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                    </svg>
+                    Back
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       ))}
     </div>
-
-    <script is:inline>
-      // Smooth scroll with header offset for all inspiration buttons
-      document.addEventListener('DOMContentLoaded', () => {
-        // Get all buttons that link to case studies
-        const inspirationButtons = document.querySelectorAll('a[href="#case-studies"]');
-
-        inspirationButtons.forEach(button => {
-          button.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = button.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-
-            if (targetElement) {
-              // Get header height to offset scroll position
-              const header = document.querySelector('header');
-              const headerHeight = header ? header.offsetHeight : 0;
-
-              // Calculate position with offset
-              const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
-
-              // Smooth scroll
-              window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-              });
-            }
-          });
-        });
-      });
-    </script>
   </div>
 </section>
 
 <style>
-  .bg-grid-pattern {
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  /* Prevent shadow on images in dark mode */
+  :global(.dark) .flip-card img {
+    filter: none !important;
+    box-shadow: none !important;
   }
 
-  /* Ensure shadow is visible in dark mode */
-  .dark .group:hover {
-    box-shadow: 0 0 15px 2px rgba(59, 130, 246, 0.3);
+  .flip-card {
+    perspective: 1200px;
+    height: 100%;
+    min-height: 540px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1.25rem;
+    box-shadow: 0 6px 32px 0 rgba(30,41,59,0.10), 0 1.5px 6px 0 rgba(30,41,59,0.06);
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+    transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+  }
+
+  :global(.dark) .flip-card {
+    background: #1e293b;
+    border-color: #334155;
+    box-shadow: 0 6px 32px 0 rgba(0,0,0,0.25), 0 1.5px 6px 0 rgba(0,0,0,0.15);
+  }
+  .flip-card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    will-change: transform;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition: -webkit-transform 0.6s cubic-bezier(.4,2,.6,1);
+    transition: transform 0.6s cubic-bezier(.4,2,.6,1);
+  }
+  .flip-card-inner.flipped {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+  }
+  .flip-card-front, .flip-card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    will-change: transform;
+    transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+  }
+  .flip-card-front {
+    z-index: 2;
+    background: #fff;
+    -webkit-transform: rotateY(0deg) translateZ(1px);
+    transform: rotateY(0deg) translateZ(1px);
+  }
+  .flip-card-back {
+    z-index: 3;
+    background: #fff;
+    -webkit-transform: rotateY(180deg) translateZ(1px);
+    transform: rotateY(180deg) translateZ(1px);
+  }
+
+  :global(.dark) .flip-card-front {
+    background: #1e293b;
+  }
+
+  :global(.dark) .flip-card-back {
+    background: #0f172a;
+  }
+  .industry-image-container {
+    height: 140px;
+    flex-shrink: 0;
+    border-bottom: 1px solid #e5e7eb;
+    transition: border-color 0.3s;
+  }
+
+  :global(.dark) .industry-image-container {
+    border-bottom-color: #334155;
+  }
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 1.25rem 1.25rem 0.5rem 1.25rem;
+    padding-bottom: 0.25rem;
+    height: calc(100% - 140px);
+  }
+  .content-list-container {
+    flex-grow: 1;
+    overflow-y: visible;
+    margin-bottom: 0.5rem;
+    max-height: none;
+  }
+  .button-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 0;
+    padding-top: 0.25rem;
+    padding-bottom: 0.5rem;
+    height: auto;
+  }
+  .industry-btn {
+    padding: 0.5rem 1.25rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    background: linear-gradient(90deg, #2563eb 0%, #38bdf8 100%);
+    color: #fff;
+    border: none;
+    box-shadow: 0 2px 8px 0 rgba(30,41,59,0.08);
+    transition: all 0.3s ease;
+    min-width: 160px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+
+  .industry-btn:hover {
+    background: linear-gradient(90deg, #1d4ed8 0%, #0ea5e9 100%);
+    box-shadow: 0 4px 16px 0 rgba(30,41,59,0.12);
+    transform: translateY(-1px);
+  }
+
+  .industry-btn:active {
+    transform: translateY(1px);
+  }
+
+  :global(.dark) .industry-btn {
+    background: linear-gradient(90deg, #3b82f6 0%, #38bdf8 100%);
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.05);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    color: #ffffff;
+  }
+
+  :global(.dark) .industry-btn:hover {
+    background: linear-gradient(90deg, #2563eb 0%, #0ea5e9 100%);
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1);
+  }
+  @media (max-width: 1024px) {
+    .flip-card { min-height: 420px; }
+    .industry-image-container { height: 100px; }
+    .card-content { height: calc(100% - 100px); }
+  }
+  @media (max-width: 768px) {
+    .flip-card { min-height: 340px; }
+    .industry-image-container { height: 70px; }
+    .card-content { height: calc(100% - 70px); }
   }
 </style>
