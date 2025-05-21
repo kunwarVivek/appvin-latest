@@ -226,7 +226,6 @@ a {
   @apply bg-secondary-200/30 dark:bg-secondary-900/20 rounded-full blur-3xl;
   width: 25rem;
   height: 25rem;
-  bottom: -8rem;
   right: -10rem;
 }
 

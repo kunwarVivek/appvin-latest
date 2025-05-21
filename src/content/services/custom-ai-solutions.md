@@ -7,7 +7,6 @@ features:
   - "Automate decisions across web and mobile platforms"
   - "Continuously refine with adaptive learning"
   - "Accelerate innovation and customer personalization"
-image: "/images/services/custom-ai.jpg"
 order: 4
 ---
 

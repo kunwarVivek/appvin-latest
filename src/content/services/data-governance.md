@@ -7,7 +7,6 @@ features:
   - "Unify data sources with seamless integration"
   - "Protect critical data with secure retention policies"
   - "Maintain high accuracy through quality management"
-image: "/images/services/data-governance.jpg"
 order: 3
 ---
 

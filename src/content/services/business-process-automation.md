@@ -7,7 +7,6 @@ features:
   - "Leverage Celonis for real-time process mining"
   - "Optimize workflows to reduce delays and inefficiencies"
   - "Continuously monitor and enhance performance"
-image: "/images/services/business-process-automation.jpg"
 order: 2
 ---
 

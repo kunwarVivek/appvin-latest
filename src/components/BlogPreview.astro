@@ -39,7 +39,7 @@ const featuredPosts = blogPosts.slice(0, 4);
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       {featuredPosts.map((post, index) => (
         <div
-          class="bg-slate-100 dark:bg-gray-800 rounded-xl p-6 shadow-card hover:shadow-blue-glow transition-all border border-slate-200 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-800 flex flex-col items-center text-center group transform hover:-translate-y-1 duration-300 h-full animate-in fade-in slide-in-from-bottom-5"
+          class="bg-slate-100 dark:bg-gray-800 rounded-xl p-6 shadow-card hover:shadow-blue-glow transition-all border border-slate-200 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-800 flex flex-col group transform hover:-translate-y-1 duration-300 h-full animate-in fade-in slide-in-from-bottom-5"
           style={`animation-delay: ${index * 100}ms`}
         >
           <div class="relative mb-6 w-full h-40 rounded-2xl overflow-hidden group-hover:scale-105 transition-transform shadow-lg">
@@ -60,15 +60,15 @@ const featuredPosts = blogPosts.slice(0, 4);
           </div>
 
           <div class="flex flex-col flex-grow w-full">
-            <h3 class="card-title group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+            <h3 class="card-title group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 text-left">
               {post.title}
             </h3>
 
-            <p class="card-content mb-4">
+            <p class="card-content mb-4 text-left">
               {post.excerpt}
             </p>
 
-            <div class="flex flex-wrap justify-center gap-2 mb-4">
+            <div class="flex flex-wrap justify-start gap-2 mb-4">
               {post.tags.slice(0, 2).map((tag) => (
                 <p
                   class="px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-xs font-medium hover:bg-blue-100 dark:hover:bg-blue-800/50 transition-colors duration-300"
@@ -78,7 +78,7 @@ const featuredPosts = blogPosts.slice(0, 4);
               ))}
             </div>
 
-            <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 mb-5 justify-center">
+            <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 mb-5 justify-start">
               <span class="inline-flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1 text-blue-500 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -97,7 +97,7 @@ const featuredPosts = blogPosts.slice(0, 4);
             <div class="mt-auto pt-4"></div>
           </div>
 
-          <div class="flex justify-center mt-6 mb-2">
+          <div class="flex justify-start mt-6 mb-2">
             <a
               href={`/blog/${post.slug}`}
               class="inline-flex items-center px-5 py-2 rounded-lg bg-gradient-blue text-white font-semibold shadow-md hover:shadow-blue-glow dark:bg-gradient-blue-dark transition-all duration-300 group-hover:scale-105 focus-ring"
