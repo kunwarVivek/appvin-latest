@@ -41,10 +41,43 @@ Our custom AI solutions help you accelerate innovation by automating routine tas
 
 ## Our Expertise
 
-Our team of AI specialists combines deep technical knowledge with business acumen to deliver solutions that drive measurable results. We have expertise in machine learning, natural language processing, computer vision, predictive analytics, and other AI disciplines.
-
-improve ...
+Our team of AI specialists combines deep technical expertise with business insight to deliver impactful, industry-ready solutions. Leveraging accelerators like Chatify for intelligent engagement, DealSource for investment insights, GoLab for logistics optimization, Awareness for compliance training, and CarbonQuench for sustainability, we drive measurable results across sectors with AI-driven innovation.
 
 ## Our Accelerators
 
-add...
+Unlock industry-specific innovation with our AI-powered accelerators, built to solve real-world challenges and deliver measurable impact.
+
+🔹 <b>Chatify</b> <br>
+Enhancing customer engagement and support.
+Used in: Banking, Healthcare, Retail
+→ AI chatbots for support, appointment scheduling, and real-time assistance.
+
+🔹 <b>DealSource</b> <br>
+Smarter investment decisions for PE & VC firms.
+Used in: Banking & Finance
+→ AI-assisted market analysis to identify high-growth startups and opportunities.
+
+🔹 <b>Awareness</b><br>
+Compliance-ready workforce training.
+Used in: Banking, Healthcare
+→ AI-driven LMS for AML, HIPAA, fraud prevention, and ethics compliance.
+
+🔹<b> GoLab</b><br>
+Operational and logistics optimization.
+Used in: Healthcare, Retail, Manufacturing
+→ Dynamic delivery routing, predictive maintenance, fleet dispatch, and transport efficiency.
+
+🔹 <b>Animus</b><br>
+Personalized content and product recommendations.
+Used in: Retail & E-commerce
+→ AI-powered tagging and behavior-based recommendations for personalized shopping journeys.
+
+🔹 <b>CarbonQuench</b><br>
+Energy efficiency and emissions tracking.
+Used in: Manufacturing
+→ Real-time monitoring and AI insights to reduce carbon footprint and optimize energy usage.
+
+🔹 <b>NLMK S/4HANA Migration</b><br>
+ERP automation and process optimization.
+Used in: Manufacturing
+→ AI-driven workflows, SAP automation, and seamless data migration.
