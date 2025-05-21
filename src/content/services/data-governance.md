@@ -28,7 +28,7 @@ Our team implements solutions to integrate data from disparate sources, creating
 
 ### Data Security and Privacy
 
-We develop and implement robust data security and privacy controls to protect sensitive information and ensure compliance with regulations such as GDPR, CCPA, and industry-specific requirements. Our approach includes access controls, encryption, data masking, and secure retention policies.
+We develop and implement robust data security and privacy controls to protect sensitive information and ensure compliance with regulations such as <b>GDPR, CCPA, ROPA</b> and industry-specific requirements. Our approach includes access controls, encryption, data masking, and secure retention policies.
 
 ### Data Quality Management
 

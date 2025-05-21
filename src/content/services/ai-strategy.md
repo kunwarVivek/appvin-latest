@@ -9,7 +9,6 @@ features:
   - "ROI Analysis & Business Case Development"
   - "Implementation Roadmap"
   - "Change Management Planning"
-image: "/images/services/ai-strategy.jpg"
 ---
 
 # AI Strategy & Consulting
