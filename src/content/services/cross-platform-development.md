@@ -1,6 +1,6 @@
 ---
-title: "Cross-Platform Application Development"
-description: "Break down platform barriers with our Cross-Platform Application Development. Reach a wider audience and reduce development costs as we create seamless applications that run flawlessly on multiple platforms."
+title: "Expert Cross-Platform Application Development Services Company"
+description: "Overcome platform barriers with our Cross-Platform App Development. Build seamless, cost-effective apps that deliver flawless performance across multiple platforms."
 icon: "/images/services/cross-platform.webp"
 order: 3
 ---
