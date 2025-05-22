@@ -7,7 +7,6 @@ features:
   - "Automate decisions across web and mobile platforms"
   - "Continuously refine with adaptive learning"
   - "Accelerate innovation and customer personalization"
-image: "/images/services/custom-ai.jpg"
 order: 4
 ---
 
@@ -15,7 +14,7 @@ order: 4
 
 ## AI Tailored to Your Goals. Built to Scale.
 
-In an era where artificial intelligence is transforming industries, generic AI solutions often fall short of addressing specific business challenges. Our custom AI solutions are designed to meet your unique requirements, integrate seamlessly with your existing systems, and scale as your business grows.
+In an era where artificial intelligence is transforming industries, generic AI solutions often fall short of addressing specific business challenges. We have expertise in building and scaling Custom AI solution on differentiated platforms to meet your unique requirements, integrate seamlessly with your existing systems, and scale as your business grows.
 
 ## Our Approach
 
@@ -26,10 +25,6 @@ We develop bespoke AI models using our proprietary frameworks - CLAMP A, Minicra
 ### Cross-Platform Integration
 
 Our AI solutions seamlessly integrate with your web and mobile platforms, enabling automated decision-making and intelligent features across your digital ecosystem. We ensure that AI capabilities are accessible wherever your users and employees need them.
-
-### Adaptive Learning
-
-We implement continuous learning mechanisms that allow your AI systems to adapt and improve over time. By analyzing new data and feedback, our solutions become more accurate and effective, ensuring long-term value and relevance.
 
 ### Innovation Acceleration
 
@@ -46,22 +41,43 @@ Our custom AI solutions help you accelerate innovation by automating routine tas
 
 ## Our Expertise
 
-Our team of AI specialists combines deep technical knowledge with business acumen to deliver solutions that drive measurable results. We have expertise in machine learning, natural language processing, computer vision, predictive analytics, and other AI disciplines.
+Our team of AI specialists combines deep technical expertise with business insight to deliver impactful, industry-ready solutions. Leveraging accelerators like Chatify for intelligent engagement, DealSource for investment insights, GoLab for logistics optimization, Awareness for compliance training, and CarbonQuench for sustainability, we drive measurable results across sectors with AI-driven innovation.
 
-## Case Studies
+## Our Accelerators
 
-### Financial Services Provider
+Unlock industry-specific innovation with our AI-powered accelerators, built to solve real-world challenges and deliver measurable impact.
 
-Developed a custom fraud detection system that reduced false positives by 60% while increasing fraud detection rates by 35%, resulting in annual savings of over $2 million.
+🔹 <b>Chatify</b> <br>
+Enhancing customer engagement and support.
+Used in: Banking, Healthcare, Retail
+→ AI chatbots for support, appointment scheduling, and real-time assistance.
 
-### Healthcare Organization
+🔹 <b>DealSource</b> <br>
+Smarter investment decisions for PE & VC firms.
+Used in: Banking & Finance
+→ AI-assisted market analysis to identify high-growth startups and opportunities.
 
-Created an AI-powered diagnostic assistant that improved diagnostic accuracy by 28% and reduced the time required for image analysis by 75%.
+🔹 <b>Awareness</b><br>
+Compliance-ready workforce training.
+Used in: Banking, Healthcare
+→ AI-driven LMS for AML, HIPAA, fraud prevention, and ethics compliance.
 
-### E-commerce Platform
+🔹<b> GoLab</b><br>
+Operational and logistics optimization.
+Used in: Healthcare, Retail, Manufacturing
+→ Dynamic delivery routing, predictive maintenance, fleet dispatch, and transport efficiency.
 
-Implemented a personalized recommendation engine that increased conversion rates by 40% and average order value by 25%.
+🔹 <b>Animus</b><br>
+Personalized content and product recommendations.
+Used in: Retail & E-commerce
+→ AI-powered tagging and behavior-based recommendations for personalized shopping journeys.
 
-## Ready to Transform Your Business with Custom AI?
+🔹 <b>CarbonQuench</b><br>
+Energy efficiency and emissions tracking.
+Used in: Manufacturing
+→ Real-time monitoring and AI insights to reduce carbon footprint and optimize energy usage.
 
-Contact us today to learn how our custom AI solutions can help you achieve your business goals and stay ahead of the competition.
+🔹 <b>NLMK S/4HANA Migration</b><br>
+ERP automation and process optimization.
+Used in: Manufacturing
+→ AI-driven workflows, SAP automation, and seamless data migration.

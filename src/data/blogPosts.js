@@ -1,4 +1,16 @@
-// Hardcoded blog posts for development
+// Blog posts based on AppVin Technologies blog content
+export const allCategories = [
+  'Digital Transformation',
+  'Innovation',
+  'AI',
+  'Architecture',
+  'Cloud Computing',
+  'Product Engineering',
+  'UX Design',
+  'Compliance',
+  'Data Governance'
+];
+
 export const blogPosts = [
   {
     title: 'Digital Transformation Strategy: A Roadmap for Success',
@@ -8,6 +20,7 @@ export const blogPosts = [
     author: 'Emily Rodriguez',
     image: '/images/blog/digital-transformation/digital-transformation-strategy.jpg',
     tags: ['Digital Transformation', 'Strategy', 'Innovation'],
+    category: 'Digital Transformation',
     content: `
       <h2>Navigating the Digital Transformation Journey</h2>
       <p>Digital transformation is more than implementing new technologies—it's a fundamental reimagining of how an organization delivers value to customers, employees, and stakeholders through digital capabilities. A successful transformation requires a clear strategy that balances innovation with practical execution.</p>
@@ -71,6 +84,7 @@ export const blogPosts = [
     author: 'Thomas Wright',
     image: '/images/blog/innovation/innovation-strategy.jpg',
     tags: ['Innovation', 'Leadership', 'Organizational Culture'],
+    category: 'Innovation',
     content: `
       <h2>The Innovation Imperative</h2>
       <p>In today's rapidly evolving business landscape, innovation is no longer optional—it's essential for survival and growth. Organizations that consistently innovate can adapt to changing market conditions, meet evolving customer needs, and create sustainable competitive advantages.</p>
@@ -172,6 +186,7 @@ export const blogPosts = [
     author: 'Michael Chen',
     image: '/images/blog/ai/ai-automation.jpg',
     tags: ['AI', 'Automation', 'Digital Transformation'],
+    category: 'AI',
     content: `
       <h2>The Evolution of Business Process Automation with AI</h2>
       <p>Artificial Intelligence is revolutionizing how businesses approach automation, moving beyond simple rule-based systems to intelligent solutions that can learn, adapt, and make decisions with minimal human intervention.</p>
@@ -233,6 +248,7 @@ export const blogPosts = [
     author: 'David Rodriguez',
     image: '/images/blog/architecture/microservices.jpg',
     tags: ['Architecture', 'Microservices', 'Cloud'],
+    category: 'Architecture',
     content: `
       <h2>Understanding Microservices Architecture</h2>
       <p>Microservices architecture has emerged as a dominant approach for building complex, scalable applications. Unlike monolithic applications where all functionality exists in a single codebase, microservices break applications into small, independent services that communicate through well-defined APIs.</p>
@@ -301,6 +317,7 @@ export const blogPosts = [
     author: 'Maria Garcia',
     image: '/images/blog/cloud-computing/cloud-migration.jpg',
     tags: ['Cloud', 'Scalability', 'Architecture'],
+    category: 'Cloud Computing',
     content: `
       <h2>The Importance of Scalability in Cloud Architecture</h2>
       <p>In today's rapidly evolving digital landscape, businesses need cloud solutions that can adapt and grow with changing demands. Scalability is no longer a luxury—it's a necessity for survival and competitive advantage.</p>
@@ -333,6 +350,7 @@ export const blogPosts = [
     author: 'Alex Johnson',
     image: '/images/blog/product-engineering/product-engineering-best-practices.jpg',
     tags: ['AI', 'Product Engineering', 'Innovation'],
+    category: 'Product Engineering',
     content: `
       <h2>How AI is Reshaping Product Engineering</h2>
       <p>Artificial intelligence is redefining the boundaries of product engineering by enabling smarter design, improving efficiency, and enhancing decision-making across the product lifecycle. As AI becomes more integrated, businesses must adapt to remain competitive.</p>
@@ -376,6 +394,7 @@ export const blogPosts = [
     author: 'James Wilson',
     image: '/images/blog/ux/ux-design-1.jpg',
     tags: ['UX Design', 'Digital Transformation', 'User Experience'],
+    category: 'UX Design',
     content: `
       <h2>UX Design: The Heart of Digital Transformation</h2>
       <p>Digital transformation is not just about implementing new technologies—it's about reimagining how businesses operate and deliver value to customers. At the center of this transformation is user experience (UX) design, which ensures that digital solutions are not only functional but also intuitive, engaging, and aligned with user needs.</p>
@@ -410,6 +429,7 @@ export const blogPosts = [
     author: 'Jennifer Martinez',
     image: '/images/blog/compliance/regulatory-compliance.jpg',
     tags: ['Compliance', 'Security', 'Risk Management'],
+    category: 'Compliance',
     content: `
       <h2>The Evolving Compliance Landscape</h2>
       <p>Regulatory compliance has become increasingly complex as digital transformation accelerates and global regulations multiply. Organizations must navigate a maze of requirements while maintaining agility and innovation.</p>
@@ -481,6 +501,7 @@ export const blogPosts = [
     author: 'Robert Chang',
     image: '/images/blog/data/data-governance-advanced.jpg',
     tags: ['Data Governance', 'Data Strategy', 'Analytics'],
+    category: 'Data Governance',
     content: `
       <h2>Evolving Data Governance for Strategic Advantage</h2>
       <p>Data governance has traditionally been viewed as a defensive measure—a way to manage risk and ensure compliance. However, forward-thinking organizations are now recognizing that robust data governance can be a powerful enabler of business value and innovation.</p>

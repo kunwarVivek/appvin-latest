@@ -34,7 +34,7 @@ const services = servicesCollection.sort((a, b) => {
 
   <main>
     <!-- Page Header -->
-    <section class="pt-32 pb-12 md:pt-40 md:pb-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
+    <section class="pt-32 pb-12 md:pt-40 md:pb-20 bg-gradient-to-b from-white to-blue-50 dark:from-gray-900 dark:to-gray-800">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-4xl mx-auto">
           <div class="flex flex-col items-center text-center">
@@ -57,11 +57,11 @@ const services = servicesCollection.sort((a, b) => {
     </section>
 
     <!-- Services Overview -->
-    <section class="py-16 md:py-24 bg-white dark:bg-gray-900">
+    <section class="py-16 md:py-24 bg-gradient-to-br from-white via-blue-50 to-blue-100 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
-            <div class="group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-100 dark:border-gray-700 hover:border-primary-200 dark:hover:border-primary-800 transition-all hover:shadow-xl animate-in fade-in slide-in-from-bottom-5 duration-500 flex flex-col h-full" style={`animation-delay: ${index * 100}ms`}>
+            <div class="group relative card hover:shadow-blue-glow border border-slate-200 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-800 transition-all animate-in fade-in slide-in-from-bottom-5 duration-500 flex flex-col h-full" style={`animation-delay: ${index * 100}ms`}>
               <div class="absolute inset-0 bg-gradient-to-br from-primary-50 to-white dark:from-primary-900/10 dark:to-gray-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
               <div class="relative p-8 flex flex-col h-full">
@@ -170,7 +170,7 @@ const services = servicesCollection.sort((a, b) => {
               </p>
 
               <div class="flex flex-col sm:flex-row justify-center gap-4 animate-in fade-in slide-in-from-bottom-5 duration-500 delay-300">
-                <a href="/contact" class="btn bg-white text-primary-600 hover:bg-primary-50 hover:scale-105 transform transition-all text-lg px-8 py-4 shadow-lg">
+                <a href="/contact" class="btn bg-white text-primary-600 hover:bg-primary-50 hover:scale-105 transform transition-all text-lg px-8 py-4 shadow-lg dark:bg-blue-500 dark:text-white dark:hover:bg-blue-600">
                   Get Started
                 </a>
                 <a href="/case-studies" class="btn bg-transparent border-2 border-white text-white hover:bg-white/10 hover:scale-105 transform transition-all text-lg px-8 py-4">
