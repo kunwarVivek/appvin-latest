@@ -19,6 +19,7 @@ export const blogPosts = [
     publishDate: '2023-05-25',
     author: 'Emily Rodriguez',
     image: '/images/blog/digital-transformation/digital-transformation-strategy.jpg',
+    alt: 'Digital transformation strategy illustration',
     tags: ['Digital Transformation', 'Strategy', 'Innovation'],
     category: 'Digital Transformation',
     content: `
@@ -83,6 +84,7 @@ export const blogPosts = [
     publishDate: '2023-05-22',
     author: 'Thomas Wright',
     image: '/images/blog/innovation/innovation-strategy.jpg',
+    alt: 'Innovation strategy illustration',
     tags: ['Innovation', 'Leadership', 'Organizational Culture'],
     category: 'Innovation',
     content: `
@@ -185,6 +187,7 @@ export const blogPosts = [
     publishDate: '2023-05-18',
     author: 'Michael Chen',
     image: '/images/blog/ai/ai-automation.jpg',
+    alt: 'AI automation illustration',
     tags: ['AI', 'Automation', 'Digital Transformation'],
     category: 'AI',
     content: `
@@ -247,6 +250,7 @@ export const blogPosts = [
     publishDate: '2023-05-10',
     author: 'David Rodriguez',
     image: '/images/blog/architecture/microservices.jpg',
+    alt: 'Microservices architecture illustration',
     tags: ['Architecture', 'Microservices', 'Cloud'],
     category: 'Architecture',
     content: `

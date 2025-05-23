@@ -4,6 +4,7 @@ const industries = [
   {
     name: 'Financial Services',
     image: 'https://images.unsplash.com/photo-1601597111158-2fceff292cdc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+    alt: 'Digital interface representing automation',
     useCases: [
       'AI-driven productivity: automated financial advisory, loan assistance, fraud alerts',
       'Market analysis for PE & VCs: startup discovery using AI',
@@ -18,6 +19,7 @@ const industries = [
   {
     name: 'Healthcare',
     image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+    alt: 'IT professional analyzing data on multiple screens',
     useCases: [
       'AI-powered patient experience: scheduling, symptom checker',
       'Staff training and HIPAA compliance using AI',
@@ -32,6 +34,7 @@ const industries = [
   {
     name: 'Mobility and Logistics',
     image: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+    alt: 'Team working in a cybersecurity command center',
     useCases: [
       'Fleet dispatch and route optimization',
       'Predictive maintenance using sensor analytics',
@@ -47,6 +50,7 @@ const industries = [
   {
     name: 'Retail',
     image: 'https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+    alt: 'Business meeting discussing strategy',
     useCases: [
       'AI chatbots for real-time support and returns',
       'Personalized product recommendations via behavior analysis',
@@ -79,7 +83,7 @@ const industries = [
               <div class="relative w-full overflow-hidden industry-image-container">
                 <img
                   src={industry.image}
-                  alt={`${industry.name} industry`}
+                  alt={`${industry.alt}`}
                   class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/40 to-transparent opacity-70 group-hover:opacity-60 transition-opacity"></div>
