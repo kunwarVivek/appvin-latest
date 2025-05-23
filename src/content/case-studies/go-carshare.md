@@ -7,8 +7,8 @@ industry: "Automotive"
 services: ["Mobile App Development", "Web Development", "Backend Development"]
 challenge: "GO-CarShare needed a comprehensive B2B car-sharing solution that would simplify vehicle registration and sharing among employees while ensuring fleet optimization."
 solution: "We developed GO-CarShare with intuitive vehicle registration, seamless sharing capabilities, and the innovative Keyless Monitor feature for enhanced fleet management."
-image: "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552035-3.png"
-logo: "https://staging.appvintech.com/wp-content/uploads/2024/06/logo-2.png"
+image: "/images/staging_img/gocarshare_img.png"
+logo: "/images/staging_img/gocarshare_logo.png"
 stats:
   - value: "40%"
     label: "Improved Fleet Utilization"

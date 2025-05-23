@@ -25,9 +25,9 @@ const featuredCaseStudies = [
       client: "Domino's Pizza",
       industry: "Food & Beverage",
       services: ["Mobile App Development", "UX/UI Design", "Backend Development"],
-      image: "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552045.png", // Domino's image from staging site
       alt: "UI element for product demo or stats",
-      logo: "https://staging.appvintech.com/wp-content/uploads/2023/12/logo-2.webp", // Domino's logo from staging site
+      image: "/images/staging_img/dominos_img.png1", 
+      logo: "/images/staging_img/dominos_logo.webp",
       logoAlt: "Domino’s logo",
       featured: true,
       order: 1
@@ -42,9 +42,9 @@ const featuredCaseStudies = [
       client: "KFC (Americana Group)",
       industry: "Food & Beverage",
       services: ["Mobile App Development", "UX/UI Design", "Backend Development"],
-      image: "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552041-1.png", // KFC image from staging site
+      image: "/images/staging_img/kfc_img.png", // KFC image from staging site
       alt: "KFC dashboard visual",
-      logo: "https://staging.appvintech.com/wp-content/uploads/2023/12/logo.webp", // KFC logo from staging site
+      logo: "/images/staging_img/kfc_logo.webp", // KFC logo from staging site
       logoAlt: "KFC logo",
       featured: true,
       order: 2
@@ -59,9 +59,9 @@ const featuredCaseStudies = [
       client: "Moove Technologies",
       industry: "Transportation & Logistics",
       services: ["Web Application", "Mobile App", "AI Integration", "IoT"],
-      image: "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552033-2.png", // Moove image from staging site
+      image: "/images/staging_img/moove_driver_img.png", // Moove image from staging site
       alt: "Moove product demo",
-      logo: "https://staging.appvintech.com/wp-content/uploads/2024/06/moove-logo.png", // Moove logo from staging site
+      logo: "/images/staging_img/moove.svg", // Moove logo from staging site
       logoAlt: "Moove logo",
       featured: true,
       order: 3
@@ -76,9 +76,9 @@ const featuredCaseStudies = [
       client: "Clear.bio",
       industry: "Healthcare",
       services: ["Mobile App Development", "UX/UI Design", "Backend Development", "Data Analytics"],
-      image: "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552038.png",
+      image: "/images/staging_img/clear_bio_img.png",
       alt: "Clear bio dashboard visual",
-      logo: "https://staging.appvintech.com/wp-content/uploads/2024/05/Clip-path-group.svg",
+      logo: "/images/staging_img/clear_bio_logo.webp",
       logoAlt: "Clear.bio logo",
       featured: true,
       order: 4
@@ -159,10 +159,10 @@ const featuredCaseStudies = [
             <!-- Case study image -->
             <img
               src={
-                study.slug === 'dominos' ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552045.png" :
-                study.slug === 'kfc' ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552041-1.png" :
-                study.slug === 'moove' ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552033-2.png" :
-                study.slug === 'clear-bio' ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552038.png" :
+                study.slug === 'dominos' ? "/images/staging_img/dominos_img.png" :
+                study.slug === 'kfc' ? "/images/staging_img/kfc_img.png" :
+                study.slug === 'moove' ? "/images/staging_img/moove_img.png" :
+                study.slug === 'clear-bio' ? "/images/staging_img/clear_bio_img.png" :
                 study.data.industry === "Food & Beverage" ? "/images/case-studies/new/ab-inbev.webp" :
                 study.data.industry === "Healthcare" ? "/images/case-studies/new/healthcare-digital-transformation.webp" :
                 study.data.industry === "Technology" ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552038.png" :
@@ -191,25 +191,25 @@ const featuredCaseStudies = [
             <div class="flex items-center justify-center h-16 mb-4 dark:bg-gray-800 dark:rounded-lg dark:p-2">
               {study.slug === 'dominos' ? (
                 <img
-                  src="https://staging.appvintech.com/wp-content/uploads/2023/12/logo-2.webp"
+                  src="/images/staging_img/dominos_logo.webp"
                   alt={`${study.data.client} logo`}
                   class="h-full object-contain max-w-[180px]"
                 />
               ) : study.slug === 'kfc' ? (
                 <img
-                  src="https://staging.appvintech.com/wp-content/uploads/2023/12/logo.webp"
+                  src="/images/staging_img/kfc_logo.webp"
                   alt={`${study.data.client} logo`}
                   class="h-full object-contain max-w-[180px]"
                 />
               ) : study.slug === 'moove' ? (
                 <img
-                  src="https://staging.appvintech.com/wp-content/uploads/2024/06/moove-logo.png"
+                  src="/images/staging_img/moove.svg"
                   alt={`${study.data.client} logo`}
                   class="h-full object-contain max-w-[180px] dark:bg-white dark:p-2 dark:rounded-lg"
                 />
               ) : study.slug === 'clear-bio' ? (
                 <img
-                  src="https://staging.appvintech.com/wp-content/uploads/2024/05/Clip-path-group.svg"
+                  src="/images/staging_img/clear_bio_logo.svg"
                   alt={`${study.data.client} logo`}
                   class="h-full object-contain max-w-[180px] dark:invert dark:brightness-200"
                 />
