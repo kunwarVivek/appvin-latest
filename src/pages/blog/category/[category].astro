@@ -1,0 +1,261 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import PlaceholderImage from '../../../components/PlaceholderImage.astro';
+import { formatDate } from '../../../utils/date';
+import { blogPosts, allCategories } from '../../../data/blogPosts.js';
+
+export function getStaticPaths() {
+  return allCategories.map(category => ({
+    params: { category: category.toLowerCase().replace(/\s+/g, '-') },
+    props: { category }
+  }));
+}
+
+const { category } = Astro.props;
+const categoryPosts = blogPosts.filter(post => post.category === category);
+---
+
+<Layout
+  title={`${category} Articles | AppVin Technologies`}
+  description={`Explore our articles about ${category.toLowerCase()} from our expert team.`}
+>
+  <Header />
+
+  <main class="overflow-x-hidden w-full no-scrollbar">
+    <!-- Page Header -->
+    <section class="pt-32 pb-12 md:pt-40 md:pb-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
+      <!-- Decorative elements -->
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-1/4 left-1/4 size-64 bg-primary-500/5 dark:bg-primary-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-1/4 right-1/4 size-64 bg-secondary-500/5 dark:bg-secondary-500/10 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="max-w-4xl mx-auto">
+          <div class="flex flex-col items-center text-center">
+            <div class="inline-flex items-center justify-center size-16 rounded-full bg-primary-100 dark:bg-primary-900/30 mb-6 animate-in fade-in slide-in-from-bottom-5 duration-500">
+              <svg xmlns="http://www.w3.org/2000/svg" class="size-8 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1M19 20a2 2 0 002-2V8a2 2 0 00-2-2h-5M8 12h8M8 16h4" />
+              </svg>
+            </div>
+
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 animate-in fade-in slide-in-from-bottom-5 duration-500 delay-150">
+              <span class="gradient-text">{category}</span> Articles
+            </h1>
+
+            <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl animate-in fade-in slide-in-from-bottom-5 duration-500 delay-300">
+              Explore our latest articles on {category.toLowerCase()} from our expert team.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Posts -->
+    <section class="py-16 md:py-24 bg-white dark:bg-gray-900">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Category Posts -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {categoryPosts.map((post, index) => (
+            <article
+              class="group relative bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-card hover:shadow-blue-glow transition-all border border-slate-200 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-800 flex flex-col transform hover:-translate-y-1 duration-300 h-full animate-in fade-in slide-in-from-bottom-5"
+              style={`animation-delay: ${index * 100}ms`}
+            >
+              <div class="relative w-full overflow-hidden h-40 flex-shrink-0 border-b border-slate-200 dark:border-gray-700">
+                {post.image ? (
+                  <div>
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                    />
+                    <div class="hidden w-full h-full">
+                      <PlaceholderImage
+                        width={800}
+                        height={400}
+                        category={post.tags.includes("AI") || post.tags.includes("Machine Learning") ? "tech" :
+                                 post.tags.includes("Business Strategy") ? "business" :
+                                 post.tags.includes("UX Design") ? "abstract" : "tech"}
+                        alt={post.title}
+                        className="w-full h-full transition-transform duration-500 group-hover:scale-110"
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <PlaceholderImage
+                    width={800}
+                    height={400}
+                    category={post.tags.includes("AI") || post.tags.includes("Machine Learning") ? "tech" :
+                             post.tags.includes("Business Strategy") ? "business" :
+                             post.tags.includes("UX Design") ? "abstract" : "tech"}
+                    alt={post.title}
+                    className="w-full h-full transition-transform duration-500 group-hover:scale-110"
+                  />
+                )}
+
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/40 to-transparent opacity-70 group-hover:opacity-60 transition-opacity"></div>
+              </div>
+
+              <div class="card-content">
+                <h3 class="text-xl font-extrabold text-gray-900 dark:text-white mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  <a href={`/blog/${post.slug}`}>
+                    {post.title}
+                  </a>
+                </h3>
+
+                <div class="content-list-container flex-grow overflow-y-auto">
+                  <p class="text-gray-600 dark:text-gray-400 mb-4 text-base">
+                    {post.excerpt}
+                  </p>
+
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    {post.tags.slice(0, 3).map((tag) => (
+                      <span class="px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-xs font-medium">
+                        #{tag}
+                      </span>
+                    ))}
+                    {post.tags.length > 3 && (
+                      <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded-full text-xs">
+                        +{post.tags.length - 3}
+                      </span>
+                    )}
+                  </div>
+
+                  <div class="flex items-center text-xs text-gray-500 dark:text-gray-400 mb-4">
+                    <span class="inline-flex items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1 text-blue-500 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      {formatDate(post.publishDate)}
+                    </span>
+                    <span class="mx-2">•</span>
+                    <span class="inline-flex items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1 text-blue-500 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                      {post.author}
+                    </span>
+                  </div>
+                </div>
+
+                <div class="button-container">
+                  <a
+                    href={`/blog/${post.slug}`}
+                    class="industry-btn inline-flex items-center"
+                  >
+                    <span>Read Article</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1 group-hover:ml-2 transition-all duration-300" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <!-- Back to Blog -->
+        <div class="mt-16 text-center">
+          <a
+            href="/blog"
+            class="inline-flex items-center px-6 py-3 rounded-lg border-2 border-blue-500 text-blue-600 hover:text-white hover:bg-blue-500 dark:border-blue-400 dark:text-blue-400 dark:hover:text-white dark:hover:bg-blue-500 transition-colors duration-300 font-semibold focus-ring"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+            </svg>
+            Back to All Articles
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* Prevent shadow on blog card images in dark mode */
+  .dark article.group:hover img,
+  .dark div.group:hover img {
+    filter: none !important;
+    box-shadow: none !important;
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 1.25rem 1.25rem 0.5rem 1.25rem;
+    padding-bottom: 0.25rem;
+    height: calc(100% - 140px);
+  }
+
+  .content-list-container {
+    flex-grow: 1;
+    overflow-y: visible;
+    margin-bottom: 0.5rem;
+    max-height: none;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 0;
+    padding-top: 0.25rem;
+    padding-bottom: 0.5rem;
+    height: auto;
+  }
+
+  .industry-btn {
+    padding: 0.5rem 1.25rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    background: linear-gradient(90deg, #2563eb 0%, #38bdf8 100%);
+    color: #fff;
+    border: none;
+    box-shadow: 0 2px 8px 0 rgba(30,41,59,0.08);
+    transition: all 0.3s ease;
+    min-width: 160px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+
+  .industry-btn:hover {
+    background: linear-gradient(90deg, #1d4ed8 0%, #0ea5e9 100%);
+    box-shadow: 0 4px 16px 0 rgba(30,41,59,0.12);
+    transform: translateY(-1px);
+  }
+
+  .industry-btn:active {
+    transform: translateY(1px);
+  }
+
+  :global(.dark) .industry-btn {
+    background: linear-gradient(90deg, #3b82f6 0%, #38bdf8 100%);
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.05);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    color: #ffffff;
+  }
+
+  :global(.dark) .industry-btn:hover {
+    background: linear-gradient(90deg, #2563eb 0%, #0ea5e9 100%);
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1);
+  }
+
+  @media (max-width: 1024px) {
+    .card-content { height: calc(100% - 100px); }
+  }
+
+  @media (max-width: 768px) {
+    .card-content { height: calc(100% - 70px); }
+  }
+</style>

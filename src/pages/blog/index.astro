@@ -2,68 +2,9 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import PlaceholderImage from '../../components/PlaceholderImage.astro';
 import { formatDate } from '../../utils/date';
-
-// In a real implementation, this would come from a content collection
-const blogPosts = [
-  {
-    title: 'The Future of AI in Product Engineering',
-    slug: 'future-of-ai-in-product-engineering',
-    excerpt: 'Explore how artificial intelligence is revolutionizing the product engineering landscape and what it means for businesses.',
-    publishDate: '2023-04-15',
-    author: 'Alex Johnson',
-    image: '/images/blog-1.jpg',
-    tags: ['AI', 'Product Engineering', 'Innovation'],
-  },
-  {
-    title: 'Building Scalable Cloud Solutions for Modern Businesses',
-    slug: 'building-scalable-cloud-solutions',
-    excerpt: 'Learn the best practices for designing and implementing cloud solutions that can grow with your business needs.',
-    publishDate: '2023-03-28',
-    author: 'Maria Garcia',
-    image: '/images/blog-2.jpg',
-    tags: ['Cloud', 'Scalability', 'Architecture'],
-  },
-  {
-    title: 'The Role of UX Design in Digital Transformation',
-    slug: 'role-of-ux-design-in-digital-transformation',
-    excerpt: 'Discover how user experience design plays a crucial role in successful digital transformation initiatives.',
-    publishDate: '2023-03-10',
-    author: 'James Wilson',
-    image: '/images/blog-3.jpg',
-    tags: ['UX Design', 'Digital Transformation', 'User Experience'],
-  },
-  {
-    title: 'Implementing Machine Learning Models in Production',
-    slug: 'implementing-machine-learning-models-in-production',
-    excerpt: 'A comprehensive guide to deploying and maintaining machine learning models in production environments.',
-    publishDate: '2023-02-22',
-    author: 'Sophia Lee',
-    image: '/images/blog-4.jpg',
-    tags: ['Machine Learning', 'DevOps', 'MLOps'],
-  },
-  {
-    title: 'Data-Driven Decision Making for Business Leaders',
-    slug: 'data-driven-decision-making-for-business-leaders',
-    excerpt: 'How business leaders can leverage data analytics to make more informed strategic decisions.',
-    publishDate: '2023-02-05',
-    author: 'Robert Chen',
-    image: '/images/blog-5.jpg',
-    tags: ['Data Analytics', 'Business Strategy', 'Leadership'],
-  },
-  {
-    title: 'The Impact of 5G on IoT Development',
-    slug: 'impact-of-5g-on-iot-development',
-    excerpt: 'Exploring how 5G technology is transforming the Internet of Things landscape and creating new opportunities.',
-    publishDate: '2023-01-18',
-    author: 'David Kim',
-    image: '/images/blog-6.jpg',
-    tags: ['IoT', '5G', 'Connectivity'],
-  },
-];
-
-// Get all unique tags
-const allTags = [...new Set(blogPosts.flatMap(post => post.tags))].sort();
+import { blogPosts, allTags } from '../../data/blogPosts.js';
 ---
 
 <Layout
@@ -71,179 +12,277 @@ const allTags = [...new Set(blogPosts.flatMap(post => post.tags))].sort();
   description="Insights and articles on AI, product engineering, and digital transformation from our expert team."
 >
   <Header />
-  
-  <main>
+
+  <main class="overflow-x-hidden w-full no-scrollbar">
     <!-- Page Header -->
-    <section class="pt-32 pb-12 md:pt-40 md:pb-20 bg-gray-50 dark:bg-gray-800">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-4xl mx-auto text-center">
-          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Blog
-          </h1>
-          <p class="text-xl text-gray-600 dark:text-gray-400">
-            Insights and articles on AI, product engineering, and digital transformation from our expert team.
-          </p>
+    <section class="pt-32 pb-12 md:pt-40 md:pb-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
+      <!-- Decorative elements -->
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-1/4 left-1/4 size-64 bg-primary-500/5 dark:bg-primary-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-1/4 right-1/4 size-64 bg-secondary-500/5 dark:bg-secondary-500/10 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="max-w-4xl mx-auto">
+          <div class="flex flex-col items-center text-center">
+            <div class="inline-flex items-center justify-center size-16 rounded-full bg-primary-100 dark:bg-primary-900/30 mb-6 animate-in fade-in slide-in-from-bottom-5 duration-500">
+              <svg xmlns="http://www.w3.org/2000/svg" class="size-8 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1M19 20a2 2 0 002-2V8a2 2 0 00-2-2h-5M8 12h8M8 16h4" />
+              </svg>
+            </div>
+
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 animate-in fade-in slide-in-from-bottom-5 duration-500 delay-150">
+              <span class="gradient-text">Insights</span> & Resources
+            </h1>
+
+            <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl animate-in fade-in slide-in-from-bottom-5 duration-500 delay-300">
+              Explore our latest articles on AI, product engineering, and digital transformation from our expert team.
+            </p>
+          </div>
         </div>
       </div>
     </section>
-    
+
     <!-- Blog Posts -->
     <section class="py-16 md:py-24 bg-white dark:bg-gray-900">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-col lg:flex-row gap-12">
-          <!-- Main Content -->
+        <!-- Featured Cards and Sidebar in same row -->
+        <div class="flex flex-col lg:flex-row gap-12 mb-16">
+          <!-- Featured Cards (2) -->
           <div class="lg:w-2/3">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="size-6 mr-2 text-blue-500 dark:text-blue-400" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              Featured Articles
+            </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {blogPosts.map((post) => (
-                <article class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-                  <a href={`/blog/${post.slug}`} class="block h-48 bg-gray-300 dark:bg-gray-700 relative">
-                    <div class="absolute inset-0 flex items-center justify-center text-gray-500 dark:text-gray-400">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1M19 20a2 2 0 002-2V8a2 2 0 00-2-2h-5M8 12h8M8 16h4" />
-                      </svg>
-                    </div>
+              {blogPosts.slice(0, 2).map((post, index) => (
+                <article
+                  class="group relative bg-slate-100 dark:bg-gray-800 rounded-xl overflow-hidden border border-slate-200 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-800 transition-all shadow-card hover:shadow-blue-glow animate-in fade-in slide-in-from-bottom-5 duration-500"
+                  style={`animation-delay: ${index * 100}ms`}
+                >
+                  <div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-white dark:from-blue-900/10 dark:to-gray-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                  <a href={`/blog/${post.slug}`} class="block h-48 relative overflow-hidden">
+                    {post.image ? (
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                      />
+                      <div class="hidden w-full h-full">
+                        <PlaceholderImage
+                          width={800}
+                          height={400}
+                          category={post.tags.includes("AI") || post.tags.includes("Machine Learning") ? "tech" :
+                                   post.tags.includes("Business Strategy") ? "business" :
+                                   post.tags.includes("UX Design") ? "abstract" : "tech"}
+                          alt={post.title}
+                          className="w-full h-full transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </div>
+                    ) : (
+                      <PlaceholderImage
+                        width={800}
+                        height={400}
+                        category={post.tags.includes("AI") || post.tags.includes("Machine Learning") ? "tech" :
+                                 post.tags.includes("Business Strategy") ? "business" :
+                                 post.tags.includes("UX Design") ? "abstract" : "tech"}
+                        alt={post.title}
+                        className="w-full h-full transition-transform duration-500 group-hover:scale-105"
+                      />
+                    )}
+
+                    <!-- Overlay gradient -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-blue-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </a>
-                  
-                  <div class="p-6">
-                    <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2">
-                      <span>{formatDate(post.publishDate)}</span>
+
+                  <div class="relative p-6">
+                    <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-3 text-left">
+                      <span class="font-medium">{formatDate(post.publishDate)}</span>
                       <span class="mx-2">•</span>
-                      <span>{post.author}</span>
+                      <span class="italic">{post.author}</span>
                     </div>
-                    
-                    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
-                      <a href={`/blog/${post.slug}`} class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+
+                    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 text-left">
+                      <a href={`/blog/${post.slug}`}>
                         {post.title}
                       </a>
                     </h2>
-                    
-                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+
+                    <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2 text-left">
                       {post.excerpt}
                     </p>
-                    
-                    <div class="flex flex-wrap gap-2 mb-4">
-                      {post.tags.map((tag) => (
-                        <a 
+
+                    <div class="flex flex-wrap justify-start gap-2 mb-4">
+                      {post.tags.slice(0, 3).map((tag) => (
+                        <span class="px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-xs hover:bg-blue-100 dark:hover:bg-blue-800/50 transition-colors duration-300">
+                          #{tag}
+                        </span>
+                      ))}
+                      {post.tags.length > 3 && (
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded-full text-xs">
+                          +{post.tags.length - 3}
+                        </span>
+                      )}
+                    </div>
+
+                    <div class="flex justify-start">
+                      <a
+                        href={`/blog/${post.slug}`}
+                        class="inline-flex items-center px-5 py-2 rounded-lg bg-gradient-blue text-white font-semibold shadow-md hover:shadow-blue-glow dark:bg-gradient-blue-dark transition-all duration-300 hover:scale-105 focus-ring"
+                      >
+                      <span class="drop-shadow-md">Read Article</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1 group-hover:ml-2 transition-all duration-300" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                      </svg>
+                    </a>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <!-- Sidebar -->
+          <div class="lg:w-1/3 space-y-8">
+            <!-- Search -->
+            <div class="bg-slate-100 dark:bg-gray-800 rounded-xl border border-slate-200 dark:border-gray-700 p-6 animate-in fade-in slide-in-from-right-5 shadow-card hover:shadow-blue-glow transition-all duration-300">
+              <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="size-5 mr-2 text-blue-500 dark:text-blue-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                </svg>
+                Search Articles
+              </h3>
+              <form>
+                <div class="relative">
+                  <input
+                    type="text"
+                    placeholder="Search articles..."
+                    class="w-full pl-10 pr-4 py-2 text-gray-900 dark:text-white bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-300"
+                  />
+                  <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="size-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <!-- Categories -->
+            <div class="bg-slate-100 dark:bg-gray-800 rounded-xl border border-slate-200 dark:border-gray-700 p-6 animate-in fade-in slide-in-from-right-5 shadow-card hover:shadow-blue-glow transition-all duration-300 delay-150">
+              <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="size-5 mr-2 text-blue-500 dark:text-blue-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+                </svg>
+                Categories
+              </h3>
+              <div class="max-h-[300px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent rounded-lg">
+                <ul class="space-y-3">
+                  {allTags.map((tag) => (
+                    <li>
+                      <a
+                        href={`/blog/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`}
+                        class="flex items-center justify-between py-2 px-3 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 group"
+                      >
+                        <span class="group-hover:translate-x-1 transition-transform">#{tag}</span>
+                        <span class="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 px-2 py-1 rounded-full text-xs group-hover:bg-blue-100 dark:group-hover:bg-blue-900/30 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors duration-300">
+                          {blogPosts.filter(post => post.tags.includes(tag)).length}
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scrollable Numbered Articles -->
+        <div>
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-6 mr-2 text-blue-500 dark:text-blue-400" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
+            </svg>
+            All Articles
+          </h2>
+
+          <div class="max-h-[280px] overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent rounded-xl">
+            <div class="space-y-6">
+              {blogPosts.slice(2).map((post, index) => (
+                <article class="group flex gap-4 bg-slate-100 dark:bg-gray-800 rounded-xl overflow-hidden border border-slate-200 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-800 transition-all shadow-card hover:shadow-blue-glow p-4">
+                  <div class="flex-shrink-0 flex items-center justify-center size-12 bg-blue-100 dark:bg-blue-900/30 rounded-full text-blue-600 dark:text-blue-400 font-bold">
+                    {index + 3}
+                  </div>
+
+                  <div class="flex-grow">
+                    <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-1">
+                      <span class="font-medium">{formatDate(post.publishDate)}</span>
+                      <span class="mx-2">•</span>
+                      <span class="italic">{post.author}</span>
+                    </div>
+
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                      <a href={`/blog/${post.slug}`}>
+                        {post.title}
+                      </a>
+                    </h3>
+
+                    <p class="text-gray-600 dark:text-gray-400 mb-3 line-clamp-2 text-sm">
+                      {post.excerpt}
+                    </p>
+
+                    <div class="flex flex-wrap gap-2">
+                      {post.tags.slice(0, 2).map((tag) => (
+                        <a
                           href={`/blog/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`}
-                          class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded text-xs hover:bg-primary-100 dark:hover:bg-primary-900 transition-colors"
+                          class="px-2 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-xs hover:bg-blue-100 dark:hover:bg-blue-800/50 transition-colors duration-300"
                         >
                           #{tag}
                         </a>
                       ))}
+                      {post.tags.length > 2 && (
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded-full text-xs">
+                          +{post.tags.length - 2}
+                        </span>
+                      )}
                     </div>
-                    
-                    <a 
-                      href={`/blog/${post.slug}`} 
-                      class="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 font-medium"
+                  </div>
+
+                  <div class="flex-shrink-0 self-center">
+                    <a
+                      href={`/blog/${post.slug}`}
+                      class="inline-flex items-center justify-center size-10 rounded-full bg-white dark:bg-gray-700 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors duration-300"
+                      aria-label="Read article"
                     >
-                      Read More
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                      <svg xmlns="http://www.w3.org/2000/svg" class="size-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
                       </svg>
                     </a>
                   </div>
                 </article>
               ))}
             </div>
-            
-            <!-- Pagination -->
-            <div class="mt-12 flex justify-center">
-              <nav class="inline-flex rounded-md shadow">
-                <a href="#" class="px-4 py-2 rounded-l-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
-                  Previous
-                </a>
-                <a href="#" class="px-4 py-2 border-t border-b border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
-                  1
-                </a>
-                <a href="#" class="px-4 py-2 border-t border-b border-gray-300 dark:border-gray-700 bg-primary-50 dark:bg-primary-900 text-primary-600 dark:text-primary-400">
-                  2
-                </a>
-                <a href="#" class="px-4 py-2 border-t border-b border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
-                  3
-                </a>
-                <a href="#" class="px-4 py-2 rounded-r-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700">
-                  Next
-                </a>
-              </nav>
-            </div>
           </div>
-          
-          <!-- Sidebar -->
-          <div class="lg:w-1/3">
-            <!-- Search -->
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-8">
-              <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">
-                Search
-              </h3>
-              <form>
-                <div class="flex">
-                  <input 
-                    type="text" 
-                    placeholder="Search articles..." 
-                    class="flex-1 min-w-0 px-4 py-2 text-gray-900 dark:text-white bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-l-md focus:outline-none focus:ring-2 focus:ring-primary-500"
-                  />
-                  <button 
-                    type="submit" 
-                    class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-r-md text-white bg-primary-600 hover:bg-primary-700 dark:bg-primary-700 dark:hover:bg-primary-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                      <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-                    </svg>
-                  </button>
-                </div>
-              </form>
-            </div>
-            
-            <!-- Categories -->
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-8">
-              <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">
-                Categories
-              </h3>
-              <ul class="space-y-2">
-                {allTags.map((tag) => (
-                  <li>
-                    <a 
-                      href={`/blog/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`}
-                      class="flex items-center justify-between text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400"
-                    >
-                      <span>{tag}</span>
-                      <span class="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 px-2 py-1 rounded-full text-xs">
-                        {blogPosts.filter(post => post.tags.includes(tag)).length}
-                      </span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            
-            <!-- Newsletter -->
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-              <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">
-                Newsletter
-              </h3>
-              <p class="text-gray-600 dark:text-gray-400 mb-4">
-                Subscribe to our newsletter to get the latest insights and articles delivered to your inbox.
-              </p>
-              <form>
-                <input 
-                  type="email" 
-                  placeholder="Your email address" 
-                  class="w-full px-4 py-2 mb-4 text-gray-900 dark:text-white bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500"
-                  required
-                />
-                <button 
-                  type="submit" 
-                  class="w-full btn btn-primary"
-                >
-                  Subscribe
-                </button>
-              </form>
-            </div>
-          </div>
+        </div>
+
+
         </div>
       </div>
     </section>
   </main>
-  
+
   <Footer />
 </Layout>
+
+<style>
+  /* Prevent shadow on blog card images in dark mode */
+  .dark article.group:hover img,
+  .dark div.group:hover img {
+    filter: none !important;
+    box-shadow: none !important;
+  }
+</style>

@@ -1,0 +1,96 @@
+---
+interface Props {
+  width?: number;
+  height?: number;
+  category?: 'abstract' | 'business' | 'tech' | 'nature' | 'people';
+  alt?: string;
+  className?: string;
+}
+
+const {
+  width = 800,
+  height = 600,
+  category = 'tech',
+  alt = 'Placeholder image',
+  className = '',
+} = Astro.props;
+
+// Generate a random seed for the placeholder
+const seed = Math.floor(Math.random() * 1000);
+
+// Map categories to colors
+const categoryColors: Record<string, string> = {
+  abstract: 'primary',
+  business: 'blue',
+  tech: 'indigo',
+  nature: 'green',
+  people: 'amber',
+};
+
+const color = categoryColors[category] || 'primary';
+
+// Generate placeholder URL
+const placeholderUrl = `https://source.unsplash.com/random/${width}x${height}?${category}`;
+
+// Fallback SVG placeholder with gradient background
+const svgPlaceholder = `
+<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
+  <defs>
+    <linearGradient id="grad-${seed}" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" class="stop-${color}-500 dark:stop-${color}-700" />
+      <stop offset="100%" class="stop-${color}-400 dark:stop-${color}-600" />
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#grad-${seed})" />
+  <g fill="white" opacity="0.3">
+    <circle cx="${width * 0.3}" cy="${height * 0.4}" r="${Math.min(width, height) * 0.1}" />
+    <circle cx="${width * 0.7}" cy="${height * 0.6}" r="${Math.min(width, height) * 0.15}" />
+  </g>
+  <text x="50%" y="50%" font-family="system-ui, sans-serif" font-size="${Math.min(width, height) * 0.08}" text-anchor="middle" fill="white" dominant-baseline="middle">${alt}</text>
+</svg>
+`;
+
+// Base64 encode the SVG for use as a data URL
+const encodedSvg = Buffer.from(svgPlaceholder).toString('base64');
+const fallbackSrc = `data:image/svg+xml;base64,${encodedSvg}`;
+---
+
+<div class={`placeholder-image overflow-hidden ${className}`}>
+  <img
+    src={placeholderUrl}
+    alt={alt}
+    width={width}
+    height={height}
+    loading="lazy"
+    onerror="this.onerror=null; this.src=this.getAttribute('data-fallback');"
+    data-fallback={fallbackSrc}
+    class="w-full h-full object-cover"
+  />
+</div>
+
+<style>
+  .stop-primary-500 { stop-color: #6366f1; }
+  .stop-primary-400 { stop-color: #818cf8; }
+  .stop-primary-700 { stop-color: #4338ca; }
+  .stop-primary-600 { stop-color: #4f46e5; }
+  
+  .stop-blue-500 { stop-color: #3b82f6; }
+  .stop-blue-400 { stop-color: #60a5fa; }
+  .stop-blue-700 { stop-color: #1d4ed8; }
+  .stop-blue-600 { stop-color: #2563eb; }
+  
+  .stop-indigo-500 { stop-color: #6366f1; }
+  .stop-indigo-400 { stop-color: #818cf8; }
+  .stop-indigo-700 { stop-color: #4338ca; }
+  .stop-indigo-600 { stop-color: #4f46e5; }
+  
+  .stop-green-500 { stop-color: #10b981; }
+  .stop-green-400 { stop-color: #34d399; }
+  .stop-green-700 { stop-color: #047857; }
+  .stop-green-600 { stop-color: #059669; }
+  
+  .stop-amber-500 { stop-color: #f59e0b; }
+  .stop-amber-400 { stop-color: #fbbf24; }
+  .stop-amber-700 { stop-color: #b45309; }
+  .stop-amber-600 { stop-color: #d97706; }
+</style>

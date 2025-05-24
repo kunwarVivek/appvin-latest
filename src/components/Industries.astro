@@ -1,0 +1,323 @@
+---
+// Industry data with use cases and accelerators
+const industries = [
+  {
+    name: 'Financial Services',
+    image: 'https://images.unsplash.com/photo-1601597111158-2fceff292cdc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+    alt: 'Digital interface representing automation',
+    useCases: [
+      'AI-driven productivity: automated financial advisory, loan assistance, fraud alerts',
+      'Market analysis for PE & VCs: startup discovery using AI',
+      'Regulatory compliance LMS for future-ready workforce',
+    ],
+    accelerators: [
+      { name: 'Chatify', description: 'Employee productivity & fraud detection', color: 'bg-blue-500' },
+      { name: 'DealSource', description: 'Market analysis for investors', color: 'bg-green-500' },
+      { name: 'Awareness', description: 'Compliance LMS for AML and fraud prevention', color: 'bg-yellow-500' },
+    ],
+  },
+  {
+    name: 'Healthcare',
+    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+    alt: 'IT professional analyzing data on multiple screens',
+    useCases: [
+      'AI-powered patient experience: scheduling, symptom checker',
+      'Staff training and HIPAA compliance using AI',
+      'Predictive maintenance of medical vehicles',
+    ],
+    accelerators: [
+      { name: 'Chatify', description: 'Patient assist and experience', color: 'bg-blue-500' },
+      { name: 'Awareness', description: 'AI training for HIPAA and compliance', color: 'bg-yellow-500' },
+      { name: 'GoLab', description: 'Predictive maintenance of transport vehicles', color: 'bg-purple-500' },
+    ],
+  },
+  {
+    name: 'Mobility and Logistics',
+    image: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+    alt: 'Team working in a cybersecurity command center',
+    useCases: [
+      'Fleet dispatch and route optimization',
+      'Predictive maintenance using sensor analytics',
+      'AI-enhanced ERP process automation',
+      'Emission tracking and energy efficiency with real-time insights',
+    ],
+    accelerators: [
+      { name: 'GoLab', description: 'Route optimization, predictive maintenance', color: 'bg-purple-500' },
+      { name: 'NLMK S/4HANA Migration', description: 'AI ERP automation', color: 'bg-indigo-500' },
+      { name: 'CarbonQuench', description: 'Sustainability and emissions tracking', color: 'bg-green-500' },
+    ],
+  },
+  {
+    name: 'Retail',
+    image: 'https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+    alt: 'Business meeting discussing strategy',
+    useCases: [
+      'AI chatbots for real-time support and returns',
+      'Personalized product recommendations via behavior analysis',
+      'Dynamic AI-based delivery routing',
+    ],
+    accelerators: [
+      { name: 'Chatify', description: 'Customer support automation', color: 'bg-blue-500' },
+      { name: 'Animus', description: 'Personalized product journeys', color: 'bg-pink-500' },
+      { name: 'GoLab', description: 'Real-time delivery routing optimization', color: 'bg-purple-500' },
+    ],
+  },
+];
+---
+
+<script is:inline src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+<section class="section bg-gray-50 dark:bg-gray-800 relative overflow-hidden">
+  <div class="container mx-auto px-4 relative z-10">
+    <h2 class="section-title text-4xl md:text-5xl font-extrabold mb-8 text-center tracking-tight drop-shadow-lg">
+      Our <span class="gradient-text">Industry Expertise</span>
+    </h2>
+    <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mb-8 rounded-full shadow-lg"></div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {industries.map((industry) => (
+        <div class="flip-card group bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-card hover:shadow-blue-glow transition-all border border-slate-200 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-800 transform hover:-translate-y-1 duration-300 flex flex-col animate-in fade-in slide-in-from-bottom-5" x-data="{ flipped: false }" style="min-height: 600px;">
+          <div class="flip-card-inner h-full" :class="flipped ? 'flipped' : ''">
+            <!-- Front Side -->
+            <div class="flip-card-front w-full h-full flex flex-col">
+              <div class="relative w-full overflow-hidden h-48 flex-shrink-0 border-b border-slate-200 dark:border-gray-700">
+                <img
+                  src={industry.image}
+                  alt={industry.alt}
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/40 to-transparent opacity-70 group-hover:opacity-60 transition-opacity"></div>
+                <div class="absolute top-4 left-4 z-10">
+                  <span class="px-3 py-1.5 bg-gradient-to-r from-blue-500/90 to-blue-600/90 text-white rounded-full text-xs font-medium shadow-sm backdrop-blur-sm">
+                    {industry.name}
+                  </span>
+                </div>
+              </div>
+              <div class="card-content flex flex-col flex-grow">
+                <h3 class="text-xl font-extrabold text-gray-900 dark:text-white mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{industry.name}</h3>
+                <div class="content-list-container flex-grow overflow-y-auto">
+                  <ul class="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300 text-base">
+                    {industry.useCases.map(use => (
+                      <li class="mb-2">{use}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div class="button-container">
+                  <button @click="flipped = true" class="industry-btn inline-flex items-center">
+                    <span>Click here for Inspiration and Accelerators</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1 group-hover:ml-2 transition-all duration-300" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Back Side -->
+            <div class="flip-card-back w-full h-full flex flex-col">
+              <div class="relative w-full overflow-hidden h-48 flex-shrink-0 border-b border-slate-200 dark:border-gray-700">
+                <img
+                  src={industry.image}
+                  alt={industry.alt}
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/40 to-transparent opacity-70 group-hover:opacity-60 transition-opacity"></div>
+                <div class="absolute top-4 left-4 z-10">
+                  <span class="px-3 py-1.5 bg-gradient-to-r from-blue-600/90 to-blue-700/90 text-white rounded-full text-xs font-medium shadow-sm backdrop-blur-sm">
+                    {industry.name} Accelerators
+                  </span>
+                </div>
+              </div>
+              <div class="card-content flex flex-col flex-grow">
+                <h3 class="text-xl font-extrabold text-blue-700 dark:text-blue-300 mb-4">{industry.name} Accelerators</h3>
+                <div class="content-list-container flex-grow overflow-y-auto">
+                  <ul class="space-y-4">
+                    {industry.accelerators.map(acc => (
+                      <li class="flex items-start gap-3 mb-3">
+                        <span class={`w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-md ${acc.color} dark:opacity-90`}>{acc.name[0]}</span>
+                        <div>
+                          <span class="font-semibold text-gray-900 dark:text-white">{acc.name}</span>
+                          <div class="text-gray-600 dark:text-gray-300 text-sm">{acc.description}</div>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div class="button-container">
+                  <button @click="flipped = false" class="industry-btn inline-flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H17a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                    </svg>
+                    Back
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Prevent shadow on images in dark mode */
+  :global(.dark) .flip-card img {
+    filter: none !important;
+    box-shadow: none !important;
+  }
+
+  .flip-card {
+    perspective: 1200px;
+    height: 100%;
+    min-height: 540px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1.25rem;
+    box-shadow: 0 6px 32px 0 rgba(30,41,59,0.10), 0 1.5px 6px 0 rgba(30,41,59,0.06);
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+    transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+  }
+
+  :global(.dark) .flip-card {
+    background: #1e293b;
+    border-color: #334155;
+    box-shadow: 0 6px 32px 0 rgba(0,0,0,0.25), 0 1.5px 6px 0 rgba(0,0,0,0.15);
+  }
+  .flip-card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    will-change: transform;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition: -webkit-transform 0.6s cubic-bezier(.4,2,.6,1);
+    transition: transform 0.6s cubic-bezier(.4,2,.6,1);
+  }
+  .flip-card-inner.flipped {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+  }
+  .flip-card-front, .flip-card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    will-change: transform;
+    transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+  }
+  .flip-card-front {
+    z-index: 2;
+    background: #fff;
+    -webkit-transform: rotateY(0deg) translateZ(1px);
+    transform: rotateY(0deg) translateZ(1px);
+  }
+  .flip-card-back {
+    z-index: 3;
+    background: #fff;
+    -webkit-transform: rotateY(180deg) translateZ(1px);
+    transform: rotateY(180deg) translateZ(1px);
+  }
+
+  :global(.dark) .flip-card-front {
+    background: #1e293b;
+  }
+
+  :global(.dark) .flip-card-back {
+    background: #0f172a;
+  }
+  .industry-image-container {
+    height: 140px;
+    flex-shrink: 0;
+    border-bottom: 1px solid #e5e7eb;
+    transition: border-color 0.3s;
+  }
+
+  :global(.dark) .industry-image-container {
+    border-bottom-color: #334155;
+  }
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 1.25rem 1.25rem 0.5rem 1.25rem;
+    padding-bottom: 0.25rem;
+    height: calc(100% - 140px);
+  }
+  .content-list-container {
+    flex-grow: 1;
+    overflow-y: visible;
+    margin-bottom: 0.5rem;
+    max-height: none;
+  }
+  .button-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 0;
+    padding-top: 0.25rem;
+    padding-bottom: 0.5rem;
+    height: auto;
+  }
+  .industry-btn {
+    padding: 0.5rem 1.25rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    background: linear-gradient(90deg, #2563eb 0%, #38bdf8 100%);
+    color: #fff;
+    border: none;
+    box-shadow: 0 2px 8px 0 rgba(30,41,59,0.08);
+    transition: all 0.3s ease;
+    min-width: 160px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+
+  .industry-btn:hover {
+    background: linear-gradient(90deg, #1d4ed8 0%, #0ea5e9 100%);
+    box-shadow: 0 4px 16px 0 rgba(30,41,59,0.12);
+    transform: translateY(-1px);
+  }
+
+  .industry-btn:active {
+    transform: translateY(1px);
+  }
+
+  :global(.dark) .industry-btn {
+    background: linear-gradient(90deg, #3b82f6 0%, #38bdf8 100%);
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.05);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    color: #ffffff;
+  }
+
+  :global(.dark) .industry-btn:hover {
+    background: linear-gradient(90deg, #2563eb 0%, #0ea5e9 100%);
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1);
+  }
+  @media (max-width: 1024px) {
+    .flip-card { min-height: 420px; }
+    .industry-image-container { height: 100px; }
+    .card-content { height: calc(100% - 100px); }
+  }
+  @media (max-width: 768px) {
+    .flip-card { min-height: 380px; }
+    .industry-image-container { height: 70px; }
+    .card-content { height: calc(100% - 70px); }
+  }
+  @media (max-width: 480px) {
+    .flip-card { min-height: 500px; }
+  }
+</style>

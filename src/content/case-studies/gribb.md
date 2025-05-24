@@ -1,14 +1,14 @@
 ---
-title: "Gribb - Driving Data Made Actionable"
-subtitle: "Harnessing Vehicle Technology for Road Safety"
-description: "Delivered a sleek, powerful mobile app that reduced risky driving behaviors by 90%, combining driving behavior data, modern vehicle technology, and road safety marketing."
+title: "Gribb: Driving Data Made Actionable"
+subtitle: "Sustainable Driving Culture Through Mobile Innovation"
+description: "Gribb partnered with AppVin to develop a user-friendly mobile app, integrating driving behavior data, vehicle tech, and safety marketing for a sustainable driving culture."
 client: "Gribb"
 industry: "Transportation & Logistics"
 services: ["Mobile App Development", "Data Analytics", "UX/UI Design"]
-challenge: "Gribb needed to transform their road safety and sustainability mission into a mobile app that seamlessly combines driving behavior data, vehicle technology, and safety marketing."
+challenge: "Gribb needed a comprehensive mobile solution to integrate driving behavior data, vehicle technology, and safety marketing to promote a sustainable driving culture."
 solution: "We developed a cross-platform mobile app with user-centric interface, data integration excellence, emissions tracking, and interactive safety features."
-image: "/images/case-studies/gribb.webp"
-logo: "/images/case-studies/gribb-logo.webp"
+image: "/images/staging_img/gribb_img.png"
+logo: "/images/staging_img/gribb_logo.webp"
 stats:
   - value: "90%"
     label: "Reduction in Risky Driving"
@@ -24,7 +24,7 @@ technologies:
   - "MongoDB"
 category: "Transportation & Logistics"
 featured: true
-pubDate: "2022-05-15"
+pubDate: "2023-04-15"
 order: 1
 ---
 

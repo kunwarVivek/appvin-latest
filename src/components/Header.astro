@@ -4,6 +4,7 @@ const navItems = [
   { name: 'About', url: '/about' },
   { name: 'Services', url: '/services' },
   { name: 'Case Studies', url: '/case-studies' },
+  { name: 'Careers', url: '/careers' },
   { name: 'Blog', url: '/blog' },
   { name: 'Contact', url: '/contact' },
 ];
@@ -11,53 +12,57 @@ const navItems = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="fixed top-0 left-0 w-full z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm">
-  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center py-4">
+<header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+  <!-- Glassmorphism background -->
+  <div class="absolute inset-0 glass-effect shadow-lg"></div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="flex justify-between items-center h-20">
       <!-- Logo -->
-      <a href="/" class="flex items-center">
-        <img src="/images/appvin-logo.png" alt="AppVin Technologies" class="h-10" />
+      <a href="/" class="flex items-center group">
+        <img src="/images/appvin-logo.png" alt="AppVinTech company logo" class="h-10 transition-transform group-hover:scale-105" />
       </a>
 
       <!-- Desktop Navigation -->
-      <nav class="hidden md:flex items-center space-x-8">
-        {navItems.map((item) => (
-          <a
-            href={item.url}
-            class={`text-sm font-medium transition-colors ${
-              currentPath === item.url || (item.url !== '/' && currentPath.startsWith(item.url))
-                ? 'text-primary-600 dark:text-primary-400'
-                : 'text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400'
-            }`}
-          >
-            {item.name}
-          </a>
-        ))}
+      <nav class="hidden lg:flex items-center space-x-1">
+        {navItems.map((item) => {
+          const isActive = currentPath === item.url || (item.url !== '/' && currentPath.startsWith(item.url));
+          return (
+            <a
+              href={item.url}
+              class={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 mx-1
+                ${isActive
+                  ? 'text-primary-600 dark:text-primary-400 bg-primary-50/80 dark:bg-primary-900/20 font-semibold'
+                  : 'text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 hover:bg-gray-50/80 dark:hover:bg-gray-800/50'
+                }`}
+            >
+              <span class="relative z-10">{item.name}</span>
+
+              {isActive && (
+                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-primary-soft rounded-full transform animate-pulse"></span>
+              )}
+
+              <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-primary-soft rounded-full transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+            </a>
+          );
+        })}
       </nav>
 
-      <!-- CTA Button & Theme Toggle -->
-      <div class="hidden md:flex items-center space-x-4">
-        <button
-          id="theme-toggle"
-          class="p-2 rounded-full text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
-          aria-label="Toggle dark mode"
-        >
-          <!-- Sun icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-          </svg>
-          <!-- Moon icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-          </svg>
-        </button>
-        <a href="/contact" class="btn btn-primary">Get Started</a>
-      </div>
+      <!-- Get Started Button (always visible on desktop, hidden on mobile/tablet menu) -->
+      <a
+        href="/contact"
+        class="hidden lg:inline-flex items-center px-5 py-3 rounded-lg bg-gradient-blue text-white font-semibold shadow-md hover:text-white dark:bg-gradient-blue-dark dark:text-white dark:hover:text-white transition-all duration-300 hover:scale-105 focus-ring text-base lg:text-lg ml-2"
+      >
+        <span class="drop-shadow-sm">Get Started</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H3a1 1 0 110-2h9.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </a>
 
-      <!-- Mobile Menu Button -->
+      <!-- Hamburger Menu Button (visible on mobile and tablet) -->
       <button
         id="mobile-menu-button"
-        class="md:hidden p-2 rounded-md text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400"
+        class="inline-flex lg:hidden p-2 rounded-full bg-white/80 dark:bg-gray-800/80 text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 transition-all duration-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 shadow-sm ml-2"
         aria-label="Toggle mobile menu"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -67,66 +72,128 @@ const currentPath = Astro.url.pathname;
     </div>
   </div>
 
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-900 shadow-md">
-    <div class="container mx-auto px-4 py-4 space-y-4">
-      {navItems.map((item) => (
-        <a
-          href={item.url}
-          class={`block text-sm font-medium transition-colors ${
-            currentPath === item.url || (item.url !== '/' && currentPath.startsWith(item.url))
-              ? 'text-primary-600 dark:text-primary-400'
-              : 'text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400'
-          }`}
-        >
-          {item.name}
-        </a>
-      ))}
-      <div class="pt-4 flex items-center justify-between border-t border-gray-200 dark:border-gray-700">
-        <button
-          id="mobile-theme-toggle"
-          class="p-2 rounded-full text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
-          aria-label="Toggle dark mode"
-        >
-          <!-- Sun icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-          </svg>
-          <!-- Moon icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-          </svg>
-        </button>
-        <a href="/contact" class="btn btn-primary">Get Started</a>
+  <!-- Mobile/Tablet Menu -->
+  <div id="mobile-menu" class="hidden lg:hidden fixed inset-0 z-40 bg-black/40 backdrop-blur-sm">
+    <div class="container mx-auto px-4 py-4 flex justify-center items-start min-h-screen">
+      <div class="glass-effect rounded-2xl shadow-card p-6 space-y-3 w-full max-w-md mt-20">
+        {navItems.map((item) => {
+          const isActive = currentPath === item.url || (item.url !== '/' && currentPath.startsWith(item.url));
+          return (
+            <a
+              href={item.url}
+              class={`block px-4 py-3 text-base font-medium rounded-xl transition-all duration-300 text-center
+                ${isActive
+                  ? 'text-primary-600 dark:text-primary-400 bg-primary-50/80 dark:bg-primary-900/20 font-semibold'
+                  : 'text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 hover:bg-gray-50/80 dark:hover:bg-gray-800/50'
+                }`}
+            >
+              {item.name}
+              {isActive && (
+                <span class="block mt-1 h-0.5 w-12 bg-gradient-primary-soft rounded-full mx-auto"></span>
+              )}
+            </a>
+          );
+        })}
+        <div class="pt-4 mt-2 border-t border-gray-200 dark:border-gray-700">
+          <a
+            href="/contact"
+            class="w-full inline-flex items-center justify-center px-5 py-3 rounded-lg bg-gradient-blue text-white font-semibold shadow-md hover:text-white dark:bg-gradient-blue-dark dark:text-white dark:hover:text-white transition-all duration-300 hover:scale-105 focus-ring text-base lg:text-lg"
+          >
+            <span class="drop-shadow-sm">Get Started</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H3a1 1 0 110-2h9.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </header>
 
 <script>
-  // Mobile menu toggle
+  // Mobile menu toggle and theme toggle
   document.addEventListener('DOMContentLoaded', () => {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
-    const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+    const header = document.getElementById('main-header');
 
+    // Hamburger menu toggle
     if (mobileMenuButton && mobileMenu) {
       mobileMenuButton.addEventListener('click', () => {
         mobileMenu.classList.toggle('hidden');
+        document.body.classList.toggle('overflow-hidden', !mobileMenu.classList.contains('hidden'));
+      });
+      // Close menu when clicking backdrop
+      mobileMenu.addEventListener('click', (e) => {
+        if (e.target === mobileMenu) {
+          mobileMenu.classList.add('hidden');
+          document.body.classList.remove('overflow-hidden');
+        }
       });
     }
 
-    if (mobileThemeToggle) {
-      mobileThemeToggle.addEventListener('click', () => {
-        const isDark = document.documentElement.classList.contains('dark');
-        if (isDark) {
-          document.documentElement.classList.remove('dark');
-          localStorage.setItem('theme', 'light');
+    // Sticky header with shadow on scroll
+    if (header) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 10) {
+          header.classList.add('shadow-card');
+          header.classList.add('bg-white/95', 'dark:bg-gray-900/95');
         } else {
-          document.documentElement.classList.add('dark');
-          localStorage.setItem('theme', 'dark');
+          header.classList.remove('shadow-card');
+          header.classList.remove('bg-white/95', 'dark:bg-gray-900/95');
         }
       });
     }
   });
 </script>
+
+<style>
+  /* Underline animation for nav items */
+  nav a:hover .absolute.bottom-0.left-1\/2 {
+    width: 100%;
+    left: 0;
+  }
+
+  /* Smooth transition for mobile menu */
+  #mobile-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+  }
+
+  #mobile-menu.hidden {
+    display: block;
+    max-height: 0;
+  }
+
+  #mobile-menu:not(.hidden) {
+    max-height: 1000px;
+    transition: max-height 0.5s ease-in-out;
+  }
+
+  @media (max-width: 1024px) {
+    nav.lg\:flex {
+      display: none !important;
+    }
+    .lg\:inline-flex {
+      display: none !important;
+    }
+    #mobile-menu-button {
+      display: inline-flex !important;
+    }
+  }
+  @media (max-width: 768px) {
+    #mobile-menu .glass-effect {
+      max-width: 98vw;
+      margin: 2rem auto;
+    }
+    #mobile-menu a {
+      font-size: 1.1rem;
+      padding: 1rem 1.25rem;
+    }
+    #mobile-menu .btn-primary, #mobile-menu .bg-gradient-blue {
+      font-size: 1.1rem;
+      padding: 1rem 1.25rem;
+    }
+  }
+</style>
