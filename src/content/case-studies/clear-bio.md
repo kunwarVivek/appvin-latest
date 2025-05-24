@@ -7,8 +7,8 @@ industry: "Healthcare"
 services: ["Mobile App Development", "UX/UI Design", "Backend Development", "Data Analytics"]
 challenge: "Clear.bio needed a comprehensive health and wellness app that would help users track nutrition, consolidate health data, and maintain healthy lifestyle habits through an intuitive, user-friendly interface."
 solution: "We developed a feature-rich mobile application with nutrition tracking, health data consolidation, personalized recommendations, and seamless integration with other health platforms."
-image: "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552038.png"
-logo: "https://staging.appvintech.com/wp-content/uploads/2024/05/Clip-path-group.svg"
+image: "/images/staging_img/clear_bio_img.png"
+logo: "/images/staging_img/clear_bio_logo.webp"
 stats:
   - value: "85%"
     label: "User Retention Rate"

@@ -7,8 +7,8 @@ industry: "Compliance/ESG"
 services: ["Web Development", "Data Analytics", "Cloud Solutions"]
 challenge: "Carbon Quench needed a comprehensive platform to help businesses track, analyze, and reduce their carbon emissions through data-driven insights and actionable recommendations."
 solution: "We developed a powerful web-based platform that collects and analyzes carbon emissions data, provides visualization tools, and generates actionable decarbonization strategies tailored to each business."
-image: "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552040.png"
-logo: "https://staging.appvintech.com/wp-content/uploads/2024/02/Frame-1171278884.png"
+image: "/images/staging_img/carbon_img.png"
+logo: "/images/staging_img/carbon_logo.png"
 stats:
   - value: "35%"
     label: "Average Emission Reduction"

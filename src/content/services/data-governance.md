@@ -1,6 +1,6 @@
 ---
-title: "Data Governance"
-description: "Turn data into a competitive edge with our comprehensive data governance solutions. We help organizations discover insights through advanced data mining, unify data sources with seamless integration, protect critical data with secure retention policies, and maintain high accuracy through quality management."
+title: "Data Governance Solutions | Ensure Data Security & Compliance"
+description: "Turn data into a competitive edge with our data governance solutions. Discover insights, unify data, secure retention, and ensure accuracy with quality management."
 icon: "chart"
 features:
   - "Discover insights through advanced data mining"

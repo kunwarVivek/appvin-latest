@@ -7,8 +7,8 @@ industry: "Transportation & Logistics"
 services: ["Mobile App Development", "Data Analytics", "UX/UI Design"]
 challenge: "Gribb needed a comprehensive mobile solution to integrate driving behavior data, vehicle technology, and safety marketing to promote a sustainable driving culture."
 solution: "We developed a cross-platform mobile app with user-centric interface, data integration excellence, emissions tracking, and interactive safety features."
-image: "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552030-1.png"
-logo: "https://staging.appvintech.com/wp-content/uploads/2023/12/gribb-logo-1-1.webp"
+image: "/images/staging_img/gribb_img.png"
+logo: "/images/staging_img/gribb_logo.webp"
 stats:
   - value: "90%"
     label: "Reduction in Risky Driving"

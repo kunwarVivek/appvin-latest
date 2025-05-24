@@ -7,8 +7,8 @@ industry: "Finance"
 services: ["Mobile App Development", "Web Development", "Backend Development"]
 challenge: "GO-EMP Solutions needed a comprehensive B2B application that would streamline employee data management, simplify HR processes, and enhance communication between employees and management."
 solution: "We developed GO-EMP, a feature-rich mobile and web application that centralizes employee data management and provides tools for leave requests, attendance tracking, task management, and expense declarations."
-image: "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552041.png"
-logo: "/images/case-studies/go-emp-final.svg"
+image: "/images/staging_img/go_emp_img.png"
+logo: "/images/case-studies/go_emp_img.png"
 stats:
   - value: "40%"
     label: "Reduction in HR Administrative Time"

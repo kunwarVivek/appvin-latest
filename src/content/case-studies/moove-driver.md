@@ -7,8 +7,8 @@ industry: "Transportation & Logistics"
 services: ["Mobile App Development", "IoT Integration", "Data Analytics"]
 challenge: "Moove Driver needed a driver-focused mobile application that could provide real-time insights and actionable feedback to improve driving behavior, enhance safety, and optimize fleet performance."
 solution: "We developed Moove Driver, an intuitive mobile app that connects with vehicle telematics to deliver personalized driving insights, safety recommendations, and performance metrics directly to drivers."
-image: "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552033-2.png"
-logo: "https://staging.appvintech.com/wp-content/uploads/2024/06/moove-logo.png"
+image: "/images/staging_img/moove_driver_img.png"
+logo: "/images/staging_img/moove_logo.webp"
 stats:
   - value: "35%"
     label: "Reduction in Risky Driving Behaviors"

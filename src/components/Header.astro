@@ -20,11 +20,11 @@ const currentPath = Astro.url.pathname;
     <div class="flex justify-between items-center h-20">
       <!-- Logo -->
       <a href="/" class="flex items-center group">
-        <img src="/images/appvin-logo.png" alt="AppVin Technologies" class="h-10 transition-transform duration-300 group-hover:scale-105" />
+        <img src="/images/appvin-logo.png" alt="AppVinTech company logo" class="h-10 transition-transform group-hover:scale-105" />
       </a>
 
       <!-- Desktop Navigation -->
-      <nav class="hidden md:flex items-center space-x-1">
+      <nav class="hidden lg:flex items-center space-x-1">
         {navItems.map((item) => {
           const isActive = currentPath === item.url || (item.url !== '/' && currentPath.startsWith(item.url));
           return (
@@ -48,45 +48,21 @@ const currentPath = Astro.url.pathname;
         })}
       </nav>
 
-      <!-- Theme Toggle and CTA Button -->
-      <div class="hidden md:flex items-center space-x-4">
-        <!-- Theme Toggle Button -->
-        <button
-          id="theme-toggle"
-          data-theme-toggle
-          class="relative p-2 rounded-full bg-slate-100 dark:bg-gray-800 text-blue-500 dark:text-blue-400 hover:bg-slate-200 dark:hover:bg-gray-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 shadow-sm overflow-hidden group"
-          aria-label="Toggle dark mode"
-        >
-          <!-- Background glow effect -->
-          <span class="absolute inset-0 bg-blue-100 dark:bg-blue-900/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></span>
+      <!-- Get Started Button (always visible on desktop, hidden on mobile/tablet menu) -->
+      <a
+        href="/contact"
+        class="hidden lg:inline-flex items-center px-5 py-3 rounded-lg bg-gradient-blue text-white font-semibold shadow-md hover:text-white dark:bg-gradient-blue-dark dark:text-white dark:hover:text-white transition-all duration-300 hover:scale-105 focus-ring text-base lg:text-lg ml-2"
+      >
+        <span class="drop-shadow-sm">Get Started</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H3a1 1 0 110-2h9.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </a>
 
-          <!-- Sun icon (shown in dark mode) -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block relative z-10 transition-transform duration-500 rotate-0 dark:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-          </svg>
-
-          <!-- Moon icon (shown in light mode) -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 block dark:hidden relative z-10 transition-transform duration-500 rotate-0 dark:-rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-          </svg>
-        </button>
-
-        <!-- CTA Button -->
-        <a
-          href="/contact"
-          class="inline-flex items-center px-3 py-2 rounded-lg bg-gradient-blue text-white font-semibold shadow-md hover:text-white dark:bg-gradient-blue-dark dark:text-white dark:hover:text-white transition-all duration-300 hover:scale-105 focus-ring"
-        >
-          <span class="drop-shadow-sm">Get Started</span>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H3a1 1 0 110-2h9.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-          </svg>
-        </a>
-      </div>
-
-      <!-- Mobile Menu Button -->
+      <!-- Hamburger Menu Button (visible on mobile and tablet) -->
       <button
         id="mobile-menu-button"
-        class="md:hidden p-2 rounded-full bg-white/80 dark:bg-gray-800/80 text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 transition-all duration-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 shadow-sm"
+        class="inline-flex lg:hidden p-2 rounded-full bg-white/80 dark:bg-gray-800/80 text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 transition-all duration-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 shadow-sm ml-2"
         aria-label="Toggle mobile menu"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -96,16 +72,16 @@ const currentPath = Astro.url.pathname;
     </div>
   </div>
 
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden md:hidden relative z-10">
-    <div class="container mx-auto px-4 py-4">
-      <div class="glass-effect rounded-2xl shadow-card p-4 space-y-3">
+  <!-- Mobile/Tablet Menu -->
+  <div id="mobile-menu" class="hidden lg:hidden fixed inset-0 z-40 bg-black/40 backdrop-blur-sm">
+    <div class="container mx-auto px-4 py-4 flex justify-center items-start min-h-screen">
+      <div class="glass-effect rounded-2xl shadow-card p-6 space-y-3 w-full max-w-md mt-20">
         {navItems.map((item) => {
           const isActive = currentPath === item.url || (item.url !== '/' && currentPath.startsWith(item.url));
           return (
             <a
               href={item.url}
-              class={`block px-4 py-3 text-base font-medium rounded-xl transition-all duration-300
+              class={`block px-4 py-3 text-base font-medium rounded-xl transition-all duration-300 text-center
                 ${isActive
                   ? 'text-primary-600 dark:text-primary-400 bg-primary-50/80 dark:bg-primary-900/20 font-semibold'
                   : 'text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 hover:bg-gray-50/80 dark:hover:bg-gray-800/50'
@@ -113,41 +89,20 @@ const currentPath = Astro.url.pathname;
             >
               {item.name}
               {isActive && (
-                <span class="block mt-1 h-0.5 w-12 bg-gradient-primary-soft rounded-full"></span>
+                <span class="block mt-1 h-0.5 w-12 bg-gradient-primary-soft rounded-full mx-auto"></span>
               )}
             </a>
           );
         })}
         <div class="pt-4 mt-2 border-t border-gray-200 dark:border-gray-700">
-          <!-- Theme Toggle Button (Mobile) -->
-          <div class="flex items-center justify-between mb-4 px-4">
-            <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Theme</span>
-            <button
-              id="theme-toggle-mobile"
-              data-theme-toggle
-              class="relative p-2 rounded-full bg-slate-100 dark:bg-gray-800 text-blue-500 dark:text-blue-400 hover:bg-slate-200 dark:hover:bg-gray-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 shadow-sm overflow-hidden group"
-              aria-label="Toggle dark mode"
-            >
-              <!-- Background glow effect -->
-              <span class="absolute inset-0 bg-blue-100 dark:bg-blue-900/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></span>
-
-              <!-- Sun icon (shown in dark mode) -->
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block relative z-10 transition-transform duration-500 rotate-0 dark:rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-              </svg>
-
-              <!-- Moon icon (shown in light mode) -->
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 block dark:hidden relative z-10 transition-transform duration-500 rotate-0 dark:-rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-              </svg>
-            </button>
-          </div>
-
           <a
             href="/contact"
-            class="btn-primary block w-full py-3 px-4 text-white font-medium rounded-xl text-center dark:text-white"
+            class="w-full inline-flex items-center justify-center px-5 py-3 rounded-lg bg-gradient-blue text-white font-semibold shadow-md hover:text-white dark:bg-gradient-blue-dark dark:text-white dark:hover:text-white transition-all duration-300 hover:scale-105 focus-ring text-base lg:text-lg"
           >
-            Get Started
+            <span class="drop-shadow-sm">Get Started</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H3a1 1 0 110-2h9.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
           </a>
         </div>
       </div>
@@ -162,14 +117,20 @@ const currentPath = Astro.url.pathname;
     const mobileMenu = document.getElementById('mobile-menu');
     const header = document.getElementById('main-header');
 
-    // Mobile menu toggle
+    // Hamburger menu toggle
     if (mobileMenuButton && mobileMenu) {
       mobileMenuButton.addEventListener('click', () => {
         mobileMenu.classList.toggle('hidden');
+        document.body.classList.toggle('overflow-hidden', !mobileMenu.classList.contains('hidden'));
+      });
+      // Close menu when clicking backdrop
+      mobileMenu.addEventListener('click', (e) => {
+        if (e.target === mobileMenu) {
+          mobileMenu.classList.add('hidden');
+          document.body.classList.remove('overflow-hidden');
+        }
       });
     }
-
-    // Theme toggle is now handled by ThemeProvider component
 
     // Sticky header with shadow on scroll
     if (header) {
@@ -208,5 +169,31 @@ const currentPath = Astro.url.pathname;
   #mobile-menu:not(.hidden) {
     max-height: 1000px;
     transition: max-height 0.5s ease-in-out;
+  }
+
+  @media (max-width: 1024px) {
+    nav.lg\:flex {
+      display: none !important;
+    }
+    .lg\:inline-flex {
+      display: none !important;
+    }
+    #mobile-menu-button {
+      display: inline-flex !important;
+    }
+  }
+  @media (max-width: 768px) {
+    #mobile-menu .glass-effect {
+      max-width: 98vw;
+      margin: 2rem auto;
+    }
+    #mobile-menu a {
+      font-size: 1.1rem;
+      padding: 1rem 1.25rem;
+    }
+    #mobile-menu .btn-primary, #mobile-menu .bg-gradient-blue {
+      font-size: 1.1rem;
+      padding: 1rem 1.25rem;
+    }
   }
 </style>

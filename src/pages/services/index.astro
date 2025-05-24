@@ -27,8 +27,8 @@ const services = servicesCollection.sort((a, b) => {
 ---
 
 <Layout
-  title="Services | AI Native Digital Agency"
-  description="Explore our comprehensive range of AI-native digital services for product engineering and business transformation."
+  title="Our AI-native & Development Services | AppVin Technologies"
+  description="Explore our AI-native digital services, business process automation, SAP integration, cross-platform apps, and custom AI solutions to drive transformation."
 >
   <Header />
 
@@ -61,7 +61,7 @@ const services = servicesCollection.sort((a, b) => {
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
-            <div class="group relative card hover:shadow-blue-glow border border-slate-200 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-800 transition-all animate-in fade-in slide-in-from-bottom-5 duration-500 flex flex-col h-full" style={`animation-delay: ${index * 100}ms`}>
+            <div class="group relative c hover:shadow-blue-glow border border-slate-200 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-800 transition-all animate-in fade-in slide-in-from-bottom-5 duration-500 flex flex-col h-full" style={`animation-delay: ${index * 100}ms`}>
               <div class="absolute inset-0 bg-gradient-to-br from-primary-50 to-white dark:from-primary-900/10 dark:to-gray-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
               <div class="relative p-8 flex flex-col h-full">
@@ -91,7 +91,7 @@ const services = servicesCollection.sort((a, b) => {
                     {/* Handle path-based icons */}
                     {service.data.icon && service.data.icon.startsWith('/') && (
                       <img
-                        src={service.data.icon.replace('.webp', '.svg')}
+            src={service.data.icon.replace('.webp', '.svg')}.data.icon.replace('.webp', '.svg')}
                         alt={service.data.title}
                         class="size-12 text-current"
                       />
