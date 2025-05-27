@@ -1,18 +1,21 @@
 ---
 const navItems = [
-  { name: 'Home', url: '/' },
-  { name: 'About', url: '/about' },
-  { name: 'Services', url: '/services' },
-  { name: 'Case Studies', url: '/case-studies' },
-  { name: 'Careers', url: '/careers' },
-  { name: 'Blog', url: '/blog' },
-  { name: 'Contact', url: '/contact' },
+  { name: "Home", url: "/" },
+  { name: "About", url: "/about" },
+  { name: "Services", url: "/services" },
+  { name: "Case Studies", url: "/case-studies" },
+  { name: "Careers", url: "/careers" },
+  { name: "Blog", url: "/blog" },
+  { name: "Contact", url: "/contact" },
 ];
 
 const currentPath = Astro.url.pathname;
 ---
 
-<header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+<header
+  id="main-header"
+  class="fixed top-0 left-0 w-full z-50 transition-all duration-300"
+>
   <!-- Glassmorphism background -->
   <div class="absolute inset-0 glass-effect shadow-lg"></div>
 
@@ -20,7 +23,11 @@ const currentPath = Astro.url.pathname;
     <div class="flex justify-between items-center h-20">
       <!-- Logo -->
       <a href="/" class="flex items-center group">
-        <img src="/images/appvin-logo.png" alt="AppVinTech company logo" class="h-10 transition-transform group-hover:scale-105" />
+        <img
+          src="/images/appvin-logo.png"
+          alt="AppVin Technologies"
+          class="h-10 transition-transform duration-300 group-hover:scale-105"
+        />
       </a>
 
       <!-- Desktop Navigation -->
@@ -35,17 +42,18 @@ const currentPath = Astro.url.pathname;
                   ? 'text-primary-600 dark:text-primary-400 bg-primary-50/80 dark:bg-primary-900/20 font-semibold'
                   : 'text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 hover:bg-gray-50/80 dark:hover:bg-gray-800/50'
                 }`}
-            >
-              <span class="relative z-10">{item.name}</span>
+              >
+                <span class="relative z-10">{item.name}</span>
 
-              {isActive && (
-                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-primary-soft rounded-full transform animate-pulse"></span>
-              )}
+                {isActive && (
+                  <span class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-primary-soft rounded-full transform animate-pulse" />
+                )}
 
-              <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-primary-soft rounded-full transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
-            </a>
-          );
-        })}
+                <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-primary-soft rounded-full transition-all duration-300 group-hover:w-full group-hover:left-0" />
+              </a>
+            );
+          })
+        }
       </nav>
 
       <!-- Get Started Button (always visible on desktop, hidden on mobile/tablet menu) -->
@@ -71,6 +79,7 @@ const currentPath = Astro.url.pathname;
       </button>
     </div>
   </div>
+</header>
 
   <!-- Mobile/Tablet Menu -->
   <div id="mobile-menu" class="hidden lg:hidden fixed inset-0 z-40 bg-black/40 backdrop-blur-sm">
@@ -112,10 +121,10 @@ const currentPath = Astro.url.pathname;
 
 <script>
   // Mobile menu toggle and theme toggle
-  document.addEventListener('DOMContentLoaded', () => {
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const header = document.getElementById('main-header');
+  document.addEventListener("DOMContentLoaded", () => {
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const header = document.getElementById("main-header");
 
     // Hamburger menu toggle
     if (mobileMenuButton && mobileMenu) {
@@ -134,13 +143,13 @@ const currentPath = Astro.url.pathname;
 
     // Sticky header with shadow on scroll
     if (header) {
-      window.addEventListener('scroll', () => {
+      window.addEventListener("scroll", () => {
         if (window.scrollY > 10) {
-          header.classList.add('shadow-card');
-          header.classList.add('bg-white/95', 'dark:bg-gray-900/95');
+          header.classList.add("shadow-card");
+          header.classList.add("bg-white/95");
         } else {
-          header.classList.remove('shadow-card');
-          header.classList.remove('bg-white/95', 'dark:bg-gray-900/95');
+          header.classList.remove("shadow-card");
+          header.classList.remove("bg-white/95");
         }
       });
     }
