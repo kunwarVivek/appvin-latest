@@ -26,7 +26,7 @@ const featuredCaseStudies = [
       industry: "Food & Beverage",
       services: ["Mobile App Development", "UX/UI Design", "Backend Development"],
       alt: "UI element for product demo or stats",
-      image: "/images/staging_img/dominos_img.png1", 
+      image: "/images/staging_img/dominos_img.png", 
       logo: "/images/staging_img/dominos_logo.webp",
       logoAlt: "Domino’s logo",
       featured: true,
@@ -159,10 +159,10 @@ const featuredCaseStudies = [
             <!-- Case study image -->
             <img
               src={
-                study.slug === 'dominos' ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552045.png" :
-                study.slug === 'kfc' ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552041-1.png" :
-                study.slug === 'moove' ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552033-2.png" :
-                study.slug === 'clear-bio' ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552038.png" :
+                study.slug === 'dominos' ? "/images/staging_img/dominos_img.png" :
+                study.slug === 'kfc' ? "/images/staging_img/kfc_img.png" :
+                study.slug === 'moove' ? "/images/staging_img/moove_driver_img.png" :
+                study.slug === 'clear-bio' ? "/images/staging_img/clear_bio_img.png" :
                 study.data.industry === "Food & Beverage" ? "/images/case-studies/new/ab-inbev.webp" :
                 study.data.industry === "Healthcare" ? "/images/case-studies/new/healthcare-digital-transformation.webp" :
                 study.data.industry === "Technology" ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552038.png" :
