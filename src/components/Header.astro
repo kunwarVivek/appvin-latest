@@ -31,20 +31,16 @@ const currentPath = Astro.url.pathname;
       </a>
 
       <!-- Desktop Navigation -->
-      <nav class="hidden md:flex items-center space-x-1">
-        {
-          navItems.map((item) => {
-            const isActive =
-              currentPath === item.url ||
-              (item.url !== "/" && currentPath.startsWith(item.url));
-            return (
-              <a
-                href={item.url}
-                class={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 mx-1
-                ${
-                  isActive
-                    ? "text-primary-600 dark:text-primary-400 bg-primary-50/80 dark:bg-primary-900/20 font-semibold"
-                    : "text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 hover:bg-gray-50/80 dark:hover:bg-gray-800/50"
+      <nav class="hidden lg:flex items-center space-x-1">
+        {navItems.map((item) => {
+          const isActive = currentPath === item.url || (item.url !== '/' && currentPath.startsWith(item.url));
+          return (
+            <a
+              href={item.url}
+              class={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 mx-1
+                ${isActive
+                  ? 'text-primary-600 dark:text-primary-400 bg-primary-50/80 dark:bg-primary-900/20 font-semibold'
+                  : 'text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 hover:bg-gray-50/80 dark:hover:bg-gray-800/50'
                 }`}
               >
                 <span class="relative z-10">{item.name}</span>
@@ -60,90 +56,68 @@ const currentPath = Astro.url.pathname;
         }
       </nav>
 
-      <!-- CTA Button -->
-      <div class="hidden md:flex items-center">
-        <a
-          href="/contact"
-          class="inline-flex items-center px-3 py-2 rounded-lg bg-gradient-blue text-white font-semibold shadow-md hover:text-white transition-all duration-300 hover:scale-105 focus-ring"
-        >
-          <span class="drop-shadow-sm">Get Started</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5 ml-2 transition-transform duration-300 group-hover:translate-x-1"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H3a1 1 0 110-2h9.586l-2.293-2.293a1 1 0 010-1.414z"
-              clip-rule="evenodd"></path>
-          </svg>
-        </a>
-      </div>
-    </div>
-
-    <!-- Mobile Menu Button -->
-    <button
-      id="mobile-menu-button"
-      class="md:hidden p-2 rounded-full bg-white/80 dark:bg-gray-800/80 text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 transition-all duration-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 shadow-sm"
-      aria-label="Toggle mobile menu"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-6 w-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
+      <!-- Get Started Button (always visible on desktop, hidden on mobile/tablet menu) -->
+      <a
+        href="/contact"
+        class="hidden lg:inline-flex items-center px-5 py-3 rounded-lg bg-gradient-blue text-white font-semibold shadow-md hover:text-white dark:bg-gradient-blue-dark dark:text-white dark:hover:text-white transition-all duration-300 hover:scale-105 focus-ring text-base lg:text-lg ml-2"
       >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M4 6h16M4 12h16M4 18h16"></path>
-      </svg>
-    </button>
+        <span class="drop-shadow-sm">Get Started</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H3a1 1 0 110-2h9.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </a>
+
+      <!-- Hamburger Menu Button (visible on mobile and tablet) -->
+      <button
+        id="mobile-menu-button"
+        class="inline-flex lg:hidden p-2 rounded-full bg-white/80 dark:bg-gray-800/80 text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 transition-all duration-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 shadow-sm ml-2"
+        aria-label="Toggle mobile menu"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
   </div>
 </header>
 
-<!-- Mobile Menu -->
-<div id="mobile-menu" class="hidden md:hidden relative z-10">
-  <div class="container mx-auto px-4 py-4">
-    <div class="glass-effect rounded-2xl shadow-card p-4 space-y-3">
-      {
-        navItems.map((item) => {
-          const isActive =
-            currentPath === item.url ||
-            (item.url !== "/" && currentPath.startsWith(item.url));
+  <!-- Mobile/Tablet Menu -->
+  <div id="mobile-menu" class="hidden lg:hidden fixed inset-0 z-40 bg-black/40 backdrop-blur-sm">
+    <div class="container mx-auto px-4 py-4 flex justify-center items-start min-h-screen">
+      <div class="glass-effect rounded-2xl shadow-card p-6 space-y-3 w-full max-w-md mt-20">
+        {navItems.map((item) => {
+          const isActive = currentPath === item.url || (item.url !== '/' && currentPath.startsWith(item.url));
           return (
             <a
               href={item.url}
-              class={`block px-4 py-3 text-base font-medium rounded-xl transition-all duration-300
-                ${
-                  isActive
-                    ? "text-primary-600 dark:text-primary-400 bg-primary-50/80 dark:bg-primary-900/20 font-semibold"
-                    : "text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 hover:bg-gray-50/80 dark:hover:bg-gray-800/50"
+              class={`block px-4 py-3 text-base font-medium rounded-xl transition-all duration-300 text-center
+                ${isActive
+                  ? 'text-primary-600 dark:text-primary-400 bg-primary-50/80 dark:bg-primary-900/20 font-semibold'
+                  : 'text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 hover:bg-gray-50/80 dark:hover:bg-gray-800/50'
                 }`}
             >
               {item.name}
               {isActive && (
-                <span class="block mt-1 h-0.5 w-12 bg-gradient-primary-soft rounded-full" />
+                <span class="block mt-1 h-0.5 w-12 bg-gradient-primary-soft rounded-full mx-auto"></span>
               )}
             </a>
           );
-        })
-      }
-      <div class="pt-4 mt-2 border-t border-gray-200">
-        <a
-          href="/contact"
-          class="btn-primary block w-full py-3 px-4 text-white font-medium rounded-xl text-center"
-        >
-          Get Started
-        </a>
+        })}
+        <div class="pt-4 mt-2 border-t border-gray-200 dark:border-gray-700">
+          <a
+            href="/contact"
+            class="w-full inline-flex items-center justify-center px-5 py-3 rounded-lg bg-gradient-blue text-white font-semibold shadow-md hover:text-white dark:bg-gradient-blue-dark dark:text-white dark:hover:text-white transition-all duration-300 hover:scale-105 focus-ring text-base lg:text-lg"
+          >
+            <span class="drop-shadow-sm">Get Started</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H3a1 1 0 110-2h9.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
+</header>
 
 <script>
   // Mobile menu toggle and theme toggle
@@ -152,10 +126,18 @@ const currentPath = Astro.url.pathname;
     const mobileMenu = document.getElementById("mobile-menu");
     const header = document.getElementById("main-header");
 
-    // Mobile menu toggle
+    // Hamburger menu toggle
     if (mobileMenuButton && mobileMenu) {
-      mobileMenuButton.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
+      mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        document.body.classList.toggle('overflow-hidden', !mobileMenu.classList.contains('hidden'));
+      });
+      // Close menu when clicking backdrop
+      mobileMenu.addEventListener('click', (e) => {
+        if (e.target === mobileMenu) {
+          mobileMenu.classList.add('hidden');
+          document.body.classList.remove('overflow-hidden');
+        }
       });
     }
 
@@ -196,5 +178,31 @@ const currentPath = Astro.url.pathname;
   #mobile-menu:not(.hidden) {
     max-height: 1000px;
     transition: max-height 0.5s ease-in-out;
+  }
+
+  @media (max-width: 1024px) {
+    nav.lg\:flex {
+      display: none !important;
+    }
+    .lg\:inline-flex {
+      display: none !important;
+    }
+    #mobile-menu-button {
+      display: inline-flex !important;
+    }
+  }
+  @media (max-width: 768px) {
+    #mobile-menu .glass-effect {
+      max-width: 98vw;
+      margin: 2rem auto;
+    }
+    #mobile-menu a {
+      font-size: 1.1rem;
+      padding: 1rem 1.25rem;
+    }
+    #mobile-menu .btn-primary, #mobile-menu .bg-gradient-blue {
+      font-size: 1.1rem;
+      padding: 1rem 1.25rem;
+    }
   }
 </style>

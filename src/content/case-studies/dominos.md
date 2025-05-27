@@ -7,8 +7,8 @@ industry: "Retail"
 services: ["Web Development", "UX/UI Design", "Performance Optimization"]
 challenge: "Domino's needed to elevate its online presence with improved website performance, enhanced user experience, and innovative web technologies to meet customer expectations in the Middle Eastern market."
 solution: "We created a cross-platform app with user-friendly interface, real-time order tracking, secure payment gateways, localized features, and cloud-based infrastructure for scalability."
-image: "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552045.png"
-logo: "https://staging.appvintech.com/wp-content/uploads/2023/12/logo-2.webp"
+image: "/images/staging_img/dominos_img.png"
+logo: "/images/staging_img/dominos_logo.webp"
 stats:
   - value: "23%"
     label: "Increase in conversion rates"

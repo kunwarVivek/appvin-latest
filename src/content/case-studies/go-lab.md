@@ -7,8 +7,8 @@ industry: "Transportation & Logistics"
 services: ["Web Development", "Data Analytics", "No-Code Development"]
 challenge: "Go-Lab Solutions needed a comprehensive no-code platform to enhance supply chain operations through data harmonization, centralized analysis, and cost-effective tools for businesses of all sizes."
 solution: "We developed a versatile no-code platform that streamlines supply chain data management, provides powerful analytics, and enables businesses to create custom solutions without extensive technical expertise."
-image: "https://staging.appvintech.com/wp-content/uploads/2024/06/go-lab-case-study.png"
-logo: "https://staging.appvintech.com/wp-content/uploads/2024/06/go-lab-logo.png"
+image: "/images/staging_img/go_lab_img.png"
+logo: "/images/staging_img/go_lab_logo.webp"
 stats:
   - value: "45%"
     label: "Improvement in Supply Chain Visibility"

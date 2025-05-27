@@ -7,8 +7,8 @@ industry: "Transportation & Logistics"
 services: ["Mobile App Development", "IoT Integration", "Backend Development"]
 challenge: "Moove Installer needed a specialized mobile application to streamline the installation process of Geotab dongles in vehicles, ensuring accurate documentation and verification."
 solution: "We developed the MooveInstaller app that enables technicians to select vehicles, assign dongles, and capture photo verification for complete installation documentation."
-image: "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552034-2.png"
-logo: "https://staging.appvintech.com/wp-content/uploads/2024/06/moove-logo.png"
+image: "/images/staging_img/moove_installer_img.png"
+logo: "/images/staging_img/moove_logo.webp"
 stats:
   - value: "60%"
     label: "Reduction in Installation Time"
