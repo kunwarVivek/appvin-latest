@@ -1,6 +1,6 @@
 ---
-title: "SAP HANA & Enterprise Integration"
-description: "Supercharge your business with real-time analytics, seamless data integration, and next-gen automation using SAP HANA and enterprise solutions."
+title: "Expert SAP HANA & Enterprise Integration Solutions | Appvin"
+description: "Streamline your enterprise with expert SAP HANA integration — enabling real-time data flow, process automation, and enhanced system connectivity."
 icon: "/images/services/sap.webp"
 order: 1
 ---

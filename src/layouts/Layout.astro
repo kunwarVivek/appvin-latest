@@ -1,7 +1,6 @@
 ---
 import '../styles/main.css';
 import SEO from '../components/SEO.astro';
-import ThemeProvider from '../components/ThemeProvider.astro';
 
 export interface Props {
   title?: string;
@@ -93,10 +92,8 @@ const {
     </script>
   </head>
   <body class="overflow-x-hidden w-full no-scrollbar smooth-scroll">
-    <ThemeProvider>
-      <div class="overflow-x-hidden w-full no-scrollbar smooth-scroll">
-        <slot />
-      </div>
-    </ThemeProvider>
+    <div class="overflow-x-hidden w-full no-scrollbar smooth-scroll">
+      <slot />
+    </div>
   </body>
 </html>

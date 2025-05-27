@@ -1,6 +1,6 @@
 ---
-title: "Celonis System Integrator"
-description: "Transform your business operations with our Celonis System Integration services. We help organizations leverage the power of Process Intelligence to create digital twins of operations, identify inefficiencies, automate processes, and drive continuous improvement."
+title: "Celonis System Integration to enhance and analyze processes"
+description: "Accelerate business with Process Intelligence, using our Celonis System Integration solutions to find inefficiencies, automate procedures, and promote development."
 icon: "refresh"
 features:
   - "Create digital twins of your business processes"

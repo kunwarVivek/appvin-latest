@@ -7,8 +7,8 @@ industry: "Retail"
 services: ["Mobile App Development", "UX/UI Design", "Backend Development"]
 challenge: "KFC needed to digitally transform their business with innovative mobile apps across global markets to enhance customer experience and reduce dependency on third-party aggregators."
 solution: "We created Flutter-based mobile apps with user-friendly interfaces, real-time order tracking, secure payment gateways, localized features, and cloud-based infrastructure for scalability."
-image: "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552041-1.png"
-logo: "https://staging.appvintech.com/wp-content/uploads/2023/12/logo.webp"
+image: "/images/staging_img/kfc_img.png"
+logo: "/images/staging_img/kfc_logo.webp"
 stats:
   - value: "70%"
     label: "Reduction in Aggregator Dependency"
