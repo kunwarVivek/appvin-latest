@@ -1,18 +1,21 @@
 ---
 const navItems = [
-  { name: 'Home', url: '/' },
-  { name: 'About', url: '/about' },
-  { name: 'Services', url: '/services' },
-  { name: 'Case Studies', url: '/case-studies' },
-  { name: 'Careers', url: '/careers' },
-  { name: 'Blog', url: '/blog' },
-  { name: 'Contact', url: '/contact' },
+  { name: "Home", url: "/" },
+  { name: "About", url: "/about" },
+  { name: "Services", url: "/services" },
+  { name: "Case Studies", url: "/case-studies" },
+  { name: "Careers", url: "/careers" },
+  { name: "Blog", url: "/blog" },
+  { name: "Contact", url: "/contact" },
 ];
 
 const currentPath = Astro.url.pathname;
 ---
 
-<header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+<header
+  id="main-header"
+  class="fixed top-0 left-0 w-full z-50 transition-all duration-300"
+>
   <!-- Glassmorphism background -->
   <div class="absolute inset-0 glass-effect shadow-lg"></div>
 
@@ -20,32 +23,41 @@ const currentPath = Astro.url.pathname;
     <div class="flex justify-between items-center h-20">
       <!-- Logo -->
       <a href="/" class="flex items-center group">
-        <img src="/images/appvin-logo.png" alt="AppVin Technologies" class="h-10 transition-transform duration-300 group-hover:scale-105" />
+        <img
+          src="/images/appvin-logo.png"
+          alt="AppVin Technologies"
+          class="h-10 transition-transform duration-300 group-hover:scale-105"
+        />
       </a>
 
       <!-- Desktop Navigation -->
       <nav class="hidden md:flex items-center space-x-1">
-        {navItems.map((item) => {
-          const isActive = currentPath === item.url || (item.url !== '/' && currentPath.startsWith(item.url));
-          return (
-            <a
-              href={item.url}
-              class={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 mx-1
-                ${isActive
-                  ? 'text-primary-600 dark:text-primary-400 bg-primary-50/80 dark:bg-primary-900/20 font-semibold'
-                  : 'text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 hover:bg-gray-50/80 dark:hover:bg-gray-800/50'
+        {
+          navItems.map((item) => {
+            const isActive =
+              currentPath === item.url ||
+              (item.url !== "/" && currentPath.startsWith(item.url));
+            return (
+              <a
+                href={item.url}
+                class={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 mx-1
+                ${
+                  isActive
+                    ? "text-primary-600 dark:text-primary-400 bg-primary-50/80 dark:bg-primary-900/20 font-semibold"
+                    : "text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 hover:bg-gray-50/80 dark:hover:bg-gray-800/50"
                 }`}
-            >
-              <span class="relative z-10">{item.name}</span>
+              >
+                <span class="relative z-10">{item.name}</span>
 
-              {isActive && (
-                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-primary-soft rounded-full transform animate-pulse"></span>
-              )}
+                {isActive && (
+                  <span class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-primary-soft rounded-full transform animate-pulse" />
+                )}
 
-              <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-primary-soft rounded-full transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
-            </a>
-          );
-        })}
+                <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-primary-soft rounded-full transition-all duration-300 group-hover:w-full group-hover:left-0" />
+              </a>
+            );
+          })
+        }
       </nav>
 
       <!-- CTA Button -->
@@ -55,106 +67,107 @@ const currentPath = Astro.url.pathname;
           class="inline-flex items-center px-3 py-2 rounded-lg bg-gradient-blue text-white font-semibold shadow-md hover:text-white transition-all duration-300 hover:scale-105 focus-ring"
         >
           <span class="drop-shadow-sm">Get Started</span>
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H3a1 1 0 110-2h9.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 ml-2 transition-transform duration-300 group-hover:translate-x-1"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H3a1 1 0 110-2h9.586l-2.293-2.293a1 1 0 010-1.414z"
+              clip-rule="evenodd"></path>
           </svg>
         </a>
       </div>
-      </div>
-
-      <!-- Mobile Menu Button -->
-      <button
-        id="mobile-menu-button"
-        class="md:hidden p-2 rounded-full bg-white/80 dark:bg-gray-800/80 text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 transition-all duration-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 shadow-sm"
-        aria-label="Toggle mobile menu"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
     </div>
-  </div>
 
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden md:hidden relative z-10">
-    <div class="container mx-auto px-4 py-4">
-      <div class="glass-effect rounded-2xl shadow-card p-4 space-y-3">
-        {navItems.map((item) => {
-          const isActive = currentPath === item.url || (item.url !== '/' && currentPath.startsWith(item.url));
+    <!-- Mobile Menu Button -->
+    <button
+      id="mobile-menu-button"
+      class="md:hidden p-2 rounded-full bg-white/80 dark:bg-gray-800/80 text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 transition-all duration-300 hover:bg-primary-50 dark:hover:bg-primary-900/20 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 shadow-sm"
+      aria-label="Toggle mobile menu"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="hidden md:hidden relative z-10">
+  <div class="container mx-auto px-4 py-4">
+    <div class="glass-effect rounded-2xl shadow-card p-4 space-y-3">
+      {
+        navItems.map((item) => {
+          const isActive =
+            currentPath === item.url ||
+            (item.url !== "/" && currentPath.startsWith(item.url));
           return (
             <a
               href={item.url}
               class={`block px-4 py-3 text-base font-medium rounded-xl transition-all duration-300
-                ${isActive
-                  ? 'text-primary-600 dark:text-primary-400 bg-primary-50/80 dark:bg-primary-900/20 font-semibold'
-                  : 'text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 hover:bg-gray-50/80 dark:hover:bg-gray-800/50'
+                ${
+                  isActive
+                    ? "text-primary-600 dark:text-primary-400 bg-primary-50/80 dark:bg-primary-900/20 font-semibold"
+                    : "text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 hover:bg-gray-50/80 dark:hover:bg-gray-800/50"
                 }`}
             >
               {item.name}
               {isActive && (
-                <span class="block mt-1 h-0.5 w-12 bg-gradient-primary-soft rounded-full"></span>
+                <span class="block mt-1 h-0.5 w-12 bg-gradient-primary-soft rounded-full" />
               )}
             </a>
           );
-        })}
-        <div class="pt-4 mt-2 border-t border-gray-200">
-          <a
-            href="/contact"
-            class="btn-primary block w-full py-3 px-4 text-white font-medium rounded-xl text-center"
-          >
-            Get Started
-          </a>
-        </div>
+        })
+      }
+      <div class="pt-4 mt-2 border-t border-gray-200">
+        <a
+          href="/contact"
+          class="btn-primary block w-full py-3 px-4 text-white font-medium rounded-xl text-center"
+        >
+          Get Started
+        </a>
       </div>
     </div>
   </div>
-  <!-- Embed the Cookie Banner -->
-    <div id="cookie-banner"></div>
+</div>
 
-    <!-- Include the Cookie Banner Bundle from S3 -->
-    <script src="https://ydt-aws-bucket.s3.ap-south-1.amazonaws.com/cookie-banner.bundle.js"></script>
-
-    <script>
-      function loadBanner() {
-        if (window.CookieBanner) {
-          // Ensure the CookieBanner object is available
-          CookieBanner.init('#cookie-banner', {
-            domainUrl: 'https://dpdpa.co.in/',
-            environment: 'sandbox',
-          });
-        } else {
-          setTimeout(loadBanner, 100);
-        }
-      }
-
-      window.onload = loadBanner;
-    </script>
-</header>
 
 <script>
   // Mobile menu toggle and theme toggle
-  document.addEventListener('DOMContentLoaded', () => {
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const header = document.getElementById('main-header');
+  document.addEventListener("DOMContentLoaded", () => {
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const header = document.getElementById("main-header");
 
     // Mobile menu toggle
     if (mobileMenuButton && mobileMenu) {
-      mobileMenuButton.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
+      mobileMenuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
       });
     }
 
-
     // Sticky header with shadow on scroll
     if (header) {
-      window.addEventListener('scroll', () => {
+      window.addEventListener("scroll", () => {
         if (window.scrollY > 10) {
-          header.classList.add('shadow-card');
-          header.classList.add('bg-white/95');
+          header.classList.add("shadow-card");
+          header.classList.add("bg-white/95");
         } else {
-          header.classList.remove('shadow-card');
-          header.classList.remove('bg-white/95');
+          header.classList.remove("shadow-card");
+          header.classList.remove("bg-white/95");
         }
       });
     }

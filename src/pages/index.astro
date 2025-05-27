@@ -19,6 +19,35 @@ import Footer from '../components/Footer.astro';
   <Header />
 
   <main>
+    <!-- Embed the Cookie Banner -->
+    <div id="cookie-banner"></div>
+
+    <!-- Include the Cookie Banner Bundle from S3 -->
+    <script src="https://ydt-aws-bucket.s3.ap-south-1.amazonaws.com/cookie-banner.bundle.js"></script>
+
+    <script>
+      declare global {
+        interface Window {
+          CookieBanner: {
+            init: (selector: string, config: { domainUrl: string; environment: string }) => void;
+          };
+        }
+      }
+
+      function loadBanner() {
+        if (window.CookieBanner) {
+          // Ensure the CookieBanner object is available
+          window.CookieBanner.init('#cookie-banner', {
+            domainUrl: 'https://appvintech.com/',
+            environment: 'sandbox',
+          });
+        } else {
+          setTimeout(loadBanner, 100);
+        }
+      }
+
+      window.onload = loadBanner;
+    </script>
     <Hero />
     <Services />
     <Industries />
