@@ -108,6 +108,27 @@ const currentPath = Astro.url.pathname;
       </div>
     </div>
   </div>
+  <!-- Embed the Cookie Banner -->
+    <div id="cookie-banner"></div>
+
+    <!-- Include the Cookie Banner Bundle from S3 -->
+    <script src="https://ydt-aws-bucket.s3.ap-south-1.amazonaws.com/cookie-banner.bundle.js"></script>
+
+    <script>
+      function loadBanner() {
+        if (window.CookieBanner) {
+          // Ensure the CookieBanner object is available
+          CookieBanner.init('#cookie-banner', {
+            domainUrl: 'https://dpdpa.co.in/',
+            environment: 'sandbox',
+          });
+        } else {
+          setTimeout(loadBanner, 100);
+        }
+      }
+
+      window.onload = loadBanner;
+    </script>
 </header>
 
 <script>
