@@ -51,6 +51,18 @@ const {
       twitterDescription={twitterDescription}
       twitterImage={twitterImage}
     />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WZX9S8DXH7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-WZX9S8DXH7');
+    </script>
+
+    <meta name="google-site-verification" content="jVG-vyPSYEKrzfwSP1rmMl6r97lLuedSra31SfaBgdw" />
+
     <script is:inline>
       // Add smooth scrolling behavior
       document.addEventListener("DOMContentLoaded", function () {
@@ -93,7 +105,6 @@ const {
         }
       });
     </script>
-    <!-- Embed the Cookie Banner -->
   </head>
   <body class="overflow-x-hidden w-full no-scrollbar smooth-scroll">
     <div class="overflow-x-hidden w-full no-scrollbar smooth-scroll">
