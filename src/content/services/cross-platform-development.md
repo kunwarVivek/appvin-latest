@@ -1,6 +1,6 @@
 ---
-title: "Expert Cross-Platform Application Development Services Company"
-description: "Overcome platform barriers with our Cross-Platform App Development. Build seamless, cost-effective apps that deliver flawless performance across multiple platforms."
+title: "Cross-Platform Application Development Services | Appvintech"
+description: "Overcome platform barriers with our cross-platform app development. We build seamless, cost-effective apps for flawless performance across multiple platforms."
 icon: "/images/services/cross-platform.webp"
 order: 3
 ---
