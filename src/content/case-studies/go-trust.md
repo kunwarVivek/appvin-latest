@@ -7,7 +7,7 @@ industry: "Compliance/ESG"
 services: ["Web Development", "Cybersecurity", "Compliance Solutions"]
 challenge: "Go-Trust Solutions needed a comprehensive compliance suite that could assess website security, ensure data protection compliance with global regulations, and provide actionable recommendations for improvement."
 solution: "We developed Go-Trust, a sophisticated compliance platform that evaluates websites against multiple regulatory frameworks, identifies vulnerabilities, and provides clear guidance for enhancing security and privacy practices."
-image: "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552039.png"
+image: "public/images/staging_img/gotrust_cs.webp"
 logo: "https://staging.appvintech.com/wp-content/uploads/2024/05/go-trust-logo-1024x288.png"
 stats:
   - value: "85%"
