@@ -3,7 +3,9 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
 import Services from '../components/Services.astro';
+import Industries from '../components/Industries.astro';
 import CaseStudies from '../components/CaseStudies.astro';
+import Clients from '../components/Clients.astro';
 import Testimonials from '../components/Testimonials.astro';
 import BlogPreview from '../components/BlogPreview.astro';
 import Contact from '../components/Contact.astro';
@@ -11,19 +13,70 @@ import Footer from '../components/Footer.astro';
 ---
 
 <Layout
-  title="AI Native Digital Agency | Product Engineering Experts"
-  description="We help companies in their product engineering journeys with AI-native solutions. Expert digital agency for modern businesses."
+  title="Top-Rated Software Development & Custom AI Services | AppVin"
+  description="A leading AI-powered software development company with 120+ completed projects. Transform your business with scalable custom software and AI-native solutions."
 >
+<link rel="canonical" href="https://appvintech.com/" />
   <Header />
-  
+
   <main>
+    <!-- Embed the Cookie Banner -->
+    <div id="cookie-banner"></div>
+
+    <!-- Include the Cookie Banner Bundle from S3 -->
+    <script src="https://ydt-aws-bucket.s3.ap-south-1.amazonaws.com/cookie-banner.bundle.js"></script>
+
+    <script>
+      declare global {
+        interface Window {
+          CookieBanner: {
+            init: (selector: string, config: { domainUrl: string; environment: string }) => void;
+          };
+        }
+      }
+
+      function loadBanner() {
+        if (window.CookieBanner) {
+          // Ensure the CookieBanner object is available
+          window.CookieBanner.init('#cookie-banner', {
+            domainUrl: 'https://appvintech.com/',
+            environment: 'sandbox',
+          });
+        } else {
+          setTimeout(loadBanner, 100);
+        }
+      }
+
+      window.onload = loadBanner;
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Corporation",
+  "name": "AppVin Technologies",
+  "url": "https://appvintech.com/",
+  "logo": "https://appvintech.com/images/appvin-logo.png",
+  "contactPoint": {
+	"@type": "ContactPoint",
+	"telephone": "+31 611306856",
+	"contactType": "sales",
+	"areaServed": ["NL","US","GB","AE","IN"]
+  },
+  "sameAs": "https://linkedin.com/company/appvin"
+}
+</script>
+
+
+
     <Hero />
     <Services />
+    <Industries />
     <CaseStudies />
+    <Clients />
     <Testimonials />
     <BlogPreview />
     <Contact />
   </main>
-  
+
   <Footer />
 </Layout>

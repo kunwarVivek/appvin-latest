@@ -1,0 +1,575 @@
+---
+// MultiStepForm.astro - A multi-step form component for better conversion
+---
+
+<div class="multi-step-form bg-gray-50 dark:bg-gray-800 rounded-lg p-8 shadow-sm">
+  <div class="mb-6">
+    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+      Let’s Transform Your Business Together
+    </h3>
+    <p class="text-gray-600 dark:text-gray-400">
+      Schedule a free session with our team to identify impactful ways to improve efficiency and scale with solutions built around your business needs.
+    </p>
+  </div>
+
+  <!-- Form Steps Progress -->
+  <div class="form-progress mb-8">
+    <div class="flex items-center justify-between">
+      <div class="step-indicator flex flex-col items-center">
+        <div class="size-8 flex items-center justify-center rounded-full bg-primary-500 text-white mb-2 step-active" data-step="1">
+          <span class="step-number">1</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="size-4 step-check hidden" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <span class="text-xs font-medium text-gray-700 dark:text-gray-300">Contact</span>
+      </div>
+
+      <div class="flex-1 mx-4">
+        <div class="h-1 bg-gray-200 dark:bg-gray-700 rounded-full">
+          <div class="h-1 bg-primary-500 rounded-full progress-bar" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <div class="step-indicator flex flex-col items-center">
+        <div class="size-8 flex items-center justify-center rounded-full bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400 mb-2" data-step="2">
+          <span class="step-number">2</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="size-4 step-check hidden" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <span class="text-xs font-medium text-gray-500 dark:text-gray-400">Details</span>
+      </div>
+
+      <div class="flex-1 mx-4">
+        <div class="h-1 bg-gray-200 dark:bg-gray-700 rounded-full">
+          <div class="h-1 bg-primary-500 rounded-full progress-bar" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <div class="step-indicator flex flex-col items-center">
+        <div class="size-8 flex items-center justify-center rounded-full bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400 mb-2" data-step="3">
+          <span class="step-number">3</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="size-4 step-check hidden" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <span class="text-xs font-medium text-gray-500 dark:text-gray-400">Schedule</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Form Container -->
+  <form id="multi-step-form" class="space-y-6">
+    <!-- Step 1: Contact Information -->
+    <div class="form-step" data-step="1">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            Name*
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white animate-in fade-in duration-300"
+            required
+          />
+          <div class="error-message text-red-500 text-sm mt-1 hidden"></div>
+        </div>
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            Email*
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white animate-in fade-in duration-300"
+            required
+          />
+          <div class="error-message text-red-500 text-sm mt-1 hidden"></div>
+        </div>
+      </div>
+      <div class="flex justify-end">
+        <button
+          type="button"
+          class="btn btn-primary next-step animate-in fade-in slide-in-from-right-5 duration-300"
+          data-next="2"
+        >
+          Next Step
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 2: Project Details -->
+    <div class="form-step hidden" data-step="2">
+      <div class="space-y-6 mb-6">
+        <div>
+          <label for="subject" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            Subject*
+          </label>
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white"
+            required
+          />
+          <div class="error-message text-red-500 text-sm mt-1 hidden"></div>
+        </div>
+
+        <div>
+          <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            Message*
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            rows="4"
+            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white"
+            required
+          ></textarea>
+          <div class="error-message text-red-500 text-sm mt-1 hidden"></div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            Budget Range
+          </label>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <label class="budget-option flex items-center justify-center p-3 border border-gray-300 dark:border-gray-700 rounded-md cursor-pointer hover:border-primary-500 dark:hover:border-primary-500 transition-colors">
+              <input type="radio" name="budget" value="less-than-10k" class="sr-only" />
+              <span class="text-sm">Less than $10k</span>
+            </label>
+            <label class="budget-option flex items-center justify-center p-3 border border-gray-300 dark:border-gray-700 rounded-md cursor-pointer hover:border-primary-500 dark:hover:border-primary-500 transition-colors">
+              <input type="radio" name="budget" value="10k-25k" class="sr-only" />
+              <span class="text-sm">$10k - $25k</span>
+            </label>
+            <label class="budget-option flex items-center justify-center p-3 border border-gray-300 dark:border-gray-700 rounded-md cursor-pointer hover:border-primary-500 dark:hover:border-primary-500 transition-colors">
+              <input type="radio" name="budget" value="25k-50k" class="sr-only" />
+              <span class="text-sm">$25k - $50k</span>
+            </label>
+            <label class="budget-option flex items-center justify-center p-3 border border-gray-300 dark:border-gray-700 rounded-md cursor-pointer hover:border-primary-500 dark:hover:border-primary-500 transition-colors">
+              <input type="radio" name="budget" value="50k-plus" class="sr-only" />
+              <span class="text-sm">$50k+</span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-between">
+        <button
+          type="button"
+          class="btn btn-outline prev-step"
+          data-prev="1"
+        >
+          Previous
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary next-step"
+          data-next="3"
+        >
+          Next Step
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 3: Schedule -->
+    <div class="form-step hidden" data-step="3">
+      <div class="space-y-6 mb-6">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            Preferred Contact Method*
+          </label>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <label class="contact-option flex items-center justify-center p-3 border border-gray-300 dark:border-gray-700 rounded-md cursor-pointer hover:border-primary-500 dark:hover:border-primary-500 transition-colors">
+              <input type="radio" name="contact_method" value="Email" class="sr-only" checked />
+              <span class="text-sm">Email</span>
+            </label>
+            <label class="contact-option flex items-center justify-center p-3 border border-gray-300 dark:border-gray-700 rounded-md cursor-pointer hover:border-primary-500 dark:hover:border-primary-500 transition-colors">
+              <input type="radio" name="contact_method" value="Phone" class="sr-only" />
+              <span class="text-sm">Phone</span>
+            </label>
+            <label class="contact-option flex items-center justify-center p-3 border border-gray-300 dark:border-gray-700 rounded-md cursor-pointer hover:border-primary-500 dark:hover:border-primary-500 transition-colors">
+              <input type="radio" name="contact_method" value="Video Call" class="sr-only" />
+              <span class="text-sm">Video Call</span>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <label for="preferred_date" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            Preferred Date*
+          </label>
+          <input
+            type="date"
+            id="preferred_date"
+            name="preferred_date"
+            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white"
+            required
+          />
+        </div>
+
+        <div>
+          <label for="preferred_time" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            Preferred Time*
+          </label>
+          <select
+            id="preferred_time"
+            name="preferred_time"
+            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white"
+            required
+          >
+            <option value="">Select a time</option>
+            <option value="Morning (9AM - 12PM)">Morning (9AM - 12PM)</option>
+            <option value="Afternoon (12PM - 5PM)">Afternoon (12PM - 5PM)</option>
+            <option value="Evening (5PM - 8PM)">Evening (5PM - 8PM)</option>
+          </select>
+        </div>
+      </div>
+      <div class="flex justify-between">
+        <button
+          type="button"
+          class="btn btn-outline prev-step"
+          data-prev="2"
+        >
+          Previous
+        </button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+        >
+          Submit Request
+        </button>
+      </div>
+    </div>
+
+    <!-- Success Message (Hidden by default) -->
+    <div class="success-message hidden text-center py-8">
+      <div class="inline-flex items-center justify-center size-16 rounded-full bg-green-100 dark:bg-green-900 mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="size-8 text-green-500 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+      <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Request Submitted Successfully!</h3>
+      <p class="text-gray-600 dark:text-gray-400 mb-6">
+        Thank you for your interest. One of our experts will contact you shortly to schedule your free assessment.
+      </p>
+      <button type="button" class="btn btn-outline reset-form">
+        Submit Another Request
+      </button>
+    </div>
+  </form>
+</div>
+<script lang="js">
+  const form = document.getElementById("multi-step-form");
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+      console.log(data);
+    try {
+      const res = await fetch('https://api.appvintech.com/api/contact', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (res.ok) {
+  const result = await res.json();
+  console.log("Success:", result);
+} else {
+  const text = await res.text(); // fallback to see what the response is
+  console.error("Error response:", text);
+}
+    } catch (err) {
+      alert(`Failed to send message.${err}`);
+    }
+  });
+</script>
+
+<script>
+  // @ts-nocheck - Suppress TypeScript errors in this file
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('multi-step-form') as HTMLFormElement;
+    if (!form) return;
+
+    const steps = form.querySelectorAll('.form-step');
+    const nextButtons = form.querySelectorAll('.next-step');
+    const prevButtons = form.querySelectorAll('.prev-step');
+    const progressBars = document.querySelectorAll('.progress-bar');
+    const stepIndicators = document.querySelectorAll('.step-indicator [data-step]');
+    const resetButton = form.querySelector('.reset-form');
+    const successMessage = form.querySelector('.success-message');
+
+    // Budget options
+    const budgetOptions = form.querySelectorAll('.budget-option');
+    budgetOptions.forEach(option => {
+      const input = option.querySelector('input[type="radio"]');
+      input.addEventListener('change', () => {
+        budgetOptions.forEach(opt => {
+          opt.classList.remove('border-primary-500', 'bg-primary-50', 'dark:bg-primary-900/20');
+          opt.classList.add('border-gray-300', 'dark:border-gray-700');
+        });
+        if (input.checked) {
+          option.classList.remove('border-gray-300', 'dark:border-gray-700');
+          option.classList.add('border-primary-500', 'bg-primary-50', 'dark:bg-primary-900/20');
+        }
+      });
+    });
+
+    // Contact method options
+    const contactOptions = form.querySelectorAll('.contact-option');
+    contactOptions.forEach(option => {
+      const input = option.querySelector('input[type="radio"]');
+      input.addEventListener('change', () => {
+        contactOptions.forEach(opt => {
+          opt.classList.remove('border-primary-500', 'bg-primary-50', 'dark:bg-primary-900/20');
+          opt.classList.add('border-gray-300', 'dark:border-gray-700');
+        });
+        if (input.checked) {
+          option.classList.remove('border-gray-300', 'dark:border-gray-700');
+          option.classList.add('border-primary-500', 'bg-primary-50', 'dark:bg-primary-900/20');
+        }
+      });
+      // Set initial state for checked option
+      if (input.checked) {
+        option.classList.remove('border-gray-300', 'dark:border-gray-700');
+        option.classList.add('border-primary-500', 'bg-primary-50', 'dark:bg-primary-900/20');
+      }
+    });
+
+    // Handle next button clicks
+    nextButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const currentStep = parseInt(button.closest('.form-step').dataset.step);
+        const nextStep = parseInt(button.dataset.next);
+
+        // Validate current step
+        if (validateStep(currentStep)) {
+          // Hide current step
+          steps.forEach(step => {
+            if (parseInt(step.dataset.step) === currentStep) {
+              step.classList.add('animate-out', 'fade-out', 'slide-out-to-left-5');
+              setTimeout(() => {
+                step.classList.add('hidden');
+                step.classList.remove('animate-out', 'fade-out', 'slide-out-to-left-5');
+              }, 300);
+            }
+          });
+
+          // Show next step
+          setTimeout(() => {
+            steps.forEach(step => {
+              if (parseInt(step.dataset.step) === nextStep) {
+                step.classList.remove('hidden');
+                step.classList.add('animate-in', 'fade-in', 'slide-in-from-right-5');
+                setTimeout(() => {
+                  step.classList.remove('animate-in', 'fade-in', 'slide-in-from-right-5');
+                }, 300);
+              }
+            });
+
+            // Update progress
+            updateProgress(nextStep);
+          }, 300);
+        }
+      });
+    });
+
+    // Handle previous button clicks
+    prevButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const currentStep = parseInt(button.closest('.form-step').dataset.step);
+        const prevStep = parseInt(button.dataset.prev);
+
+        // Hide current step
+        steps.forEach(step => {
+          if (parseInt(step.dataset.step) === currentStep) {
+            step.classList.add('animate-out', 'fade-out', 'slide-out-to-right-5');
+            setTimeout(() => {
+              step.classList.add('hidden');
+              step.classList.remove('animate-out', 'fade-out', 'slide-out-to-right-5');
+            }, 300);
+          }
+        });
+
+        // Show previous step
+        setTimeout(() => {
+          steps.forEach(step => {
+            if (parseInt(step.dataset.step) === prevStep) {
+              step.classList.remove('hidden');
+              step.classList.add('animate-in', 'fade-in', 'slide-in-from-left-5');
+              setTimeout(() => {
+                step.classList.remove('animate-in', 'fade-in', 'slide-in-from-left-5');
+              }, 300);
+            }
+          });
+
+          // Update progress
+          updateProgress(prevStep);
+        }, 300);
+      });
+    });
+
+    // Form submission
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      if (validateStep(3)) {
+        // Hide the form steps
+        steps.forEach(step => {
+          step.classList.add('animate-out', 'fade-out');
+          setTimeout(() => {
+            step.classList.add('hidden');
+            step.classList.remove('animate-out', 'fade-out');
+          }, 300);
+        });
+
+        // Show success message
+        setTimeout(() => {
+          successMessage.classList.remove('hidden');
+          successMessage.classList.add('animate-in', 'fade-in', 'zoom-in');
+        }, 300);
+
+        // Here you would typically send the form data to your backend
+        // For demo purposes, we're just showing the success message
+      }
+    });
+
+    // Reset form
+    resetButton.addEventListener('click', () => {
+      form.reset();
+
+      // Hide success message
+      successMessage.classList.add('animate-out', 'fade-out', 'zoom-out');
+      setTimeout(() => {
+        successMessage.classList.add('hidden');
+        successMessage.classList.remove('animate-out', 'fade-out', 'zoom-out');
+
+        // Reset progress
+        updateProgress(1);
+
+        // Show first step
+        steps.forEach(step => {
+          if (parseInt(step.dataset.step) === 1) {
+            step.classList.remove('hidden');
+            step.classList.add('animate-in', 'fade-in');
+            setTimeout(() => {
+              step.classList.remove('animate-in', 'fade-in');
+            }, 300);
+          } else {
+            step.classList.add('hidden');
+          }
+        });
+
+        // Reset radio button styling
+        budgetOptions.forEach(opt => {
+          opt.classList.remove('border-primary-500', 'bg-primary-50', 'dark:bg-primary-900/20');
+          opt.classList.add('border-gray-300', 'dark:border-gray-700');
+        });
+
+        contactOptions.forEach(opt => {
+          const input = opt.querySelector('input[type="radio"]');
+          if (input.value === 'Email') {
+            opt.classList.remove('border-gray-300', 'dark:border-gray-700');
+            opt.classList.add('border-primary-500', 'bg-primary-50', 'dark:bg-primary-900/20');
+            input.checked = true;
+          } else {
+            opt.classList.remove('border-primary-500', 'bg-primary-50', 'dark:bg-primary-900/20');
+            opt.classList.add('border-gray-300', 'dark:border-gray-700');
+          }
+        });
+      }, 300);
+    });
+
+    // Update progress indicators
+    function updateProgress(step) {
+      // Update progress bars
+      progressBars.forEach((bar, index) => {
+        if (index === 0) { // First progress bar
+          bar.style.width = step > 1 ? '100%' : '0%';
+        } else { // Second progress bar
+          bar.style.width = step > 2 ? '100%' : '0%';
+        }
+      });
+
+      // Update step indicators
+      stepIndicators.forEach(indicator => {
+        const indicatorStep = parseInt(indicator.dataset.step);
+        const stepNumber = indicator.querySelector('.step-number');
+        const stepCheck = indicator.querySelector('.step-check');
+
+        if (indicatorStep < step) {
+          // Completed step
+          indicator.classList.remove('bg-gray-200', 'dark:bg-gray-700', 'text-gray-500', 'dark:text-gray-400');
+          indicator.classList.add('bg-primary-500', 'text-white');
+          stepNumber.classList.add('hidden');
+          stepCheck.classList.remove('hidden');
+        } else if (indicatorStep === step) {
+          // Current step
+          indicator.classList.remove('bg-gray-200', 'dark:bg-gray-700', 'text-gray-500', 'dark:text-gray-400');
+          indicator.classList.add('bg-primary-500', 'text-white');
+          stepNumber.classList.remove('hidden');
+          stepCheck.classList.add('hidden');
+        } else {
+          // Future step
+          indicator.classList.remove('bg-primary-500', 'text-white');
+          indicator.classList.add('bg-gray-200', 'dark:bg-gray-700', 'text-gray-500', 'dark:text-gray-400');
+          stepNumber.classList.remove('hidden');
+          stepCheck.classList.add('hidden');
+        }
+      });
+    }
+
+    // Validate form fields in the current step
+    function validateStep(step) {
+      let isValid = true;
+      const currentStep = form.querySelector(`.form-step[data-step="${step}"]`);
+
+      // Get all required inputs in the current step
+      const requiredInputs = currentStep.querySelectorAll('[required]');
+
+      requiredInputs.forEach(input => {
+        const errorMessage = input.nextElementSibling;
+
+        if (!input.value.trim()) {
+          isValid = false;
+          input.classList.add('border-red-500');
+          if (errorMessage && errorMessage.classList.contains('error-message')) {
+            errorMessage.textContent = 'This field is required';
+            errorMessage.classList.remove('hidden');
+          }
+        } else if (input.type === 'email' && !isValidEmail(input.value)) {
+          isValid = false;
+          input.classList.add('border-red-500');
+          if (errorMessage && errorMessage.classList.contains('error-message')) {
+            errorMessage.textContent = 'Please enter a valid email address';
+            errorMessage.classList.remove('hidden');
+          }
+        } else {
+          input.classList.remove('border-red-500');
+          if (errorMessage && errorMessage.classList.contains('error-message')) {
+            errorMessage.classList.add('hidden');
+          }
+        }
+
+        // Add input event listener to clear error when user types
+        input.addEventListener('input', () => {
+          input.classList.remove('border-red-500');
+          if (errorMessage && errorMessage.classList.contains('error-message')) {
+            errorMessage.classList.add('hidden');
+          }
+        });
+      });
+
+      return isValid;
+    }
+
+    // Email validation helper
+    function isValidEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+  });
+</script>

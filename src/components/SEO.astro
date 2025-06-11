@@ -1,6 +1,4 @@
 ---
-import { SEO } from 'astro-seo';
-
 export interface Props {
   title?: string;
   description?: string;
@@ -16,60 +14,50 @@ export interface Props {
 }
 
 const {
-  title = 'AI Native Digital Agency | Product Engineering Experts',
-  description = 'We help companies in their product engineering journeys with AI-native solutions. Expert digital agency for modern businesses.',
+  title = 'AppVin Technologies | Top-Rated Software Development Company',
+  description = 'AppVin Technologies is a top-notch software development company that designs, develops, and implements IT technology solutions for startups, small businesses and established enterprises.',
   canonical,
-  noindex = false,
-  nofollow = false,
-  ogTitle = title,
-  ogDescription = description,
-  ogImage = '/images/og-image.jpg',
-  twitterTitle = title,
-  twitterDescription = description,
-  twitterImage = '/images/twitter-image.jpg',
+  noindex,
+  nofollow,
+  ogTitle,
+  ogDescription,
+  ogImage,
+  twitterTitle,
+  twitterDescription,
+  twitterImage,
 } = Astro.props;
-
-const siteUrl = Astro.site?.toString() || 'https://aiagency.example.com';
-const canonicalURL = canonical ? new URL(canonical, siteUrl) : new URL(Astro.url.pathname, siteUrl);
 ---
 
-<SEO
-  title={title}
-  description={description}
-  canonical={canonicalURL.toString()}
-  noindex={noindex}
-  nofollow={nofollow}
-  openGraph={{
-    basic: {
-      title: ogTitle,
-      type: 'website',
-      image: ogImage,
-      url: canonicalURL.toString(),
-    },
-    optional: {
-      description: ogDescription,
-      siteName: 'AI Native Digital Agency',
-      locale: 'en_US',
-    },
-  }}
-  twitter={{
-    card: 'summary_large_image',
-    site: '@aiagency',
-    title: twitterTitle,
-    description: twitterDescription,
-    image: twitterImage,
-    imageAlt: 'AI Native Digital Agency',
-  }}
-  extend={{
-    link: [
-      { rel: 'icon', href: '/favicon.ico' },
-      { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
-      { rel: 'manifest', href: '/site.webmanifest' },
-    ],
-    meta: [
-      { name: 'theme-color', content: '#0ea5e9' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { name: 'generator', content: Astro.generator },
-    ],
-  }}
-/>
+<!-- SEO Meta Tags -->
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8" />
+
+<!-- Canonical URL -->
+{canonical && <link rel="canonical" href={canonical} />}
+
+<!-- Robots Meta Tags -->
+{noindex && <meta name="robots" content="noindex" />}
+{nofollow && <meta name="robots" content="nofollow" />}
+
+<!-- Open Graph / Facebook Meta Tags -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content={ogTitle || title} />
+<meta property="og:description" content={ogDescription || description} />
+{ogImage && <meta property="og:image" content={ogImage} />}
+<meta property="og:site_name" content="AppVin Technologies" />
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={twitterTitle || ogTitle || title} />
+<meta name="twitter:description" content={twitterDescription || ogDescription || description} />
+{twitterImage && <meta name="twitter:image" content={twitterImage} />}
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="/images/appvin-logo.png" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />

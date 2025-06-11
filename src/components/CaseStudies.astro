@@ -1,107 +1,440 @@
 ---
-import { getCollection } from 'astro:content';
+// We're using hardcoded data instead of the collection for now
+// import { getCollection } from 'astro:content';
+// const caseStudiesCollection = await getCollection('case-studies');
 
-// Get all case studies from the content collection
-const caseStudiesCollection = await getCollection('case-studies');
+// Featured case studies to display in specific order (matching remote site)
+// These slugs are used to match the order in the featuredCaseStudies array
 
-// Get featured case studies or the most recent ones if there are no featured ones
-let featuredCaseStudies = caseStudiesCollection.filter(study => study.data.featured);
+// Service categories for filter buttons
+const serviceCategories = [
+  { id: 'SAP', label: 'SAP' },
+  { id: 'celonis-system-integrator', label: 'Celonis System Integrator' },
+  { id: 'data-governance', label: 'Data Governance' },
+  { id: 'custom-ai', label: 'Custom AI' }
+];
 
-// If no featured case studies, get the 3 most recent ones
-if (featuredCaseStudies.length === 0) {
-  featuredCaseStudies = caseStudiesCollection
-    .sort((a, b) => {
-      // Handle cases where pubDate might be undefined
-      const dateA = a.data.pubDate ? new Date(a.data.pubDate).getTime() : 0;
-      const dateB = b.data.pubDate ? new Date(b.data.pubDate).getTime() : 0;
-      return dateB - dateA;
-    })
-    .slice(0, 3);
-} else if (featuredCaseStudies.length > 3) {
-  // If more than 3 featured case studies, take only the 3 most recent
-  featuredCaseStudies = featuredCaseStudies
-    .sort((a, b) => {
-      // Handle cases where pubDate might be undefined
-      const dateA = a.data.pubDate ? new Date(a.data.pubDate).getTime() : 0;
-      const dateB = b.data.pubDate ? new Date(b.data.pubDate).getTime() : 0;
-      return dateB - dateA;
-    })
-    .slice(0, 3);
-}
+// Case studies data with images and logos matching staging.appvintech.com
+const featuredCaseStudies = [
+  {
+    slug: 'dominos',
+    data: {
+      title: "Domino's Pizza - Pizza Delivery Service",
+      subtitle: "Redefining Customer Journey in the Middle East",
+      description: "Developed a cross-platform mobile delivery app that increased digital sales by 23% and improved customer satisfaction through intuitive design and real-time order tracking. The app features seamless ordering, real-time delivery tracking, personalized recommendations, and secure payment options. It supports multiple languages and currencies for the Middle Eastern market, with localized menu options and promotions.",
+      client: "Domino's Pizza",
+      industry: "Food & Beverage",
+      services: ["Mobile App Development", "UX/UI Design", "Backend Development"],
+      alt: "UI element for product demo or stats",
+      image: "/images/staging_img/dominos_img.png", 
+      logo: "/images/staging_img/dominos_logo.webp",
+      logoAlt: "Domino’s logo",
+      featured: true,
+      order: 1
+    }
+  },
+  {
+    slug: 'kfc',
+    data: {
+      title: "KFC - Fried Chicken Restaurant",
+      subtitle: "Enhancing Customer Experience Across the Middle East",
+      description: "Developed 7 localized KFC delivery apps across the Middle East, achieving 70% reduction in aggregator app dependency and significantly improving customer engagement. Each app was tailored to local preferences with country-specific menus, promotions, and payment methods. The solution included a centralized order management system, real-time kitchen integration, and advanced analytics for business intelligence.",
+      client: "KFC (Americana Group)",
+      industry: "Food & Beverage",
+      services: ["Mobile App Development", "UX/UI Design", "Backend Development"],
+      image: "/images/staging_img/kfc_img.png", // KFC image from staging site
+      alt: "KFC dashboard visual",
+      logo: "/images/staging_img/kfc_logo.webp", // KFC logo from staging site
+      logoAlt: "KFC logo",
+      featured: true,
+      order: 2
+    }
+  },
+  {
+    slug: 'moove-driver',
+    data: {
+      title: "Moove - Fleet Management Platform",
+      subtitle: "Revolutionizing Fleet Operations with AI",
+      description: "Created an AI-powered fleet management platform that optimized routes, reduced fuel consumption by 28%, and improved driver safety scores by 45% across enterprise fleets. The platform integrates with vehicle telematics systems to collect real-time data on vehicle performance, driver behavior, and environmental conditions. Advanced machine learning algorithms analyze this data to provide predictive maintenance alerts, optimize routing in real-time, and identify opportunities for operational improvements.",
+      client: "Moove Technologies",
+      industry: "Transportation & Logistics",
+      services: ["Web Application", "Mobile App", "AI Integration", "IoT"],
+      // image: "/images/staging_img/moove_driver_img.png", // Moove image from staging site
+      image: "/images/staging_img/kfc_img.png",
+      alt: "Moove product demo",
+      logo: "/images/staging_img/moove.svg", // Moove logo from staging site
+      logoAlt: "Moove logo",
+      featured: true,
+      order: 3
+    }
+  },
+  {
+    slug: 'clear-bio',
+    data: {
+      title: "Clear.bio: Stay On Track With A Healthy Lifestyle",
+      subtitle: "Comprehensive Health & Wellness App",
+      description: "A Netherlands-based health & wellness app, developed by AppVin to help users consolidate health data using a nutrition tracker. The app features a user-friendly interface for storing health information conveniently.",
+      client: "Clear.bio",
+      industry: "Healthcare",
+      services: ["Mobile App Development", "UX/UI Design", "Backend Development", "Data Analytics"],
+      image: "/images/staging_img/clear_bio_img.png",
+      alt: "Clear bio dashboard visual",
+      logo: "/images/staging_img/clear_bio_logo.webp",
+      logoAlt: "Clear.bio logo",
+      featured: true,
+      order: 4
+    }
+  }
+];
 
-// Map the case studies to the format needed by the component
-const caseStudies = featuredCaseStudies.map(study => ({
-  title: study.data.title,
-  client: study.data.client,
-  description: study.data.description,
-  image: study.data.image || '/images/case-study-placeholder.jpg',
-  tags: study.data.services || [],
-  link: `/case-studies/${study.slug}`,
-}));
+// Professional industry-specific images for case studies
+// These images are now directly referenced in the component
+// const industryImages: Record<string, string> = {
+//   "Technology": "/images/case-studies/ai-customer-service.jpg",
+//   "Healthcare": "/images/case-studies/healthcare-digital-transformation.jpg",
+//   "Food & Beverage": "/images/case-studies/kfc.webp",
+//   "Transportation & Logistics": "/images/case-studies/gribb.webp",
+//   "Finance": "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+//   "Retail": "https://images.unsplash.com/photo-1586880244406-556ebe35f282?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+//   "Manufacturing": "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+//   "Energy": "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+// };
 ---
 
-<section id="case-studies" class="py-20 bg-gray-50 dark:bg-gray-800">
-  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-3xl mx-auto mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-        <span class="gradient-text">Proven</span> Results for Industry Leaders
+<section id="case-studies" class="py-20 bg-gray-50 dark:bg-gray-800 relative overflow-hidden">
+  <!-- Background pattern -->
+  <div class="absolute inset-0 bg-grid-pattern opacity-5 dark:opacity-3"></div>
+
+  <!-- Decorative elements -->
+  <div class="absolute -bottom-20 -right-20 size-96 bg-accent-100 dark:bg-accent-900/20 rounded-full opacity-30 blur-3xl"></div>
+  <div class="absolute -top-20 -left-20 size-96 bg-primary-100 dark:bg-primary-900/20 rounded-full opacity-30 blur-3xl"></div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <!-- Section label -->
+      <div class="flex justify-center mb-4">
+        <div class="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-300">
+          <span class="w-2 h-2 bg-primary-500 rounded-full mr-2"></span>
+          Our Proven Expertise
+        </div>
+      </div>
+
+      <h2 class="section-title text-4xl md:text-5xl font-extrabold mb-8 text-center tracking-tight">
+        Featured <span class="gradient-text">Case Studies</span>
       </h2>
-      <div class="w-20 h-1 bg-primary-600 dark:bg-primary-500 mx-auto mb-6"></div>
-      <p class="text-xl text-gray-600 dark:text-gray-400">
-        We've delivered measurable ROI for enterprises across industries through our AI-powered solutions.
+      <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mb-8 rounded-full shadow-lg"></div>
+      <p class="gradient-text section-subtitle font-medium max-w-2xl mx-auto text-center mb-12 leading-relaxed">
+        Explore how our AI-native solutions have delivered measurable business impact across industries.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {caseStudies.map((study) => (
-        <div class="bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-          <div class="h-48 bg-gray-300 dark:bg-gray-700 relative">
-            <div class="absolute inset-0 flex items-center justify-center text-gray-500 dark:text-gray-400">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
+    <!-- Service filter buttons -->
+    <div class="flex flex-wrap justify-center gap-3 mb-12">
+      {serviceCategories.map((category) => (
+        <button
+          class={`px-4 py-2 rounded-full text-sm font-medium transition-all cursor-default opacity-70 pointer-events-none bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300`}
+          data-filter={category.id}
+          tabindex="-1"
+        >
+          {category.label}
+        </button>
+      ))}
+      <button
+        class="px-4 py-2 rounded-lg text-sm font-semibold transition-all bg-blue-500 text-white hover:bg-blue-600 ml-2 shadow-md hover:shadow-blue-glow focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer"
+        onclick="window.location.href='/case-studies'"
+      >
+        View All
+      </button>
+    </div>
+
+    <!-- Case studies grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {featuredCaseStudies.map((study, index) => (
+        <div
+          class="case-study-card bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-card hover:shadow-blue-glow transition-all border border-slate-200 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-800 group transform hover:-translate-y-1 duration-300 animate-in fade-in slide-in-from-bottom-5 flex flex-col"
+          data-services={study.data.services ? study.data.services.map(s => s.toLowerCase().replace(/\s+/g, '-')).join(' ') : ''}
+          style={`animation-delay: ${index * 100}ms; min-height: 600px;`}
+        >
+          <!-- Image with overlay -->
+          <div class="relative w-full overflow-hidden h-48 flex-shrink-0 border-b border-slate-200 dark:border-gray-700">
+            <!-- Case study image -->
+            <img
+              src={
+                study.slug === 'dominos' ? "/images/staging_img/dominos_img.png" :
+                study.slug === 'kfc' ? "/images/staging_img/kfc_img.png" :
+                study.slug === 'moove' ? "/images/staging_img/moove_driver_img.png" :
+                study.slug === 'clear-bio' ? "/images/staging_img/clear_bio_img.png" :
+                study.data.industry === "Food & Beverage" ? "/images/case-studies/new/ab-inbev.webp" :
+                study.data.industry === "Healthcare" ? "/images/case-studies/new/healthcare-digital-transformation.webp" :
+                study.data.industry === "Technology" ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552038.png" :
+                // study.data.industry === "Transportation & Logistics" ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552033-2.png" :
+                study.data.industry === "Transportation & Logistics" ? "/images/staging_img/moove_driver_img.png" :
+                study.data.industry === "Finance" ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552036.png" :
+                study.data.industry === "Retail" ? "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552041-1.png" :
+                study.data.image || "https://staging.appvintech.com/wp-content/uploads/2024/06/Frame-1686552045.png"
+              }
+              alt={study.data.title}
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+
+            <!-- Gradient overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/40 to-transparent opacity-70 group-hover:opacity-60 transition-opacity"></div>
+
+            <!-- Industry badge -->
+            <div class="absolute top-4 left-4 z-10">
+              <span class="px-3 py-1.5 bg-gradient-to-r from-blue-500/90 to-blue-600/90 text-white rounded-full text-xs font-medium shadow-sm backdrop-blur-sm">
+                {study.data.industry}
+              </span>
             </div>
           </div>
 
-          <div class="p-6">
-            <div class="text-sm text-gray-500 dark:text-gray-400 mb-2">
-              {study.client}
+          <div class="card-content">
+            <!-- Company logo -->
+            <div class="flex items-center justify-center h-16 mb-4 dark:bg-gray-800 dark:rounded-lg dark:p-2">
+              {study.slug === 'dominos' ? (
+                <img
+                  src="/images/staging_img/dominos_logo.webp"
+                  alt={`${study.data.client} logo`}
+                  class="h-full object-contain max-w-[180px]"
+                />
+              ) : study.slug === 'kfc' ? (
+                <img
+                  src="/images/staging_img/kfc_logo.webp"
+                  alt={`${study.data.client} logo`}
+                  class="h-full object-contain max-w-[180px]"
+                />
+              ) : study.slug === 'moove' ? (
+                <img
+                  src="/images/staging_img/moove.svg"
+                  alt={`${study.data.client} logo`}
+                  class="h-full object-contain max-w-[180px] dark:bg-white dark:p-2 dark:rounded-lg"
+                />
+              ) : study.slug === 'clear-bio' ? (
+                <img
+                  src="/images/staging_img/clear_bio_logo.svg"
+                  alt={`${study.data.client} logo`}
+                  class="h-full object-contain max-w-[180px] dark:invert dark:brightness-200"
+                />
+              ) : study.data.logo ? (
+                <img
+                  src={study.data.logo}
+                  alt={`${study.data.client} logo`}
+                  class="h-full object-contain max-w-[180px]"
+                />
+              ) : (
+                <div class="h-full flex items-center justify-center">
+                  <span class="text-lg font-bold text-primary-600 dark:text-primary-400">{study.data.client}</span>
+                </div>
+              )}
             </div>
 
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
-              {study.title}
+            <h3 class="text-xl font-extrabold text-gray-900 dark:text-white mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+              {study.data.title}
             </h3>
 
-            <p class="text-gray-600 dark:text-gray-400 mb-4">
-              {study.description}
-            </p>
+            <div class="content-list-container flex-grow overflow-y-auto">
+              <p class="text-gray-600 dark:text-gray-400 mb-4 text-base">
+                {study.data.description}
+              </p>
 
-            <div class="flex flex-wrap gap-2 mb-6">
-              {study.tags.map((tag) => (
-                <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded text-xs">
-                  {tag}
-                </span>
-              ))}
+              <!-- Services tags -->
+              <div class="flex flex-wrap gap-2 mb-4">
+                {study.data.services && study.data.services.slice(0, 3).map((service) => (
+                  <span class="px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-xs font-medium">
+                    {service}
+                  </span>
+                ))}
+                {study.data.services && study.data.services.length > 3 && (
+                  <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded-full text-xs">
+                    +{study.data.services.length - 3}
+                  </span>
+                )}
+              </div>
             </div>
 
-            <a
-              href={study.link}
-              class="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 font-medium"
-            >
-              View Case Study
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-              </svg>
-            </a>
+            <div class="button-container">
+              <a
+                href={`/case-studies/${study.slug}`}
+                class="industry-btn inline-flex items-center"
+              >
+                <span>Read More</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1 group-hover:ml-2 transition-all duration-300" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       ))}
     </div>
 
-    <div class="text-center mt-12">
-      <a href="/case-studies" class="btn btn-outline">
-        View All Case Studies
+    <div class="text-center mt-16">
+      <a
+        href="/case-studies"
+        class="btn px-8 py-4 inline-flex items-center group transform transition-all duration-300 hover:-translate-y-1 rounded-lg border-2 border-blue-500 text-blue-600 hover:text-white hover:bg-blue-500 hover:border-transparent hover:shadow-blue-glow dark:border-blue-400 dark:text-blue-400 dark:hover:text-white dark:hover:bg-blue-500/20 focus-ring"
+      >
+        <span class="font-semibold drop-shadow-md">View All Case Studies</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 group-hover:ml-3 transition-all duration-300" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
       </a>
     </div>
   </div>
 </section>
+
+<script is:inline>
+  // Service filter functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterButtons = document.querySelectorAll('[data-filter]');
+    const caseStudyCards = document.querySelectorAll('.case-study-card');
+
+    // Set initial active state
+    const setActiveFilter = (activeFilter) => {
+      filterButtons.forEach(button => {
+        const isActive = button.getAttribute('data-filter') === activeFilter;
+
+        if (isActive) {
+          button.classList.remove('bg-gray-100', 'text-gray-700', 'dark:bg-gray-800', 'dark:text-gray-300');
+          button.classList.add('bg-primary-600', 'text-white');
+        } else {
+          button.classList.remove('bg-primary-600', 'text-white');
+          button.classList.add('bg-gray-100', 'text-gray-700', 'dark:bg-gray-800', 'dark:text-gray-300');
+        }
+      });
+    };
+
+    // Filter case studies
+    const filterCaseStudies = (filter) => {
+      if (filter === 'all') {
+        caseStudyCards.forEach(card => {
+          if (card instanceof HTMLElement) {
+            card.style.display = 'block';
+          }
+        });
+      } else {
+        caseStudyCards.forEach(card => {
+          const services = card.getAttribute('data-services') || '';
+          if (card instanceof HTMLElement) {
+            if (services.includes(filter)) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          }
+        });
+      }
+    };
+
+    // Add click event listeners
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const filter = button.getAttribute('data-filter');
+        if (filter) {
+          setActiveFilter(filter);
+          filterCaseStudies(filter);
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .bg-grid-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* Improve logo visibility in dark mode */
+  .dark .case-study-card img {
+    filter: brightness(1.2) contrast(1.1);
+  }
+
+  /* Add a subtle glow effect to logos in dark mode */
+  .dark .case-study-card:hover img {
+    filter: brightness(1.4) contrast(1.2);
+    transition: filter 0.3s ease;
+  }
+
+  /* Prevent shadow on images in dark mode */
+  :global(.dark) .case-study-card img {
+    filter: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Card content styling */
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 1.25rem 1.25rem 0.5rem 1.25rem;
+    padding-bottom: 0.25rem;
+    height: calc(100% - 140px);
+  }
+
+  .content-list-container {
+    flex-grow: 1;
+    overflow-y: visible;
+    margin-bottom: 0.5rem;
+    max-height: none;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 0;
+    padding-top: 0.25rem;
+    padding-bottom: 0.5rem;
+    height: auto;
+  }
+
+  .industry-btn {
+    padding: 0.5rem 1.25rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    background: linear-gradient(90deg, #2563eb 0%, #38bdf8 100%);
+    color: #fff;
+    border: none;
+    box-shadow: 0 2px 8px 0 rgba(30,41,59,0.08);
+    transition: all 0.3s ease;
+    min-width: 160px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+
+  .industry-btn:hover {
+    background: linear-gradient(90deg, #1d4ed8 0%, #0ea5e9 100%);
+    box-shadow: 0 4px 16px 0 rgba(30,41,59,0.12);
+    transform: translateY(-1px);
+  }
+
+  .industry-btn:active {
+    transform: translateY(1px);
+  }
+
+  :global(.dark) .industry-btn {
+    background: linear-gradient(90deg, #3b82f6 0%, #38bdf8 100%);
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.05);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    color: #ffffff;
+  }
+
+  :global(.dark) .industry-btn:hover {
+    background: linear-gradient(90deg, #2563eb 0%, #0ea5e9 100%);
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1);
+  }
+
+  @media (max-width: 1024px) {
+    .card-content { height: calc(100% - 100px); }
+  }
+
+  @media (max-width: 768px) {
+    .card-content { height: calc(100% - 70px); }
+  }
+</style>
+
+

@@ -1,14 +1,14 @@
 ---
-title: "KFC - Mobile Delivery Apps"
+title: "KFC: Fried Chicken Restaurant"
 subtitle: "Enhancing Customer Experience Across the Middle East"
-description: "Developed 7 localized KFC delivery apps across the Middle East, achieving 70% reduction in aggregator app dependency and significantly improving customer engagement."
+description: "Helping the Americana group's KFC to digitally transform their business by launching seven innovation mobile apps across global markets."
 client: "KFC (Americana Group)"
-industry: "Food & Beverage"
+industry: "Retail"
 services: ["Mobile App Development", "UX/UI Design", "Backend Development"]
-challenge: "KFC needed localized delivery apps for 7 Middle Eastern countries with intuitive design, real-time tracking, secure payment integration, and high scalability during peak hours."
+challenge: "KFC needed to digitally transform their business with innovative mobile apps across global markets to enhance customer experience and reduce dependency on third-party aggregators."
 solution: "We created Flutter-based mobile apps with user-friendly interfaces, real-time order tracking, secure payment gateways, localized features, and cloud-based infrastructure for scalability."
-image: "/images/case-studies/kfc.webp"
-logo: "/images/case-studies/kfc-logo.webp"
+image: "/images/staging_img/kfc_img.png"
+logo: "/images/staging_img/kfc_logo.webp"
 stats:
   - value: "70%"
     label: "Reduction in Aggregator Dependency"
@@ -20,11 +20,9 @@ technologies:
   - "Flutter"
   - "Django"
   - "MongoDB"
-  - "RESTful APIs"
-  - "Cloud Services"
 category: "Food & Beverage"
 featured: true
-pubDate: "2024-02-15"
+pubDate: "2023-03-20"
 order: 3
 ---
 

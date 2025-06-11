@@ -23,77 +23,120 @@ const allServices = [...new Set(caseStudies.flatMap(study => study.data.services
 ---
 
 <Layout
-  title="Case Studies | AI Native Digital Agency"
-  description="Explore our portfolio of successful AI-native digital transformation and product engineering projects."
+  title="Real-World Success Stories & Solutions | Appvintech"
+  description="Explore detailed case studies that show how our AI-native solutions and expert product engineering have driven innovation and business growth for our clients."
 >
+<link rel="canonical" href="https://appvintech.com/case-studies" />
   <Header />
 
   <main>
     <!-- Page Header -->
-    <section class="pt-32 pb-12 md:pt-40 md:pb-20 bg-gray-50 dark:bg-gray-800">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-4xl mx-auto text-center">
-          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            <span class="gradient-text">Proven</span> Results for Industry Leaders
-          </h1>
-          <p class="text-xl text-gray-600 dark:text-gray-400">
-            We've delivered measurable ROI for enterprises across industries through our AI-powered solutions.
-          </p>
+    <section class="pt-32 pb-12 md:pt-40 md:pb-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
+      <!-- Decorative elements -->
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-1/4 left-1/4 size-64 bg-primary-500/5 dark:bg-primary-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-1/4 right-1/4 size-64 bg-secondary-500/5 dark:bg-secondary-500/10 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="max-w-4xl mx-auto">
+          <div class="flex flex-col items-center text-center">
+            <div class="inline-flex items-center justify-center size-16 rounded-full bg-primary-100 dark:bg-primary-900/30 mb-6 animate-in fade-in slide-in-from-bottom-5 duration-500">
+              <svg xmlns="http://www.w3.org/2000/svg" class="size-8 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 animate-in fade-in slide-in-from-bottom-5 duration-500 delay-150">
+              <span class="gradient-text">Proven</span> Results for Industry Leaders
+            </h1>
+
+            <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl animate-in fade-in slide-in-from-bottom-5 duration-500 delay-300">
+              We've delivered measurable ROI for enterprises across industries through our AI-powered solutions.
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Filters -->
-    <section class="py-8 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
+    <section class="py-8 border-b border-gray-200 dark:border-gray-800 sticky top-16 z-10 backdrop-blur-md bg-white/90 dark:bg-gray-900/90">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <!-- Industry Filter -->
-          <div class="flex items-center">
-            <label for="industry-filter" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mr-2">
-              Industry:
+          <div class="relative group">
+            <label for="industry-filter" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+              Filter by Industry
             </label>
-            <select
-              id="industry-filter"
-              class="rounded-md border-gray-300 dark:border-gray-700 py-2 pl-3 pr-10 text-base focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white"
-            >
-              <option value="all">All Industries</option>
-              {industries.map((industry) => (
-                <option value={industry?.toLowerCase()}>{industry}</option>
-              ))}
-            </select>
+            <div class="relative">
+              <select
+                id="industry-filter"
+                class="w-full md:w-auto pl-4 pr-10 py-2 border border-gray-300 dark:border-gray-700 rounded-lg shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white appearance-none transition-all group-hover:border-primary-300 dark:group-hover:border-primary-700"
+              >
+                <option value="all">All Industries</option>
+                {industries.map((industry) => (
+                  <option value={industry.toLowerCase()}>{industry}</option>
+                ))}
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 dark:text-gray-300">
+                <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </div>
+            </div>
           </div>
 
           <!-- Service Filter -->
-          <div class="flex items-center">
-            <label for="service-filter" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mr-2">
-              Service:
+          <div class="relative group">
+            <label for="service-filter" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+              Filter by Service
             </label>
-            <select
-              id="service-filter"
-              class="rounded-md border-gray-300 dark:border-gray-700 py-2 pl-3 pr-10 text-base focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white"
-            >
-              <option value="all">All Services</option>
-              {allServices.map((service) => (
-                <option value={service.toLowerCase()}>{service}</option>
-              ))}
-            </select>
+            <div class="relative">
+              <select
+                id="service-filter"
+                class="w-full md:w-auto pl-4 pr-10 py-2 border border-gray-300 dark:border-gray-700 rounded-lg shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white appearance-none transition-all group-hover:border-primary-300 dark:group-hover:border-primary-700"
+              >
+                <option value="all">All Services</option>
+                {allServices.map((service) => (
+                  <option value={service.toLowerCase()}>{service}</option>
+                ))}
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 dark:text-gray-300">
+                <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </div>
+            </div>
           </div>
 
           <!-- Search -->
           <div class="flex-1 md:max-w-xs">
+            <label for="search-input" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              Search
+            </label>
             <div class="relative">
               <input
                 type="text"
                 id="search-input"
                 placeholder="Search case studies..."
-                class="w-full rounded-md border-gray-300 dark:border-gray-700 py-2 pl-10 pr-4 text-base focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white"
+                class="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-800 dark:text-white transition-all"
               />
               <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" class="size-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
               </div>
             </div>
+          </div>
+
+          <!-- Reset Button -->
+          <div class="md:self-end">
+            <button id="reset-filters" class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="size-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+              Reset Filters
+            </button>
           </div>
         </div>
       </div>
@@ -102,166 +145,89 @@ const allServices = [...new Set(caseStudies.flatMap(study => study.data.services
     <!-- Featured Case Studies -->
     <section class="py-16 bg-white dark:bg-gray-900">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-8">
-          Featured Case Studies
-        </h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {caseStudies.filter(study => study.data.featured).map((study) => (
-            <div class="case-study-card bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
-                 data-industry={study.data.industry ? study.data.industry.toLowerCase() : ''}
-                 data-services={study.data.services ? study.data.services.map(s => s.toLowerCase()).join(' ') : ''}
-            >
-              <div class="h-48 bg-gray-300 dark:bg-gray-700 relative">
-                {study.data.image ? (
-                  <img
-                    src={study.data.image}
-                    alt={study.data.title}
-                    class="w-full h-full object-cover"
-                  />
-                ) : (
-                  <div class="absolute inset-0 flex items-center justify-center text-gray-500 dark:text-gray-400">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                )}
-              </div>
-
-              <div class="p-6">
-                <div class="flex items-center justify-between mb-2">
-                  {study.data.client && (
-                    <span class="text-sm text-gray-500 dark:text-gray-400">
-                      {study.data.client}
-                    </span>
-                  )}
-                  {study.data.industry && (
-                    <span class="text-xs px-2 py-1 bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 rounded-full">
-                      {study.data.industry}
-                    </span>
-                  )}
-                </div>
-
-                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
-                  {study.data.title}
-                </h3>
-
-                <p class="text-gray-600 dark:text-gray-400 mb-4">
-                  {study.data.description}
-                </p>
-
-                <div class="flex flex-wrap gap-2 mb-6">
-                  {study.data.services && study.data.services.map((service) => (
-                    <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded text-xs">
-                      {service}
-                    </span>
-                  ))}
-                </div>
-
-                <a
-                  href={`/case-studies/${study.slug}`}
-                  class="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 font-medium"
-                >
-                  View Case Study
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- All Case Studies -->
-    <section class="py-16 bg-gray-50 dark:bg-gray-800">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-8">
-          All Case Studies
-        </h2>
-
-        <div id="case-studies-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {caseStudies.map((study) => (
-            <div class="case-study-card bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
-                 data-industry={study.data.industry ? study.data.industry.toLowerCase() : ''}
-                 data-services={study.data.services ? study.data.services.map(s => s.toLowerCase()).join(' ') : ''}
-            >
-              <div class="h-48 bg-gray-300 dark:bg-gray-700 relative">
-                {study.data.image ? (
-                  <img
-                    src={study.data.image}
-                    alt={study.data.title}
-                    class="w-full h-full object-cover"
-                  />
-                ) : (
-                  <div class="absolute inset-0 flex items-center justify-center text-gray-500 dark:text-gray-400">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                )}
-              </div>
-
-              <div class="p-6">
-                <div class="flex items-center justify-between mb-2">
-                  {study.data.client && (
-                    <span class="text-sm text-gray-500 dark:text-gray-400">
-                      {study.data.client}
-                    </span>
-                  )}
-                  {study.data.industry && (
-                    <span class="text-xs px-2 py-1 bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 rounded-full">
-                      {study.data.industry}
-                    </span>
-                  )}
-                </div>
-
-                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
-                  {study.data.title}
-                </h3>
-
-                <p class="text-gray-600 dark:text-gray-400 mb-4">
-                  {study.data.description}
-                </p>
-
-                <div class="flex flex-wrap gap-2 mb-6">
-                  {study.data.services && study.data.services.map((service) => (
-                    <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded text-xs">
-                      {service}
-                    </span>
-                  ))}
-                </div>
-
-                <a
-                  href={`/case-studies/${study.slug}`}
-                  class="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 font-medium"
-                >
-                  View Case Study
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-16 md:py-24 bg-primary-600 dark:bg-primary-800">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-4xl mx-auto text-center">
-          <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
-            Ready to Create Your Success Story?
+        <div class="flex items-center justify-between mb-8">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
+            <span class="relative">
+              Featured Case Studies
+              <span class="absolute -bottom-1 left-0 w-1/2 h-1 bg-gradient-to-r from-primary-500 to-primary-300 dark:from-primary-400 dark:to-primary-600 rounded-full"></span>
+            </span>
           </h2>
-          <p class="text-xl text-primary-100 mb-8">
-            Contact us today to discuss how our AI-native approach can help you achieve your product engineering goals.
-          </p>
-          <a href="/contact" class="btn bg-white text-primary-600 hover:bg-primary-50 text-lg px-8 py-4">
-            Get Started
+
+          <a href="#all-case-studies" class="text-sm font-medium text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 flex items-center">
+            View all
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M14.707 10.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-3.293-3.293a1 1 0 111.414-1.414l4 4z" clip-rule="evenodd" />
+            </svg>
           </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {caseStudies.filter(study =>
+            ['go-carshare', 'moove-installer', 'moove-driver', 'gribb', 'go-lab', 'dominos', 'kfc', 'clear-bio', 'carbon-quench', 'go-trust', 'go-emp'].includes(study.slug)
+          ).map((study, index) => (
+            <div
+              class="case-study-card group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-800 transition-all shadow-card hover:shadow-blue-glow animate-in fade-in slide-in-from-bottom-5 duration-500"
+              data-industry={study.data.industry.toLowerCase()}
+              data-services={study.data.services.map(s => s.toLowerCase()).join(' ')}
+              style={`animation-delay: ${index * 100}ms`}
+            >
+              <div class="absolute inset-0 bg-gradient-to-br from-primary-50 to-white dark:from-primary-900/10 dark:to-gray-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+              <div class="h-48 relative overflow-hidden">
+                {/* Use a default image for all case studies to ensure consistency */}
+                <img
+                  src={study.data.image}
+                  alt={study.data.title}
+                  class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+                />
+
+                <!-- Overlay gradient -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+
+              <div class="relative p-6">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-sm font-medium text-gray-500 dark:text-gray-400">
+                    {study.data.client}
+                  </span>
+                  <span class="text-xs px-3 py-1 bg-primary-100 dark:bg-primary-900/50 text-primary-800 dark:text-primary-200 rounded-full font-medium">
+                    {study.data.industry}
+                  </span>
+                </div>
+
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                  {study.data.title}
+                </h3>
+
+                <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
+                  {study.data.description}
+                </p>
+
+                <div class="flex flex-wrap gap-2 mb-6">
+                  {study.data.services.slice(0, 3).map((service) => (
+                    <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded-md text-xs">
+                      {service}
+                    </span>
+                  ))}
+                  {study.data.services.length > 3 && (
+                    <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded-md text-xs">
+                      +{study.data.services.length - 3} more
+                    </span>
+                  )}
+                </div>
+
+                <a
+                  href={`/case-studies/${study.slug}`}
+                  class="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 font-medium group-hover:underline transition-all"
+                >
+                  View Case Study
+                  <svg xmlns="http://www.w3.org/2000/svg" class="size-5 ml-1 transition-transform group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -271,15 +237,17 @@ const allServices = [...new Set(caseStudies.flatMap(study => study.data.services
 </Layout>
 
 <script>
-  // Simple filter functionality
+  // Enhanced filter functionality
   document.addEventListener('DOMContentLoaded', () => {
     const industryFilter = document.getElementById('industry-filter') as HTMLSelectElement;
     const serviceFilter = document.getElementById('service-filter') as HTMLSelectElement;
     const searchInput = document.getElementById('search-input') as HTMLInputElement;
+    const resetFiltersBtn = document.getElementById('reset-filters');
     const caseStudyCards = document.querySelectorAll('.case-study-card');
 
-    if (!industryFilter || !serviceFilter || !searchInput || caseStudyCards.length === 0) {
-      console.warn('Some filter elements not found');
+    // Check if all elements exist
+    if (!industryFilter || !serviceFilter || !searchInput) {
+      console.error('One or more filter elements not found');
       return;
     }
 
@@ -289,14 +257,16 @@ const allServices = [...new Set(caseStudies.flatMap(study => study.data.services
       const serviceValue = serviceFilter.value.toLowerCase();
       const searchValue = searchInput.value.toLowerCase();
 
+      let visibleCount = 0;
+
       caseStudyCards.forEach(card => {
         const industry = card.getAttribute('data-industry') || '';
         const services = card.getAttribute('data-services') || '';
         const titleElement = card.querySelector('h3');
         const descriptionElement = card.querySelector('p');
 
-        const title = titleElement ? titleElement.textContent?.toLowerCase() || '' : '';
-        const description = descriptionElement ? descriptionElement.textContent?.toLowerCase() || '' : '';
+        const title = titleElement?.textContent?.toLowerCase() || '';
+        const description = descriptionElement?.textContent?.toLowerCase() || '';
 
         const matchesIndustry = industryValue === 'all' || industry === industryValue;
         const matchesService = serviceValue === 'all' || services.includes(serviceValue);
@@ -306,17 +276,29 @@ const allServices = [...new Set(caseStudies.flatMap(study => study.data.services
 
         if (matchesIndustry && matchesService && matchesSearch) {
           (card as HTMLElement).style.display = 'block';
+          visibleCount++;
         } else {
           (card as HTMLElement).style.display = 'none';
         }
       });
     };
 
-    // Add event listeners (we've already checked that these elements exist)
-    if (industryFilter && serviceFilter && searchInput) {
-      industryFilter.addEventListener('change', filterCaseStudies);
-      serviceFilter.addEventListener('change', filterCaseStudies);
-      searchInput.addEventListener('input', filterCaseStudies);
+    // Reset filters function
+    const resetFilters = () => {
+      industryFilter.value = 'all';
+      serviceFilter.value = 'all';
+      searchInput.value = '';
+      filterCaseStudies();
+    };
+
+    // Add event listeners
+    industryFilter.addEventListener('change', filterCaseStudies);
+    serviceFilter.addEventListener('change', filterCaseStudies);
+    searchInput.addEventListener('input', filterCaseStudies);
+
+    // Reset filters button
+    if (resetFiltersBtn) {
+      resetFiltersBtn.addEventListener('click', resetFilters);
     }
   });
 </script>

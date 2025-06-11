@@ -1,0 +1,191 @@
+---
+// Client logos data
+// First row of clients
+const clientsRow1 = [
+  {
+    name: 'Clear.bio',
+    logo: '/images/staging_img/clear_bio_logo.svg',
+    alt: 'Clear.bio logo'
+  },
+  {
+    name: '3SC',
+    logo: '/images/staging_img/3sc.svg',
+    alt: '3SC logo '
+  },
+  {
+    name: 'Dominos',
+    logo: '/images/staging_img/dominos_logo.webp',
+    alt: 'Dominos logo'
+  },
+  {
+    name: 'Amaze',
+    logo: '/images/staging_img/amaze.svg',
+    alt: 'Amaze logo'
+  },
+  {
+    name: 'KFC',
+    logo: '/images/staging_img/kfc_logo.webp',
+    alt: 'KFC logo'
+  },
+  {
+    name: 'Realtor',
+    logo: '/images/staging_img/realtor.svg',
+    alt: 'Realtor logo '
+  }
+];
+
+// Second row of clients
+const clientsRow2 = [
+  {
+    name: 'New Client',
+    logo: '/images/clients/new-client-logo-perfect.svg',
+    alt: 'New Client logo'
+  },
+  {
+    name: 'Aditya Birla',
+    logo: '/images/staging_img/aditya_birla.svg',
+    alt: 'Aditya Birla logo'
+  },
+  {
+    name: 'NLMK',
+    logo: '/images/staging_img/nlmk.svg',
+    alt: 'NLMK Logo '
+  },
+  {
+    name: 'Moove',
+    logo: '/images/staging_img/moove.svg',
+    alt: 'Moove Logo'
+  },
+  {
+    name: 'Gribb',
+    logo: '/images/staging_img/gribb (2).svg',
+    alt: 'Gribb logo'
+  },
+  {
+    name: 'Trainline',
+    logo: '/images/staging_img/trainline.svg',
+    alt: 'Trainline company logo '
+  }
+];
+
+// Third row of clients
+const clientsRow3 = [
+  {
+    name: 'GO-CarShare',
+    logo: '/images/staging_img/gocarshare.svg',
+    alt: 'GO-CarShare logo'
+  },
+  {
+    name: 'XXIMO',
+    logo: '/images/staging_img/xximo.svg',
+    alt: 'XXIMO Logo '
+  },
+  {
+    name: 'WebNovel',
+    logo: '/images/staging_img/webnovel.svg',
+    alt: 'WebNovel Logo'
+  },
+  {
+    name: 'Go-Ems',
+    logo: '/images/staging_img/go_emp.png',
+    alt: 'Go-Ems Logo '
+  },
+  {
+    name: 'Happn',
+    logo: '/images/staging_img/happn.svg',
+    alt: 'happn logo'
+  },
+  {
+    name: 'Kolab',
+    logo: '/images/staging_img/kolab.svg',
+    alt: 'Kolab logo'
+  }
+];
+---
+
+<section class="py-20 bg-white dark:bg-gray-900 relative overflow-hidden">
+  <!-- Background pattern -->
+  <div class="absolute inset-0 bg-grid-pattern opacity-5 dark:opacity-3"></div>
+
+  <!-- Decorative elements -->
+  <div class="absolute top-1/3 -left-20 size-96 bg-primary-100 dark:bg-primary-900/20 rounded-full opacity-30 blur-3xl"></div>
+  <div class="absolute bottom-1/3 -right-20 size-96 bg-accent-100 dark:bg-accent-900/20 rounded-full opacity-30 blur-3xl"></div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="section-title text-4xl md:text-5xl font-extrabold mb-8 text-center tracking-tight">
+        Our <span class="gradient-text">Clients</span>
+      </h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto mb-8 rounded-full shadow-lg"></div>
+
+      <p class="section-subtitle text-xl md:text-2xl text-accent-700 dark:text-accent-300 font-medium max-w-2xl mx-auto text-center mb-12 leading-relaxed drop-shadow">
+        In our actions and thinking, we are result-oriented and monitor our clients' (commercial) objectives. Check out our clients
+      </p>
+    </div>
+
+    <!-- Client logos section -->
+    <div class="space-y-12">
+      <!-- First row of clients -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-center">
+        {clientsRow1.map((client, index) => (
+          <div
+            class="flex items-center justify-center p-4 bg-white dark:bg-gray-900 rounded-xl shadow-card hover:shadow-blue-glow border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:-translate-y-1 group animate-in fade-in slide-in-from-bottom-5"
+            style={`animation-delay: ${index * 50}ms`}
+          >
+            <img
+              src={client.logo}
+              alt={client.alt}
+              class="max-h-12 w-auto object-contain filter grayscale opacity-70 dark:opacity-90 dark:invert-[0.7] group-hover:grayscale-0 group-hover:opacity-100 dark:group-hover:invert-0 transition-all duration-300"
+            />
+          </div>
+        ))}
+      </div>
+
+      <!-- Second row of clients -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-center">
+        {clientsRow2.map((client, index) => (
+          <div
+            class="flex items-center justify-center p-4 bg-white dark:bg-gray-900 rounded-xl shadow-card hover:shadow-blue-glow border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:-translate-y-1 group animate-in fade-in slide-in-from-bottom-5"
+            style={`animation-delay: ${(index + 6) * 50}ms; ${client.name === 'New Client' ? 'padding: 0;' : ''}`}
+          >
+            <img
+              src={client.logo}
+              alt={client.alt}
+              class="max-h-12 w-auto object-contain filter grayscale opacity-70 dark:opacity-90 dark:invert-[0.7] group-hover:grayscale-0 group-hover:opacity-100 dark:group-hover:invert-0 transition-all duration-300"
+              style={client.name === 'New Client' ? 'height: 40px; width: auto; max-width: 100%; object-fit: contain;' : ''}
+            />
+          </div>
+        ))}
+      </div>
+
+      <!-- Third row of clients -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-center">
+        {clientsRow3.map((client, index) => (
+          <div
+            class="flex items-center justify-center p-4 bg-white dark:bg-gray-900 rounded-xl shadow-card hover:shadow-blue-glow border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:-translate-y-1 group animate-in fade-in slide-in-from-bottom-5"
+            style={`animation-delay: ${(index + 12) * 50}ms`}
+          >
+            <img
+              src={client.logo}
+              alt={client.alt}
+              class="max-h-12 w-auto object-contain filter grayscale opacity-70 dark:opacity-90 dark:invert-[0.7] group-hover:grayscale-0 group-hover:opacity-100 dark:group-hover:invert-0 transition-all duration-300"
+              style={client.name === 'Client 16' ? 'height: 40px; width: auto; max-width: 100%; object-fit: contain;' : ''}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .bg-grid-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* Dark mode hover effect for client logos */
+  .dark .group:hover img {
+    filter: brightness(1.2) contrast(1.1);
+  }
+</style>

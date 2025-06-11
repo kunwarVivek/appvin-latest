@@ -1,6 +1,7 @@
 ---
-import '../styles/main.css';
-import SEO from '../components/SEO.astro';
+import "../styles/main.css";
+import SEO from "../components/SEO.astro";
+import ThemeProvider from "../components/ThemeProvider.astro";
 
 export interface Props {
   title?: string;
@@ -17,8 +18,8 @@ export interface Props {
 }
 
 const {
-  title = 'AppVin Technologies | Top-Rated Software Development Company',
-  description = 'AppVin Technologies is a top-notch software development company that designs, develops, and implements IT technology solutions for startups, small businesses and established enterprises.',
+  title = "AppVin Technologies | Top-Rated Software Development Company",
+  description = "AppVin Technologies is a top-notch software development company that designs, develops, and implements IT technology solutions for startups, small businesses and established enterprises.",
   canonical,
   noindex,
   nofollow,
@@ -32,11 +33,11 @@ const {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="overflow-x-hidden smooth-scroll light">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/png" href="/images/appvin-logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/images/appvin-icon.png" />
     <SEO
       title={title}
       description={description}
@@ -50,44 +51,64 @@ const {
       twitterDescription={twitterDescription}
       twitterImage={twitterImage}
     />
-    <script is:inline>
-      // Check for dark mode preference
-      const theme = (() => {
-        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-          return localStorage.getItem('theme');
-        }
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          return 'dark';
-        }
-        return 'light';
-      })();
-
-      if (theme === 'dark') {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-    </script>
-  </head>
-  <body>
-    <slot />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WZX9S8DXH7"></script>
     <script>
-      // Handle theme toggle
-      document.addEventListener('DOMContentLoaded', () => {
-        const themeToggle = document.getElementById('theme-toggle');
-        if (themeToggle) {
-          themeToggle.addEventListener('click', () => {
-            const isDark = document.documentElement.classList.contains('dark');
-            if (isDark) {
-              document.documentElement.classList.remove('dark');
-              localStorage.setItem('theme', 'light');
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-WZX9S8DXH7');
+    </script>
+
+    <meta name="google-site-verification" content="jVG-vyPSYEKrzfwSP1rmMl6r97lLuedSra31SfaBgdw" />
+
+    <script is:inline>
+      // Add smooth scrolling behavior
+      document.addEventListener("DOMContentLoaded", function () {
+        // Smooth scroll polyfill for Safari and older browsers
+        if (!("scrollBehavior" in document.documentElement.style)) {
+          // Polyfill implementation
+          const smoothScrollTo = function (to, duration) {
+            const element =
+                document.scrollingElement || document.documentElement,
+              start = element.scrollTop,
+              change = to - start,
+              startTime = performance.now();
+
+            const animateScroll = function (timestamp) {
+              const currentTime = timestamp - startTime;
+              const progress = Math.min(currentTime / duration, 1);
+              const easeInOutCubic =
+                progress < 0.5
+                  ? 4 * progress * progress * progress
+                  : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+              element.scrollTop = start + change * easeInOutCubic;
+
+              if (currentTime < duration) {
+                window.requestAnimationFrame(animateScroll);
+              }
+            };
+
+            window.requestAnimationFrame(animateScroll);
+          };
+
+          // Override native scrollTo with smooth version
+          window.scrollTo = function (options) {
+            if (typeof options === "object") {
+              smoothScrollTo(options.top || 0, 300);
             } else {
-              document.documentElement.classList.add('dark');
-              localStorage.setItem('theme', 'dark');
+              window.scrollTo.apply(window, arguments);
             }
-          });
+          };
         }
       });
     </script>
+  </head>
+  <body class="overflow-x-hidden w-full no-scrollbar smooth-scroll">
+    <div class="overflow-x-hidden w-full no-scrollbar smooth-scroll">
+      <slot />
+    </div>
   </body>
 </html>

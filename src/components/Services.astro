@@ -1,107 +1,315 @@
 ---
-import { getCollection } from 'astro:content';
-
-// Get all services from the content collection
-const servicesCollection = await getCollection('services');
-
-// Sort services by order property if available
-const services = servicesCollection.sort((a, b) => {
-  // If order is defined for both, sort by order
-  if (a.data.order !== undefined && b.data.order !== undefined) {
-    return a.data.order - b.data.order;
-  }
-  // If only a has order, it comes first
-  if (a.data.order !== undefined) {
-    return -1;
-  }
-  // If only b has order, it comes first
-  if (b.data.order !== undefined) {
-    return 1;
-  }
-  // If neither has order, sort by title
-  return a.data.title.localeCompare(b.data.title);
-}).map(service => ({
-  title: service.data.title,
-  description: service.data.description,
-  icon: service.data.icon,
-  link: `/services/${service.slug}`,
-  features: service.data.features || [],
-}));
+// Services data - ordered by proven expertise
+const services = [
+  {
+    title: 'SAP Integration',
+    description: 'Maximize SAP\'s value with seamless, secure integration.',
+    features: [
+      'Connect SAP with CRM, ERP, and third-party tools',
+      'Enable real-time data flow across systems',
+      'Improve productivity with synchronized processes',
+      'Ensure scalability, reliability, and performance',
+    ],
+    image: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+    alt : 'Business professional in a modern workspace',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" /></svg>',
+    link: '/services/sap-integration',
+    expertise: 'high',
+    order: 1,
+  },
+  {
+    title: 'Celonis System Integrator',
+    description: 'Streamline operations and uncover opportunities.',
+    features: [
+      'Automate repetitive tasks for speed and accuracy',
+      'Leverage Celonis for real-time process mining',
+      'Optimize workflows to reduce delays and inefficiencies',
+      'Continuously monitor and enhance performance',
+    ],
+    image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+    alt: 'Team collaborating with digital tablets',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>',
+    link: '/services/celonis-system-integrator',
+    expertise: 'high',
+    order: 2,
+  },
+  {
+    title: 'Data Governance',
+    description: 'Turn data into a competitive edge.',
+    features: [
+      'Discover insights through advanced data mining',
+      'Unify data sources with seamless integration',
+      'Protect critical data with secure retention policies',
+      'Maintain high accuracy through quality management',
+    ],
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+    alt: 'Abstract close-up of data analytics dashboard',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>',
+    link: '/services/data-governance',
+    expertise: 'high',
+    order: 3,
+  },
+  {
+    title: 'Custom AI',
+    description: 'AI tailored to your goals. Built to scale.',
+    features: [
+      'Develop custom models with CLAMP A, Minicraft & Optimize',
+      'Automate decisions across web and mobile platforms',
+      'Continuously refine with adaptive learning',
+      'Accelerate innovation and customer personalization',
+    ],
+    image: 'https://images.unsplash.com/photo-1591453089816-0fbb971b454c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+    alt: 'Developer working with futuristic interfaces',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>',
+    link: '/services/custom-ai-solutions',
+    expertise: 'high',
+    order: 4,
+  },
+  {
+    title: 'Product Engineering',
+    description: 'Build innovative digital products that drive growth.',
+    features: [
+      'End-to-end product development lifecycle management',
+      'Agile development with continuous integration/deployment',
+      'Cross-platform solutions for web, mobile, and IoT',
+      'Quality assurance and performance optimization',
+    ],
+    image: 'https://images.unsplash.com/photo-1581093458791-9d2b88e61d8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>',
+    link: '/services/product-engineering',
+    order: 5,
+  },
+  {
+    title: 'Digital Transformation',
+    description: 'Reimagine your business for the digital age.',
+    features: [
+      'Enterprise-wide digital strategy and roadmap development',
+      'Legacy system modernization and cloud migration',
+      'Process digitization and workflow automation',
+      'Digital culture cultivation and change management',
+    ],
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>',
+    link: '/services/digital-transformation',
+    order: 6,
+  },
+  {
+    title: 'Cloud Solutions',
+    description: 'Harness the power of cloud for scalability and innovation.',
+    features: [
+      'Multi-cloud architecture design and implementation',
+      'Cloud-native application development',
+      'Serverless computing and microservices',
+      'DevOps automation and infrastructure as code',
+    ],
+    image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /></svg>',
+    link: '/services/cloud-solutions',
+    order: 7,
+  },
+  {
+    title: 'UX/UI Design',
+    description: 'Create exceptional digital experiences that users love.',
+    features: [
+      'User research and persona development',
+      'Information architecture and wireframing',
+      'Interactive prototyping and usability testing',
+      'Responsive design and accessibility compliance',
+    ],
+    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80',
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>',
+    link: '/services/ux-ui-design',
+    order: 8,
+  },
+];
 ---
 
-<section id="services" class="py-20 bg-white dark:bg-gray-900">
-  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-3xl mx-auto mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-        <span class="gradient-text">Solutions</span> That Drive Business Growth
-      </h2>
-      <div class="w-20 h-1 bg-primary-600 dark:bg-primary-500 mx-auto mb-6"></div>
-      <p class="text-xl text-gray-600 dark:text-gray-400">
-        Our AI-powered services deliver measurable ROI through increased efficiency, reduced costs, and accelerated innovation.
-      </p>
+<section class="section bg-white dark:bg-gray-900 relative overflow-hidden">
+  <!-- Background pattern -->
+  <div class="absolute inset-0 bg-grid-pattern opacity-5 dark:opacity-3"></div>
+
+  <!-- Decorative elements -->
+  <div class="absolute -top-20 -right-20 w-96 h-96 bg-primary-100 dark:bg-primary-900/20 rounded-full opacity-30 blur-3xl"></div>
+  <div class="absolute -bottom-20 -left-20 w-96 h-96 bg-secondary-100 dark:bg-secondary-900/20 rounded-full opacity-30 blur-3xl"></div>
+  <div class="container mx-auto px-4">
+    <!-- Section label -->
+    <div class="flex justify-center mb-4">
+      <div class="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-secondary-100 text-secondary-800 dark:bg-secondary-900/30 dark:text-secondary-300">
+        <span class="w-2 h-2 bg-secondary-500 rounded-full mr-2"></span>
+        Our Services
+      </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {services.map((service) => (
-        <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow">
-          <div class="mb-6 text-primary-600 dark:text-primary-400">
-            {service.icon === 'brain' && (
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-            )}
-            {service.icon === 'code' && (
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-              </svg>
-            )}
-            {service.icon === 'refresh' && (
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-              </svg>
-            )}
-            {service.icon === 'cloud' && (
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-              </svg>
-            )}
-            {service.icon === 'chart' && (
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-              </svg>
-            )}
-            {service.icon === 'design' && (
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-              </svg>
-            )}
+    <h2 class="section-title text-4xl md:text-5xl font-extrabold mb-8 text-center tracking-tight drop-shadow-lg">
+      Our <span class="gradient-text">Core Services</span>
+    </h2>
+    <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mb-8 rounded-full shadow-lg"></div>
+    <p class="gradient-text section-subtitle font-medium max-w-2xl mx-auto text-center mb-12 leading-relaxed">
+      Specializing in SAP integration, business process automation & mining, data governance, and custom AI to drive innovation and efficiency.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {services.slice(0, 4).map((service) => (
+        <div class="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-card hover:shadow-blue-glow transition-all border border-slate-200 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-800 flex flex-col group transform hover:-translate-y-1 duration-300 h-full">
+          <!-- Image with overlay -->
+          <div class="relative w-full overflow-hidden h-40 flex-shrink-0 border-b border-slate-200 dark:border-gray-700">
+            <img
+              src={service.image}
+              alt={service.alt}
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/40 to-transparent opacity-70 group-hover:opacity-60 transition-opacity"></div>
+
+            <!-- Service badge -->
+            <div class="absolute top-4 left-4 z-10">
+              <span class="px-3 py-1.5 bg-gradient-to-r from-blue-500/90 to-blue-600/90 text-white rounded-full text-xs font-medium shadow-sm backdrop-blur-sm">
+                {service.title}
+              </span>
+            </div>
+
+            <!-- Icon overlay -->
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="bg-white/20 backdrop-blur-sm p-3 rounded-full">
+                <Fragment set:html={service.icon} />
+              </div>
+            </div>
           </div>
+          <div class="card-content">
+            <h3 class="text-xl font-extrabold text-gray-900 dark:text-white mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+              {service.title}
+            </h3>
 
-          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
-            {service.title}
-          </h3>
+            <div class="content-list-container flex-grow overflow-y-auto">
+              <p class="text-gray-600 dark:text-gray-400 mb-4 text-base">
+                {service.description}
+              </p>
 
-          <p class="text-gray-600 dark:text-gray-400 mb-6">
-            {service.description}
-          </p>
+              {service.features && service.features.length > 0 ? (
+                <ul class="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300 text-base">
+                  {service.features.map((feature) => (
+                    <li class="mb-2">{feature}</li>
+                  ))}
+                </ul>
+              ) : (
+                <div class="mb-4"></div>
+              )}
+            </div>
 
-          <a
-            href={service.link}
-            class="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 font-medium"
-          >
-            Learn more
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-            </svg>
-          </a>
+            <div class="button-container">
+              <a
+                href={service.link}
+                class="industry-btn inline-flex items-center"
+              >
+                <span>Learn More</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1 group-hover:ml-2 transition-all duration-300" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </a>
+            </div>
+          </div>
         </div>
       ))}
     </div>
 
-    <div class="text-center mt-12">
-      <a href="/services" class="btn btn-outline">
-        View All Services
+    <div class="text-center mt-16">
+      <a
+        href="/services"
+        class="btn px-8 py-4 inline-flex items-center group transform transition-all duration-300 hover:-translate-y-1 rounded-lg border-2 border-blue-500 text-blue-600 hover:text-white hover:bg-blue-500 hover:border-transparent hover:shadow-blue-glow dark:border-blue-400 dark:text-blue-400 dark:hover:text-white dark:hover:bg-blue-500/20 focus-ring"
+      >
+        <span class="font-semibold drop-shadow-md">View All Services</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 group-hover:ml-3 transition-all duration-300" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H3a1 1 0 110-2h9.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
       </a>
     </div>
   </div>
 </section>
+
+<style>
+  .bg-grid-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* Prevent shadow on images in dark mode */
+  :global(.dark) img {
+    filter: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Card content styling */
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 1.25rem 1.25rem 0.5rem 1.25rem;
+    padding-bottom: 0.25rem;
+    height: calc(100% - 140px);
+  }
+
+  .content-list-container {
+    flex-grow: 1;
+    overflow-y: visible;
+    margin-bottom: 0.5rem;
+    max-height: none;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 0;
+    padding-top: 0.25rem;
+    padding-bottom: 0.5rem;
+    height: auto;
+  }
+
+  .industry-btn {
+    padding: 0.5rem 1.25rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    background: linear-gradient(90deg, #2563eb 0%, #38bdf8 100%);
+    color: #fff;
+    border: none;
+    box-shadow: 0 2px 8px 0 rgba(30,41,59,0.08);
+    transition: all 0.3s ease;
+    min-width: 160px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+
+  .industry-btn:hover {
+    background: linear-gradient(90deg, #1d4ed8 0%, #0ea5e9 100%);
+    box-shadow: 0 4px 16px 0 rgba(30,41,59,0.12);
+    transform: translateY(-1px);
+  }
+
+  .industry-btn:active {
+    transform: translateY(1px);
+  }
+
+  :global(.dark) .industry-btn {
+    background: linear-gradient(90deg, #3b82f6 0%, #38bdf8 100%);
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.05);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    color: #ffffff;
+  }
+
+  :global(.dark) .industry-btn:hover {
+    background: linear-gradient(90deg, #2563eb 0%, #0ea5e9 100%);
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1);
+  }
+
+  @media (max-width: 1024px) {
+    .card-content { height: calc(100% - 100px); }
+  }
+
+  @media (max-width: 768px) {
+    .card-content { height: calc(100% - 70px); }
+  }
+</style>

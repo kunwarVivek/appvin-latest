@@ -1,6 +1,5 @@
 ---
-import '../styles/global.css';
-import SEO from '../components/SEO.astro';
+import Layout from './Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
@@ -18,7 +17,7 @@ export interface Props {
   twitterImage?: string;
 }
 
-const { 
+const {
   title,
   description,
   canonical,
@@ -33,65 +32,24 @@ const {
 } = Astro.props;
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <SEO
-      title={title}
-      description={description}
-      canonical={canonical}
-      noindex={noindex}
-      nofollow={nofollow}
-      ogTitle={ogTitle}
-      ogDescription={ogDescription}
-      ogImage={ogImage}
-      twitterTitle={twitterTitle}
-      twitterDescription={twitterDescription}
-      twitterImage={twitterImage}
-    />
-    <script is:inline>
-      // Check for dark mode preference
-      const theme = (() => {
-        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-          return localStorage.getItem('theme');
-        }
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          return 'dark';
-        }
-        return 'light';
-      })();
-      
-      if (theme === 'dark') {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-    </script>
-  </head>
-  <body>
-    <Header />
-    <main>
-      <slot />
-    </main>
-    <Footer />
-    <script>
-      // Handle theme toggle
-      document.addEventListener('DOMContentLoaded', () => {
-        const themeToggle = document.getElementById('theme-toggle');
-        if (themeToggle) {
-          themeToggle.addEventListener('click', () => {
-            const isDark = document.documentElement.classList.contains('dark');
-            if (isDark) {
-              document.documentElement.classList.remove('dark');
-              localStorage.setItem('theme', 'light');
-            } else {
-              document.documentElement.classList.add('dark');
-              localStorage.setItem('theme', 'dark');
-            }
-          });
-        }
-      });
-    </script>
-  </body>
-</html>
+<Layout
+  title={title}
+  description={description}
+  canonical={canonical}
+  noindex={noindex}
+  nofollow={nofollow}
+  ogTitle={ogTitle}
+  ogDescription={ogDescription}
+  ogImage={ogImage}
+  twitterTitle={twitterTitle}
+  twitterDescription={twitterDescription}
+  twitterImage={twitterImage}
+>
+  <Header />
+
+  <main class="flex-grow overflow-hidden min-h-screen">
+    <slot />
+  </main>
+
+  <Footer />
+</Layout>

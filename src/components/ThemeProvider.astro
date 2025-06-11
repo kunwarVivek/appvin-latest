@@ -1,0 +1,33 @@
+---
+// ThemeProvider.astro - Always uses light mode
+---
+
+<script is:inline>
+  // Always use light mode
+  document.documentElement.classList.remove('dark');
+  localStorage.setItem('theme', 'light');
+</script>
+
+<script>
+  // Smooth scrolling implementation
+  document.addEventListener('DOMContentLoaded', () => {
+    let ticking = false;
+
+    // Function to handle smooth scrolling
+    const smoothScroll = () => {
+      // Reset ticking flag to allow next animation frame
+      ticking = false;
+    };
+
+    // Listen for scroll events
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        // Request animation frame for smooth scrolling
+        window.requestAnimationFrame(smoothScroll);
+        ticking = true;
+      }
+    }, { passive: true });
+  });
+</script>
+
+<slot />

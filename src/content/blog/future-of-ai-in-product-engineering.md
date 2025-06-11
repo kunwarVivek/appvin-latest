@@ -3,7 +3,7 @@ title: "The Future of AI in Product Engineering"
 description: "Explore how artificial intelligence is revolutionizing the product engineering landscape and what it means for businesses."
 pubDate: "2023-04-15"
 author: "Alex Johnson"
-image: "/images/blog-1.jpg"
+image: "/images/blog/ai-product-engineering-1.jpg"
 tags: ["AI", "Product Engineering", "Innovation"]
 ---
 
